@@ -1,0 +1,103 @@
+<app-nav-bar>
+
+  <div class="container-fluid">
+    <div class="row">
+      <div class="col-md-12">
+        <div style="font-size: 13px;float: right;">
+          <mat-form-field appearance="outline" class="example-full-width">
+            <mat-label class="labelFrom">Rechercher</mat-label>
+            <input matInput >
+            <mat-icon matSuffix class="iconFrom">search</mat-icon>
+          </mat-form-field>
+        </div>
+      </div>
+    </div><!--row-->
+
+    <div class="row">
+
+      <div class="col-md-12">
+
+        <div style="padding-top: 10px;">
+
+          <mat-tab-group>
+            <mat-tab>
+              <ng-template mat-tab-label>
+                Connexion <i class="fas fa-user" style="font-size: 20px;margin-left: 8px;"></i>
+              </ng-template>
+
+              <div class="contentInfo">
+
+                  <div class="mat-elevation-z8">
+                    <table mat-table [dataSource]="dataSource">
+
+                      <!-- Position Column -->
+                      <ng-container matColumnDef="position">
+                        <th mat-header-cell *matHeaderCellDef> No. </th>
+                        <td mat-cell *matCellDef="let element"> {{element.position}} </td>
+                      </ng-container>
+
+                      <!-- Name Column -->
+                      <ng-container matColumnDef="name">
+                        <th mat-header-cell *matHeaderCellDef> Name </th>
+                        <td mat-cell *matCellDef="let element"> {{element.name}} </td>
+                      </ng-container>
+
+                      <!-- Weight Column -->
+                      <ng-container matColumnDef="weight">
+                        <th mat-header-cell *matHeaderCellDef> Weight </th>
+                        <td mat-cell *matCellDef="let element"> {{element.weight}} </td>
+                      </ng-container>
+
+                      <!-- Symbol Column -->
+                      <ng-container matColumnDef="symbol">
+                        <th mat-header-cell *matHeaderCellDef> Symbol </th>
+                        <td mat-cell *matCellDef="let element"> {{element.symbol}} </td>
+                      </ng-container>
+
+                      <tr mat-header-row *matHeaderRowDef="displayedColumns"></tr>
+                      <tr mat-row *matRowDef="let row; columns: displayedColumns;"></tr>
+                    </table>
+
+                    <mat-paginator [pageSizeOptions]="[10, 20]"
+                                  showFirstLastButtons
+                                  aria-label="Select page of periodic elements">
+                    </mat-paginator>
+                </div>
+
+              </div><!--div-->
+
+            </mat-tab>
+
+            <mat-tab>
+              <ng-template mat-tab-label>
+                Facture <i class="fas fa-file-invoice" style="font-size: 20px;margin-left: 8px;"></i>
+              </ng-template>
+              Content 2
+            </mat-tab>
+
+            <mat-tab>
+              <ng-template mat-tab-label>
+                Avoirs <i class="fas fa-shopping-cart" style="font-size: 20px;margin-left: 8px;"></i>
+              </ng-template>
+
+              Content 3
+            </mat-tab>
+
+            <mat-tab>
+              <ng-template mat-tab-label>
+                Récompense <i class="fas fa-gifts" style="font-size: 20px;margin-left: 8px;"></i>
+              </ng-template>
+
+              Content 3
+            </mat-tab>
+          </mat-tab-group>
+
+        </div><!--mat-->
+
+      </div><!--col-->
+
+    </div><!--row-->
+
+  </div><!--container-->
+
+</app-nav-bar>

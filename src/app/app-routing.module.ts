@@ -28,6 +28,10 @@ const routes: Routes = [
   {
     path:"clients",
     loadChildren:()=>import('./clients/clients.module').then(m=> m.ClientsModule),
+  },
+  {
+    path:"historiques",
+    loadChildren:()=>import('./historique/historique.module').then(m=>m.HistoriqueModule),
   }
 ];
 

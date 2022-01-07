@@ -12,6 +12,7 @@ import { MatSelectModule} from '@angular/material/select';
 import { MatTableModule} from '@angular/material/table';
 import { MatDialogModule} from '@angular/material/dialog';
 import { MatPaginatorModule } from '@angular/material/paginator';
+import { MatTabsModule } from '@angular/material/tabs';
 
 
 
@@ -29,7 +30,8 @@ import { MatPaginatorModule } from '@angular/material/paginator';
     MatSelectModule,
     MatTableModule,
     MatDialogModule,
-    MatPaginatorModule
+    MatPaginatorModule,
+    MatTabsModule
   ],
   exports:[
     MatCardModule,
@@ -43,7 +45,8 @@ import { MatPaginatorModule } from '@angular/material/paginator';
     MatSelectModule,
     MatTableModule,
     MatDialogModule,
-    MatPaginatorModule
+    MatPaginatorModule,
+    MatTabsModule
   ]
 })
 export class SharedModule { }
