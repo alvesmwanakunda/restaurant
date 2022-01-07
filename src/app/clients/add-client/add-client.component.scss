@@ -1,0 +1,21 @@
+.labelFrom {
+  color: #CECECE;
+  font-size: 13px;
+}
+
+.iconFrom {
+  color: #CECECE;
+  font-size: 24px;
+  font-weight: 700;
+  margin-right: 13px;
+}
+
+.example-full-width {
+  width: 100%;
+}
+
+::ng-deep .mat-form-field-appearance-outline .mat-form-field-outline {
+  background-color: rgb(179, 177, 177);
+  border-radius: 5px;
+  color: rgb(151, 149, 149);
+}

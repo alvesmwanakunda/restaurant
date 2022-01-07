@@ -1,0 +1,73 @@
+<div class="container">
+  <div class="contentPage">
+
+    <div class="row justify-content-md-center">
+      <div class="col-lg-5 col-md-auto">
+        <mat-card style="box-shadow: none !important;">
+            <mat-card-title class="titleCard">
+             <div class="text-center">
+                <p style="color:#04075E;font-size: 19px;">Inscription</p>
+             </div>
+            </mat-card-title>
+            <mat-card-content style="margin: 0 60px 0 60px;">
+
+              <mat-form-field appearance="legacy" class="example-full-width">
+                <mat-label style="color: #c9c8c8;font-size: 12px;">Entreprise</mat-label>
+                <input matInput>
+              </mat-form-field>
+
+              <mat-form-field appearance="legacy" class="example-full-width">
+                <mat-label style="color: #c9c8c8;font-size: 12px;">Identifiant</mat-label>
+                <input matInput>
+              </mat-form-field>
+
+              <mat-form-field appearance="legacy" class="example-full-width">
+                <mat-label style="color: #c9c8c8;font-size: 12px;">Email</mat-label>
+                <input matInput>
+              </mat-form-field>
+
+              <mat-form-field appearance="legacy" class="example-full-width">
+                <mat-label style="color: #c9c8c8;font-size: 12px;">Numéro de téléphone</mat-label>
+                <input matInput>
+              </mat-form-field>
+
+              <mat-form-field appearance="legacy" class="example-full-width">
+                <mat-label style="color: #c9c8c8;font-size: 12px;">Mot de passe</mat-label>
+                <input matInput [type]="hideP ? 'password' : 'text'">
+                <button mat-icon-button matSuffix (click)="hideP = !hideP" [attr.aria-label]="'Hide password'" [attr.aria-pressed]="hideP">
+                  <mat-icon>{{hideP ? 'visibility_off' : 'visibility'}}</mat-icon>
+                </button>
+              </mat-form-field>
+
+              <mat-form-field appearance="legacy" class="example-full-width">
+                <mat-label style="color: #c9c8c8;font-size: 12px;">Confirmation mot de passe</mat-label>
+                <input matInput [type]="hidePassword ? 'password' : 'text'">
+                <button mat-icon-button matSuffix (click)="hidePassword = !hidePassword" [attr.aria-label]="'Hide password'" [attr.aria-pressed]="hidePassword">
+                  <mat-icon>{{hidePassword ? 'visibility_off' : 'visibility'}}</mat-icon>
+                </button>
+              </mat-form-field>
+
+
+
+              <section class="example-section" style="margin-bottom: 20px;">
+                <mat-checkbox style="color:#04075E;">J'accepte les conditions générales d'utilisation</mat-checkbox>
+              </section>
+
+            </mat-card-content>
+            <mat-card-actions style="margin: 0 30px 0 30px;">
+               <div class="row">
+                  <div class="col-md-6">
+                    <button mat-raised-button class="sizeButton">Créer</button>
+                  </div>
+                  <div class="col-md-6">
+                    <button mat-raised-button class="sizeButtonA" [routerLink]="'/'">Retour</button>
+                  </div>
+              </div><!--row-->
+            </mat-card-actions>
+        </mat-card>
+      </div><!--col-->
+  </div><!--row-->
+
+  </div>
+
+</div><!--container-->

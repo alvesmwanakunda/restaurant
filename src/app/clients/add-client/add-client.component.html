@@ -1,0 +1,55 @@
+<mat-dialog-content class="mat-typography">
+
+  <div class="container" style="font-size: 13px;">
+
+
+    <mat-form-field appearance="outline" class="example-full-width">
+      <mat-label class="labelFrom">Nom et prénoms du client</mat-label>
+      <input matInput >
+    </mat-form-field>
+
+    <div class="row">
+      <div class="col-md-6">
+
+        <mat-form-field appearance="outline" class="example-full-width">
+          <mat-label class="labelFrom">Téléphone</mat-label>
+          <input matInput >
+        </mat-form-field>
+
+      </div>
+
+      <div class="col-md-6">
+
+        <mat-form-field appearance="outline" class="example-full-width">
+          <mat-label class="labelFrom">Genre</mat-label>
+          <mat-select>
+            <mat-option value="one">First option</mat-option>
+            <mat-option value="two">Second option</mat-option>
+          </mat-select>
+        </mat-form-field>
+
+      </div>
+
+    </div><!--row-->
+
+    <mat-form-field appearance="outline" class="example-full-width">
+          <mat-label class="labelFrom">Date de naissance (DD/MM/YYY)</mat-label>
+          <input type="date" matInput >
+    </mat-form-field>
+
+
+    <mat-form-field appearance="outline" class="example-full-width">
+          <mat-label class="labelFrom">Adresse 1</mat-label>
+          <input matInput >
+    </mat-form-field>
+
+
+
+  </div>
+
+</mat-dialog-content>
+<mat-dialog-actions align="end">
+  <button mat-button mat-dialog-close>Fermer</button>
+  <button mat-button [mat-dialog-close]="true" cdkFocusInitial style=" background: #04075E !important;color:#fff">Ajouter client</button>
+</mat-dialog-actions>
+

@@ -1,0 +1,38 @@
+ <app-header-bar></app-header-bar>
+ <div [ngClass]="[!isMenuSize ? 'ko-page-content-dashboard with-sidebar' : 'ko-page-content-dashboard with-fullsidebar']">
+  <div class="container-fluid">
+    <div class="row">
+      <aside class="ko-sidebar" style="width: 75px;box-shadow: 1px 1px 5px #565656;">
+        <div class="sidebar-content">
+          <div class="side-menu" style="display: inline-block; list-style-type: none">
+
+            <div class="vertical-menu">
+              <a href="#"><i class="far fa-clock" style="font-size: 40px;margin-bottom: 30px;"></i></a>
+              <a href="#" routerLinkActive="active" [routerLinkActiveOptions]="{ exact: true }" [routerLink]="['/dashboard']" matTooltip="Dashboard"><i class="fas fa-clock" style="font-size: 15px;"></i></a>
+              <a href="#" matTooltip="Clients" [routerLink]="['/clients']" [routerLinkActive]="['active']"><i class="fas fa-user" style="font-size: 15px;"></i></a>
+              <a href="#" matTooltip="Historiques"><i class="fas fa-calendar-alt" style="font-size: 15px;"></i></a>
+              <a href="#" matTooltip="Promotions"><i class="fas fa-bullhorn" style="font-size: 15px;"></i></a>
+              <a href="#" matTooltip="Fidelites"><i class="fas fa-file-invoice-dollar" style="font-size: 15px;"></i></a>
+              <a href="#" matTooltip="Parametres" style="padding-top: 150px;"><i class="fas fa-cog" style="font-size: 40px;"></i></a>
+
+            </div>
+
+          </div>
+        </div>
+      </aside>
+    </div>
+  </div>
+  <!--sliderLayout-->
+
+  <div class="pdn-tb-sm">
+    <ng-content></ng-content>
+  </div>
+</div>
+
+
+<!--ko-page-->
+
+
+
+
+

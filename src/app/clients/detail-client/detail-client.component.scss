@@ -1,0 +1,58 @@
+.nameUser{
+  font-size: 22px;
+  //font-weight: 600;
+  color: #04075E;
+}
+
+.labelFrom {
+  color: #CECECE;
+  font-size: 13px;
+}
+
+.iconFrom {
+  color: #CECECE;
+  font-size: 24px;
+  font-weight: 700;
+  margin-right: 13px;
+}
+
+.example-full-width {
+  width: 100%;
+}
+
+::ng-deep .mat-form-field-appearance-outline .mat-form-field-outline {
+  background-color: white;
+  border-radius: 5px;
+  //color: #fff;
+}
+
+.mat-dialog-container {
+  box-shadow: 0px 11px 15px -7px rgb(0 0 0 / 20%), 0px 24px 38px 3px rgb(0 0 0 / 14%), 0px 9px 46px 8px rgb(0 0 0 / 12%);
+  background: #F9F9F9;
+  color: rgba(0, 0, 0, .87);
+}
+
+.point{
+  color: #CECECE;
+  font-size: 12px;
+  margin-bottom: 30px;
+}
+
+.pointResult{
+  color: #04075E;
+  font-size: 20px;
+  font-weight: 700;
+  padding-top: 13px;
+}
+
+.sizeButtons {
+  width: 163px;
+  background: #04075E !important;
+  color: #fff;
+  height: 44px;
+  margin-top: 13px;
+}
+
+table {
+  width: 100%;
+}

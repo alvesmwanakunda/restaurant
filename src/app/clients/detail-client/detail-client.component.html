@@ -1,0 +1,134 @@
+<mat-dialog-content class="mat-typography">
+
+  <div class="container-fluid">
+
+  <div class="row">
+    <div class="col-md-8">
+      <p class="nameUser">
+        <i class="fas fa-user-circle" style="font-size: 38px;"></i> Jacob GARCIA
+      </p>
+    </div>
+    <div class="col-md-4">
+      <i class="fas fa-edit" style="font-size: 22px;color: #04075E"></i>
+    </div><!--col-md-6-->
+  </div><!--row-->
+  <div class="row" style="padding-top: 30px;">
+     <div class="col-md-6">
+
+         <div class="row" style="font-size: 13px;">
+            <div class="col-md-6">
+                <mat-form-field appearance="outline" class="example-full-width">
+                  <mat-label class="labelFrom">Email</mat-label>
+                  <input matInput >
+                  <mat-icon matPrefix class="iconFrom">drafts</mat-icon>
+                </mat-form-field>
+
+                <mat-form-field appearance="outline" class="example-full-width">
+                  <mat-label class="labelFrom">Téléphone</mat-label>
+                  <input matInput >
+                  <mat-icon matPrefix class="iconFrom">local_phone</mat-icon>
+                </mat-form-field>
+
+
+            </div><!--col-md-6-->
+            <div class="col-md-6">
+
+                <mat-form-field appearance="outline" class="example-full-width">
+                  <mat-label class="labelFrom">Identite</mat-label>
+                  <input matInput >
+                  <mat-icon matPrefix class="iconFrom">account_box</mat-icon>
+                </mat-form-field>
+
+                <mat-form-field appearance="outline" class="example-full-width">
+                  <mat-label class="labelFrom">Sexe</mat-label>
+                  <input matInput >
+                  <mat-icon matPrefix class="iconFrom">wc</mat-icon>
+                </mat-form-field>
+
+            </div><!--col-md-6-->
+         </div><!--row-->
+
+     </div><!--col-md-6-->
+     <div class="col-md-6">
+
+      <mat-card>
+        <mat-card-content>
+          <div class="row">
+             <div class="col-md-4">
+               <span class="point">Total de pointes</span>
+               <p class="pointResult">+32,000</p>
+
+             </div><!--col-md-4-->
+             <div class="col-md-4">
+                <span class="point">Montant depenses</span>
+                <p class="pointResult">10000</p>
+             </div><!--col-md-4-->
+             <div class="col-md-4">
+               <span class="point">Total avoir</span>
+               <p class="pointResult">+69,000</p>
+
+             </div><!--col-md-4-->
+          </div><!--row-->
+        </mat-card-content>
+      </mat-card>
+
+      <button mat-raised-button class="sizeButtons" (click)="isOpenR()">Voir les recompenses</button>
+
+     </div><!--col-md-6-->
+  </div><!--row-->
+
+  <div style="padding-top: 15px;" [hidden]="!isRecompense">
+     <mat-card>
+        <mat-card-content>
+
+          <div class="mat-elevation-z8">
+            <table mat-table [dataSource]="dataSource">
+
+              <!-- Position Column -->
+              <ng-container matColumnDef="position">
+                <th mat-header-cell *matHeaderCellDef> No. </th>
+                <td mat-cell *matCellDef="let element"> {{element.position}} </td>
+              </ng-container>
+
+              <!-- Name Column -->
+              <ng-container matColumnDef="name">
+                <th mat-header-cell *matHeaderCellDef> Name </th>
+                <td mat-cell *matCellDef="let element"> {{element.name}} </td>
+              </ng-container>
+
+              <!-- Weight Column -->
+              <ng-container matColumnDef="weight">
+                <th mat-header-cell *matHeaderCellDef> Weight </th>
+                <td mat-cell *matCellDef="let element"> {{element.weight}} </td>
+              </ng-container>
+
+              <!-- Symbol Column -->
+              <ng-container matColumnDef="symbol">
+                <th mat-header-cell *matHeaderCellDef> Symbol </th>
+                <td mat-cell *matCellDef="let element"> {{element.symbol}} </td>
+              </ng-container>
+
+              <tr mat-header-row *matHeaderRowDef="displayedColumns"></tr>
+              <tr mat-row *matRowDef="let row; columns: displayedColumns;"></tr>
+            </table>
+
+            <mat-paginator [pageSizeOptions]="[5, 10, 20]"
+                          showFirstLastButtons
+                          aria-label="Select page of periodic elements">
+            </mat-paginator>
+          </div>
+
+        </mat-card-content>
+     </mat-card>
+  </div>
+
+
+
+</div><!--Fluid-->
+
+</mat-dialog-content>
+
+
+
+
+

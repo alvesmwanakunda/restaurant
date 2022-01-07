@@ -1,0 +1,57 @@
+<div class="container">
+  <div class="contentPage">
+
+    <div class="row justify-content-md-center">
+      <div class="col-lg-5 col-md-auto">
+        <mat-card class="exemple-card" style="box-shadow: none !important;">
+            <mat-card-title class="titleCard">
+             <div class="text-center">
+                <i class="fas fa-lock-open iconLogin" style="padding-bottom: 20px;"></i>
+                <p style="color:#04075E;font-size: 19px;">S'identifier</p>
+             </div>
+            </mat-card-title>
+            <mat-card-content style="margin: 0 60px 0 60px;">
+
+              <mat-form-field appearance="legacy" class="example-full-width">
+                <mat-label style="color: #c9c8c8;font-size: 12px;">Email ou nom d'utilisateur</mat-label>
+                <input matInput>
+              </mat-form-field>
+
+              <mat-form-field appearance="legacy" class="example-full-width">
+                <mat-label style="color: #c9c8c8;font-size: 12px;">Mot de passe</mat-label>
+                <input matInput [type]="hide ? 'password' : 'text'">
+                <button mat-icon-button matSuffix (click)="hide = !hide" [attr.aria-label]="'Hide password'" [attr.aria-pressed]="hide">
+                  <mat-icon>{{hide ? 'visibility_off' : 'visibility'}}</mat-icon>
+                </button>
+              </mat-form-field>
+              <section class="example-section">
+                <mat-checkbox style="color:#04075E;">Se souvenir de moi</mat-checkbox>
+              </section>
+
+              <div class="text-center">
+                  <button mat-raised-button class="sizeButton">Connexion</button>
+                  <button mat-raised-button class="sizeButtonA">Annuler</button>
+              </div><!--text-center-->
+
+            </mat-card-content>
+            <mat-divider inset></mat-divider>
+            <mat-card-actions>
+               <div class="row">
+                 <div class="col-lg-6 col-md-6">
+                     <button mat-button class="buttonBottom" [routerLink]="'/reset'">Mot de passe oublie</button>
+                 </div><!--col-->
+                 <div class="col-lg-6 col-md-6">
+
+                      <button mat-button class="buttonBottom" style="float: right;" [routerLink]="'/signup'">S'inscire</button>
+                 </div><!--col-->
+               </div>
+
+
+            </mat-card-actions>
+        </mat-card>
+      </div><!--col-->
+  </div><!--row-->
+
+  </div>
+
+</div><!--container-->
