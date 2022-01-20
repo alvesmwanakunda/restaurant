@@ -1,0 +1,124 @@
+<app-nav-bar>
+  <div class="container-fluid" style="margin-bottom: 25px;">
+
+    <div class="row">
+
+      <div class="col-md-3">
+
+        <mat-card style="margin-bottom: 20px;">
+            <mat-card-content>
+              <p class="titreHeader">Critère d'activation</p>
+
+               <section class="exempla-section">
+
+                 <p class="checkboxTitle"><mat-checkbox> Envoyer un message au client à chaque visite</mat-checkbox> </p>
+                 <p class="checkboxTitle"><mat-checkbox> Envoyer un message à chaque anniversaire</mat-checkbox> </p>
+
+               </section>
+                <div style="margin: 0 65px 0 69px;">
+                  <button mat-raised-button class="sizebv">Enregistrer</button>
+                </div>
+
+            </mat-card-content>
+        </mat-card>
+
+      </div><!--col-->
+
+      <div class="col-md-3">
+
+        <mat-card style="margin-bottom: 20px;">
+            <mat-card-content>
+              <p class="titreHeader">Information de base</p>
+
+              <div>
+                <mat-form-field appearance="legacy" class="example-full-width">
+                  <mat-label class="labelFrom">Nom de la promo</mat-label>
+                  <input matInput>
+                </mat-form-field>
+              </div>
+
+              <div>
+                <mat-form-field appearance="legacy" class="example-full-width">
+                  <mat-label class="labelFrom">Nom de l'entreprise</mat-label>
+                  <input matInput>
+                </mat-form-field>
+              </div>
+
+              <div class="row">
+                 <div class="col-md-8" style="font-size: 13px;">
+
+                   <mat-form-field appearance="outline" class="example-full-width">
+                      <mat-label class="labelFrom">Action groupé</mat-label>
+                      <mat-select>
+                        <mat-option value="one">First option</mat-option>
+                        <mat-option value="two">Second option</mat-option>
+                      </mat-select>
+                   </mat-form-field>
+
+                 </div><!--col-->
+                 <div class="col-md-4" style="padding-top: 4px;">
+                   <button mat-raised-button class="sizeb">OK</button>
+                 </div><!--col-->
+              </div><!--row-->
+
+            </mat-card-content>
+        </mat-card>
+
+        <mat-card>
+            <mat-card-content>
+              <p class="titreHeader">SMS</p>
+
+              <mat-form-field class="example-full-width" appearance="fill">
+                <textarea matInput></textarea>
+              </mat-form-field>
+
+              <mat-divider></mat-divider>
+
+              <p class="titreHeader">App</p>
+
+              <mat-form-field class="example-full-width" appearance="fill">
+                <textarea matInput></textarea>
+              </mat-form-field>
+
+               <div style="margin: 0 65px 0 69px;">
+                <button mat-raised-button class="sizebv">Valider</button>
+               </div>
+            </mat-card-content>
+        </mat-card>
+
+      </div><!--col-->
+
+      <div class="col-md-6">
+
+         <mat-card>
+            <mat-card-content>
+              <p class="titreHeader" style="font-weight: 700;">Visualiser</p>
+              <div class="row">
+                  <div class="col-md-6">
+                    <i class="fas fa-bullseye iconV"></i>
+                    <div class="vi1">
+                       <span style="font-size: 13px;color: #000;">Taille de la cible</span>
+                       <br/>
+                       <span style="font-size: 15px;font-weight: 800;">5 0000 000</span>
+                    </div>
+                  </div>
+                  <div class="col-md-6">
+                    <i class="fas fa-funnel-dollar iconV1"></i>
+                    <div class="vi2">
+                       <span style="font-size: 13px;color: #000;">Montant à payer</span>
+                       <br/>
+                       <span style="font-size: 15px;font-weight: 800;">5 0000 000</span>
+                    </div>
+
+                  </div><!--col-->
+              </div><!--row-->
+
+            </mat-card-content>
+        </mat-card>
+
+      </div><!--col-->
+
+    </div><!--row-->
+
+  </div><!--container-->
+</app-nav-bar>

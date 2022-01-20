@@ -1,0 +1,251 @@
+<app-nav-bar>
+
+  <div class="container-fluid" style="margin-bottom: 25px;">
+
+    <div class="row">
+
+      <div class="col-md-3">
+
+        <mat-card style="margin-bottom: 20px;">
+            <mat-card-content>
+              <p class="titreHeader">Information de base</p>
+
+              <mat-form-field appearance="legacy" class="example-full-width">
+                <mat-label class="labelFrom">Nom de la promo</mat-label>
+                <input matInput>
+              </mat-form-field>
+
+              <mat-form-field appearance="legacy" class="example-full-width">
+                <mat-label class="labelFrom">Nom de l'entreprise</mat-label>
+                <input matInput>
+              </mat-form-field>
+
+              <div class="row">
+                 <div class="col-md-8" style="font-size: 13px;">
+
+                   <mat-form-field appearance="outline" class="example-full-width">
+                      <mat-label class="labelFrom">Action groupé</mat-label>
+                      <mat-select>
+                        <mat-option value="one">First option</mat-option>
+                        <mat-option value="two">Second option</mat-option>
+                      </mat-select>
+                   </mat-form-field>
+
+                 </div><!--col-->
+                 <div class="col-md-4" style="padding-top: 4px;">
+                   <button mat-raised-button class="sizeb">OK</button>
+                 </div><!--col-->
+              </div><!--row-->
+
+            </mat-card-content>
+        </mat-card>
+
+        <mat-card>
+            <mat-card-content>
+              <p class="titreHeader">SMS</p>
+
+              <mat-form-field class="example-full-width" appearance="fill">
+                <textarea matInput></textarea>
+              </mat-form-field>
+
+              <mat-divider></mat-divider>
+
+              <p class="titreHeader">Email & app</p>
+
+              <mat-form-field class="example-full-width" appearance="fill">
+                <textarea matInput></textarea>
+              </mat-form-field>
+
+
+            </mat-card-content>
+        </mat-card>
+
+      </div><!--col-->
+
+      <div class="col-md-3">
+
+        <mat-card style="margin-bottom: 20px;">
+            <mat-card-content>
+              <p class="titreHeader">Critère d'activation</p>
+
+              <div style="font-size: 12px;">
+                 <mat-form-field appearance="outline" class="example-full-width">
+                      <mat-label class="labelFrom">Instantanné</mat-label>
+                      <mat-select>
+                        <mat-option value="one">First option</mat-option>
+                        <mat-option value="two">Second option</mat-option>
+                      </mat-select>
+                   </mat-form-field>
+              </div>
+
+              <p class="titreHeader">Condition d'activation</p>
+
+              <p style="font-size: 12px;color: #000;text-align: center;">Activer cette promotion si et seulement si</p>
+
+               <mat-form-field appearance="outline" class="example-full-width">
+                <mat-label class="labelFrom">Point de fidélité (intervalle)</mat-label>
+                <input matInput>
+              </mat-form-field>
+
+              <p style="font-size: 12px;color: #000;text-align: center;">atteint un nombre de point entre</p>
+
+              <div class="row" style="font-size: 11px;">
+                <div class="col-md-6">
+                  <mat-form-field appearance="outline" class="example-full-width">
+                    <input type="number" matInput>
+                  </mat-form-field>
+                </div><!--col-->
+                <div class="col-md-6">
+                  <mat-form-field appearance="outline" class="example-full-width">
+                    <input type="number" matInput>
+                  </mat-form-field>
+                </div><!--col-->
+              </div><!--row-->
+
+              <div style="margin: 0 65px 0 69px;">
+                <button mat-raised-button class="sizebv">Valider</button>
+              </div>
+
+
+
+
+
+            </mat-card-content>
+        </mat-card>
+
+        <mat-card>
+            <mat-card-content>
+              <p class="titreHeader">Définir la cible</p>
+              <div style="font-size: 12px;">
+                  <mat-form-field appearance="outline" class="example-full-width">
+                      <mat-label class="labelFrom">Clients</mat-label>
+                      <mat-select>
+                        <mat-option value="one">First option</mat-option>
+                        <mat-option value="two">Second option</mat-option>
+                      </mat-select>
+                  </mat-form-field>
+              </div>
+
+              <div style="margin: 0 65px 20px 69px;">
+                <button mat-raised-button class="sizebvs">Segmentation</button>
+              </div>
+
+              <div class="row" style="font-size: 11px;">
+
+                <div class="col-md-2"><p style="font-size: 13px;color: #000;">Age:</p></div>
+                <div class="col-md-4 hposition">
+                  <mat-form-field appearance="legacy" class="example-full-width">
+                    <mat-label class="labelFrom">Entre</mat-label>
+                    <input type="number" matInput>
+                  </mat-form-field>
+                </div><!--col-->
+                <div class="col-md-2">et</div>
+                <div class="col-md-4 hposition">
+                  <mat-form-field appearance="legacy" class="example-full-width">
+                    <mat-label class="labelFrom">Ans</mat-label>
+                    <input type="number" matInput>
+                  </mat-form-field>
+                </div>
+
+              </div><!--row-->
+              <div class="row" style="font-size: 11px;">
+                 <div class="col-md-4">
+                   <p style="font-size: 13px;color: #000;">Sexe:</p>
+                 </div>
+                 <div class="col-md-8 sposition">
+
+                  <mat-form-field appearance="outline" class="example-full-width">
+                      <mat-select>
+                        <mat-option value="one">First option</mat-option>
+                        <mat-option value="two">Second option</mat-option>
+                      </mat-select>
+                  </mat-form-field>
+
+                 </div>
+              </div><!--row-->
+
+              <div class="row" style="font-size: 11px;">
+                 <div class="col-md-4">
+                   <p style="font-size: 13px;color: #000;">Région:</p>
+                 </div>
+                 <div class="col-md-8 sposition">
+
+                  <mat-form-field appearance="outline" class="example-full-width">
+                      <mat-select>
+                        <mat-option value="one">First option</mat-option>
+                        <mat-option value="two">Second option</mat-option>
+                      </mat-select>
+                  </mat-form-field>
+
+                 </div>
+              </div><!--row-->
+
+              <div class="row" style="font-size: 11px;">
+                 <div class="col-md-4">
+                   <p style="font-size: 13px;color: #000;">Zone:</p>
+                 </div>
+                 <div class="col-md-8 sposition">
+
+                  <mat-form-field appearance="outline" class="example-full-width">
+                      <mat-select>
+                        <mat-option value="one">First option</mat-option>
+                        <mat-option value="two">Second option</mat-option>
+                      </mat-select>
+                  </mat-form-field>
+
+                 </div>
+              </div><!--row-->
+
+            </mat-card-content>
+        </mat-card>
+
+      </div><!--col-->
+
+      <div class="col-md-6">
+
+         <mat-card>
+            <mat-card-content>
+              <p class="titreHeader" style="font-weight: 700;">Visualiser</p>
+              <div class="row">
+                  <div class="col-md-6">
+                    <i class="fas fa-bullseye iconV"></i>
+                    <div class="vi1">
+                       <span style="font-size: 13px;color: #000;">Taille de la cible</span>
+                       <br/>
+                       <span style="font-size: 15px;font-weight: 800;">5 0000 000</span>
+                    </div>
+                  </div>
+                  <div class="col-md-6">
+                    <i class="fas fa-funnel-dollar iconV1"></i>
+                    <div class="vi2">
+                       <span style="font-size: 13px;color: #000;">Montant à payer</span>
+                       <br/>
+                       <span style="font-size: 15px;font-weight: 800;">5 0000 000</span>
+                    </div>
+
+                  </div><!--col-->
+              </div><!--row-->
+
+            </mat-card-content>
+        </mat-card>
+
+      </div><!--col-->
+
+    </div><!--row-->
+
+  </div><!--container-->
+
+  <div style="float: right;position: relative;bottom: 421px;">
+    <div style="margin-bottom: 10px;">
+       <button mat-raised-button class="sizebf"><i class="fas fa-reply" style="font-size: 20px;"></i></button>
+    </div>
+    <div style="margin-bottom: 10px;">
+       <button mat-raised-button class="sizebf"><i class="fas fa-save" style="font-size: 20px;"></i></button>
+    </div>
+    <div>
+       <button mat-raised-button class="sizebr"><i class="fas fa-trash" style="font-size: 20px;"></i></button>
+    </div>
+
+  </div>
+
+</app-nav-bar>

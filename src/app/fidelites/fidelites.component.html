@@ -1,0 +1,205 @@
+<app-nav-bar>
+
+    <div class="container-fluid">
+
+        <div class="row">
+
+            <div class="col-md-12">
+
+                <mat-tab-group>
+                  <mat-tab>
+                    <ng-template mat-tab-label>
+                      Cadeaux <i class="fas fa-gifts" style="font-size: 20px;margin-left: 8px;"></i>
+                    </ng-template>
+
+                    <div class="row contentInfo">
+
+                        <div class="col-md-4">
+                             <p class="titleFront">Articles cadeau <i class="fas fa-plus-square iconInfo" style="cursor: pointer;" (click)="openDialogAddCadeau()"></i></p>
+
+                             <div class="card" style="background-color: #F6F6FF;border-color: #F6F6FF;">
+                               <div class="card-body">
+
+                                  <div class="row">
+                                    <div class="col-md-6">
+                                       <div style="cursor: pointer;" (click)="openDialogCadeau()">
+                                         <img src="assets/images/pt.png" width="30px;">
+                                         <span class="subTitle">Nom du produit</span>
+                                        </div>
+                                    </div><!--col-->
+                                    <div class="col-md-3">
+                                       <div>
+                                         <div class="vl"></div>
+                                         <span style="font-size: 11px;margin-left: 4px;">05 (achat)</span>
+                                       </div>
+                                    </div><!--col-->
+                                    <div class="col-md-3">
+                                       <div class="vl"></div>
+                                       <div style="margin-left: 10px;">
+                                          <i class="fas fa-edit" style="margin-right: 11px;color: #04075E;"></i>
+                                          <i class="fas fa-trash" style="color: #04075E;"></i>
+                                       </div>
+
+                                    </div><!--col-->
+                                  </div>
+
+
+                               </div><!--card-body-->
+                             </div>
+                        </div><!--col-md-4-->
+
+                        <div class="col-md-4">
+                              <p class="titleFront">Réduction cadeau <i class="fas fa-plus-square iconInfo" style="cursor: pointer;" (click)="openDialogAddReduction()"></i></p>
+                              <div class="card" style="background-color: #F6F6FF;border-color: #F6F6FF;">
+                               <div class="card-body">
+
+                                  <div class="row">
+                                    <div class="col-md-6">
+                                       <div style="cursor: pointer;" (click)="openDialogReduction()">
+                                         <img src="assets/images/pt.png" width="30px;">
+                                         <span class="subTitle">10%</span>
+                                        </div>
+                                    </div><!--col-->
+                                    <div class="col-md-3">
+                                       <div>
+                                         <div class="vl"></div>
+                                         <span style="font-size: 11px;margin-left: 4px;">12 points</span>
+                                       </div>
+                                    </div><!--col-->
+                                    <div class="col-md-3">
+                                       <div class="vl"></div>
+                                       <div style="margin-left: 10px;">
+                                          <i class="fas fa-edit" style="margin-right: 11px;color: #04075E;"></i>
+                                          <i class="fas fa-trash" style="color: #04075E;"></i>
+                                       </div>
+
+                                    </div><!--col-->
+                                  </div>
+
+                               </div><!--card-body-->
+                             </div>
+                        </div><!--col-md-4-->
+
+                        <div class="col-md-4">
+                              <p class="titleFront">Livraison gratuite <i class="fas fa-plus-square iconInfo" style="cursor: pointer;" (click)="openDialogAddLivraison()"></i></p>
+                              <div class="card" style="background-color: #F6F6FF;border-color: #F6F6FF;">
+                               <div class="card-body">
+
+                                 <div class="row">
+                                    <div class="col-md-6">
+                                       <div style="cursor: pointer;" (click)="openDialogLivraison()">
+                                         <img src="assets/images/pt.png" width="30px;">
+                                         <span class="subTitle">dakar</span>
+                                        </div>
+                                    </div><!--col-->
+                                    <div class="col-md-3">
+                                       <div>
+                                         <div class="vl"></div>
+                                         <span style="font-size: 11px;margin-left: 4px;">20 points</span>
+                                       </div>
+                                    </div><!--col-->
+                                    <div class="col-md-3">
+                                       <div class="vl"></div>
+                                       <div style="margin-left: 10px;">
+                                          <i class="fas fa-edit" style="margin-right: 11px;color: #04075E;"></i>
+                                          <i class="fas fa-trash" style="color: #04075E;"></i>
+                                       </div>
+
+                                    </div><!--col-->
+                                  </div>
+
+                               </div><!--card-body-->
+                             </div>
+                        </div><!--col-md-4-->
+
+                    </div><!--row-->
+
+                  </mat-tab>
+                  <mat-tab>
+                    <ng-template mat-tab-label>
+                      Attribution de points <i class="fas fa-database" style="font-size: 20px;margin-left: 8px;"></i>
+                    </ng-template>
+
+                    <div class="row contentInfo">
+                       <div class="col-md-6">
+
+                             <p class="titleFront">Points visite <i class="fas fa-plus-square iconInfo"></i></p>
+
+                             <div class="card" style="background-color: #F6F6FF;border-color: #F6F6FF;">
+                               <div class="card-body">
+
+                                  <div class="row">
+                                    <div class="col-md-6">
+                                       <div>
+                                         <img src="assets/images/pt.png" width="30px;">
+                                         <span class="subTitle">1 facture</span>
+                                        </div>
+                                    </div><!--col-->
+                                    <div class="col-md-3">
+                                       <div>
+                                         <div class="vl"></div>
+                                         <span style="font-size: 11px;margin-left: 4px;">10 points</span>
+                                       </div>
+                                    </div><!--col-->
+                                    <div class="col-md-3">
+                                       <div class="vl"></div>
+                                       <div style="margin-left: 10px;">
+                                          <i class="fas fa-edit" style="margin-right: 11px;color: #04075E;"></i>
+                                          <i class="fas fa-trash" style="color: #04075E;"></i>
+                                       </div>
+
+                                    </div><!--col-->
+                                  </div>
+
+
+                               </div><!--card-body-->
+                             </div>
+
+                       </div><!--col-->
+                       <div class="col-md-6">
+
+                          <p class="titleFront">Par budget dépensé <i class="fas fa-plus-square iconInfo"></i></p>
+
+                             <div class="card" style="background-color: #F6F6FF;border-color: #F6F6FF;">
+                               <div class="card-body">
+
+                                  <div class="row">
+                                    <div class="col-md-6">
+                                       <div>
+                                         <img src="assets/images/pt.png" width="30px;">
+                                         <span class="subTitle">500 cfa</span>
+                                        </div>
+                                    </div><!--col-->
+                                    <div class="col-md-3">
+                                       <div>
+                                         <div class="vl"></div>
+                                         <span style="font-size: 11px;margin-left: 4px;">1 Points(100x)</span>
+                                       </div>
+                                    </div><!--col-->
+                                    <div class="col-md-3">
+                                       <div class="vl"></div>
+                                       <div style="margin-left: 10px;">
+                                          <i class="fas fa-edit" style="margin-right: 11px;color: #04075E;"></i>
+                                          <i class="fas fa-trash" style="color: #04075E;"></i>
+                                       </div>
+
+                                    </div><!--col-->
+                                  </div>
+
+
+                               </div><!--card-body-->
+                             </div>
+
+
+                       </div><!--col-->
+                    </div><!--row-->
+                  </mat-tab>
+               </mat-tab-group>
+
+            </div>
+
+        </div><!--row-->
+
+    </div><!--fluid-->
+
+</app-nav-bar>

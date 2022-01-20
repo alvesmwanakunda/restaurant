@@ -32,6 +32,30 @@ const routes: Routes = [
   {
     path:"historiques",
     loadChildren:()=>import('./historique/historique.module').then(m=>m.HistoriqueModule),
+  },
+  {
+    path:"promotions",
+    loadChildren:()=>import('./promotions/promotions.module').then(m=>m.PromotionsModule),
+  },
+  {
+    path:"add/promotion",
+    loadChildren:()=>import('./promotions/add-promotion/add-promotion.module').then(m=>m.AddPromotionModule),
+  },
+  {
+    path:"parametres",
+    loadChildren:()=>import('./parametres/parametres.module').then(m=>m.ParametresModule),
+  },
+  {
+    path:"add/personnel",
+    loadChildren:()=>import('./parametres/add-personnel/add-personnel.module').then(m=>m.AddPersonnelModule),
+  },
+  {
+    path:"fidelites",
+    loadChildren:()=>import('./fidelites/fidelites.module').then(m=>m.FidelitesModule),
+  },
+  {
+     path:"message/client",
+     loadChildren:()=>import('./promotions/message-client/message-client.module').then(m=>m.MessageClientModule),
   }
 ];
 

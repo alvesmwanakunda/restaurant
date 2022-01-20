@@ -1,0 +1,111 @@
+<mat-dialog-content class="mat-typography">
+   <div class="container-fluid">
+
+  <div class="row">
+
+    <div class="col-md-4">
+
+      <div class="card" style="border-color: #F6F6FF;">
+        <div class="card-body" style="height: 106px;">
+          <div>
+            <i class="fas fa-box" style="color: #723E03;font-size: 45px;"></i> <span style="font-weight: 700;margin-left: 20px;"> Nom cadeau</span>
+          </div>
+
+        </div><!--card-body-->
+      </div>
+
+    </div><!--col-->
+
+    <div class="col-md-8">
+
+      <div class="card" style="border-color: #F6F6FF;">
+        <div class="card-body">
+
+          <div class="row">
+            <div class="col-md-4">
+              <div class="text-center">
+                <i class="fas fa-gift" style="color: #D70000;"></i>
+                <p class="titleCadeau">
+                  Nombre de cadeaux
+                </p>
+                <span class="numberTitle">279</span>
+              </div>
+            </div><!--col-->
+            <div class="col-md-4">
+
+              <div class="text-center">
+                <i class="fas fa-file-invoice-dollar" style="color: #FFD500;"></i>
+                <p class="titleCadeau">
+                  Total point
+                </p>
+                <span class="numberTitle">6700</span>
+              </div>
+
+            </div><!--col-->
+            <div class="col-md-4">
+
+              <div class="text-center">
+                <i class="fas fa-users" style="color: #04075E;"></i>
+                <p class="titleCadeau">
+                  Nombre de personne
+                </p>
+                <span class="numberTitle">238</span>
+              </div>
+
+            </div><!--col-->
+          </div><!--row-->
+
+        </div><!--card-body-->
+      </div>
+
+    </div><!--col-->
+
+  </div><!--row-->
+
+  <div class="row">
+    <div class="col-md-12" style="padding-top: 21px;">
+       <div class="mat-elevation-z8">
+          <table mat-table [dataSource]="dataSource">
+
+                                  <!-- Position Column -->
+                                  <ng-container matColumnDef="nom">
+                                    <th mat-header-cell *matHeaderCellDef> Nom Client </th>
+                                    <td mat-cell *matCellDef="let element"> {{element.nom}} </td>
+                                  </ng-container>
+
+                                  <!-- Name Column -->
+                                  <ng-container matColumnDef="numero">
+                                    <th mat-header-cell *matHeaderCellDef> Nº client </th>
+                                    <td mat-cell *matCellDef="let element"> {{element.numero}} </td>
+                                  </ng-container>
+
+                                  <!-- Weight Column -->
+                                  <ng-container matColumnDef="date">
+                                    <th mat-header-cell *matHeaderCellDef> Date </th>
+                                    <td mat-cell *matCellDef="let element"> {{element.date}} </td>
+                                  </ng-container>
+
+                                  <!-- Symbol Column -->
+                                  <ng-container matColumnDef="cadeaux">
+                                    <th mat-header-cell *matHeaderCellDef> Cadeaux </th>
+                                    <td mat-cell *matCellDef="let element"> {{element.cadeaux}} </td>
+                                  </ng-container>
+
+                                  <ng-container matColumnDef="points">
+                                    <th mat-header-cell *matHeaderCellDef> Points </th>
+                                    <td mat-cell *matCellDef="let element"> {{element.points}} </td>
+                                  </ng-container>
+
+                                  <tr mat-header-row *matHeaderRowDef="displayedColumns"></tr>
+                                  <tr mat-row *matRowDef="let row; columns: displayedColumns;"></tr>
+          </table>
+          <mat-paginator [pageSizeOptions]="[5,10, 20]" showFirstLastButtons aria-label="Select page of periodic elements">
+          </mat-paginator>
+       </div>
+    </div><!--col-md-12-->
+  </div><!--row-->
+
+   </div><!--container-->
+</mat-dialog-content>
+
+
