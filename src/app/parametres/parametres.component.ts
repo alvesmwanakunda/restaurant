@@ -1,6 +1,9 @@
 import { Component, OnInit, ViewChild, AfterViewInit } from '@angular/core';
 import {MatPaginator} from '@angular/material/paginator';
 import {MatTableDataSource} from '@angular/material/table';
+import { MatDialog } from '@angular/material/dialog';
+import { AddPersonnelComponent } from './add-personnel/add-personnel.component';
+
 
 @Component({
   selector: 'app-parametres',
@@ -14,9 +17,16 @@ export class ParametresComponent implements OnInit, AfterViewInit {
 
   @ViewChild(MatPaginator) paginator: MatPaginator;
 
-  constructor() { }
+  constructor(public dialog:MatDialog) { }
 
   ngOnInit(): void {
+  }
+
+  openDialog(){
+    const dialogRef = this.dialog.open(AddPersonnelComponent);
+    dialogRef.afterClosed().subscribe(result => {
+      console.log(`Dialog result: ${result}`);
+    })
   }
 
   ngAfterViewInit() {

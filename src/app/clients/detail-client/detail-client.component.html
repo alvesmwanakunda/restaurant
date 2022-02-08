@@ -3,20 +3,25 @@
   <div class="container-fluid">
 
   <div class="row">
-    <div class="col-md-8">
+    <div class="col-md-12">
       <p class="nameUser">
         <i class="fas fa-user-circle" style="font-size: 38px;"></i> Jacob GARCIA
+         <i class="fas fa-edit" style="font-size: 22px;color: #04075E;margin-left: 36px;"></i>
       </p>
     </div>
-    <div class="col-md-4">
-      <i class="fas fa-edit" style="font-size: 22px;color: #04075E"></i>
-    </div><!--col-md-6-->
   </div><!--row-->
   <div class="row" style="padding-top: 30px;">
      <div class="col-md-6">
 
          <div class="row" style="font-size: 13px;">
-            <div class="col-md-6">
+            <div class="col-md-12">
+
+                <mat-form-field appearance="outline" class="example-full-width">
+                  <mat-label class="labelFrom">Nom</mat-label>
+                  <input matInput >
+                  <mat-icon matPrefix class="iconFrom">person</mat-icon>
+                </mat-form-field>
+
                 <mat-form-field appearance="outline" class="example-full-width">
                   <mat-label class="labelFrom">Email</mat-label>
                   <input matInput >
@@ -31,7 +36,7 @@
 
 
             </div><!--col-md-6-->
-            <div class="col-md-6">
+            <!--<div class="col-md-6">
 
                 <mat-form-field appearance="outline" class="example-full-width">
                   <mat-label class="labelFrom">Identite</mat-label>
@@ -45,7 +50,7 @@
                   <mat-icon matPrefix class="iconFrom">wc</mat-icon>
                 </mat-form-field>
 
-            </div><!--col-md-6-->
+            </div>col-md-6-->
          </div><!--row-->
 
      </div><!--col-md-6-->

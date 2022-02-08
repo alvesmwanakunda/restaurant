@@ -4,6 +4,7 @@ import { ParametresComponent } from './parametres.component';
 import { ParametresRoutingModule } from './parametres-routing.module';
 import { SharedModule } from '../shared/shared.module';
 import { NavBarModule } from '../menus/nav-bar/nav-bar.module';
+import { AddPersonnelModule } from './add-personnel/add-personnel.module';
 
 
 @NgModule({
@@ -12,7 +13,8 @@ import { NavBarModule } from '../menus/nav-bar/nav-bar.module';
     CommonModule,
     ParametresRoutingModule,
     SharedModule,
-    NavBarModule
+    NavBarModule,
+    AddPersonnelModule
   ]
 })
 export class ParametresModule { }

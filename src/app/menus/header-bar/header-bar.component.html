@@ -16,7 +16,7 @@
       <ul class="navbar-nav" style="margin-left: auto;">
 
         <li class="nav-item" style="margin-right: 10px;">
-          <a class="nav-link linkMenu"><i class="fas fa-power-off" style="font-size: 25px;color:#04075e"></i></a>
+          <a class="nav-link linkMenu" (click)="logout()" style="cursor: pointer;"><i class="fas fa-power-off" style="font-size: 25px;color:#04075e"></i></a>
         </li>
         <li class="nav-item">
           <a class="nav-link linkMenu vl">
@@ -25,7 +25,8 @@
         </li>
         <li class="nav-item">
           <a class="nav-link linkMenu">
-            <p style="color: #2A2A29;font-weight: bold;">Thierry Zounglas</p>
+            <p style="color: #2A2A29;font-weight: bold;" *ngIf="user?.user.nom">{{user?.user.nom}} {{user?.user.prenom}}</p>
+            <p style="color: #2A2A29;font-weight: bold;" *ngIf="!user?.user.nom">{{user?.user.email}}</p>
           </a>
         </li>
       </ul>

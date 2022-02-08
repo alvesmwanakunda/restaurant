@@ -3,6 +3,7 @@ import { CommonModule } from '@angular/common';
 import { DashboardComponent } from './dashboard.component';
 import { DashboardRoutingModule } from './dashboard-routing.module';
 import { NavBarModule } from '../menus/nav-bar/nav-bar.module';
+import { ClientService } from '../shared/services/client.service';
 
 
 @NgModule({
@@ -11,6 +12,7 @@ import { NavBarModule } from '../menus/nav-bar/nav-bar.module';
     CommonModule,
     DashboardRoutingModule,
     NavBarModule
-  ]
+  ],
+  providers:[ClientService]
 })
 export class DashboardModule { }

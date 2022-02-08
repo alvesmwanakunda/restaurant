@@ -45,10 +45,10 @@ const routes: Routes = [
     path:"parametres",
     loadChildren:()=>import('./parametres/parametres.module').then(m=>m.ParametresModule),
   },
-  {
+ /* {
     path:"add/personnel",
     loadChildren:()=>import('./parametres/add-personnel/add-personnel.module').then(m=>m.AddPersonnelModule),
-  },
+  },*/
   {
     path:"fidelites",
     loadChildren:()=>import('./fidelites/fidelites.module').then(m=>m.FidelitesModule),
@@ -56,6 +56,14 @@ const routes: Routes = [
   {
      path:"message/client",
      loadChildren:()=>import('./promotions/message-client/message-client.module').then(m=>m.MessageClientModule),
+  },
+  {
+    path:"confirme/:email",
+    loadChildren:()=>import('./signup/confirme/confirme.module').then(m=>m.ConfirmeModule),
+  },
+  {
+    path:"reset-password",
+    loadChildren:()=>import('./new-password/new-password.module').then(m=>m.NewPasswordModule),
   }
 ];
 
