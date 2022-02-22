@@ -13,7 +13,7 @@ export class HeaderBarComponent implements OnInit {
   user:any;
 
   constructor(private authService: AuthService) {
-    this.user = JSON.parse(localStorage.getItem('currentUser'));
+    this.user = JSON.parse(localStorage.getItem('user'));
     console.log("User", this.user.user);
   }
 

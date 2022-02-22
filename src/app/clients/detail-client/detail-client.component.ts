@@ -1,6 +1,9 @@
-import { Component, OnInit, ViewEncapsulation,ViewChild, AfterViewInit } from '@angular/core';
+import { Component, OnInit, ViewEncapsulation,ViewChild, AfterViewInit, Inject } from '@angular/core';
 import {MatPaginator} from '@angular/material/paginator';
 import {MatTableDataSource} from '@angular/material/table';
+import {MatDialog, MAT_DIALOG_DATA} from '@angular/material/dialog';
+import { ClientService } from 'src/app/shared/services/client.service';
+
 
 @Component({
   selector: 'app-detail-client',
@@ -13,13 +16,17 @@ export class DetailClientComponent implements OnInit, AfterViewInit {
 
   displayedColumns: string[] = ['position', 'name', 'weight', 'symbol'];
   dataSource = new MatTableDataSource<PeriodicElement>(ELEMENT_DATA);
+  client:any;
 
   @ViewChild(MatPaginator) paginator: MatPaginator;
   isRecompense:boolean=false;
 
-  constructor() { }
+  constructor(@Inject(MAT_DIALOG_DATA) public data: any, private clientService:ClientService) { }
 
   ngOnInit(): void {
+
+    //console.log("Idclient", this.data);
+    this.getClient(this.data.idclient);
   }
 
   ngAfterViewInit() {
@@ -32,6 +39,21 @@ export class DetailClientComponent implements OnInit, AfterViewInit {
     }else{
       this.isRecompense = true;
     }
+  }
+
+  getClient(idClient){
+
+    this.clientService.getClientById(idClient).subscribe((res:any)=>{
+      try {
+
+          this.client = res.message.client;
+          //console.log("Client", this.client);
+
+      } catch (error) {
+        console.log("Error", error)
+      }
+    })
+
   }
 
 }

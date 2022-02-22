@@ -11,12 +11,22 @@ export class ClientService {
 
   constructor(private http: HttpClient, private authService: AuthService) { }
 
-  token = this.authService.getToken();
-  reqHeader = new HttpHeaders({
-        Authorization: "Bearer " + this.token.token,
-    });
 
-    getInfo(){
-      console.log("Token", this.token.token);
+    addClient(client:Object, idEntreprise){
+      return this.http.post(`${environment.BASE_API_URL}/client/${idEntreprise}`, client);
     }
+
+    uploadClient(file, idEntreprise){
+      return this.http.post(`${environment.BASE_API_URL}/upload/client/${idEntreprise}`, file);
+    }
+
+    getClientsByEntreprise(idEntrepirse){
+      return this.http.get(`${environment.BASE_API_URL}/clients/entreprise/${idEntrepirse}`);
+    }
+
+    getClientById(idClient){
+      return this.http.get(`${environment.BASE_API_URL}/client/${idClient}`);
+    }
+
+
 }

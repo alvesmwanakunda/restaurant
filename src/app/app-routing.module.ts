@@ -62,8 +62,16 @@ const routes: Routes = [
     loadChildren:()=>import('./signup/confirme/confirme.module').then(m=>m.ConfirmeModule),
   },
   {
+    path:"confirmephone/:phone",
+    loadChildren:()=>import('./signup/confirme-phone/confirme-phone.module').then(m=>m.ConfirmePhoneModule),
+  },
+  {
     path:"reset-password",
     loadChildren:()=>import('./new-password/new-password.module').then(m=>m.NewPasswordModule),
+  },
+  {
+    path:"validation/compte",
+    loadChildren:()=>import('./signup/confirme-email/confirme-email.module').then(m=>m.ConfirmeEmailModule),
   }
 ];
 

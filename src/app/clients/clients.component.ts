@@ -1,9 +1,15 @@
-import { Component, OnInit } from '@angular/core';
-import {MatTableDataSource} from '@angular/material/table';
+import { Component, OnInit, ViewChild, AfterViewInit } from '@angular/core';
 import {SelectionModel} from '@angular/cdk/collections';
 import { MatDialog } from '@angular/material/dialog';
 import { AddClientComponent } from './add-client/add-client.component';
 import { DetailClientComponent } from './detail-client/detail-client.component';
+import { ClientService } from '../shared/services/client.service';
+import { EntrepriseService } from '../shared/services/entreprise.service';
+import {MatPaginator} from '@angular/material/paginator';
+import {MatSort} from '@angular/material/sort';
+import {MatTableDataSource} from '@angular/material/table';
+import { ClientInterface } from '../shared/interfaces/client.interface';
+import { UploadClientComponent } from './upload-client/upload-client.component';
 
 
 
@@ -12,26 +18,101 @@ import { DetailClientComponent } from './detail-client/detail-client.component';
   templateUrl: './clients.component.html',
   styleUrls: ['./clients.component.scss']
 })
-export class ClientsComponent implements OnInit {
+export class ClientsComponent implements OnInit, AfterViewInit {
 
-  displayedColumns: string[] = ['select', 'position', 'name', 'weight', 'symbol'];
-  dataSource = new MatTableDataSource<PeriodicElement>(ELEMENT_DATA);
-  selection = new SelectionModel<PeriodicElement>(true, []);
+  displayedColumns: string[] = ['id','numero', 'nom', 'genre', 'phone', 'visite','depense','point','avoir'];
+  dataSource = new MatTableDataSource<ClientInterface>();
+  selection = new SelectionModel<ClientInterface>(true, []);
 
-  constructor(public dialog:MatDialog) { }
+  @ViewChild(MatPaginator) paginator: MatPaginator;
+  @ViewChild(MatSort) sort: MatSort;
+
+  entreprise:any;
+  clients:any=[]
+
+  constructor(
+    public dialog:MatDialog,
+    private clientService:ClientService,
+    private entrepriseService:EntrepriseService
+  ) { }
 
   ngOnInit(): void {
+    this.getEntreprise();
   }
 
-  openDialog(){
-    const dialogRef = this.dialog.open(AddClientComponent);
-    dialogRef.afterClosed().subscribe(result => {
-      console.log(`Dialog result: ${result}`);
+  ngAfterViewInit(): void {
+
+      this.dataSource.paginator = this.paginator;
+      this.dataSource.sort = this.sort;
+      this.paginator._intl.itemsPerPageLabel = "Client par page";
+  }
+
+
+
+  getEntreprise(){
+    this.entrepriseService.getEntrepriseByUser().subscribe((res:any)=>{
+      try {
+         this.entreprise = res.body;
+         if(this.entreprise){
+           this.getAllClients(this.entreprise._id);
+         }
+      } catch (error) {
+        console.log("Erreur ", error);
+      }
     })
   }
 
-  openDialogDetail(){
-    const dialogRef = this.dialog.open(DetailClientComponent);
+  getAllClients(idEntreprise){
+    this.clientService.getClientsByEntreprise(idEntreprise).subscribe((res:any)=>{
+      try {
+           this.clients = res.message.clients;
+           this.dataSource.data = this.clients.map((data)=>({
+              id: data._id,
+              numero: data.numeroClient,
+              nom: data.user.nom,
+              prenom: data.user.prenom,
+              phone: data.user.phone,
+              genre: data.genre,
+              visite: data.nombreVisite,
+              depense:data.depense,
+              point:data.point,
+              avoir:data.avoir
+           })) as ClientInterface[];
+           //console.log("Data", this.dataSource);
+           //console.log("Clients", res);
+      } catch (error) {
+        console.log("Erreur", error);
+      }
+    })
+  }
+
+  applyFilter(event: Event) {
+    const filterValue = (event.target as HTMLInputElement).value;
+    this.dataSource.filter = filterValue.trim().toLowerCase();
+
+    if (this.dataSource.paginator) {
+      this.dataSource.paginator.firstPage();
+    }
+  }
+
+  openDialog(){
+    const dialogRef = this.dialog.open(AddClientComponent,{width:'60%',height:'60%'});
+    dialogRef.afterClosed().subscribe(result => {
+      console.log('The dialog was closed', result);
+      this.getAllClients(this.entreprise._id);
+    });
+  }
+
+   openDialogUploadClient(){
+    const dialogRef = this.dialog.open(UploadClientComponent,{width:'40%',height:'40%'});
+    dialogRef.afterClosed().subscribe(result => {
+      console.log('The dialog was closed', result);
+      this.getAllClients(this.entreprise._id);
+    });
+  }
+
+  openDialogDetail(idClient){
+    const dialogRef = this.dialog.open(DetailClientComponent,{width:'70%',data:{idclient:idClient}});
     dialogRef.afterClosed().subscribe(result => {
       console.log(`Dialog result: ${result}`);
     })
@@ -55,31 +136,14 @@ export class ClientsComponent implements OnInit {
   }
 
   /** The label for the checkbox on the passed row */
-  checkboxLabel(row?: PeriodicElement): string {
+  checkboxLabel(row?: ClientInterface): string {
     if (!row) {
       return `${this.isAllSelected() ? 'deselect' : 'select'} all`;
     }
-    return `${this.selection.isSelected(row) ? 'deselect' : 'select'} row ${row.position + 1}`;
+    return `${this.selection.isSelected(row) ? 'deselect' : 'select'} row ${row.id + 1}`;
   }
 
 }
 
-export interface PeriodicElement {
-  name: string;
-  position: number;
-  weight: number;
-  symbol: string;
-}
 
-const ELEMENT_DATA: PeriodicElement[] = [
-  {position: 1, name: 'Hydrogen', weight: 1.0079, symbol: 'H'},
-  {position: 2, name: 'Helium', weight: 4.0026, symbol: 'He'},
-  {position: 3, name: 'Lithium', weight: 6.941, symbol: 'Li'},
-  {position: 4, name: 'Beryllium', weight: 9.0122, symbol: 'Be'},
-  {position: 5, name: 'Boron', weight: 10.811, symbol: 'B'},
-  {position: 6, name: 'Carbon', weight: 12.0107, symbol: 'C'},
-  {position: 7, name: 'Nitrogen', weight: 14.0067, symbol: 'N'},
-  {position: 8, name: 'Oxygen', weight: 15.9994, symbol: 'O'},
-  {position: 9, name: 'Fluorine', weight: 18.9984, symbol: 'F'},
-  {position: 10, name: 'Neon', weight: 20.1797, symbol: 'Ne'},
-];
+

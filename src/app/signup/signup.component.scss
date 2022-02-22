@@ -2,12 +2,12 @@
   max-width: 400px;
 }
 
-:host {
+body {
   background: #F9F9F9;
 }
 
 .contentPage {
-  padding-top: 9%;
+  padding-top: 4%;
 }
 
 .iconLogin {
@@ -16,8 +16,8 @@
 }
 
 .titleCard {
-  padding-top: 25px;
-  padding-bottom: 1px;
+  padding-top: 0px;
+  padding-bottom: 44px;
 }
 
 .example-full-width {
@@ -32,11 +32,15 @@
   margin: 0 12px;
 }
 
-.sizeButton {
-  width: 160px;
-  background: #04075E !important;
+.sizeButtonSignup {
+  width: 298px;
+  //background: #4f53c9 !important;
+  background:  linear-gradient(90deg, #0c1733, #3fd27e);
   color: #fff;
   margin-bottom: 25px;
+  font-size: 16px;
+  font-weight: normal;
+  height: 49px;
 }
 
 .sizeButtonA {
@@ -48,4 +52,12 @@
 
 .buttonBottom {
   color: #04075E !important;
+}
+
+.signup-body{
+  background-image: url(/assets/images/women.jpeg);
+  background-size: cover;
+  background-repeat: no-repeat;
+  background-position: center;
+  height: 100%;
 }

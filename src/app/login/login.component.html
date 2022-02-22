@@ -1,69 +1,74 @@
-<div class="container">
-  <div class="contentPage">
 
-    <div class="row justify-content-md-center">
-      <div class="col-lg-5 col-md-auto">
-        <mat-card class="exemple-card" style="box-shadow: none !important;">
-            <mat-card-title class="titleCard">
-             <div class="text-center">
-                <i class="fas fa-lock-open iconLogin" style="padding-bottom: 20px;"></i>
-                <p style="color:#04075E;font-size: 19px;">S'identifier</p>
-             </div>
-            </mat-card-title>
-            <form [formGroup]="loginForm" novalidate>
+<div class="login-body">
 
-              <mat-card-content style="margin: 0 60px 0 60px;">
-
-                <div *ngIf="testValidation" class="text-danger">
-                  <p class="text-danger text-center"> Veuillez remplir tous les champs </p>
+  <div class="container">
+    <div class="contentPageLogin">
+  
+      <div class="row justify-content-md-center">
+        <div class="col-lg-5 col-md-auto">
+          <div class="text-center">
+            <img src="../../assets/images/logo.png" width="250px">
+          </div>
+          <mat-card class="exemple-card" style="box-shadow: none !important;opacity: 95%;">
+              <mat-card-title class="titleCardLogin">
+              </mat-card-title>
+              <form [formGroup]="loginForm" novalidate>
+  
+                <mat-card-content style="margin: 0 60px 0 60px;">
+  
+                  <div *ngIf="testValidation" class="text-danger">
+                    <p class="text-danger text-center"> Veuillez remplir tous les champs </p>
+                  </div>
+  
+                <mat-form-field appearance="legacy" class="example-full-width">
+                  <mat-label style="color: #c9c8c8;font-size: 12px;">Email ou Numéro de téléphone</mat-label>
+                  <input matInput formControlName="emailorphone"
+                        pattern="^((\+\d{1,3}(-| )?\(?\d\)?(-| )?\d{1,5})|(\(?\d{2,6}\)?))(-| )?(\d{3,4})(-| )?(\d{4})(( x| ext)\d{1,5}){0,1}$|(\w+([\.-]?\w+)*@\w+([\.-]?\w+)*(\.\w{2,6})+)">
+                </mat-form-field>
+                <div *ngIf="loginFormErrors.emailorphone.notfound">
+                  <p style="color:red">Identifiant ou mot de passe invalide. </p>
                 </div>
+  
+                <mat-form-field appearance="legacy" class="example-full-width">
+                  <mat-label style="color: #c9c8c8;font-size: 12px;">Mot de passe</mat-label>
+                  <input matInput formControlName="password" [type]="hide ? 'password' : 'text'">
+                  <button mat-icon-button matSuffix (click)="hide = !hide" [attr.aria-label]="'Hide password'" [attr.aria-pressed]="hide">
+                    <mat-icon>{{hide ? 'visibility_off' : 'visibility'}}</mat-icon>
+                  </button>
+                </mat-form-field>
+                <section class="example-section">
+                  <mat-checkbox style="color:#04075E;">Se souvenir de moi</mat-checkbox>
+                </section>
+  
+                <div class="text-center">
+                    <button mat-raised-button [disabled]="onLoadForm" type="submit" (click)="onLogin()" class="sizeButtonLogin" style="color: #fff;">SE CONNECTER</button>
+                </div><!--text-center-->
+  
+                </mat-card-content>
+                <mat-divider inset></mat-divider>
+                <mat-card-actions>
+                  <div class="row">
+                    <div class="col-lg-6 col-md-6">
+                        <button mat-button class="buttonBottom" [routerLink]="'/reset'">Mot de passe oublie</button>
+                    </div><!--col-->
+                    <div class="col-lg-6 col-md-6">
+  
+                          <button mat-button class="buttonBottom" style="float: right;" [routerLink]="'/signup'">S'inscire</button>
+                    </div><!--col-->
+                  </div>
+                </mat-card-actions>
+                <mat-card-footer *ngIf="onLoadForm">
+                  <mat-progress-bar mode="indeterminate"></mat-progress-bar>
+                </mat-card-footer>
+  
+              </form>
+          </mat-card>
+        </div><!--col-->
+      </div><!--row-->
+  
+    </div>
+  
+  </div><!--container-->
 
-              <mat-form-field appearance="legacy" class="example-full-width">
-                <mat-label style="color: #c9c8c8;font-size: 12px;">Email</mat-label>
-                <input matInput formControlName="email"
-                      pattern="^((\+\d{1,3}(-| )?\(?\d\)?(-| )?\d{1,5})|(\(?\d{2,6}\)?))(-| )?(\d{3,4})(-| )?(\d{4})(( x| ext)\d{1,5}){0,1}$|(\w+([\.-]?\w+)*@\w+([\.-]?\w+)*(\.\w{2,6})+)">
-              </mat-form-field>
-              <div *ngIf="loginFormErrors.email.notfound">
-                <p style="color:red">Identifiant ou mot de passe invalide. </p>
-              </div>
+</div>
 
-              <mat-form-field appearance="legacy" class="example-full-width">
-                <mat-label style="color: #c9c8c8;font-size: 12px;">Mot de passe</mat-label>
-                <input matInput formControlName="password" [type]="hide ? 'password' : 'text'">
-                <button mat-icon-button matSuffix (click)="hide = !hide" [attr.aria-label]="'Hide password'" [attr.aria-pressed]="hide">
-                  <mat-icon>{{hide ? 'visibility_off' : 'visibility'}}</mat-icon>
-                </button>
-              </mat-form-field>
-              <section class="example-section">
-                <mat-checkbox style="color:#04075E;">Se souvenir de moi</mat-checkbox>
-              </section>
-
-              <div class="text-center">
-                  <button mat-raised-button [disabled]="onLoadForm" type="submit" (click)="onLogin()" class="sizeButton">Connexion</button>
-              </div><!--text-center-->
-
-              </mat-card-content>
-              <mat-divider inset></mat-divider>
-              <mat-card-actions>
-                <div class="row">
-                  <div class="col-lg-6 col-md-6">
-                      <button mat-button class="buttonBottom" [routerLink]="'/reset'">Mot de passe oublie</button>
-                  </div><!--col-->
-                  <div class="col-lg-6 col-md-6">
-
-                        <button mat-button class="buttonBottom" style="float: right;" [routerLink]="'/signup'">S'inscire</button>
-                  </div><!--col-->
-                </div>
-              </mat-card-actions>
-              <mat-card-footer *ngIf="onLoadForm">
-                <mat-progress-bar mode="indeterminate"></mat-progress-bar>
-              </mat-card-footer>
-
-            </form>
-        </mat-card>
-      </div><!--col-->
-    </div><!--row-->
-
-  </div>
-
-</div><!--container-->

@@ -1,0 +1,60 @@
+<div class="confirmeP-body">
+
+  <div class="container">
+    <div class="contentPageCP">
+  
+      <div class="row justify-content-md-center">
+        <div class="col-lg-5 col-md-auto">
+
+          <div class="text-center">
+            <img src="../../assets/images/logo.png" width="250px">
+          </div>
+
+          <mat-card class="exemple-card" style="box-shadow: none !important;opacity: 95%;">
+              <mat-card-title class="titleCard">
+               <div class="text-center">
+                  <p style="color:#04075E;font-size: 15px;">Code de confirmation</p>
+                  <p style="color:#04075E;font-size: 12px;font-weight: normal;">Veuillez saisir le code reçu par sms ici</p>
+               </div>
+              </mat-card-title>
+  
+              <form [formGroup]="confirmphoneForm" novalidate>
+  
+                <mat-card-content style="margin: 0 60px 0 60px;">
+  
+                  <mat-form-field appearance="legacy" class="example-full-width">
+                    <mat-label style="color: #c9c8c8;font-size: 12px;">Code reçu par SMS</mat-label>
+                    <input matInput formControlName="code" required>
+                  </mat-form-field>
+                  <div *ngIf="formErrors.code.notfound">
+                    <p style="font-size: 12px;color:#d41750">le code saisi est incorrect</p>
+                    <br/>
+                  </div>
+                  <div class="text-center">
+                    <div class="col-md-12" style="margin-bottom: 12px;">
+                        <button type="submit" (click)="onCode()" [disabled]="confirmphoneForm.invalid" mat-raised-button class="sizeButtonCP" style="color:#fff;">Confirmer</button>
+                    </div><!--col-->
+                    <div class="col-md-12">
+                      <a [routerLink]="'/'" style="text-decoration: none;color: #777;font-size: 15px;"><p>Revenir à la page de connexion</p></a>
+                    </div><!--col-->
+                  </div><!--row-->
+                  <!--<div class="text-center">
+                  </div>text-center-->
+                </mat-card-content>
+                <mat-card-footer *ngIf="isMailLoading">
+                    <mat-progress-bar mode="indeterminate"></mat-progress-bar>
+                </mat-card-footer>
+  
+              </form>
+  
+  
+          </mat-card>
+        </div><!--col-->
+    </div><!--row-->
+  
+    </div>
+  
+  </div><!--container-->
+
+</div><!--content-->
+

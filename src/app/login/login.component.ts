@@ -1,4 +1,4 @@
-import { Component, OnInit } from '@angular/core';
+import { Component, OnInit, ViewEncapsulation, OnDestroy, Inject } from '@angular/core';
 import { Router} from "@angular/router";
 import { AuthService } from '../shared/services/auth.service';
 import {
@@ -11,7 +11,8 @@ import {
 @Component({
   selector: 'app-login',
   templateUrl: './login.component.html',
-  styleUrls: ['./login.component.scss']
+  styleUrls: ['./login.component.scss'],
+  //encapsulation: ViewEncapsulation.None,
 })
 export class LoginComponent implements OnInit {
 
@@ -29,7 +30,7 @@ export class LoginComponent implements OnInit {
     Validators.minLength(8),
   ]);
 
-  email = new FormControl("", [
+  emailorphone = new FormControl("", [
     Validators.required,
   ]);
 
@@ -37,14 +38,15 @@ export class LoginComponent implements OnInit {
     private formBuilder: FormBuilder,
     private router: Router,
     private authService: AuthService,
+
   ) {
     this.loginFormErrors = {
-      email: {},
+      emailorphone: {},
       password: {},
     };
   }
   account_validation_messages = {
-    email: [
+    emailorphone: [
       {
         type: "pattern",
         message:
@@ -54,16 +56,15 @@ export class LoginComponent implements OnInit {
   };
 
   ngOnInit(): void {
-
     localStorage.clear();
     this.signOut();
 
-    if (this.authService.isConnected()) {
+    /*if (this.authService.isConnected()) {
       this.router.navigate(['dashboard'])
-    }
+    }*/
 
     this.loginForm = this.formBuilder.group({
-      email: this.email,
+      emailorphone: this.emailorphone,
       password:this.password,
     });
     this.loginForm.valueChanges.subscribe(()=>{
@@ -71,6 +72,8 @@ export class LoginComponent implements OnInit {
     });
 
   }
+
+  
 
   handleRedirectOnLogin(user){
     this.router.navigate(["dashboard"]);
@@ -96,23 +99,24 @@ export class LoginComponent implements OnInit {
 
   onLogin(): void {
     this.onLoadForm = true;
-    if (this.password.value == "" || this.email.value == "") {
+    if (this.password.value == "" || this.emailorphone.value == "") {
       this.testValidation = true;
       this.onLoadForm = false;
       return;
     }
     this.testValidation = false;
 
-    this.loginFormErrors["email"].notfound = false;
+    this.loginFormErrors["emailorphone"].notfound = false;
     //alert(this.loginForm.value);
     this.onAuthServiceLogin = this.authService
       .signin(this.loginForm.value)
       .then((response) => {
         if (!response.success) {
-          this.loginFormErrors["email"].notfound = true;
+          this.loginFormErrors["emailorphone"].notfound = true;
         } else {
-          //console.log("Reponse", response.message);
-          this.authService.registerCurretUser(response.message);
+          console.log("Reponse", response.message);
+          //this.authService.registerCurretUser(response.message);
+          this.authService.setUser(response.message);
           this.handleRedirectOnLogin(response.message);
         }
         this.onLoadForm = false;

@@ -3,11 +3,15 @@ import { HttpClient, HttpHeaders } from '@angular/common/http';
 import { environment } from 'src/environments/environment';
 import { ISession } from '../interfaces/session.interface';
 import { Router } from '@angular/router';
+import { JwtHelperService } from '@auth0/angular-jwt';
+
 
 @Injectable({
   providedIn: 'root'
 })
 export class AuthService {
+
+  private jwtHelper = new JwtHelperService();
 
   optionRequete = {
     headers: new HttpHeaders({
@@ -55,38 +59,47 @@ export class AuthService {
     .catch(this.handleError)
   }
 
-  registerToken(token:any):void{
-    localStorage.setItem('token', token);
+  public validCode(code:Object):Promise<any>{
+    return this.httpClient
+     .post(`${environment.BASE_API_URL}/validcode`, code)
+     .toPromise()
+     .then((response)=> response as Object)
+     .catch(this.handleError)
+  }
+
+  public validEmail(email:Object):Promise<any>{
+    return this.httpClient
+     .post(`${environment.BASE_API_URL}/validemail`, email)
+     .toPromise()
+     .then((response)=> response as Object)
+     .catch(this.handleError)
   }
 
 
-
-  getToken():any{
-    const user = JSON.parse(localStorage.getItem('currentUser'));
-    return user;
+  setUser(user: Object): void {
+    localStorage.setItem("user", JSON.stringify(user));
   }
 
-  registerCurretUser(user):void{
-    localStorage.setItem('currentUser', JSON.stringify(user));
+  getUser(): any {
+    return JSON.parse(localStorage.getItem("user"));
   }
 
-  getCurrentUser(): ISession{
-    return JSON.parse(localStorage.getItem('currentUser'));
+  getToken(): any {
+    const user = JSON.parse(localStorage.getItem("user"));
+    return user.token;
   }
 
-  registerCurrentSession(session) {
-        localStorage.setItem('currentSession', JSON.stringify(session));
-  }
-
-  getCurrentSession() {
-        return JSON.parse(localStorage.getItem('currentSession'));
-  }
-
-  getUserInfo(){
-
-     let user = JSON.parse(localStorage.getItem('currentUser'));
-     return user.user;
-
+  getTokenValue(): any {
+    try {
+      const user = JSON.parse(localStorage.getItem("user"));
+      if (user.token) {
+        return this.jwtHelper.decodeToken(user.token);
+      } else {
+        return null;
+      }
+    } catch (error) {
+      console.log("une erreur : ", error);
+    }
   }
 
 

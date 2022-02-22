@@ -1,0 +1,30 @@
+ <mat-dialog-content class="mat-typography">
+
+    <div class="container" style="font-size: 13px;">
+
+      <div class="text-center" style="padding-top: 89px;">
+
+        <input type="file" class="file-input" accept='application/vnd.openxmlformats-officedocument.spreadsheetml.sheet, application/vnd.ms-excel' (change)="onFileSelected($event)" #fileUpload>
+
+        <div class="file-upload">
+
+          {{fileName || "Aucun fichier téléchargé pour le moment."}}
+
+            <button mat-mini-fab color="primary" class="upload-btn"
+              (click)="fileUpload.click()">
+                <mat-icon>attach_file</mat-icon>
+            </button>
+        </div>
+
+      </div><!--center-->
+
+
+    </div>
+
+  </mat-dialog-content>
+  <div *ngIf="onLoadForm" style="padding-top: 20px;">
+    <mat-progress-bar mode="indeterminate"></mat-progress-bar>
+  </div>
+
+
+

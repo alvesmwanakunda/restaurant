@@ -1,20 +1,18 @@
 .example-card {
   max-width: 400px;
 }
-:host {
-  background: #F9F9F9;
-}
-.contentPage{
-  padding-top: 5%;
+
+.contentPageLogin{
+  padding-top: 8%;
 }
 .iconLogin{
   font-size: 25px;
   color: #04075E;
 }
 
-.titleCard{
-    padding-top: 55px;
-    padding-bottom: 40px;
+.titleCardLogin{
+    padding-top: 0px;
+    padding-bottom: 44px;
 }
 
 .example-full-width {
@@ -29,11 +27,15 @@
   margin: 0 12px;
 }
 
-.sizeButton{
-  width: 188px;
-  background: #04075E !important;
+.sizeButtonLogin{
+  width: 298px;
+  //background: #4f53c9 !important;
+  background:  linear-gradient(90deg, #0c1733, #3fd27e);
   color: #fff;
   margin-bottom: 25px;
+  font-size: 16px;
+  font-weight: normal;
+  height: 49px;
 }
 
 .sizeButtonA {
@@ -45,6 +47,14 @@
 
 .buttonBottom{
   color: #04075E !important;
+}
+
+.login-body{
+  background-image: url(/assets/images/women.jpeg);
+  background-size: cover;
+  background-repeat: no-repeat;
+  background-position: center;
+  height: 100%;
 }
 
 

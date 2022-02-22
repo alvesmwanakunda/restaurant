@@ -1,55 +1,88 @@
-<mat-dialog-content class="mat-typography">
+  <form [formGroup]="clientForm" novalidate>
 
-  <div class="container" style="font-size: 13px;">
+    <mat-dialog-content class="mat-typography">
 
+    <div class="container" style="font-size: 13px;">
 
-    <mat-form-field appearance="outline" class="example-full-width">
-      <mat-label class="labelFrom">Nom et prénoms du client</mat-label>
-      <input matInput >
-    </mat-form-field>
+      <div class="row">
+        <div class="col-md-6">
 
-    <div class="row">
-      <div class="col-md-6">
+          <mat-form-field appearance="outline" class="example-full-width">
+            <mat-label class="labelFrom">Nom du client</mat-label>
+            <input matInput formControlName="nom" required>
+                  <mat-icon matTooltip="{{account_validation_messages.nom[0].message}}"
+                      *ngIf="clientForm.get('nom').hasError(account_validation_messages.nom[0].type) && (clientForm.get('nom').dirty || clientForm.get('nom').touched  || (submitted))"
+                      style="cursor: pointer;" matSuffix>
+                      <i class="fas fa-exclamation-circle"></i>
+                    </mat-icon>
+            </mat-form-field>
 
-        <mat-form-field appearance="outline" class="example-full-width">
-          <mat-label class="labelFrom">Téléphone</mat-label>
-          <input matInput >
-        </mat-form-field>
+        </div><!--col-md-6-->
+        <div class="col-md-6">
 
+          <mat-form-field appearance="outline" class="example-full-width">
+            <mat-label class="labelFrom">Prénom du client</mat-label>
+            <input matInput formControlName="prenom" required>
+              <mat-icon matTooltip="{{account_validation_messages.prenom[0].message}}"
+                      *ngIf="clientForm.get('prenom').hasError(account_validation_messages.prenom[0].type) && (clientForm.get('prenom').dirty || clientForm.get('prenom').touched  || (submitted))"
+                      style="cursor: pointer;" matSuffix>
+                      <i class="fas fa-exclamation-circle"></i>
+              </mat-icon>
+          </mat-form-field>
+
+        </div><!--col-md-6-->
+      </div><!--row-->
+
+      <div>
+
+                <mat-form-field appearance="outline" class="example-full-width">
+                  <mat-label class="labelFrom">Email ou Numéro de téléphone</mat-label>
+                  <input matInput formControlName="emailorphone" pattern="^((\+\d{1,3}(-| )?\(?\d\)?(-| )?\d{1,5})|(\(?\d{2,6}\)?))(-| )?(\d{3,4})(-| )?(\d{4})(( x| ext)\d{1,5}){0,1}$|(\w+([\.-]?\w+)*@\w+([\.-]?\w+)*(\.\w{2,6})+)" required>
+                  <mat-icon matTooltip="{{ account_validation_messages.emailorphone[0].message }}"
+                      *ngIf="clientForm.get('emailorphone').hasError(account_validation_messages.emailorphone[0].type) && ((clientForm.get('emailorphone').dirty || clientForm.get('emailorphone').touched) || (submitted))"
+                      matSuffix>
+                      <i class="fas fa-exclamation-circle"></i>
+                    </mat-icon>
+                </mat-form-field>
+                <div *ngIf="clientFormErrors.emailorphone.found" class="text-danger" style="position: relative;bottom: 19px">
+                    Ce compte existe déjà
+                </div>
       </div>
 
-      <div class="col-md-6">
+      <div class="row">
 
-        <mat-form-field appearance="outline" class="example-full-width">
-          <mat-label class="labelFrom">Genre</mat-label>
-          <mat-select>
-            <mat-option value="one">First option</mat-option>
-            <mat-option value="two">Second option</mat-option>
-          </mat-select>
-        </mat-form-field>
+        <div class="col-md-12">
 
-      </div>
+          <mat-form-field appearance="outline" class="example-full-width">
+            <mat-label class="labelFrom">Genre</mat-label>
+            <mat-select formControlName="genre">
+              <mat-option value="Femme">Femme</mat-option>
+              <mat-option value="Homme">Homme</mat-option>
+            </mat-select>
+          </mat-form-field>
 
-    </div><!--row-->
+        </div>
 
-    <mat-form-field appearance="outline" class="example-full-width">
-          <mat-label class="labelFrom">Date de naissance (DD/MM/YYY)</mat-label>
-          <input type="date" matInput >
-    </mat-form-field>
+      </div><!--row-->
 
-
-    <mat-form-field appearance="outline" class="example-full-width">
-          <mat-label class="labelFrom">Adresse 1</mat-label>
-          <input matInput >
-    </mat-form-field>
+      <mat-form-field appearance="outline" class="example-full-width">
+            <mat-label class="labelFrom">Adresse</mat-label>
+            <input matInput formControlName="adresse">
+      </mat-form-field>
 
 
 
+    </div>
+
+  </mat-dialog-content>
+  <mat-dialog-actions align="end">
+    <button mat-button mat-dialog-close>Fermer</button>
+    <button mat-button [disabled]="onLoadForm" type="submit" (click)="addClient()" cdkFocusInitial style=" background: #04075E !important;color:#fff">Ajouter client</button>
+  </mat-dialog-actions>
+  <div *ngIf="onLoadForm" style="padding-top: 20px;">
+    <mat-progress-bar mode="indeterminate"></mat-progress-bar>
   </div>
 
-</mat-dialog-content>
-<mat-dialog-actions align="end">
-  <button mat-button mat-dialog-close>Fermer</button>
-  <button mat-button [mat-dialog-close]="true" cdkFocusInitial style=" background: #04075E !important;color:#fff">Ajouter client</button>
-</mat-dialog-actions>
+  </form>
+
 

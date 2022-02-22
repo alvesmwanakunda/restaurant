@@ -1,15 +1,17 @@
-import { Component, OnInit } from '@angular/core';
+import { Component, OnInit, ViewEncapsulation } from '@angular/core';
 import { Router } from '@angular/router';
 import { AuthService } from '../shared/services/auth.service';
 import { FormBuilder, FormControl, FormGroup, Validators } from '@angular/forms';
 import { HttpClient } from '@angular/common/http';
 import { Observable } from 'rxjs';
 import { CustomValidators } from "ng2-validation";
+import { restResponse } from './../shared/models/restResponse';
 
 @Component({
   selector: 'app-signup',
   templateUrl: './signup.component.html',
-  styleUrls: ['./signup.component.scss']
+  styleUrls: ['./signup.component.scss'],
+  encapsulation: ViewEncapsulation.None
 })
 export class SignupComponent implements OnInit {
 
@@ -33,22 +35,22 @@ export class SignupComponent implements OnInit {
   ) {
     this.signupFormErrors={
       entreprise:{},
-      phone:{},
-      email:{},
+      //phone:{},
+      emailorphone:{},
     };
   }
 
   account_validation_messages={
-    email:[
+    emailorphone:[
       {
         type: "required",
-        message: "Adresse email obligatoire",
+        message: "Adresse email ou téléphone obligatoire",
       },{
         type:"pattern",
-        message: "Adresse email incorrect.",
+        message: "Identifiant incorrect. Veuillez reessayer.",
       }
     ],
-    phone:[
+    /*phone:[
       {
         type:"required",
         message:"Téléphone obligatoire",
@@ -57,7 +59,7 @@ export class SignupComponent implements OnInit {
         type:"pattern",
         message:"Téléphone incorrect."
       }
-    ],
+    ],*/
     entreprise:[
       {
         type:"required",
@@ -116,15 +118,15 @@ export class SignupComponent implements OnInit {
     ]);
 
     this.signupForm = new FormGroup({
-      email: new FormControl("",[
+      emailorphone: new FormControl("",[
         Validators.required,
         Validators.pattern(
           "^((\\+\\d{1,3}(-| )?\\(?\\d\\)?(-| )?\\d{1,5})|(\\(?\\d{2,6}\\)?))(-| )?(\\d{3,4})(-| )?(\\d{4})(( x| ext)\\d{1,5}){0,1}$|(\\w+([\\.-]?\\w+)*@\\w+([\\.-]?\\w+)*(\\.\\w{2,6})+)"
         )
       ]),
-      phone: new FormControl("",[
+      /*phone: new FormControl("",[
         Validators.required,
-      ]),
+      ]),*/
       entreprise:new FormControl("",[Validators.required]),
       password:password,
       confirmpassword: confirmpassword,
@@ -137,16 +139,23 @@ export class SignupComponent implements OnInit {
     this.submitted = true;
     this.user = {};
     if(!this.signupForm.invalid){
-      console.log("User", this.user);
+      //console.log("User", this.user);
 
       Object.assign(this.user, this.signupForm.value);
       this.authService.signup(this.user).subscribe((res:any)=>{
-        console.log("Response", res);
+        //console.log("Response", res);
+        let response = <restResponse>res;
+        console.log("Response 1", response);
         if(!res.success){
-          this.signupFormErrors["email"].found = true;
+          this.signupFormErrors["emailorphone"].found = true;
         }else{
-          this.isForm=true;
-          this.router.navigate(["confirme", this.user.email]);
+          if(response.message["phone"]){
+            this.isForm=true;
+            this.router.navigate(["confirmephone", response.message["phone"]]);
+          }else{
+            this.isForm=true;
+            this.router.navigate(["confirme", response.message["email"]]);
+          }
         }
         this.onLoadForm = false;
       });

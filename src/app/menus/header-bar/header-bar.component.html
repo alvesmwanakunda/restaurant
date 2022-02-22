@@ -27,6 +27,7 @@
           <a class="nav-link linkMenu">
             <p style="color: #2A2A29;font-weight: bold;" *ngIf="user?.user.nom">{{user?.user.nom}} {{user?.user.prenom}}</p>
             <p style="color: #2A2A29;font-weight: bold;" *ngIf="!user?.user.nom">{{user?.user.email}}</p>
+            <p style="color: #2A2A29;font-weight: bold;" *ngIf="!user?.user.nom && !user?.user.email">{{user?.user.phone}}</p>
           </a>
         </li>
       </ul>
