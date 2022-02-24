@@ -12,4 +12,12 @@ export class EntrepriseService {
   getEntrepriseByUser(){
     return this.http.get(`${environment.BASE_API_URL}/entreprise/user`)
   }
+
+  updateEntreprise(body, idEntreprise){
+    return this.http.put(`${environment.BASE_API_URL}/entreprise/${idEntreprise}`, body)
+  }
+
+  uploadLogo(body, idEntreprise){
+    return this.http.put(`${environment.BASE_API_URL}/entreprise/image/${idEntreprise}`, body)
+  }
 }

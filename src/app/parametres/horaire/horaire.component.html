@@ -1,0 +1,427 @@
+<form novalidate *ngIf="chargeHoraire && !emptyHoraire">
+ <div class="row contentInfo">
+
+   
+
+    <p class="titleInfo">Horaire de l'entreprise <button mat-mini-fab type="submit" (click)="createHoraire(horaire)" style="background-color: #0c2461;"> <mat-icon>edit</mat-icon></button></p>
+    <div *ngIf="onLoadForm">
+      <mat-progress-bar mode="indeterminate"></mat-progress-bar>
+    </div>
+    <div class="col-md-6">
+
+      <div class="card" style="background-color: #F6F6FF;border-color: #F6F6FF;margin-bottom: 10px;height: 75px;">
+        <div class="card-body">
+           <div class="row">
+             <div class="col-md-3">
+               <p class="tithr">Lundi <span class="vlh"></span></p>
+             </div>
+             <div class="col-md-9">
+
+                <div class="row" style="font-size: 12px;">
+                   <div class="col-md-6">
+                      <mat-form-field appearance="outline" class="example-full-width">
+                        <mat-label class="labelFrom">Ouverture</mat-label>
+                        <input type="time" matInput name="oLundi" [(ngModel)]="horaire.oLundi" #oLundi="ngModel">
+                      </mat-form-field>
+                   </div><!--col-->
+                   <div class="col-md-6">
+                     <mat-form-field appearance="outline" class="example-full-width">
+                        <mat-label class="labelFrom">Fermeture</mat-label>
+                        <input type="time" matInput name="fLundi" [(ngModel)]="horaire.fLundi" #fLundi="ngModel">
+                      </mat-form-field>
+                   </div><!--col-->
+                </div><!--row-->
+
+             </div>
+           </div><!--row-->
+        </div>
+      </div>
+
+      <div class="card" style="background-color: #F6F6FF;border-color: #F6F6FF;margin-bottom: 10px;height: 75px;">
+        <div class="card-body">
+          <div class="row">
+             <div class="col-md-3">
+               <p class="tithr">Mardi <span class="vlh"></span></p>
+             </div>
+             <div class="col-md-9">
+
+               <div class="row" style="font-size: 12px;">
+                   <div class="col-md-6">
+                      <mat-form-field appearance="outline" class="example-full-width">
+                        <mat-label class="labelFrom">Ouverture</mat-label>
+                        <input type="time" matInput name="oMardi" [(ngModel)]="horaire.oMardi" #oMardi="ngModel">
+                      </mat-form-field>
+                   </div><!--col-->
+                   <div class="col-md-6">
+                     <mat-form-field appearance="outline" class="example-full-width">
+                        <mat-label class="labelFrom">Fermeture</mat-label>
+                        <input type="time" matInput name="fMardi" [(ngModel)]="horaire.fMardi" #fMardi="ngModel">
+                      </mat-form-field>
+                   </div><!--col-->
+                </div><!--row-->
+
+             </div>
+           </div><!--row-->
+        </div>
+      </div>
+
+      <div class="card" style="background-color: #F6F6FF;border-color: #F6F6FF;margin-bottom: 10px;height: 75px;">
+        <div class="card-body">
+          <div class="row">
+             <div class="col-md-3">
+               <p class="tithr">Mercredi <span class="vlh"></span></p>
+             </div>
+             <div class="col-md-9">
+               <div class="row" style="font-size: 12px;">
+                   <div class="col-md-6">
+                      <mat-form-field appearance="outline" class="example-full-width">
+                        <mat-label class="labelFrom">Ouverture</mat-label>
+                        <input type="time" matInput name="oMercredi" [(ngModel)]="horaire.oMercredi" #oMercredi="ngModel">
+                      </mat-form-field>
+                   </div><!--col-->
+                   <div class="col-md-6">
+                     <mat-form-field appearance="outline" class="example-full-width">
+                        <mat-label class="labelFrom">Fermeture</mat-label>
+                        <input type="time" matInput name="fMercredi" [(ngModel)]="horaire.fMercredi" #fMercredi="ngModel">
+                      </mat-form-field>
+                   </div><!--col-->
+                </div><!--row-->
+
+             </div>
+           </div><!--row-->
+        </div>
+      </div>
+
+    </div>
+
+    <div class="col-md-6">
+
+      <div class="card" style="background-color: #F6F6FF;border-color: #F6F6FF;margin-bottom: 10px;height: 75px;">
+        <div class="card-body">
+          <div class="row">
+             <div class="col-md-3">
+               <p class="tithr">Jeudi <span class="vlh"></span></p>
+             </div>
+             <div class="col-md-9">
+
+               <div class="row" style="font-size: 12px;">
+                   <div class="col-md-6">
+                      <mat-form-field appearance="outline" class="example-full-width">
+                        <mat-label class="labelFrom">Ouverture</mat-label>
+                        <input type="time" matInput name="oJeudi" [(ngModel)]="horaire.oJeudi" #oJeudi="ngModel">
+                      </mat-form-field>
+                   </div><!--col-->
+                   <div class="col-md-6">
+                     <mat-form-field appearance="outline" class="example-full-width">
+                        <mat-label class="labelFrom">Fermeture</mat-label>
+                        <input type="time" matInput name="fJeudi" [(ngModel)]="horaire.fJeudi" #fJeudi="ngModel">
+                      </mat-form-field>
+                   </div><!--col-->
+                </div><!--row-->
+
+             </div>
+           </div><!--row-->
+        </div>
+      </div>
+
+      <div class="card" style="background-color: #F6F6FF;border-color: #F6F6FF;margin-bottom: 10px;height: 75px;">
+        <div class="card-body">
+          <div class="row">
+             <div class="col-md-3">
+               <p class="tithr">Vendredi <span class="vlh"></span></p>
+             </div>
+             <div class="col-md-9">
+
+               <div class="row" style="font-size: 12px;">
+                   <div class="col-md-6">
+                      <mat-form-field appearance="outline" class="example-full-width">
+                        <mat-label class="labelFrom">Ouverture</mat-label>
+                        <input type="time" matInput name="oVendredi" [(ngModel)]="horaire.oVendredi" #oVendredi="ngModel">
+                      </mat-form-field>
+                   </div><!--col-->
+                   <div class="col-md-6">
+                     <mat-form-field appearance="outline" class="example-full-width">
+                        <mat-label class="labelFrom">Fermeture</mat-label>
+                        <input type="time" matInput name="fVendredi" [(ngModel)]="horaire.fVendredi" #fVendredi="ngModel">
+                      </mat-form-field>
+                   </div><!--col-->
+                </div><!--row-->
+
+             </div>
+           </div><!--row-->
+        </div>
+      </div>
+
+      <div class="card" style="background-color: #F6F6FF;border-color: #F6F6FF;margin-bottom: 10px;height: 75px;">
+        <div class="card-body">
+          <div class="row">
+             <div class="col-md-3">
+               <p class="tithr">Samedi <span class="vlh"></span></p>
+             </div>
+             <div class="col-md-9">
+
+               <div class="row" style="font-size: 12px;">
+                   <div class="col-md-6">
+                      <mat-form-field appearance="outline" class="example-full-width">
+                        <mat-label class="labelFrom">Ouverture</mat-label>
+                        <input type="time" matInput name="oSamedi" [(ngModel)]="horaire.oSamedi" #oSamedi="ngModel">
+                      </mat-form-field>
+                   </div><!--col-->
+                   <div class="col-md-6">
+                     <mat-form-field appearance="outline" class="example-full-width">
+                        <mat-label class="labelFrom">Fermeture</mat-label>
+                        <input type="time" matInput name="fSamedi" [(ngModel)]="horaire.fSamedi" #fSamedi="ngModel">
+                      </mat-form-field>
+                   </div><!--col-->
+                </div><!--row-->
+
+             </div>
+           </div><!--row-->
+        </div>
+      </div>
+
+      <div class="card" style="background-color: #F6F6FF;border-color: #F6F6FF;margin-bottom: 10px;height: 75px;">
+        <div class="card-body">
+          <div class="row">
+             <div class="col-md-3">
+               <p class="tithr">Dimanche <span class="vlh"></span></p>
+             </div>
+             <div class="col-md-9">
+
+               <div class="row" style="font-size: 12px;">
+                   <div class="col-md-6">
+                      <mat-form-field appearance="outline" class="example-full-width">
+                        <mat-label class="labelFrom">Ouverture</mat-label>
+                        <input type="time" matInput name="oDimanche" [(ngModel)]="horaire.oDimanche" #oDimanche="ngModel">
+                      </mat-form-field>
+                   </div><!--col-->
+                   <div class="col-md-6">
+                     <mat-form-field appearance="outline" class="example-full-width">
+                        <mat-label class="labelFrom">Fermeture</mat-label>
+                        <input type="time" matInput name="fDimanche" [(ngModel)]="horaire.fDimanche" #fDimanche="ngModel">
+                      </mat-form-field>
+                   </div><!--col-->
+                </div><!--row-->
+
+             </div>
+           </div><!--row-->
+        </div>
+      </div>
+
+    </div><!--col-->
+  </div>
+</form>
+
+<form [formGroup]="horaireForm" novalidate *ngIf="emptyHoraire && !chargeHoraire">
+  <div class="row contentInfo">
+ 
+    
+ 
+     <p class="titleInfo">Horaire de l'entreprise <button mat-mini-fab type="submit" (click)="createHoraireAdd()" style="background-color: #0c2461;"> <mat-icon>edit</mat-icon></button></p>
+     <div *ngIf="onLoadForm">
+       <mat-progress-bar mode="indeterminate"></mat-progress-bar>
+     </div>
+     <div class="col-md-6">
+ 
+       <div class="card" style="background-color: #F6F6FF;border-color: #F6F6FF;margin-bottom: 10px;height: 75px;">
+         <div class="card-body">
+            <div class="row">
+              <div class="col-md-3">
+                <p class="tithr">Lundi <span class="vlh"></span></p>
+              </div>
+              <div class="col-md-9">
+ 
+                 <div class="row" style="font-size: 12px;">
+                    <div class="col-md-6">
+                       <mat-form-field appearance="outline" class="example-full-width">
+                         <mat-label class="labelFrom">Ouverture</mat-label>
+                         <input type="time" matInput formControlName="oLundi" >
+                       </mat-form-field>
+                    </div><!--col-->
+                    <div class="col-md-6">
+                      <mat-form-field appearance="outline" class="example-full-width">
+                         <mat-label class="labelFrom">Fermeture</mat-label>
+                         <input type="time" matInput formControlName="fLundi">
+                       </mat-form-field>
+                    </div><!--col-->
+                 </div><!--row-->
+ 
+              </div>
+            </div><!--row-->
+         </div>
+       </div>
+ 
+       <div class="card" style="background-color: #F6F6FF;border-color: #F6F6FF;margin-bottom: 10px;height: 75px;">
+         <div class="card-body">
+           <div class="row">
+              <div class="col-md-3">
+                <p class="tithr">Mardi <span class="vlh"></span></p>
+              </div>
+              <div class="col-md-9">
+ 
+                <div class="row" style="font-size: 12px;">
+                    <div class="col-md-6">
+                       <mat-form-field appearance="outline" class="example-full-width">
+                         <mat-label class="labelFrom">Ouverture</mat-label>
+                         <input type="time" matInput formControlName="oMardi">
+                       </mat-form-field>
+                    </div><!--col-->
+                    <div class="col-md-6">
+                      <mat-form-field appearance="outline" class="example-full-width">
+                         <mat-label class="labelFrom">Fermeture</mat-label>
+                         <input type="time" matInput formControlName="fMardi">
+                       </mat-form-field>
+                    </div><!--col-->
+                 </div><!--row-->
+ 
+              </div>
+            </div><!--row-->
+         </div>
+       </div>
+ 
+       <div class="card" style="background-color: #F6F6FF;border-color: #F6F6FF;margin-bottom: 10px;height: 75px;">
+         <div class="card-body">
+           <div class="row">
+              <div class="col-md-3">
+                <p class="tithr">Mercredi <span class="vlh"></span></p>
+              </div>
+              <div class="col-md-9">
+                <div class="row" style="font-size: 12px;">
+                    <div class="col-md-6">
+                       <mat-form-field appearance="outline" class="example-full-width">
+                         <mat-label class="labelFrom">Ouverture</mat-label>
+                         <input type="time" matInput formControlName="oMercredi">
+                       </mat-form-field>
+                    </div><!--col-->
+                    <div class="col-md-6">
+                      <mat-form-field appearance="outline" class="example-full-width">
+                         <mat-label class="labelFrom">Fermeture</mat-label>
+                         <input type="time" matInput formControlName="fMercredi">
+                       </mat-form-field>
+                    </div><!--col-->
+                 </div><!--row-->
+ 
+              </div>
+            </div><!--row-->
+         </div>
+       </div>
+ 
+     </div>
+ 
+     <div class="col-md-6">
+ 
+       <div class="card" style="background-color: #F6F6FF;border-color: #F6F6FF;margin-bottom: 10px;height: 75px;">
+         <div class="card-body">
+           <div class="row">
+              <div class="col-md-3">
+                <p class="tithr">Jeudi <span class="vlh"></span></p>
+              </div>
+              <div class="col-md-9">
+ 
+                <div class="row" style="font-size: 12px;">
+                    <div class="col-md-6">
+                       <mat-form-field appearance="outline" class="example-full-width">
+                         <mat-label class="labelFrom">Ouverture</mat-label>
+                         <input type="time" matInput formControlName="oJeudi" >
+                       </mat-form-field>
+                    </div><!--col-->
+                    <div class="col-md-6">
+                      <mat-form-field appearance="outline" class="example-full-width">
+                         <mat-label class="labelFrom">Fermeture</mat-label>
+                         <input type="time" matInput formControlName="fJeudi">
+                       </mat-form-field>
+                    </div><!--col-->
+                 </div><!--row-->
+ 
+              </div>
+            </div><!--row-->
+         </div>
+       </div>
+ 
+       <div class="card" style="background-color: #F6F6FF;border-color: #F6F6FF;margin-bottom: 10px;height: 75px;">
+         <div class="card-body">
+           <div class="row">
+              <div class="col-md-3">
+                <p class="tithr">Vendredi <span class="vlh"></span></p>
+              </div>
+              <div class="col-md-9">
+ 
+                <div class="row" style="font-size: 12px;">
+                    <div class="col-md-6">
+                       <mat-form-field appearance="outline" class="example-full-width">
+                         <mat-label class="labelFrom">Ouverture</mat-label>
+                         <input type="time" matInput formControlName="oVendredi">
+                       </mat-form-field>
+                    </div><!--col-->
+                    <div class="col-md-6">
+                      <mat-form-field appearance="outline" class="example-full-width">
+                         <mat-label class="labelFrom">Fermeture</mat-label>
+                         <input type="time" matInput formControlName="fVendredi">
+                       </mat-form-field>
+                    </div><!--col-->
+                 </div><!--row-->
+ 
+              </div>
+            </div><!--row-->
+         </div>
+       </div>
+ 
+       <div class="card" style="background-color: #F6F6FF;border-color: #F6F6FF;margin-bottom: 10px;height: 75px;">
+         <div class="card-body">
+           <div class="row">
+              <div class="col-md-3">
+                <p class="tithr">Samedi <span class="vlh"></span></p>
+              </div>
+              <div class="col-md-9">
+ 
+                <div class="row" style="font-size: 12px;">
+                    <div class="col-md-6">
+                       <mat-form-field appearance="outline" class="example-full-width">
+                         <mat-label class="labelFrom">Ouverture</mat-label>
+                         <input type="time" matInput formControlName="oSamedi">
+                       </mat-form-field>
+                    </div><!--col-->
+                    <div class="col-md-6">
+                      <mat-form-field appearance="outline" class="example-full-width">
+                         <mat-label class="labelFrom">Fermeture</mat-label>
+                         <input type="time" matInput formControlName="fSamedi">
+                       </mat-form-field>
+                    </div><!--col-->
+                 </div><!--row-->
+ 
+              </div>
+            </div><!--row-->
+         </div>
+       </div>
+ 
+       <div class="card" style="background-color: #F6F6FF;border-color: #F6F6FF;margin-bottom: 10px;height: 75px;">
+         <div class="card-body">
+           <div class="row">
+              <div class="col-md-3">
+                <p class="tithr">Dimanche <span class="vlh"></span></p>
+              </div>
+              <div class="col-md-9">
+ 
+                <div class="row" style="font-size: 12px;">
+                    <div class="col-md-6">
+                       <mat-form-field appearance="outline" class="example-full-width">
+                         <mat-label class="labelFrom">Ouverture</mat-label>
+                         <input type="time" matInput formControlName="oDimanche">
+                       </mat-form-field>
+                    </div><!--col-->
+                    <div class="col-md-6">
+                      <mat-form-field appearance="outline" class="example-full-width">
+                         <mat-label class="labelFrom">Fermeture</mat-label>
+                         <input type="time" matInput formControlName="fDimanche">
+                       </mat-form-field>
+                    </div><!--col-->
+                 </div><!--row-->
+ 
+              </div>
+            </div><!--row-->
+         </div>
+       </div>
+ 
+     </div><!--col-->
+   </div>
+</form>

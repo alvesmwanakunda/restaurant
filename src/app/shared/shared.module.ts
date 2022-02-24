@@ -16,6 +16,8 @@ import { MatTabsModule } from '@angular/material/tabs';
 import {MatDatepickerModule} from '@angular/material/datepicker';
 import {MatNativeDateModule} from '@angular/material/core';
 import {MatProgressBarModule} from '@angular/material/progress-bar';
+import {MatSnackBarModule} from '@angular/material/snack-bar';
+
 
 
 
@@ -37,7 +39,8 @@ import {MatProgressBarModule} from '@angular/material/progress-bar';
     MatTabsModule,
     MatDatepickerModule,
     MatNativeDateModule,
-    MatProgressBarModule
+    MatProgressBarModule,
+    MatSnackBarModule
   ],
   exports:[
     MatCardModule,
@@ -55,7 +58,8 @@ import {MatProgressBarModule} from '@angular/material/progress-bar';
     MatTabsModule,
     MatDatepickerModule,
     MatNativeDateModule,
-    MatProgressBarModule
+    MatProgressBarModule,
+    MatSnackBarModule
   ]
 })
 export class SharedModule { }

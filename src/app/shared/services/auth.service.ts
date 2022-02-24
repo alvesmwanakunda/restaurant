@@ -127,4 +127,22 @@ export class AuthService {
       })
   }
 
+  updatePassword(body){
+    return this.httpClient.post(`${environment.BASE_API_URL}/profil/password`,body)
+  }
+
+  listAgent(idEntreprise){
+    return this.httpClient.get(`${environment.BASE_API_URL}/agent/entreprise/${idEntreprise}`)
+  }
+
+  addAgent(body,idEntreprise){
+    return this.httpClient.post(`${environment.BASE_API_URL}/register/agent/entreprise/${idEntreprise}`,body)
+  }
+
+  deleteAgent(idUser,idEntreprise){
+    return this.httpClient.delete(`${environment.BASE_API_URL}/delete/agent/entreprise/${idUser}/${idEntreprise}`)
+  }
+
+
+
 }
