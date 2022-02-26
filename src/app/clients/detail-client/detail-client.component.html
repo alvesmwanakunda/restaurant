@@ -6,41 +6,26 @@
     <div class="col-md-12">
       <p class="nameUser">
         <i class="fas fa-user-circle" style="font-size: 38px;"></i> {{client?.user.nom}} {{client?.user.prenom}}
-         <i class="fas fa-edit" style="font-size: 22px;color: #04075E;margin-left: 36px;"></i>
       </p>
     </div>
   </div><!--row-->
-  <div class="row" style="padding-top: 30px;">
+  <div class="row" style="padding-top: 20px;">
      <div class="col-md-6">
 
          <div class="row" style="font-size: 13px;">
             <div class="col-md-12">
 
-                <p style="margin-bottom: 25px;"><i class="fas fa-user iconSize"></i> {{client?.user.email}}</p>
+                <p style="margin-bottom: 25px;"><i class="fas fa-envelope iconSize"></i> {{client?.user.email}}</p>
 
-                <p style="margin-bottom: 25px;"><i class="fas fa-envelope iconSize"></i> {{client?.user.phone}}</p>
+                <p style="margin-bottom: 25px;"><i class="fas fa-phone-alt iconSize"></i> {{client?.user.phone}}</p>
+
+                <p style="margin-bottom: 25px;"><i class="fas fa-restroom iconSize"></i> {{client?.genre}}</p>
 
                 <p><i class="fas fa-map-marker-alt iconSize"></i> {{client?.adresse}}</p>
 
 
 
-                <!--<mat-form-field appearance="outline" class="example-full-width">
-                  <mat-label class="labelFrom">Nom</mat-label>
-                  <input matInput >
-                  <mat-icon matPrefix class="iconFrom">person</mat-icon>
-                </mat-form-field>
-
-                <mat-form-field appearance="outline" class="example-full-width">
-                  <mat-label class="labelFrom">Email</mat-label>
-                  <input matInput >
-                  <mat-icon matPrefix class="iconFrom">drafts</mat-icon>
-                </mat-form-field>
-
-                <mat-form-field appearance="outline" class="example-full-width">
-                  <mat-label class="labelFrom">Téléphone</mat-label>
-                  <input matInput >
-                  <mat-icon matPrefix class="iconFrom">local_phone</mat-icon>
-                </mat-form-field>-->
+              
 
 
             </div><!--col-md-6-->
@@ -48,7 +33,7 @@
          </div><!--row-->
 
      </div><!--col-md-6-->
-     <div class="col-md-6">
+     <div class="col-md-6" style="bottom: 76px;position: relative;">
 
       <mat-card style="margin-bottom: 10px;">
         <mat-card-content>
@@ -97,7 +82,7 @@
      </div><!--col-md-6-->
   </div><!--row-->
 
-  <div style="padding-top: 15px;" [hidden]="!isRecompense">
+  <div style="padding-top: 10px;" [hidden]="!isRecompense">
      <mat-card>
         <mat-card-content>
 

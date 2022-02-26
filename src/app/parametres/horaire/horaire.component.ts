@@ -21,6 +21,7 @@ export class HoraireComponent implements OnInit {
   onLoadForm: boolean = false;
   chargeHoraire:boolean = false;
   emptyHoraire:boolean = false;
+  isUpdateH:boolean=false;
 
 
   constructor(
@@ -129,6 +130,10 @@ export class HoraireComponent implements OnInit {
     this._snackBar.open('Horaires ajouter avec succès', 'Fermer', {
       duration: 3000
     });
+  }
+
+  openHoraire(){
+    this.isUpdateH = true;
   }
 
 }

@@ -17,8 +17,10 @@ import { MatSnackBar } from '@angular/material/snack-bar';
 export class PasswordComponent implements OnInit {
 
   passwordForm: FormGroup;
+  passwordFormErrors: any;
   hideP = true;
   hidePassword = true;
+  hideLP = true;
   onLoadForm:boolean=false;
   user:any
   submitted = false;
@@ -27,7 +29,13 @@ export class PasswordComponent implements OnInit {
     private authService:AuthService,
     private formBuilder: FormBuilder,
     private _snackBar: MatSnackBar
-    ) { }
+    ) {
+      this.passwordFormErrors = {
+        lostpassword: {},
+        password: {},
+        confirmpassword:{}
+      };
+     }
 
     account_validation_messages={
    
@@ -44,6 +52,9 @@ export class PasswordComponent implements OnInit {
             "Le mot de passe doit comporter au moins 8 caracteres,une lettre majuscule, une lettre minuscule et un chiffre",
         },
       ],
+      lostpassword:[
+        { type: "required", message: "L'ancien mot de passe est obligatoire" },
+      ]
       
     };  
 
@@ -62,10 +73,38 @@ export class PasswordComponent implements OnInit {
       CustomValidators.equalTo(password),
     ]);
 
+    let lostpassword = new FormControl("", [
+      Validators.required
+    ]);
+
     this.passwordForm = new FormGroup({
       password:password,
       confirmpassword: confirmpassword,
+      lostpassword:lostpassword
     });
+
+    this.passwordForm.valueChanges.subscribe(()=>{
+      this.onLoginFormValuesChanged();
+    });
+
+  }
+
+  onLoginFormValuesChanged() {
+    for (const field in this.passwordFormErrors) {
+      if (!this.passwordFormErrors.hasOwnProperty(field)) {
+        continue;
+      }
+
+      // Clear previous errors
+      this.passwordFormErrors[field] = {};
+
+      // Get the contro
+      const control = this.passwordForm.get(field);
+
+      if (control && control.dirty && !control.valid) {
+        this.passwordFormErrors[field] = control.errors;
+      }
+    }
   }
 
   onPasswordUser():void{
@@ -75,9 +114,15 @@ export class PasswordComponent implements OnInit {
     if(!this.passwordForm.invalid){
       Object.assign(this.user, this.passwordForm.value);
       this.authService.updatePassword(this.user).subscribe((res:any)=>{
-        console.log("Response 1", res);
+        //console.log("Response 1", res);
+        if(!res.success){
+          this.passwordFormErrors["lostpassword"].notfound = true;
+        }else{
+          this.openSnackBar();
+        }
+        
         this.onLoadForm = false;
-        this.openSnackBar();
+        
       });
     }else{
       this.onLoadForm=false;

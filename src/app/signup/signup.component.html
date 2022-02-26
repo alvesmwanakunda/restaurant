@@ -20,8 +20,22 @@
                 <mat-form-field appearance="legacy" class="example-full-width">
                   <mat-label style="color: #c9c8c8;font-size: 12px;">Entreprise</mat-label>
                   <input matInput formControlName="entreprise" required>
-                   <mat-icon matTooltip="{{account_validation_messages.entreprise[0].message}}"
+                    <mat-icon matTooltip="{{account_validation_messages.entreprise[0].message}}"
                       *ngIf="signupForm.get('entreprise').hasError(account_validation_messages.entreprise[0].type) && (signupForm.get('entreprise').dirty || signupForm.get('entreprise').touched  || (submitted))"
+                      style="cursor: pointer;" matSuffix>
+                      <i class="fas fa-exclamation-circle"></i>
+                    </mat-icon>
+                </mat-form-field>
+
+                <mat-form-field appearance="legacy" class="example-full-width">
+                  <mat-label style="color: #c9c8c8;font-size: 12px;">Catégories</mat-label>
+                  <mat-select matInput formControlName="categorie" required>
+                    <mat-option value="Restaurant">Restaurant</mat-option>
+                    <mat-option value="Supermarché">Supermarché</mat-option>
+                    <mat-option value="Sport">Sprot</mat-option>
+                  </mat-select>
+                  <mat-icon matTooltip="{{account_validation_messages.categorie[0].message}}"
+                      *ngIf="signupForm.get('categorie').hasError(account_validation_messages.categorie[0].type) && (signupForm.get('categorie').dirty || signupForm.get('categorie').touched  || (submitted))"
                       style="cursor: pointer;" matSuffix>
                       <i class="fas fa-exclamation-circle"></i>
                     </mat-icon>
@@ -29,7 +43,7 @@
   
   
                 <mat-form-field appearance="legacy" class="example-full-width">
-                  <mat-label style="color: #c9c8c8;font-size: 12px;">Email ou Numéro de téléphone</mat-label>
+                  <mat-label style="color: #c9c8c8;font-size: 12px;">Email</mat-label>
                   <input matInput formControlName="emailorphone" pattern="^((\+\d{1,3}(-| )?\(?\d\)?(-| )?\d{1,5})|(\(?\d{2,6}\)?))(-| )?(\d{3,4})(-| )?(\d{4})(( x| ext)\d{1,5}){0,1}$|(\w+([\.-]?\w+)*@\w+([\.-]?\w+)*(\.\w{2,6})+)" required>
                    <mat-icon matTooltip="{{ account_validation_messages.emailorphone[0].message }}"
                       *ngIf="signupForm.get('emailorphone').hasError(account_validation_messages.emailorphone[0].type) && ((signupForm.get('emailorphone').dirty || signupForm.get('emailorphone').touched) || (submitted))"

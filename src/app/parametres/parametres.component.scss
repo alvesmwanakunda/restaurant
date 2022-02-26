@@ -48,12 +48,16 @@ table {
 
 .sizeb {
   width: 51px;
-  background: #04075E !important;
+  background: linear-gradient(90deg, #0c1733, #3fd27e) !important;
   color: #fff;
   height: 43px;
 }
-.checkboxTitle1{
-  padding-top: 10px;
+.checkboxTitle1B{
+ //padding-top: 10px;
+}
+
+.checkboxTitle1A{
+  padding-bottom: 10px;
 }
 
 .vl {

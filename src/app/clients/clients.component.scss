@@ -10,6 +10,11 @@
   margin-right: 13px;
 }
 
+.file-input {
+  display: none;
+}
+
+
 .example-full-width {
   width: 40%;
 }
@@ -22,7 +27,7 @@
 
 .sizeButtons {
   width: 121px;
-  background: #04075E !important;
+  background: linear-gradient(90deg, #0c1733, #3fd27e) !important;
   color: #fff;
   height: 44px;
   position: relative;
@@ -31,7 +36,7 @@
 
 .sizeb{
   width: 51px;
-  background: #04075E !important;
+  background: linear-gradient(90deg, #0c1733, #3fd27e) !important;
   color: #fff;
   height: 46px;
 }

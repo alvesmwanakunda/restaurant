@@ -7,13 +7,16 @@
           <div class="side-menu" style="display: inline-block; list-style-type: none">
 
             <div class="vertical-menu">
-              <a href="#"><i class="far fa-clock" style="font-size: 40px;margin-bottom: 30px;"></i></a>
-              <a   routerLinkActive="active" [routerLinkActiveOptions]="{ exact: true }" [routerLink]="['/dashboard']" matTooltip="Dashboard"><i class="fas fa-clock" style="font-size: 15px;"></i></a>
-              <a   matTooltip="Clients" [routerLink]="['/clients']" [routerLinkActive]="['active']"><i class="fas fa-user" style="font-size: 15px;"></i></a>
+              <a href="#"><img src="assets/images/icone.png" style="width: 66px;position: relative;right: 7px;"><!--<i class="far fa-clock" style="font-size: 40px;margin-bottom: 30px;"></i>--></a>
+              <a  routerLinkActive="active" [routerLinkActiveOptions]="{ exact: true }" [routerLink]="['/dashboard']" matTooltip="Dashboard"><i class="fas fa-clock" style="font-size: 15px;"></i></a>
+              <a  matTooltip="Clients" [routerLink]="['/clients']" [routerLinkActive]="['active']"><i class="fas fa-user" style="font-size: 15px;"></i></a>
               <a  matTooltip="Historiques" [routerLink]="['/historiques']" [routerLinkActive]="['active']"><i class="fas fa-calendar-alt" style="font-size: 15px;"></i></a>
               <a  matTooltip="Promotions" [routerLink]="['/promotions']" [routerLinkActive]="['active']"><i class="fas fa-bullhorn" style="font-size: 15px;"></i></a>
               <a  matTooltip="Fidelites" [routerLink]="['/fidelites']" [routerLinkActive]="['active']"><i class="fas fa-file-invoice-dollar" style="font-size: 15px;"></i></a>
-              <a  matTooltip="Parametres"  [routerLink]="['/parametres']" [routerLinkActive]="['active']"style="padding-top: 150px;"><i class="fas fa-cog" style="font-size: 40px;"></i></a>
+              <div style="padding-top: 115px;">
+                <a  matTooltip="Parametres"  [routerLink]="['/parametres']" [routerLinkActive]="['active']"><i class="fas fa-cog" style="font-size: 40px;"></i></a>
+              </div>
+              
 
             </div>
 

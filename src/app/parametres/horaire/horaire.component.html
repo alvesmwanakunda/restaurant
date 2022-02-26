@@ -1,9 +1,9 @@
-<form novalidate *ngIf="chargeHoraire && !emptyHoraire">
+<form novalidate *ngIf="chargeHoraire && (!emptyHoraire && isUpdateH)">
  <div class="row contentInfo">
 
    
 
-    <p class="titleInfo">Horaire de l'entreprise <button mat-mini-fab type="submit" (click)="createHoraire(horaire)" style="background-color: #0c2461;"> <mat-icon>edit</mat-icon></button></p>
+    <p class="titleInfo">Horaire de l'entreprise <button mat-mini-fab type="submit" (click)="createHoraire(horaire)" style="background-color: #10ae58;"> <mat-icon>check</mat-icon></button></p>
     <div *ngIf="onLoadForm">
       <mat-progress-bar mode="indeterminate"></mat-progress-bar>
     </div>
@@ -12,10 +12,10 @@
       <div class="card" style="background-color: #F6F6FF;border-color: #F6F6FF;margin-bottom: 10px;height: 75px;">
         <div class="card-body">
            <div class="row">
-             <div class="col-md-3">
+             <div class="col-md-2">
                <p class="tithr">Lundi <span class="vlh"></span></p>
              </div>
-             <div class="col-md-9">
+             <div class="col-md-10">
 
                 <div class="row" style="font-size: 12px;">
                    <div class="col-md-6">
@@ -40,10 +40,10 @@
       <div class="card" style="background-color: #F6F6FF;border-color: #F6F6FF;margin-bottom: 10px;height: 75px;">
         <div class="card-body">
           <div class="row">
-             <div class="col-md-3">
-               <p class="tithr">Mardi <span class="vlh"></span></p>
+             <div class="col-md-2">
+               <p class="tithr">Mardi <span class="vlhMardi"></span></p>
              </div>
-             <div class="col-md-9">
+             <div class="col-md-10">
 
                <div class="row" style="font-size: 12px;">
                    <div class="col-md-6">
@@ -68,10 +68,10 @@
       <div class="card" style="background-color: #F6F6FF;border-color: #F6F6FF;margin-bottom: 10px;height: 75px;">
         <div class="card-body">
           <div class="row">
-             <div class="col-md-3">
-               <p class="tithr">Mercredi <span class="vlh"></span></p>
+             <div class="col-md-2">
+               <p class="tithr">Mercredi <span class="vlhMercredi"></span></p>
              </div>
-             <div class="col-md-9">
+             <div class="col-md-10">
                <div class="row" style="font-size: 12px;">
                    <div class="col-md-6">
                       <mat-form-field appearance="outline" class="example-full-width">
@@ -99,10 +99,10 @@
       <div class="card" style="background-color: #F6F6FF;border-color: #F6F6FF;margin-bottom: 10px;height: 75px;">
         <div class="card-body">
           <div class="row">
-             <div class="col-md-3">
-               <p class="tithr">Jeudi <span class="vlh"></span></p>
+             <div class="col-md-2">
+               <p class="tithr">Jeudi <span class="vlhJeudi"></span></p>
              </div>
-             <div class="col-md-9">
+             <div class="col-md-10">
 
                <div class="row" style="font-size: 12px;">
                    <div class="col-md-6">
@@ -127,10 +127,10 @@
       <div class="card" style="background-color: #F6F6FF;border-color: #F6F6FF;margin-bottom: 10px;height: 75px;">
         <div class="card-body">
           <div class="row">
-             <div class="col-md-3">
-               <p class="tithr">Vendredi <span class="vlh"></span></p>
+             <div class="col-md-2">
+               <p class="tithr">Vendredi <span class="vlhVendredi"></span></p>
              </div>
-             <div class="col-md-9">
+             <div class="col-md-10">
 
                <div class="row" style="font-size: 12px;">
                    <div class="col-md-6">
@@ -155,10 +155,10 @@
       <div class="card" style="background-color: #F6F6FF;border-color: #F6F6FF;margin-bottom: 10px;height: 75px;">
         <div class="card-body">
           <div class="row">
-             <div class="col-md-3">
-               <p class="tithr">Samedi <span class="vlh"></span></p>
+             <div class="col-md-2">
+               <p class="tithr">Samedi <span class="vlhSamedi"></span></p>
              </div>
-             <div class="col-md-9">
+             <div class="col-md-10">
 
                <div class="row" style="font-size: 12px;">
                    <div class="col-md-6">
@@ -183,10 +183,10 @@
       <div class="card" style="background-color: #F6F6FF;border-color: #F6F6FF;margin-bottom: 10px;height: 75px;">
         <div class="card-body">
           <div class="row">
-             <div class="col-md-3">
-               <p class="tithr">Dimanche <span class="vlh"></span></p>
+             <div class="col-md-2">
+               <p class="tithr">Dimanche <span class="vlhDimanche"></span></p>
              </div>
-             <div class="col-md-9">
+             <div class="col-md-10">
 
                <div class="row" style="font-size: 12px;">
                    <div class="col-md-6">
@@ -212,12 +212,12 @@
   </div>
 </form>
 
-<form [formGroup]="horaireForm" novalidate *ngIf="emptyHoraire && !chargeHoraire">
+<form [formGroup]="horaireForm" novalidate *ngIf="emptyHoraire && (!chargeHoraire && isUpdateH)">
   <div class="row contentInfo">
  
     
  
-     <p class="titleInfo">Horaire de l'entreprise <button mat-mini-fab type="submit" (click)="createHoraireAdd()" style="background-color: #0c2461;"> <mat-icon>edit</mat-icon></button></p>
+     <p class="titleInfo">Horaire de l'entreprise <button mat-mini-fab type="submit" (click)="createHoraireAdd()" style="background-color: #10ae58;"> <mat-icon>check</mat-icon></button></p>
      <div *ngIf="onLoadForm">
        <mat-progress-bar mode="indeterminate"></mat-progress-bar>
      </div>
@@ -226,10 +226,10 @@
        <div class="card" style="background-color: #F6F6FF;border-color: #F6F6FF;margin-bottom: 10px;height: 75px;">
          <div class="card-body">
             <div class="row">
-              <div class="col-md-3">
+              <div class="col-md-2">
                 <p class="tithr">Lundi <span class="vlh"></span></p>
               </div>
-              <div class="col-md-9">
+              <div class="col-md-10">
  
                  <div class="row" style="font-size: 12px;">
                     <div class="col-md-6">
@@ -254,10 +254,10 @@
        <div class="card" style="background-color: #F6F6FF;border-color: #F6F6FF;margin-bottom: 10px;height: 75px;">
          <div class="card-body">
            <div class="row">
-              <div class="col-md-3">
-                <p class="tithr">Mardi <span class="vlh"></span></p>
+              <div class="col-md-2">
+                <p class="tithr">Mardi <span class="vlhMardi"></span></p>
               </div>
-              <div class="col-md-9">
+              <div class="col-md-10">
  
                 <div class="row" style="font-size: 12px;">
                     <div class="col-md-6">
@@ -282,10 +282,10 @@
        <div class="card" style="background-color: #F6F6FF;border-color: #F6F6FF;margin-bottom: 10px;height: 75px;">
          <div class="card-body">
            <div class="row">
-              <div class="col-md-3">
-                <p class="tithr">Mercredi <span class="vlh"></span></p>
+              <div class="col-md-2">
+                <p class="tithr">Mercredi <span class="vlhMercredi"></span></p>
               </div>
-              <div class="col-md-9">
+              <div class="col-md-10">
                 <div class="row" style="font-size: 12px;">
                     <div class="col-md-6">
                        <mat-form-field appearance="outline" class="example-full-width">
@@ -313,10 +313,10 @@
        <div class="card" style="background-color: #F6F6FF;border-color: #F6F6FF;margin-bottom: 10px;height: 75px;">
          <div class="card-body">
            <div class="row">
-              <div class="col-md-3">
-                <p class="tithr">Jeudi <span class="vlh"></span></p>
+              <div class="col-md-2">
+                <p class="tithr">Jeudi <span class="vlhJeudi"></span></p>
               </div>
-              <div class="col-md-9">
+              <div class="col-md-10">
  
                 <div class="row" style="font-size: 12px;">
                     <div class="col-md-6">
@@ -341,10 +341,10 @@
        <div class="card" style="background-color: #F6F6FF;border-color: #F6F6FF;margin-bottom: 10px;height: 75px;">
          <div class="card-body">
            <div class="row">
-              <div class="col-md-3">
-                <p class="tithr">Vendredi <span class="vlh"></span></p>
+              <div class="col-md-2">
+                <p class="tithr">Vendredi <span class="vlhVendredi"></span></p>
               </div>
-              <div class="col-md-9">
+              <div class="col-md-10">
  
                 <div class="row" style="font-size: 12px;">
                     <div class="col-md-6">
@@ -369,10 +369,10 @@
        <div class="card" style="background-color: #F6F6FF;border-color: #F6F6FF;margin-bottom: 10px;height: 75px;">
          <div class="card-body">
            <div class="row">
-              <div class="col-md-3">
-                <p class="tithr">Samedi <span class="vlh"></span></p>
+              <div class="col-md-2">
+                <p class="tithr">Samedi <span class="vlhSamedi"></span></p>
               </div>
-              <div class="col-md-9">
+              <div class="col-md-10">
  
                 <div class="row" style="font-size: 12px;">
                     <div class="col-md-6">
@@ -397,10 +397,10 @@
        <div class="card" style="background-color: #F6F6FF;border-color: #F6F6FF;margin-bottom: 10px;height: 75px;">
          <div class="card-body">
            <div class="row">
-              <div class="col-md-3">
-                <p class="tithr">Dimanche <span class="vlh"></span></p>
+              <div class="col-md-2">
+                <p class="tithr">Dimanche <span class="vlhDimanche"></span></p>
               </div>
-              <div class="col-md-9">
+              <div class="col-md-10">
  
                 <div class="row" style="font-size: 12px;">
                     <div class="col-md-6">
@@ -425,3 +425,172 @@
      </div><!--col-->
    </div>
 </form>
+
+
+<div  *ngIf="!isUpdateH">
+  <div class="row contentInfo">
+  
+     <p class="titleInfo">Horaire de l'entreprise <button mat-mini-fab type="submit" (click)="openHoraire()" style="background-color: #0c2461;"> <mat-icon>edit</mat-icon></button></p>
+     
+     <div class="col-md-6">
+ 
+       <div class="card" style="background-color: #F6F6FF;border-color: #F6F6FF;margin-bottom: 10px;height: 75px;">
+         <div class="card-body">
+            <div class="row">
+              <div class="col-md-2">
+                <p class="tithr">Lundi <span class="vlh"></span></p>
+              </div>
+              <div class="col-md-10">
+ 
+                 <div class="row" style="font-size: 12px;">
+                    <div class="col-md-6">
+                         <p class="labelFrom">Ouverture : <span>{{horaire?.oLundi}}</span></p>
+                    </div><!--col-->
+                    <div class="col-md-6">
+                         <p class="labelFrom">Fermeture : <span>{{horaire?.fLundi}}</span></p>
+                    </div><!--col-->
+                 </div><!--row-->
+ 
+              </div>
+            </div><!--row-->
+         </div>
+       </div>
+ 
+       <div class="card" style="background-color: #F6F6FF;border-color: #F6F6FF;margin-bottom: 10px;height: 75px;">
+         <div class="card-body">
+           <div class="row">
+              <div class="col-md-2">
+                <p class="tithr">Mardi <span class="vlhMardi"></span></p>
+              </div>
+              <div class="col-md-10">
+ 
+                <div class="row" style="font-size: 12px;">
+                    <div class="col-md-6">
+                         <p class="labelFrom">Ouverture : <span>{{horaire?.oMardi}}</span></p>
+                    </div><!--col-->
+                    <div class="col-md-6">
+                         <p class="labelFrom">Fermeture : <span>{{horaire?.fMardi}}</span></p>
+                    </div><!--col-->
+                 </div><!--row-->
+ 
+              </div>
+            </div><!--row-->
+         </div>
+       </div>
+ 
+       <div class="card" style="background-color: #F6F6FF;border-color: #F6F6FF;margin-bottom: 10px;height: 75px;">
+         <div class="card-body">
+           <div class="row">
+              <div class="col-md-2">
+                <p class="tithr">Mercredi <span class="vlhMercredi"></span></p>
+              </div>
+              <div class="col-md-10">
+                <div class="row" style="font-size: 12px;">
+                    <div class="col-md-6">
+                         <p class="labelFrom">Ouverture : <span>{{horaire?.oMercredi}}</span></p>
+                    </div><!--col-->
+                    <div class="col-md-6">
+                         <p class="labelFrom">Fermeture : <span>{{horaire?.fMercredi}}</span></p>
+                    </div><!--col-->
+                 </div><!--row-->
+ 
+              </div>
+            </div><!--row-->
+         </div>
+       </div>
+ 
+     </div>
+ 
+     <div class="col-md-6">
+ 
+       <div class="card" style="background-color: #F6F6FF;border-color: #F6F6FF;margin-bottom: 10px;height: 75px;">
+         <div class="card-body">
+           <div class="row">
+              <div class="col-md-2">
+                <p class="tithr">Jeudi <span class="vlhJeudi"></span></p>
+              </div>
+              <div class="col-md-10">
+ 
+                <div class="row" style="font-size: 12px;">
+                    <div class="col-md-6">
+                         <p class="labelFrom">Ouverture : <span>{{horaire?.oJeudi}}</span></p>
+                    </div><!--col-->
+                    <div class="col-md-6">
+                         <p class="labelFrom">Fermeture : <span>{{horaire?.fJeudi}}</span></p>
+                    </div><!--col-->
+                 </div><!--row-->
+ 
+              </div>
+            </div><!--row-->
+         </div>
+       </div>
+ 
+       <div class="card" style="background-color: #F6F6FF;border-color: #F6F6FF;margin-bottom: 10px;height: 75px;">
+         <div class="card-body">
+           <div class="row">
+              <div class="col-md-2">
+                <p class="tithr">Vendredi <span class="vlhVendredi"></span></p>
+              </div>
+              <div class="col-md-10">
+ 
+                <div class="row" style="font-size: 12px;">
+                    <div class="col-md-6">
+                         <p class="labelFrom">Ouverture : <span>{{horaire?.oVendredi}}</span></p>
+                    </div><!--col-->
+                    <div class="col-md-6">
+                         <p class="labelFrom">Fermeture : <span>{{horaire?.fVendredi}}</span></p>
+                    </div><!--col-->
+                 </div><!--row-->
+ 
+              </div>
+            </div><!--row-->
+         </div>
+       </div>
+ 
+       <div class="card" style="background-color: #F6F6FF;border-color: #F6F6FF;margin-bottom: 10px;height: 75px;">
+         <div class="card-body">
+           <div class="row">
+              <div class="col-md-2">
+                <p class="tithr">Samedi <span class="vlhSamedi"></span></p>
+              </div>
+              <div class="col-md-10">
+ 
+                <div class="row" style="font-size: 12px;">
+                    <div class="col-md-6">
+                         <p class="labelFrom">Ouverture : <span>{{horaire?.oSamedi}}</span></p>
+                    </div><!--col-->
+                    <div class="col-md-6">
+                         <p class="labelFrom">Fermeture : <span>{{horaire?.fSamedi}}</span></p>
+                    </div><!--col-->
+                 </div><!--row-->
+ 
+              </div>
+            </div><!--row-->
+         </div>
+       </div>
+ 
+       <div class="card" style="background-color: #F6F6FF;border-color: #F6F6FF;margin-bottom: 10px;height: 75px;">
+         <div class="card-body">
+           <div class="row">
+              <div class="col-md-2">
+                <p class="tithr">Dimanche <span class="vlhDimanche"></span></p>
+              </div>
+              <div class="col-md-10">
+ 
+                <div class="row" style="font-size: 12px;">
+                    <div class="col-md-6">
+                         <p class="labelFrom">Ouverture : <span>{{horaire?.oDimanche}}</span></p>
+                    </div><!--col-->
+                    <div class="col-md-6">
+                         <p class="labelFrom">Fermeture : <span>{{horaire?.fDimanche}}</span></p>
+                    </div><!--col-->
+                 </div><!--row-->
+ 
+              </div>
+            </div><!--row-->
+         </div>
+       </div>
+ 
+     </div><!--col-->
+   </div>
+</div>

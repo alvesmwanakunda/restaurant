@@ -6,4 +6,5 @@ export interface EntrepriseInterface {
     adresse: string;
     description: string;
     image: string;
+    categorie:string;
   }

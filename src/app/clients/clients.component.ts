@@ -24,6 +24,10 @@ export class ClientsComponent implements OnInit, AfterViewInit {
   dataSource = new MatTableDataSource<ClientInterface>();
   selection = new SelectionModel<ClientInterface>(true, []);
 
+  fileName="";
+  onLoadForm: boolean = false;
+  clientAdd:any;
+
   @ViewChild(MatPaginator) paginator: MatPaginator;
   @ViewChild(MatSort) sort: MatSort;
 
@@ -96,7 +100,7 @@ export class ClientsComponent implements OnInit, AfterViewInit {
   }
 
   openDialog(){
-    const dialogRef = this.dialog.open(AddClientComponent,{width:'60%',height:'60%'});
+    const dialogRef = this.dialog.open(AddClientComponent,{width:'40%',height:'60%'});
     dialogRef.afterClosed().subscribe(result => {
       console.log('The dialog was closed', result);
       this.getAllClients(this.entreprise._id);
@@ -112,7 +116,7 @@ export class ClientsComponent implements OnInit, AfterViewInit {
   }
 
   openDialogDetail(idClient){
-    const dialogRef = this.dialog.open(DetailClientComponent,{width:'70%',data:{idclient:idClient}});
+    const dialogRef = this.dialog.open(DetailClientComponent,{width:'60%',data:{idclient:idClient}});
     dialogRef.afterClosed().subscribe(result => {
       console.log(`Dialog result: ${result}`);
     })
@@ -141,6 +145,29 @@ export class ClientsComponent implements OnInit, AfterViewInit {
       return `${this.isAllSelected() ? 'deselect' : 'select'} all`;
     }
     return `${this.selection.isSelected(row) ? 'deselect' : 'select'} row ${row.id + 1}`;
+  }
+
+  onFileSelected(event){
+    const file:File = event.target.files[0];
+
+    if(file){
+      this.fileName = file.name;
+      const formData = new FormData();
+      formData.append("uploadfile", file);
+
+      this.clientService.uploadClient(formData,this.entreprise._id).subscribe((res)=>{
+        this.onLoadForm = true;
+        try {
+             this.clientAdd = res;
+             //this.dialogRef.close(this.clientAdd);
+             this.getAllClients(this.entreprise._id);
+             this.onLoadForm = false;
+        } catch (error) {
+           this.onLoadForm = false;
+           console.log("Erreur", error);
+        }
+      })
+    }
   }
 
 }

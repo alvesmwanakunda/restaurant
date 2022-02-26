@@ -24,6 +24,7 @@ export class EntrepriseComponent implements OnInit {
   fileName="";
   image:any;
   onLoadForm: boolean = false;
+  isUpdate:boolean = false;
 
 
   ngOnInit(): void {
@@ -63,6 +64,7 @@ export class EntrepriseComponent implements OnInit {
             this.entreprise = entreprise;
             this.onLoadForm = false;
             this.openSnackBar();
+            this.isUpdate=false;
             //console.log("reponse", res);
       } catch (error) {
         console.log("Error", error);
@@ -97,6 +99,11 @@ export class EntrepriseComponent implements OnInit {
     this._snackBar.open('Information modifier avec succès', 'Fermer', {
       duration: 3000
     });
+  }
+
+  OpenUpdate(){
+
+    this.isUpdate = true;
   }
 
 }

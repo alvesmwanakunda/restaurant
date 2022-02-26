@@ -60,6 +60,14 @@ export class SignupComponent implements OnInit {
         message:"Téléphone incorrect."
       }
     ],*/
+    categorie:[
+
+      {
+        type:"required",
+        message:"Ce champ est requis"
+      }
+
+    ],
     entreprise:[
       {
         type:"required",
@@ -127,6 +135,7 @@ export class SignupComponent implements OnInit {
       /*phone: new FormControl("",[
         Validators.required,
       ]),*/
+      categorie:new FormControl("",[Validators.required]),
       entreprise:new FormControl("",[Validators.required]),
       password:password,
       confirmpassword: confirmpassword,

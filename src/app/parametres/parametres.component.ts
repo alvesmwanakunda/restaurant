@@ -65,7 +65,7 @@ export class ParametresComponent implements OnInit, AfterViewInit {
 
 
   openDialog(){
-    const dialogRef = this.dialog.open(AddPersonnelComponent,{width:'50%',height:'45%'});
+    const dialogRef = this.dialog.open(AddPersonnelComponent,{width:'40%',height:'55%'});
     dialogRef.afterClosed().subscribe(result => {
       console.log(`Dialog result: ${result}`);
       this.getAllAgent(this.idEntreprise);
