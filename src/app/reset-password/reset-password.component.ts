@@ -32,7 +32,7 @@ export class ResetPasswordComponent implements OnInit {
 
 
   account_validation_messages={
-     email:[
+     emailorphone:[
        {
          type:"required",
          message:"Adresse email obligatoire"
@@ -47,7 +47,7 @@ export class ResetPasswordComponent implements OnInit {
   ngOnInit(): void {
 
     this.lostpasswordForm = this.formBuilder.group({
-      email:[
+      emailorphone:[
         "",
         [
           Validators.required,
@@ -73,7 +73,7 @@ export class ResetPasswordComponent implements OnInit {
              let emailregex = RegExp(
                 /^(([^<>()\[\]\\.,;:\s@"]+(\.[^<>()\[\]\\.,;:\s@"]+)*)|(".+"))@((\[[0-9]{1,3}\.[0-9]{1,3}\.[0-9]{1,3}\.[0-9]{1,3}\])|(([a-zA-Z\-0-9]+\.)+[a-zA-Z]{2,}))$/
              );
-             let email = this.lostpasswordForm.get("email").value;
+             let email = this.lostpasswordForm.get("emailorphone").value;
              if(!emailregex.test(email)){
                 this.isMailLoading = false;
                 this.accountnotfound = false;
