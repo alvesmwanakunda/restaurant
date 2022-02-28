@@ -15,13 +15,13 @@
          <div class="row" style="font-size: 13px;">
             <div class="col-md-12">
 
-                <p style="margin-bottom: 25px;"><i class="fas fa-envelope iconSize"></i> {{client?.user.email}}</p>
+                <p style="margin-bottom: 25px;"><i class="fas fa-envelope iconSize" style="margin-right: 10px;"></i> <span>{{client?.user.email}}</span></p>
 
-                <p style="margin-bottom: 25px;"><i class="fas fa-phone-alt iconSize"></i> {{client?.user.phone}}</p>
+                <p style="margin-bottom: 25px;"><i class="fas fa-phone-alt iconSize" style="margin-right: 10px;"></i> <span>{{client?.user.phone}}</span> </p>
 
-                <p style="margin-bottom: 25px;"><i class="fas fa-restroom iconSize"></i> {{client?.genre}}</p>
+                <p style="margin-bottom: 25px;"><i class="fas fa-restroom iconSize" style="margin-right: 10px;"></i> <span>{{client?.genre}}</span> </p>
 
-                <p><i class="fas fa-map-marker-alt iconSize"></i> {{client?.adresse}}</p>
+                <p><i class="fas fa-map-marker-alt iconSize" style="margin-right: 18px;"></i> <span>{{client?.adresse}}</span> </p>
 
 
 
@@ -82,7 +82,7 @@
      </div><!--col-md-6-->
   </div><!--row-->
 
-  <div style="padding-top: 10px;" [hidden]="!isRecompense">
+  <div [hidden]="!isRecompense">
      <mat-card>
         <mat-card-content>
 

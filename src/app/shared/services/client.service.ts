@@ -28,5 +28,9 @@ export class ClientService {
       return this.http.get(`${environment.BASE_API_URL}/client/${idClient}`);
     }
 
+    deleteClient(idClient,idEntreprise){
+      return this.http.delete(`${environment.BASE_API_URL}/delete/client/entreprise/${idClient}/${idEntreprise}`)
+    }
+
 
 }

@@ -211,7 +211,8 @@
 }
 
 body,html{
-  background: #F9F9F9 !important;
+  background-image:url('assets/images/body.png')  !important;
+  background-size: cover;
   height: 100%;
 }
 

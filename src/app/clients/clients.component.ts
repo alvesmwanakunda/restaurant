@@ -10,6 +10,7 @@ import {MatSort} from '@angular/material/sort';
 import {MatTableDataSource} from '@angular/material/table';
 import { ClientInterface } from '../shared/interfaces/client.interface';
 import { UploadClientComponent } from './upload-client/upload-client.component';
+import { DeleteClientComponent } from './delete-client/delete-client.component';
 
 
 
@@ -100,7 +101,7 @@ export class ClientsComponent implements OnInit, AfterViewInit {
   }
 
   openDialog(){
-    const dialogRef = this.dialog.open(AddClientComponent,{width:'40%',height:'60%'});
+    const dialogRef = this.dialog.open(AddClientComponent,{width:'40%',height:'54%'});
     dialogRef.afterClosed().subscribe(result => {
       console.log('The dialog was closed', result);
       this.getAllClients(this.entreprise._id);
@@ -116,9 +117,17 @@ export class ClientsComponent implements OnInit, AfterViewInit {
   }
 
   openDialogDetail(idClient){
-    const dialogRef = this.dialog.open(DetailClientComponent,{width:'60%',data:{idclient:idClient}});
+    const dialogRef = this.dialog.open(DetailClientComponent,{width:'60%',height:'45%',data:{idclient:idClient}});
     dialogRef.afterClosed().subscribe(result => {
       console.log(`Dialog result: ${result}`);
+    })
+  }
+
+  openDialogDelete(idClient){
+    const dialogRef = this.dialog.open(DeleteClientComponent,{width:'30%',height:'30%',data:{id:idClient}});
+    dialogRef.afterClosed().subscribe(result => {
+      console.log(`Dialog result: ${result}`);
+      this.getAllClients(this.entreprise._id);
     })
   }
 
@@ -127,6 +136,7 @@ export class ClientsComponent implements OnInit, AfterViewInit {
     const numSelected = this.selection.selected.length;
     const numRows = this.dataSource.data.length;
     return numSelected === numRows;
+    
   }
 
   /** Selects all rows if they are not all selected; otherwise clear selection. */

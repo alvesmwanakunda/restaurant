@@ -1,6 +1,6 @@
  <form novalidate *ngIf="entreprise && isUpdate">
 
-             <p class="titleInfo">Information sur l'entreprise <button mat-mini-fab style="background-color: #10ae58;" type="submit" (click)="updateEntreprise(entreprise)"> <mat-icon>check</mat-icon></button></p>
+             <p class="titleInfo">Information sur l'entreprise <button mat-mini-fab style="background-color: #10ae58;margin-left: 8px;" type="submit" (click)="updateEntreprise(entreprise)"> <mat-icon>check</mat-icon></button></p>
              <div *ngIf="onLoadForm">
                 <mat-progress-bar mode="indeterminate"></mat-progress-bar>
               </div>
@@ -47,28 +47,39 @@
                </div><!--col-->
              </div><!--row-->
 
-             <div style="font-size: 11px;">
-              <mat-form-field appearance="outline" class="example-full-width">
-                <mat-label style="color: #c9c8c8;font-size: 12px;">Catégories</mat-label>
-                <mat-select matInput name="categorie" [(ngModel)]="entreprise.categorie" #categorie="ngModel">
-                  <mat-option value="Restaurant">Restaurant</mat-option>
-                  <mat-option value="Supermarché">Supermarché</mat-option>
-                  <mat-option value="Sport">Sprot</mat-option>
-                </mat-select>
-              </mat-form-field>
-             </div>
-    
-              <div style="font-size: 11px;">
-                    <mat-form-field appearance="outline" class="example-full-width">
-                      <mat-label class="labelFrom">Adresse</mat-label>
-                      <input matInput name="adresse" [(ngModel)]="entreprise.adresse" #adresse="ngModel" style="font-size: 12px;color: #bbb8b8;" required>
-                    </mat-form-field>
-                    <div *ngIf="adresse.errors && (adresse.dirty || adresse.touched)">
-                        <div [hidden]="!adresse.errors.required">
-                          <p class="text-danger" style="font-size: 13px;">Ce champ est obligatoire!</p>
-                        </div>
-                    </div>
+             <div class="row">
+
+               <div class="col-md-6">
+                <div style="font-size: 11px;">
+                  <mat-form-field appearance="outline" class="example-full-width">
+                    <mat-label style="color: #c9c8c8;font-size: 12px;">Catégories</mat-label>
+                    <mat-select matInput name="categorie" [(ngModel)]="entreprise.categorie" #categorie="ngModel">
+                      <mat-option value="Restaurant">Restaurant</mat-option>
+                      <mat-option value="Supermarché">Supermarché</mat-option>
+                      <mat-option value="Sport">Sprot</mat-option>
+                    </mat-select>
+                  </mat-form-field>
+                 </div>
+               </div>
+
+               <div class="col-md-6">
+
+                <div style="font-size: 11px;">
+                  <mat-form-field appearance="outline" class="example-full-width">
+                    <mat-label class="labelFrom">Adresse</mat-label>
+                    <input matInput name="adresse" [(ngModel)]="entreprise.adresse" #adresse="ngModel" style="font-size: 12px;color: #bbb8b8;" required>
+                  </mat-form-field>
+                  <div *ngIf="adresse.errors && (adresse.dirty || adresse.touched)">
+                      <div [hidden]="!adresse.errors.required">
+                        <p class="text-danger" style="font-size: 13px;">Ce champ est obligatoire!</p>
+                      </div>
+                  </div>
+                </div>
+
               </div>
+
+             </div><!--row-->
+
               <div>
                 <mat-form-field class="example-full-width" appearance="outline">
                   <mat-label class="labelFrom">Description de l'entreprise</mat-label>
@@ -79,7 +90,7 @@
  </form>
 
  <div *ngIf="entreprise && !isUpdate">
-  <p class="titleInfo">Information sur l'entreprise <button mat-mini-fab style="background-color: #0c2461;" (click)="OpenUpdate()"> <mat-icon>edit</mat-icon></button></p>
+  <p class="titleInfo">Information sur l'entreprise <button mat-mini-fab style="background-color: #0c2461; margin-left: 8px;" (click)="OpenUpdate()"> <mat-icon>edit</mat-icon></button></p>
   <div class="row">
     <div class="col-md-6" style="padding-top: 20px;">
 

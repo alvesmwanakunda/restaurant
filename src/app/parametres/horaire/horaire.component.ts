@@ -88,6 +88,9 @@ export class HoraireComponent implements OnInit {
         try {
               this.horaire = horaire;
               this.onLoadForm = false;
+              this.chargeHoraire = false;
+              this.emptyHoraire = false;
+              this.isUpdateH = false;
               this.openSnackBar();
               console.log("reponse", res);
         } catch (error) {
@@ -109,8 +112,9 @@ export class HoraireComponent implements OnInit {
               this.horaire = res.message;
               this.onLoadForm = false;
               this.openSnackBarAdd();
-              this.chargeHoraire = true;
+              this.chargeHoraire = false;
               this.emptyHoraire = false;
+              this.isUpdateH = false;
               console.log("reponse", res);
         } catch (error) {
           console.log("Error", error);
@@ -134,6 +138,7 @@ export class HoraireComponent implements OnInit {
 
   openHoraire(){
     this.isUpdateH = true;
+    this.getHoraire(this.idEntreprise);
   }
 
 }

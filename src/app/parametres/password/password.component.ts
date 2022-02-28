@@ -24,6 +24,7 @@ export class PasswordComponent implements OnInit {
   onLoadForm:boolean=false;
   user:any
   submitted = false;
+  isUpdatePassword:boolean=false;
 
   constructor(
     private authService:AuthService,
@@ -119,6 +120,7 @@ export class PasswordComponent implements OnInit {
           this.passwordFormErrors["lostpassword"].notfound = true;
         }else{
           this.openSnackBar();
+          this.isUpdatePassword = false;
         }
         
         this.onLoadForm = false;
@@ -133,6 +135,10 @@ export class PasswordComponent implements OnInit {
     this._snackBar.open('Le mot de passe modifier avec succès', 'Fermer', {
       duration: 3000
     });
+  }
+
+  openUpdate(){
+     this.isUpdatePassword=true;
   }
 
 }

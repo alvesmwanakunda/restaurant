@@ -9,6 +9,7 @@ import { DetailClientModule } from './detail-client/detail-client.module';
 import { ClientService } from '../shared/services/client.service';
 import { EntrepriseService } from '../shared/services/entreprise.service';
 import { UploadClientModule } from './upload-client/upload-client.module';
+import { DeleteClientModule } from './delete-client/delete-client.module';
 
 
 @NgModule({
@@ -20,7 +21,8 @@ import { UploadClientModule } from './upload-client/upload-client.module';
     NavBarModule,
     AddClientModule,
     DetailClientModule,
-    UploadClientModule
+    UploadClientModule,
+    DeleteClientModule
   ],
   providers:[ClientService, EntrepriseService]
 })
