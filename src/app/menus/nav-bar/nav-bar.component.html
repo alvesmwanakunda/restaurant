@@ -7,7 +7,7 @@
           <div class="side-menu" style="display: inline-block; list-style-type: none">
 
             <div class="vertical-menu">
-              <a><img src="assets/images/icone.png" style="width:66px;position:fixed;left: 3px;top:0;"><!--<i class="far fa-clock" style="font-size: 40px;margin-bottom: 30px;"></i>--></a>
+              <a [routerLink]="['/dashboard']"><img src="assets/images/icone.png" style="width:66px;position:fixed;left: 3px;top:0;"><!--<i class="far fa-clock" style="font-size: 40px;margin-bottom: 30px;"></i>--></a>
               <div style="padding-top: 50px;">
                 <a  routerLinkActive="active" [routerLinkActiveOptions]="{ exact: true }" [routerLink]="['/dashboard']" matTooltip="Dashboard"><i class="fas fa-clock" style="font-size: 15px;"></i></a>
                 <a  matTooltip="Clients" [routerLink]="['/clients']" [routerLinkActive]="['active']"><i class="fas fa-user" style="font-size: 15px;"></i></a>
