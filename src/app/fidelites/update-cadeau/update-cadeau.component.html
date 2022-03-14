@@ -1,0 +1,69 @@
+<mat-dialog-content class="mat-typography">
+    <div class="container-fluid">
+  
+      <div class="text-center">
+        <p class="titleFront">Modifier cadeau</p>
+      </div>
+  
+      <form novalidate *ngIf="cadeau">
+  
+        <div class="row" style="padding-top: 65px;">
+  
+          <div class="col-md-2">
+    
+            <mat-form-field appearance="outline" class="example-full-width">
+              <mat-label class="labelFrom">Pour</mat-label>
+              <input type="number" matInput name="point" [(ngModel)]="cadeau.point" #point="ngModel" required>
+            </mat-form-field>
+            <div *ngIf="point.errors && (point.dirty || point.touched)">
+                <div [hidden]="!point.errors.required">
+                  <p class="text-danger" style="font-size: 13px;">Ce champ est obligatoire!</p>
+                </div>
+            </div>
+    
+          </div><!--col-->
+          <div class="col-md-5">
+    
+            <mat-form-field appearance="outline" class="example-full-width">
+              <mat-label class="labelFrom">Points de</mat-label>
+              <mat-select name="typesPoint" [(ngModel)]="cadeau.typesPoint" #typesPoint="ngModel" required>
+                <mat-option *ngFor="let type of types" value="{{type._id}}">{{type.nom}}</mat-option>
+              </mat-select>
+            </mat-form-field>
+            <div *ngIf="typesPoint.errors && (typesPoint.dirty || typesPoint.touched)">
+                <div [hidden]="!typesPoint.errors.required">
+                  <p class="text-danger" style="font-size: 13px;">Ce champ est obligatoire!</p>
+                </div>
+            </div>
+    
+          </div><!--col-->
+          <div class="col-md-5">
+    
+            <mat-form-field appearance="outline" class="example-full-width">
+              <mat-label class="labelFrom">Offrir</mat-label>
+              <mat-select name="produit" [(ngModel)]="cadeau.produit" #produit="ngModel" required>
+                <mat-option *ngFor="let produit of produits" value="{{produit._id}}">{{produit?.nom}}</mat-option>
+              </mat-select>
+            </mat-form-field>
+            <div *ngIf="produit.errors && (produit.dirty || produit.touched)">
+                <div [hidden]="!produit.errors.required">
+                  <p class="text-danger" style="font-size: 13px;">Ce champ est obligatoire!</p>
+                </div>
+            </div>
+           
+          </div><!--col-->
+    
+        </div><!--row-->
+  
+        <div class="text-center">
+           <button mat-button mat-dialog-close>Fermer</button>
+           <button mat-button type="submit" (click)="updateCadeau(cadeau)" cdkFocusInitial style=" background:linear-gradient(90deg, #0c1733, #3fd27e) !important;color:#fff">Mettre à jour</button>
+        </div>
+  
+      </form><!--Form-->
+      <div *ngIf="onLoadForm" style="padding-top: 20px;">
+        <mat-progress-bar mode="indeterminate"></mat-progress-bar>
+      </div>
+    </div><!--c-->
+  </mat-dialog-content>
+  

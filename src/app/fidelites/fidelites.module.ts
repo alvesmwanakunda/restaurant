@@ -10,6 +10,19 @@ import { LivraisonModule } from './livraison/livraison.module';
 import { AddCadeauModule } from './add-cadeau/add-cadeau.module';
 import { AddReductionModule } from './add-reduction/add-reduction.module';
 import { AddLivraisonModule } from './add-livraison/add-livraison.module';
+import { ProduitModule } from './produit/produit.module';
+import { CadeauService } from '../shared/services/cadeau.service';
+import { EntrepriseService } from '../shared/services/entreprise.service';
+import { UpdateCadeauModule } from './update-cadeau/update-cadeau.module';
+import { ReductionService } from '../shared/services/reduction.service';
+import { UpdateReductionModule } from './update-reduction/update-reduction.module';
+import { LivraisonService } from '../shared/services/livraison.service';
+import { UpdateLivraisonModule } from './update-livraison/update-livraison.module';
+import { AddVisiteModule } from './add-visite/add-visite.module';
+import { VisiteService } from '../shared/services/visite.service';
+import { UpdateVisiteModule } from './update-visite/update-visite.module';
+import { UpdateBudgetModule } from './update-budget/update-budget.module';
+import { AddBudgetModule } from './add-budget/add-budget.module';
 
 
 @NgModule({
@@ -24,7 +37,16 @@ import { AddLivraisonModule } from './add-livraison/add-livraison.module';
     LivraisonModule,
     AddCadeauModule,
     AddReductionModule,
-    AddLivraisonModule
-  ]
+    AddLivraisonModule,
+    ProduitModule,
+    UpdateCadeauModule,
+    UpdateReductionModule,
+    UpdateLivraisonModule,
+    AddVisiteModule,
+    UpdateVisiteModule,
+    UpdateBudgetModule,
+    AddBudgetModule
+  ],
+  providers:[CadeauService, EntrepriseService, ReductionService, LivraisonService, VisiteService]
 })
 export class FidelitesModule { }

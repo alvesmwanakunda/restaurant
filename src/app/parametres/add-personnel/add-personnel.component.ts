@@ -41,7 +41,8 @@ export class AddPersonnelComponent implements OnInit {
     this.agentFormErrors = {
       emailorphone: {},
       nom:{},
-      prenom:{}
+      prenom:{},
+      poste:{}
     };
    }
 
@@ -63,6 +64,12 @@ export class AddPersonnelComponent implements OnInit {
       }
     ],
     prenom:[
+      {
+        type:"required",
+        message:"Ce champ est requis"
+      }
+    ],
+    poste:[
       {
         type:"required",
         message:"Ce champ est requis"
@@ -97,6 +104,7 @@ export class AddPersonnelComponent implements OnInit {
       ]),
       nom:new FormControl("",[Validators.required]),
       prenom:new FormControl("",[Validators.required]),
+      poste:new FormControl("",[Validators.required]),
     });
   }
 

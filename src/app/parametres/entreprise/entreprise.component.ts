@@ -82,6 +82,8 @@ export class EntrepriseComponent implements OnInit {
       const formData = new FormData();
       formData.append("uploadfile", file);
 
+      console.log("Image entreprise", formData);
+
       this.entrepriseService.uploadLogo(formData,this.idEntreprise).subscribe((res:any)=>{
         try {
              this.entreprise = res.message;
@@ -97,7 +99,8 @@ export class EntrepriseComponent implements OnInit {
 
   openSnackBar() {
     this._snackBar.open('Information modifier avec succès', 'Fermer', {
-      duration: 3000
+      duration: 3000,
+      panelClass: ['blue-snackbar']
     });
   }
 

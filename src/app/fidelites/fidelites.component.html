@@ -17,27 +17,27 @@
                         <div class="col-md-4">
                              <p class="titleFront">Articles cadeau <i class="fas fa-plus-square iconInfo" style="cursor: pointer;" (click)="openDialogAddCadeau()"></i></p>
 
-                             <div class="card" style="background-color: #F6F6FF;border-color: #F6F6FF;">
+                             <div class="card" style="background-color: #F6F6FF;border-color: #F6F6FF;margin-bottom: 10px;" *ngFor="let cadeau of listCadeau">
                                <div class="card-body">
 
                                   <div class="row">
                                     <div class="col-md-6">
                                        <div style="cursor: pointer;" (click)="openDialogCadeau()">
-                                         <img src="assets/images/pt.png" width="30px;">
-                                         <span class="subTitle">Nom du produit</span>
+                                         <img src="data:image/png;base64,{{cadeau?.produit.photo}}" width="30px;">
+                                         <span class="subTitle">{{cadeau?.produit.nom}}</span>
                                         </div>
                                     </div><!--col-->
                                     <div class="col-md-3">
                                        <div>
                                          <div class="vl"></div>
-                                         <span style="font-size: 11px;margin-left: 4px;">05 (achat)</span>
+                                         <span style="font-size: 10px;margin-left: 4px;">{{cadeau.point}} ({{cadeau?.typesPoint.nom}})</span>
                                        </div>
                                     </div><!--col-->
                                     <div class="col-md-3">
                                        <div class="vl"></div>
                                        <div style="margin-left: 10px;">
-                                          <i class="fas fa-edit" style="margin-right: 11px;color: #04075E;"></i>
-                                          <i class="fas fa-trash" style="color: #04075E;"></i>
+                                          <i  class="fas fa-edit" style="margin-right: 11px;color: #04075E;cursor: pointer;" (click)="openDialogUpdateCadeau(cadeau._id)"></i>
+                                          <i class="fas fa-trash" style="color: #04075E;cursor: pointer;" (click)="deleteCadeau(cadeau._id)"></i>
                                        </div>
 
                                     </div><!--col-->
@@ -50,27 +50,28 @@
 
                         <div class="col-md-4">
                               <p class="titleFront">Réduction cadeau <i class="fas fa-plus-square iconInfo" style="cursor: pointer;" (click)="openDialogAddReduction()"></i></p>
-                              <div class="card" style="background-color: #F6F6FF;border-color: #F6F6FF;">
+
+                              <div class="card" style="background-color: #F6F6FF;border-color: #F6F6FF;margin-bottom: 10px;" *ngFor="let reduction of listReduction">
                                <div class="card-body">
 
                                   <div class="row">
                                     <div class="col-md-6">
                                        <div style="cursor: pointer;" (click)="openDialogReduction()">
-                                         <img src="assets/images/pt.png" width="30px;">
-                                         <span class="subTitle">10%</span>
+                                         <img src="data:image/png;base64,{{reduction?.produit.photo}}" width="30px;">
+                                         <span class="subTitle">{{reduction?.montant}}%</span>
                                         </div>
                                     </div><!--col-->
                                     <div class="col-md-3">
                                        <div>
                                          <div class="vl"></div>
-                                         <span style="font-size: 11px;margin-left: 4px;">12 points</span>
+                                         <span style="font-size: 11px;margin-left: 4px;">{{reduction?.point}} points</span>
                                        </div>
                                     </div><!--col-->
                                     <div class="col-md-3">
                                        <div class="vl"></div>
                                        <div style="margin-left: 10px;">
-                                          <i class="fas fa-edit" style="margin-right: 11px;color: #04075E;"></i>
-                                          <i class="fas fa-trash" style="color: #04075E;"></i>
+                                          <i class="fas fa-edit" style="margin-right: 11px;color: #04075E;cursor: pointer;" (click)="openDialogUpdateReduction(reduction._id)"></i>
+                                          <i class="fas fa-trash" style="color: #04075E;cursor: pointer;" (click)="deleteReduction(reduction._id)"></i>
                                        </div>
 
                                     </div><!--col-->
@@ -82,27 +83,26 @@
 
                         <div class="col-md-4">
                               <p class="titleFront">Livraison gratuite <i class="fas fa-plus-square iconInfo" style="cursor: pointer;" (click)="openDialogAddLivraison()"></i></p>
-                              <div class="card" style="background-color: #F6F6FF;border-color: #F6F6FF;">
+                              <div class="card" style="background-color: #F6F6FF;border-color: #F6F6FF;margin-bottom: 10px;" *ngFor="let livraison of listLivraison">
                                <div class="card-body">
 
                                  <div class="row">
                                     <div class="col-md-6">
                                        <div style="cursor: pointer;" (click)="openDialogLivraison()">
-                                         <img src="assets/images/pt.png" width="30px;">
-                                         <span class="subTitle">dakar</span>
+                                         <span class="subTitle">{{livraison?.typesPoint.nom}}</span>
                                         </div>
                                     </div><!--col-->
                                     <div class="col-md-3">
                                        <div>
                                          <div class="vl"></div>
-                                         <span style="font-size: 11px;margin-left: 4px;">20 points</span>
+                                         <span style="font-size: 11px;margin-left: 4px;">{{livraison?.point}} points</span>
                                        </div>
                                     </div><!--col-->
                                     <div class="col-md-3">
                                        <div class="vl"></div>
                                        <div style="margin-left: 10px;">
-                                          <i class="fas fa-edit" style="margin-right: 11px;color: #04075E;"></i>
-                                          <i class="fas fa-trash" style="color: #04075E;"></i>
+                                          <i class="fas fa-edit" style="margin-right: 11px;color: #04075E;cursor: pointer;" (click)="openDialogUpdateLivraison(livraison._id)"></i>
+                                          <i class="fas fa-trash" style="color: #04075E;cursor: pointer;" (click)="deleteLivraison(livraison._id)"></i>
                                        </div>
 
                                     </div><!--col-->
@@ -123,29 +123,28 @@
                     <div class="row contentInfo">
                        <div class="col-md-6">
 
-                             <p class="titleFront">Points visite <i class="fas fa-plus-square iconInfo"></i></p>
+                             <p class="titleFront">Points visite <i class="fas fa-plus-square iconInfo" style="cursor: pointer;" (click)="openDialogAddVisite()"></i></p>
 
-                             <div class="card" style="background-color: #F6F6FF;border-color: #F6F6FF;">
+                             <div class="card" style="background-color: #F6F6FF;border-color: #F6F6FF;margin-bottom: 10px;" *ngFor="let visite of listVisite">
                                <div class="card-body">
 
                                   <div class="row">
                                     <div class="col-md-6">
                                        <div>
-                                         <img src="assets/images/pt.png" width="30px;">
-                                         <span class="subTitle">1 facture</span>
+                                         <span class="subTitle">{{visite?.typesPoint.nom}}</span>
                                         </div>
                                     </div><!--col-->
                                     <div class="col-md-3">
                                        <div>
                                          <div class="vl"></div>
-                                         <span style="font-size: 11px;margin-left: 4px;">10 points</span>
+                                         <span style="font-size: 11px;margin-left: 4px;">{{visite?.point}} points</span>
                                        </div>
                                     </div><!--col-->
                                     <div class="col-md-3">
                                        <div class="vl"></div>
                                        <div style="margin-left: 10px;">
-                                          <i class="fas fa-edit" style="margin-right: 11px;color: #04075E;"></i>
-                                          <i class="fas fa-trash" style="color: #04075E;"></i>
+                                          <i class="fas fa-edit" style="margin-right: 11px;color: #04075E;cursor: pointer;" (click)="openDialogUpdateVisite(visite._id)"></i>
+                                          <i class="fas fa-trash" style="color: #04075E;cursor: pointer;" (click)="deleteVisite(visite._id)"></i>
                                        </div>
 
                                     </div><!--col-->
@@ -158,29 +157,28 @@
                        </div><!--col-->
                        <div class="col-md-6">
 
-                          <p class="titleFront">Par budget dépensé <i class="fas fa-plus-square iconInfo"></i></p>
+                          <p class="titleFront">Par budget dépensé <i class="fas fa-plus-square iconInfo" style="cursor: pointer;" (click)="openDialogAddBudget()"></i></p>
 
-                             <div class="card" style="background-color: #F6F6FF;border-color: #F6F6FF;">
+                             <div class="card" style="background-color: #F6F6FF;border-color: #F6F6FF;margin-bottom: 10px;" *ngFor="let budget of listBudget">
                                <div class="card-body">
 
                                   <div class="row">
                                     <div class="col-md-6">
                                        <div>
-                                         <img src="assets/images/pt.png" width="30px;">
-                                         <span class="subTitle">500 cfa</span>
+                                         <span class="subTitle">{{budget?.achat}} cfa</span>
                                         </div>
                                     </div><!--col-->
                                     <div class="col-md-3">
                                        <div>
                                          <div class="vl"></div>
-                                         <span style="font-size: 11px;margin-left: 4px;">1 Points(100x)</span>
+                                         <span style="font-size: 11px;margin-left: 4px;">{{budget?.point}} Points</span>
                                        </div>
                                     </div><!--col-->
                                     <div class="col-md-3">
                                        <div class="vl"></div>
                                        <div style="margin-left: 10px;">
-                                          <i class="fas fa-edit" style="margin-right: 11px;color: #04075E;"></i>
-                                          <i class="fas fa-trash" style="color: #04075E;"></i>
+                                          <i class="fas fa-edit" style="margin-right: 11px;color: #04075E;" (click)="openDialogUpdadeBudget(budget._id)"></i>
+                                          <i class="fas fa-trash" style="color: #04075E;cursor: pointer;" (click)="deleteBudget(budget._id)"></i>
                                        </div>
 
                                     </div><!--col-->

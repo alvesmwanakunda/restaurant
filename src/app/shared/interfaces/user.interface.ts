@@ -7,4 +7,5 @@ export interface IClient{
   phone:string;
   password:string;
   valid:boolean;
+  poste:string;
 }

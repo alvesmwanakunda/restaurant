@@ -1,0 +1,71 @@
+<mat-card>
+  <mat-card-content>
+
+    <div class="text-center">
+      <p class="titleFront">Nouveau Produit</p>
+    </div>
+
+    <form [formGroup]="produitForm" enctype='multipart/form-data' novalidate>
+
+      <div>
+     
+         <div class="container" style="font-size: 13px;">
+     
+           <div class="row">
+             <div class="col-md-6">
+     
+               <mat-form-field appearance="outline" class="example-full-width">
+                 <mat-label class="labelFrom">Nom</mat-label>
+                 <input matInput formControlName="nom" required>
+                       <mat-icon matTooltip="{{account_validation_messages.nom[0].message}}"
+                           *ngIf="produitForm.get('nom').hasError(account_validation_messages.nom[0].type) && (produitForm.get('nom').dirty || produitForm.get('nom').touched)"
+                           style="cursor: pointer;" matSuffix>
+                           <i class="fas fa-exclamation-circle"></i>
+                         </mat-icon>
+                 </mat-form-field>
+     
+             </div><!--col-md-6-->
+             <div class="col-md-6">
+     
+               <mat-form-field appearance="outline" class="example-full-width">
+                 <mat-label class="labelFrom">Quantite</mat-label>
+                 <input type="number" matInput formControlName="quantite" required>
+                   <mat-icon matTooltip="{{account_validation_messages.quantite[0].message}}"
+                           *ngIf="produitForm.get('quantite').hasError(account_validation_messages.quantite[0].type) && (produitForm.get('quantite').dirty || produitForm.get('quantite').touched)"
+                           style="cursor: pointer;" matSuffix>
+                           <i class="fas fa-exclamation-circle"></i>
+                   </mat-icon>
+               </mat-form-field>
+     
+             </div><!--col-md-6-->
+           </div><!--row-->
+     
+         
+           <div class="row" style="margin-bottom: 10px;">
+             <div class="col-md-12">
+              <input type="file" class="file-input" accept='image/*' (change)="onFileSelected($event)" #fileUpload>
+              <button (click)="fileUpload.click()" mat-mini-fab color="primary" style="background-color: #10ae58;">
+                <mat-icon>add_a_photo</mat-icon>
+             </button> {{fileName}}
+             </div>
+           </div>
+     
+           <mat-form-field appearance="outline" class="example-full-width">
+                 <mat-label class="labelFrom">description</mat-label>
+                 <textarea matInput formControlName="description"></textarea>
+           </mat-form-field>
+         </div>
+     
+       </div>
+       <div align="center">
+         <button mat-button type="submit" (click)="addProduit()" cdkFocusInitial style=" background:linear-gradient(90deg, #0c1733, #3fd27e) !important;color:#fff">Ajouter produit</button>
+       </div>
+       
+     
+     
+     
+     </form>
+
+  </mat-card-content>
+</mat-card>
+

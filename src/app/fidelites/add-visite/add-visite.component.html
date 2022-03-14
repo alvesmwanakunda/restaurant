@@ -1,0 +1,55 @@
+<mat-dialog-content class="mat-typography">
+
+    <div class="container-fluid">
+  
+       <div class="text-center">
+         <p class="titleFront">Points Visites</p>
+       </div>
+  
+       <form [formGroup]="visiteForm" novalidate>
+  
+        <div class="row" style="padding-top: 65px;font-size: 13px;">
+  
+          <div class="col-md-6">
+    
+            <mat-form-field appearance="outline" class="example-full-width">
+              <mat-label class="labelFrom">Pour chaque passage à la caisse offrir </mat-label>
+              <input type="number" matInput formControlName="point" required>
+                <mat-icon matTooltip="{{account_validation_messages.point[0].message}}"
+                *ngIf="visiteForm.get('point').hasError(account_validation_messages.point[0].type) && (visiteForm.get('point').dirty || visiteForm.get('point').touched)"
+                style="cursor: pointer;" matSuffix>
+                <i class="fas fa-exclamation-circle"></i>
+              </mat-icon>
+            </mat-form-field>
+    
+          </div><!--col-->
+          <div class="col-md-6">
+    
+            <mat-form-field appearance="outline" class="example-full-width">
+              <mat-label class="labelFrom">Points de</mat-label>
+              <mat-select formControlName="typesPoint" required>
+                <mat-option *ngFor="let type of types" value="{{type._id}}">{{type.nom}}</mat-option>
+              </mat-select>
+              <mat-icon matTooltip="{{account_validation_messages.typesPoint[0].message}}"
+                *ngIf="visiteForm.get('typesPoint').hasError(account_validation_messages.typesPoint[0].type) && (visiteForm.get('typesPoint').dirty || visiteForm.get('typesPoint').touched)"
+                style="cursor: pointer;" matSuffix>
+                <i class="fas fa-exclamation-circle"></i>
+              </mat-icon>
+            </mat-form-field>
+    
+          </div><!--col-->
+    
+    
+        </div><!--row-->
+    
+    
+         <div class="text-center">
+          <button mat-button mat-dialog-close>Fermer</button>
+          <button mat-button type="submit" (click)="addVisite()" cdkFocusInitial style=" background:linear-gradient(90deg, #0c1733, #3fd27e) !important;color:#fff">Mettre à jour</button>
+        </div>
+  
+       </form>
+  
+    </div><!--fluid-->
+  
+  </mat-dialog-content>

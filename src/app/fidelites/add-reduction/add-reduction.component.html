@@ -6,90 +6,82 @@
        <p class="titleFront">Cadeau réduction</p>
      </div>
 
-    <div class="row" style="padding-top: 65px;font-size: 13px;">
+     <form [formGroup]="reductionForm" novalidate>
 
-      <div class="col-md-3">
+      <div class="row" style="padding-top: 65px;font-size: 13px;">
 
-        <mat-form-field appearance="outline" class="example-full-width">
-          <mat-label class="labelFrom">Pour</mat-label>
-          <input type="number" matInput >
-        </mat-form-field>
-
-      </div><!--col-->
-      <div class="col-md-3">
-
-        <mat-form-field appearance="outline" class="example-full-width">
-          <mat-label class="labelFrom">Points de</mat-label>
-          <mat-select>
-            <mat-option value="one">First option</mat-option>
-            <mat-option value="two">Second option</mat-option>
-          </mat-select>
-        </mat-form-field>
-
-      </div><!--col-->
-      <div class="col-md-3">
-
-        <mat-form-field appearance="outline" class="example-full-width">
-          <mat-label class="labelFrom">Appliquer une réduction de</mat-label>
-          <input matInput >
-        </mat-form-field>
-
-      </div><!--col-->
-
-      <div class="col-md-3">
-        <mat-form-field appearance="outline" class="example-full-width">
-          <mat-select>
-            <mat-option value="one">First option</mat-option>
-            <mat-option value="two">Second option</mat-option>
-          </mat-select>
-        </mat-form-field>
+        <div class="col-md-2">
+  
+          <mat-form-field appearance="outline" class="example-full-width">
+            <mat-label class="labelFrom">Pour</mat-label>
+            <input type="number" matInput formControlName="point" required>
+            <mat-icon matTooltip="{{account_validation_messages.point[0].message}}"
+            *ngIf="reductionForm.get('point').hasError(account_validation_messages.point[0].type) && (reductionForm.get('point').dirty || reductionForm.get('point').touched)"
+            style="cursor: pointer;" matSuffix>
+            <i class="fas fa-exclamation-circle"></i>
+           </mat-icon>
+          </mat-form-field>
+  
+        </div><!--col-->
+        <div class="col-md-3">
+  
+          <mat-form-field appearance="outline" class="example-full-width">
+            <mat-label class="labelFrom">Points de</mat-label>
+            <mat-select formControlName="typesPoint">
+              <mat-option *ngFor="let type of types" value="{{type._id}}">{{type.nom}}</mat-option>
+            </mat-select>
+            <mat-icon matTooltip="{{account_validation_messages.typesPoint[0].message}}"
+            *ngIf="reductionForm.get('typesPoint').hasError(account_validation_messages.typesPoint[0].type) && (reductionForm.get('typesPoint').dirty || reductionForm.get('typesPoint').touched)"
+            style="cursor: pointer;" matSuffix>
+            <i class="fas fa-exclamation-circle"></i>
+           </mat-icon>
+          </mat-form-field>
+  
+        </div><!--col-->
+        <div class="col-md-3">
+  
+          <mat-form-field appearance="outline" class="example-full-width">
+            <mat-label class="labelFrom">Appliquer une réduction de</mat-label>
+            <input matInput type="number" formControlName="montant" required>
+            <mat-icon matTooltip="{{account_validation_messages.montant[0].message}}"
+            *ngIf="reductionForm.get('montant').hasError(account_validation_messages.montant[0].type) && (reductionForm.get('montant').dirty || reductionForm.get('montant').touched)"
+            style="cursor: pointer;" matSuffix>
+            <i class="fas fa-exclamation-circle"></i>
+           </mat-icon>
+          </mat-form-field>
+  
+        </div><!--col-->
+  
+        <div class="col-md-4">
+  
+          <mat-form-field appearance="outline" class="example-full-width">
+            <mat-label class="labelFrom">Produit</mat-label>
+            <mat-select formControlName="produit" required>
+              <mat-option *ngFor="let produit of produits" value="{{produit._id}}">{{produit?.nom}}</mat-option>
+            </mat-select>
+            <mat-icon matTooltip="{{account_validation_messages.produit[0].message}}"
+            *ngIf="reductionForm.get('produit').hasError(account_validation_messages.produit[0].type) && (reductionForm.get('produit').dirty || reductionForm.get('produit').touched)"
+            style="cursor: pointer;" matSuffix>
+            <i class="fas fa-exclamation-circle"></i>
+           </mat-icon>
+          </mat-form-field>
+          
+        </div>
+  
+      </div><!--row-->
+  
+       <div class="text-center">
+         <button mat-button mat-dialog-close>Fermer</button>
+         <button mat-button type="submit" (click)="addReduction()" cdkFocusInitial style=" background: linear-gradient(90deg, #0c1733, #3fd27e) !important;color:#fff">Ajouter réduction</button>
       </div>
 
-    </div><!--row-->
 
-    <div class="row" style="padding-top: 10px;font-size: 13px;">
 
-      <div class="col-md-4">
+     </form>
 
-        <mat-form-field appearance="outline" class="example-full-width">
-          <mat-label class="labelFrom">Catégorie</mat-label>
-          <mat-select>
-            <mat-option value="one">First option</mat-option>
-            <mat-option value="two">Second option</mat-option>
-          </mat-select>
-        </mat-form-field>
-
-      </div><!--col-->
-      <div class="col-md-4">
-
-        <mat-form-field appearance="outline" class="example-full-width">
-          <mat-label class="labelFrom">Sous-Catégorie</mat-label>
-          <mat-select>
-            <mat-option value="one">First option</mat-option>
-            <mat-option value="two">Second option</mat-option>
-          </mat-select>
-        </mat-form-field>
-
-      </div><!--col-->
-
-      <div class="col-md-4">
-        <mat-form-field appearance="outline" class="example-full-width">
-          <mat-label class="labelFrom">Produit</mat-label>
-          <mat-select>
-            <mat-option value="one">First option</mat-option>
-            <mat-option value="two">Second option</mat-option>
-          </mat-select>
-        </mat-form-field>
-      </div>
-
-    </div><!--row-->
-
-     <div class="text-center">
-       <button mat-button style=" background: #04075E !important;color:#fff">Ajouter cadeau</button>
+    <div *ngIf="onLoadForm" style="padding-top: 20px;">
+      <mat-progress-bar mode="indeterminate"></mat-progress-bar>
     </div>
-
-
-
   </div><!--fluid-->
 
 </mat-dialog-content>
