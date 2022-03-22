@@ -6,6 +6,8 @@ import { FormsModule, ReactiveFormsModule } from '@angular/forms';
 import { ProduitService } from 'src/app/shared/services/produit.service';
 import { EntrepriseService } from 'src/app/shared/services/entreprise.service';
 import { FileUploadModule } from 'ng2-file-upload';
+import { AddCadeauComponent } from '../add-cadeau/add-cadeau.component';
+import { AddReductionComponent } from '../add-reduction/add-reduction.component';
 
 
 @NgModule({
@@ -18,6 +20,6 @@ import { FileUploadModule } from 'ng2-file-upload';
     FileUploadModule,
   ],
   exports:[ProduitComponent],
-  providers:[ProduitService, EntrepriseService]
+  providers:[ProduitService, EntrepriseService,AddCadeauComponent,AddReductionComponent]
 })
 export class ProduitModule { }

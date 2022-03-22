@@ -3,4 +3,6 @@ export interface CadeauInterface {
     point: number;
     produit: string;
     typesPoint: string;
+    dateDebut: Date;
+    dateFin: Date;
   }

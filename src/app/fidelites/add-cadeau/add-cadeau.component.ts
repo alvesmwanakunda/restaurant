@@ -160,14 +160,14 @@ export class AddCadeauComponent implements OnInit {
     }
   }
 
-  viewBooster(){
-    if(this.isBooster){
-      this.isBooster=false;
-    }else{
+  viewBooster(booster: boolean){
+
+    console.log("Booster", booster);
+
+    if(booster){
       this.isBooster=true;
+    }else{
+      this.isBooster=false;
     }
   }
-
-
-
 }

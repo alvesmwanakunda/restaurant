@@ -3,5 +3,7 @@ export interface ReductionInterface {
     point: number;
     produit: string;
     typesPoint: string;
-    montant:number
+    montant:number,
+    facture:Boolean,
+    devise:string,
   }

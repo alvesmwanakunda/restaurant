@@ -30,6 +30,8 @@ export class UpdateCadeauComponent implements OnInit {
   produits:any;
   entreprise:any;
   idCadeau:any;
+  datedebut:any;
+  datefin:any;
 
   constructor(
     private cadeauService: CadeauService, 
@@ -52,11 +54,20 @@ export class UpdateCadeauComponent implements OnInit {
         try {
 
             this.cadeau = res.message;
+
+            if(this.cadeau.dateDebut){
+               this.datedebut = new Date(this.cadeau.dateDebut).toISOString().split('T')[0];
+            }
+            if(this.cadeau.dateFin){
+              this.datefin = new Date(this.cadeau.dateFin).toISOString().split('T')[0];
+            }
             if(this.cadeau){
               this.cadeauForm = new FormGroup({
                 point: new FormControl(this.cadeau.point,[Validators.required]),
                 produit:new FormControl(this.cadeau.produit,[Validators.required]),
-                typesPoint:new FormControl(this.cadeau.typesPoint,[Validators.required])
+                typesPoint:new FormControl(this.cadeau.typesPoint,[Validators.required]),
+                dateDebut:new FormControl(this.cadeau.dateDebut,null),
+                dateFin: new FormControl(this.cadeau.dateFin,null)
               })
             }
           

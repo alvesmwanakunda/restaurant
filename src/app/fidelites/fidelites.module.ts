@@ -10,7 +10,6 @@ import { LivraisonModule } from './livraison/livraison.module';
 import { AddCadeauModule } from './add-cadeau/add-cadeau.module';
 import { AddReductionModule } from './add-reduction/add-reduction.module';
 import { AddLivraisonModule } from './add-livraison/add-livraison.module';
-import { ProduitModule } from './produit/produit.module';
 import { CadeauService } from '../shared/services/cadeau.service';
 import { EntrepriseService } from '../shared/services/entreprise.service';
 import { UpdateCadeauModule } from './update-cadeau/update-cadeau.module';
@@ -38,7 +37,6 @@ import { AddBudgetModule } from './add-budget/add-budget.module';
     AddCadeauModule,
     AddReductionModule,
     AddLivraisonModule,
-    ProduitModule,
     UpdateCadeauModule,
     UpdateReductionModule,
     UpdateLivraisonModule,

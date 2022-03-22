@@ -38,7 +38,7 @@
     
           </div><!--col-->
 
-          <div class="col-md-3">
+          <div class="col-md-5">
     
             <mat-form-field appearance="outline" class="example-full-width">
               <mat-label class="labelFrom">Appliquer une réduction de</mat-label>
@@ -53,23 +53,47 @@
           </div><!--col-->
 
 
-          <div class="col-md-4">
+          <div class="col-md-2">
     
             <mat-form-field appearance="outline" class="example-full-width">
-              <mat-label class="labelFrom">Offrir</mat-label>
-              <mat-select name="produit" [(ngModel)]="reduction.produit" #produit="ngModel" required>
-                <mat-option *ngFor="let produit of produits" value="{{produit._id}}">{{produit?.nom}}</mat-option>
+              <mat-label class="labelFrom">Devise</mat-label>
+              <mat-select matInput name="devise" [(ngModel)]="reduction.devise" #devise="ngModel" required>
+                <mat-option value="fcfa">fcfa</mat-option>
+                <mat-option value="%">%</mat-option>
               </mat-select>
             </mat-form-field>
-            <div *ngIf="produit.errors && (produit.dirty || produit.touched)">
-                <div [hidden]="!produit.errors.required">
-                  <p class="text-danger" style="font-size: 13px;">Ce champ est obligatoire!</p>
-                </div>
+            <div *ngIf="devise.errors && (devise.dirty || devise.touched)">
+              <div [hidden]="!devise.errors.required">
+                <p class="text-danger" style="font-size: 13px;">Ce champ est obligatoire!</p>
             </div>
+          </div>
            
           </div><!--col-->
     
         </div><!--row-->
+
+        <div class="row" style="font-size: 13px;">
+          <div class="col-md-6" *ngIf="!hProduit">
+ 
+            <mat-form-field appearance="outline" class="example-full-width">
+              <mat-label class="labelFrom">Produits</mat-label>
+              <mat-select name="produit" [(ngModel)]="reduction.produit" #produit="ngModel">
+                <mat-option value=""></mat-option>
+                <mat-option *ngFor="let produit of produits" value="{{produit._id}}" (click)="hideFacture()">{{produit?.nom}}</mat-option>
+              </mat-select>
+            </mat-form-field>
+           
+ 
+          </div><!--col-md-6-->
+ 
+          <div class="col-md-6">
+           <div style="float:left;">
+             <section class="example-section">
+               <mat-checkbox class="example-margin" (change)="hideProduit($event.checked)" name="facture" [(ngModel)]="reduction.facture" #facture="ngModel">Sur la facturation</mat-checkbox>
+             </section>
+           </div><!----> 
+          </div><!--col-md-6-->
+       </div><!--row-->
   
         <div class="text-center">
            <button mat-button mat-dialog-close>Fermer</button>

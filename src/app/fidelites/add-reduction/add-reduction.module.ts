@@ -7,6 +7,7 @@ import { ReductionService } from 'src/app/shared/services/reduction.service';
 import { ProduitService } from 'src/app/shared/services/produit.service';
 import { TypePointService } from 'src/app/shared/services/type-point.service';
 import { EntrepriseService } from 'src/app/shared/services/entreprise.service';
+import { ProduitModule } from '../produit/produit.module';
 
 
 @NgModule({
@@ -15,7 +16,8 @@ import { EntrepriseService } from 'src/app/shared/services/entreprise.service';
     CommonModule,
     SharedModule,
     FormsModule,
-    ReactiveFormsModule
+    ReactiveFormsModule,
+    ProduitModule
   ],
   exports:[AddReductionComponent],
   providers:[ReductionService,ProduitService,TypePointService,EntrepriseService]

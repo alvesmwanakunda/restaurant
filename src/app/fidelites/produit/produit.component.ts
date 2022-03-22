@@ -2,6 +2,7 @@ import { Component, OnInit, ViewEncapsulation, ViewChild } from '@angular/core';
 import { ProduitService } from 'src/app/shared/services/produit.service';
 import { EntrepriseService } from 'src/app/shared/services/entreprise.service';
 import { AddCadeauComponent } from '../add-cadeau/add-cadeau.component';
+import { AddReductionComponent } from '../add-reduction/add-reduction.component';
 import {
   FormBuilder,
   FormControl,
@@ -30,7 +31,8 @@ export class ProduitComponent implements OnInit {
     private produitService:ProduitService,
     private entrepriseService:EntrepriseService,
     public fb: FormBuilder,
-    private addCadeauComponent: AddCadeauComponent
+    private addCadeauComponent: AddCadeauComponent,
+    private addReductionComponent: AddReductionComponent
     ) {
       this.produitFormErrors = {
         nom: {},
@@ -115,6 +117,9 @@ export class ProduitComponent implements OnInit {
             console.log("Response produit", res);
             this.addCadeauComponent.viewProduit();
             this.addCadeauComponent.produitsList(this.entreprise._id);
+
+            this.addReductionComponent.viewProduit();
+            this.addReductionComponent.produitsList(this.entreprise._id);
             //this.fideliteComponent.
 
           } catch (error) {

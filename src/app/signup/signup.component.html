@@ -32,7 +32,7 @@
                   <mat-select matInput formControlName="categorie" required>
                     <mat-option value="Restaurant">Restaurant</mat-option>
                     <mat-option value="Supermarché">Supermarché</mat-option>
-                    <mat-option value="Sport">Sprot</mat-option>
+                    <mat-option value="Sport">Sport</mat-option>
                   </mat-select>
                   <mat-icon matTooltip="{{account_validation_messages.categorie[0].message}}"
                       *ngIf="signupForm.get('categorie').hasError(account_validation_messages.categorie[0].type) && (signupForm.get('categorie').dirty || signupForm.get('categorie').touched  || (submitted))"

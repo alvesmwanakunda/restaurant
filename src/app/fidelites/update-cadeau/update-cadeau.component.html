@@ -54,6 +54,20 @@
           </div><!--col-->
     
         </div><!--row-->
+        <div class="row">
+          <div class="col-md-6">
+           <mat-form-field appearance="outline" class="example-full-width">
+             <mat-label class="labelFrom">Du</mat-label>
+             <input type="date" matInput name="dateDebut" [(ngModel)]="datedebut" #dateDebut="ngModel" >
+           </mat-form-field>
+          </div><!--col-md-6-->
+          <div class="col-md-6">
+             <mat-form-field appearance="outline" class="example-full-width">
+               <mat-label class="labelFrom">Au</mat-label>
+               <input type="date" matInput name="dateFin" [(ngModel)]="datefin" #dateFin="ngModel" >
+             </mat-form-field>
+          </div><!--col-md-6-->
+       </div><!--row-->
   
         <div class="text-center">
            <button mat-button mat-dialog-close>Fermer</button>

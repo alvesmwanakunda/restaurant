@@ -29,6 +29,7 @@ export class UpdateReductionComponent implements OnInit {
   produits:any;
   entreprise:any;
   idReduction:any;
+  hProduit: boolean = false;
 
   constructor(
     private entrepriseService:EntrepriseService,
@@ -55,9 +56,11 @@ export class UpdateReductionComponent implements OnInit {
            if(this.reduction){
              this.reductionForm = new FormGroup({
                point: new FormControl(this.reduction.point,[Validators.required]),
-               produit:new FormControl(this.reduction.produit,[Validators.required]),
+               produit:new FormControl(this.reduction.produit,null),
                typesPoint:new FormControl(this.reduction.typesPoint,[Validators.required]),
-               montant:new FormControl(this.reduction.montant,[Validators.required])
+               montant:new FormControl(this.reduction.montant,[Validators.required]),
+               devise:new FormControl(this.reduction.devise,[Validators.required]),
+               facture:new FormControl(this.reduction.facture,[Validators.required])
              })
            }
          
@@ -117,6 +120,19 @@ export class UpdateReductionComponent implements OnInit {
         console.log("Error",error);
       }
     })
+  }
+
+  hideProduit(booster: boolean){
+    if(!booster){
+      this.hProduit = false
+    }else{
+      this.hProduit = true
+      this.reduction.produit = null;
+    }
+  }
+
+  hideFacture(){
+    this.reduction.facture = false;
   }
 
 }

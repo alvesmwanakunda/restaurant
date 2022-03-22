@@ -28,6 +28,8 @@ export class AddReductionComponent implements OnInit {
   produits:any;
   types:any;
   onLoadForm: boolean = false;
+  isProduit: boolean = false;
+  hProduit: boolean = false;
 
   constructor(
     private entrepriseService:EntrepriseService,
@@ -52,12 +54,12 @@ export class AddReductionComponent implements OnInit {
       }
     ],
 
-    produit:[
+    /*produit:[
       {
         type:"required",
         message:"Ce champ est requis"
       }
-    ],
+    ],*/
 
     typesPoint:[
       {
@@ -67,6 +69,12 @@ export class AddReductionComponent implements OnInit {
     ],
 
     montant:[
+      {
+        type:"required",
+        message:"Ce champ est requis"
+      }
+    ],
+    devise:[
       {
         type:"required",
         message:"Ce champ est requis"
@@ -93,9 +101,11 @@ export class AddReductionComponent implements OnInit {
 
     this.reductionForm = new FormGroup({
       point:new FormControl("",[Validators.required]),
-      produit:new FormControl("",[Validators.required]),
+      produit:new FormControl("",null),
       typesPoint:new FormControl("",[Validators.required]),
       montant:new FormControl("",[Validators.required]),
+      facture:new FormControl("",null),
+      devise:new FormControl("",[Validators.required]),
     });
   }
 
@@ -149,6 +159,22 @@ export class AddReductionComponent implements OnInit {
             this.onLoadForm=false;
           }
       })
+    }
+  }
+
+  viewProduit(){
+    if(!this.isProduit){
+      this.isProduit = true
+    }else{
+      this.isProduit = false
+    }
+  }
+
+  hideProduit(booster: boolean){
+    if(!booster){
+      this.hProduit = false
+    }else{
+      this.hProduit = true
     }
   }
 
