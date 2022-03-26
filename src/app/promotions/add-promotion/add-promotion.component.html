@@ -12,7 +12,113 @@
 
     <div class="row">
 
-      <div class="col-md-3">
+      <div class="col-md-8">
+
+        <mat-horizontal-stepper labelPosition="bottom" [linear]="isLinear" #stepper>
+          <mat-step [stepControl]="firstFormGroup">
+            <form [formGroup]="firstFormGroup">
+              <ng-template matStepLabel>Ecrire un message</ng-template>
+              <mat-form-field>
+                <input matInput placeholder="Last name, First name" formControlName="firstCtrl" required>
+              </mat-form-field>
+              <div>
+                <button mat-button matStepperNext>Next</button>
+              </div>
+            </form>
+          </mat-step>
+          <mat-step [stepControl]="secondFormGroup">
+            <form [formGroup]="secondFormGroup">
+              <ng-template matStepLabel>Critère d'activation & cible</ng-template>
+              <mat-form-field>
+                <input matInput placeholder="Address" formControlName="secondCtrl" required>
+              </mat-form-field>
+              <div>
+                <button mat-button matStepperPrevious>Back</button>
+                <button mat-button matStepperNext>Next</button>
+              </div>
+            </form>
+          </mat-step>
+          <mat-step>
+            <ng-template matStepLabel>Segmentation</ng-template>
+            You are now done.
+            <div>
+              <button mat-button matStepperPrevious>Back</button>
+              <button mat-button (click)="stepper.reset()">Reset</button>
+            </div>
+          </mat-step>
+        </mat-horizontal-stepper>
+        
+
+        <!--<mat-stepper labelPosition="bottom" #stepper>
+          <mat-step>
+            <form [formGroup]="firstFormGroup">
+              <ng-template matStepLabel>Ecrire un message</ng-template>
+              <mat-form-field appearance="fill">
+                <mat-label>Name</mat-label>
+                <input matInput placeholder="Last name, First name" formControlName="firstCtrl" required>
+              </mat-form-field>
+              <div>
+                <button mat-button matStepperNext>Next</button>
+              </div>
+            </form>
+          </mat-step>
+          <mat-step>
+            <form [formGroup]="secondFormGroup">
+              <ng-template matStepLabel>Critère d'activation & cible</ng-template>
+              <mat-form-field appearance="fill">
+                <mat-label>Address</mat-label>
+                <input matInput formControlName="secondCtrl" placeholder="Ex. 1 Main St, New York, NY"
+                       required>
+              </mat-form-field>
+              <div>
+                <button mat-button matStepperPrevious>Back</button>
+                <button mat-button matStepperNext>Next</button>
+              </div>
+            </form>
+          </mat-step>
+          <mat-step>
+            <ng-template matStepLabel>Segmentation</ng-template>
+          
+          </mat-step>
+          <mat-step>
+            <ng-template matStepLabel>Paiement</ng-template>
+           
+          </mat-step>
+        </mat-stepper>-->
+
+      </div><!--col-md-8-->
+
+      <div class="col-md-4">
+
+        <mat-card>
+          <mat-card-content>
+            <p class="titreHeader" style="font-weight: 700;">Visualiser</p>
+            <div class="row">
+                <div class="col-md-6">
+                  <i class="fas fa-bullseye iconV"></i>
+                  <div class="vi1">
+                     <span style="font-size: 13px;color: #000;">Taille de la cible</span>
+                     <br/>
+                     <span style="font-size: 15px;font-weight: 800;">5 0000 000</span>
+                  </div>
+                </div>
+                <div class="col-md-6">
+                  <i class="fas fa-funnel-dollar iconV1"></i>
+                  <div class="vi2">
+                     <span style="font-size: 13px;color: #000;">Montant à payer</span>
+                     <br/>
+                     <span style="font-size: 15px;font-weight: 800;">5 0000 000</span>
+                  </div>
+
+                </div><!--col-->
+            </div><!--row-->
+
+          </mat-card-content>
+      </mat-card>
+
+      </div>
+
+     <!-- <div class="col-md-3">
 
         <mat-card style="margin-bottom: 20px;">
             <mat-card-content>
@@ -39,11 +145,11 @@
                       </mat-select>
                    </mat-form-field>
 
-                 </div><!--col-->
+                 </div>
                  <div class="col-md-4" style="padding-top: 4px;">
                    <button mat-raised-button class="sizeb">OK</button>
-                 </div><!--col-->
-              </div><!--row-->
+                 </div>
+              </div>
 
             </mat-card-content>
         </mat-card>
@@ -68,7 +174,7 @@
             </mat-card-content>
         </mat-card>
 
-      </div><!--col-->
+      </div>
 
       <div class="col-md-3">
 
@@ -102,13 +208,13 @@
                   <mat-form-field appearance="outline" class="example-full-width">
                     <input type="number" matInput>
                   </mat-form-field>
-                </div><!--col-->
+                </div>
                 <div class="col-md-6">
                   <mat-form-field appearance="outline" class="example-full-width">
                     <input type="number" matInput>
                   </mat-form-field>
-                </div><!--col-->
-              </div><!--row-->
+                </div>
+              </div>
 
               <div style="margin: 0 65px 0 69px;">
                 <button mat-raised-button class="sizebv">Valider</button>
@@ -146,7 +252,7 @@
                     <mat-label class="labelFrom">Entre</mat-label>
                     <input type="number" matInput>
                   </mat-form-field>
-                </div><!--col-->
+                </div>
                 <div class="col-md-2">et</div>
                 <div class="col-md-4 hposition">
                   <mat-form-field appearance="legacy" class="example-full-width">
@@ -155,7 +261,7 @@
                   </mat-form-field>
                 </div>
 
-              </div><!--row-->
+              </div>
               <div class="row" style="font-size: 11px;">
                  <div class="col-md-4">
                    <p style="font-size: 13px;color: #000;">Sexe:</p>
@@ -170,7 +276,7 @@
                   </mat-form-field>
 
                  </div>
-              </div><!--row-->
+              </div>
 
               <div class="row" style="font-size: 11px;">
                  <div class="col-md-4">
@@ -186,7 +292,7 @@
                   </mat-form-field>
 
                  </div>
-              </div><!--row-->
+              </div>
 
               <div class="row" style="font-size: 11px;">
                  <div class="col-md-4">
@@ -202,42 +308,16 @@
                   </mat-form-field>
 
                  </div>
-              </div><!--row-->
+              </div>
 
             </mat-card-content>
         </mat-card>
 
-      </div><!--col-->
+      </div>
 
       <div class="col-md-6">
 
-         <mat-card>
-            <mat-card-content>
-              <p class="titreHeader" style="font-weight: 700;">Visualiser</p>
-              <div class="row">
-                  <div class="col-md-6">
-                    <i class="fas fa-bullseye iconV"></i>
-                    <div class="vi1">
-                       <span style="font-size: 13px;color: #000;">Taille de la cible</span>
-                       <br/>
-                       <span style="font-size: 15px;font-weight: 800;">5 0000 000</span>
-                    </div>
-                  </div>
-                  <div class="col-md-6">
-                    <i class="fas fa-funnel-dollar iconV1"></i>
-                    <div class="vi2">
-                       <span style="font-size: 13px;color: #000;">Montant à payer</span>
-                       <br/>
-                       <span style="font-size: 15px;font-weight: 800;">5 0000 000</span>
-                    </div>
-
-                  </div><!--col-->
-              </div><!--row-->
-
-            </mat-card-content>
-        </mat-card>
-
-      </div><!--col-->
+      </div>-->
 
     </div><!--row-->
 

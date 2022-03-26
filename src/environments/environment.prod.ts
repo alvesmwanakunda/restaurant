@@ -1,4 +1,4 @@
 export const environment = {
   production: true,
-  BASE_API_URL: "https://maelhair.com"
+  BASE_API_URL: "https://wefid.alwaysdata.net/wefid"
 };
