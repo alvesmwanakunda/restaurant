@@ -83,8 +83,7 @@ export class ClientsComponent implements OnInit, AfterViewInit {
               point:data.point,
               avoir:data.avoir
            })) as ClientInterface[];
-           //console.log("Data", this.dataSource);
-           //console.log("Clients", res);
+          
       } catch (error) {
         console.log("Erreur", error);
       }

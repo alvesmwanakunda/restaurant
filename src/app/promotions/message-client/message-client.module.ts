@@ -4,6 +4,10 @@ import { MessageClientRoutingModule } from './message-client-routing.module';
 import { SharedModule } from 'src/app/shared/shared.module';
 import { MessageClientComponent } from './message-client.component';
 import { NavBarModule } from 'src/app/menus/nav-bar/nav-bar.module';
+import { NgbModule } from '@ng-bootstrap/ng-bootstrap';
+import { Types } from 'src/app/shared/class/types';
+
+
 
 
 @NgModule({
@@ -12,7 +16,9 @@ import { NavBarModule } from 'src/app/menus/nav-bar/nav-bar.module';
     CommonModule,
     MessageClientRoutingModule,
     SharedModule,
-    NavBarModule
-  ]
+    NavBarModule,
+    NgbModule
+  ],
+  providers:[Types]
 })
 export class MessageClientModule { }

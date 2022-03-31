@@ -18,6 +18,10 @@ import {MatNativeDateModule} from '@angular/material/core';
 import {MatProgressBarModule} from '@angular/material/progress-bar';
 import {MatSnackBarModule} from '@angular/material/snack-bar';
 import {MatStepperModule} from '@angular/material/stepper';
+import { MatSortModule } from '@angular/material/sort';
+import { MatMenuModule } from '@angular/material/menu';
+import {MatRadioModule} from '@angular/material/radio';
+
 
 
 
@@ -42,7 +46,10 @@ import {MatStepperModule} from '@angular/material/stepper';
     MatNativeDateModule,
     MatProgressBarModule,
     MatSnackBarModule,
-    MatStepperModule
+    MatStepperModule,
+    MatSortModule,
+    MatMenuModule,
+    MatRadioModule
   ],
   exports:[
     MatCardModule,
@@ -62,7 +69,10 @@ import {MatStepperModule} from '@angular/material/stepper';
     MatNativeDateModule,
     MatProgressBarModule,
     MatSnackBarModule,
-    MatStepperModule
+    MatStepperModule,
+    MatSortModule,
+    MatMenuModule,
+    MatRadioModule
   ]
 })
 export class SharedModule { }

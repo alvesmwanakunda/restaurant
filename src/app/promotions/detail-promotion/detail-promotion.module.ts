@@ -2,6 +2,7 @@ import { NgModule } from '@angular/core';
 import { CommonModule } from '@angular/common';
 import { DetailPromotionComponent } from './detail-promotion.component';
 import { SharedModule } from 'src/app/shared/shared.module';
+import { PromotionsService } from 'src/app/shared/services/promotions.service';
 
 
 
@@ -11,6 +12,7 @@ import { SharedModule } from 'src/app/shared/shared.module';
     CommonModule,
     SharedModule
   ],
-  exports:[DetailPromotionComponent]
+  exports:[DetailPromotionComponent],
+  providers:[PromotionsService]
 })
 export class DetailPromotionModule { }

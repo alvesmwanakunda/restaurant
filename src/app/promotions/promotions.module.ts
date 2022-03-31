@@ -5,6 +5,11 @@ import { PromotionsRoutingModule } from './promotions-routing.module';
 import { SharedModule } from '../shared/shared.module';
 import { NavBarModule } from '../menus/nav-bar/nav-bar.module';
 import { DetailPromotionModule } from './detail-promotion/detail-promotion.module';
+import { PromotionsService } from '../shared/services/promotions.service';
+import { EntrepriseService } from '../shared/services/entreprise.service';
+import { FormsModule, ReactiveFormsModule } from '@angular/forms';
+import { TypesList } from '../shared/class/typesList';
+import { Criteres } from '../shared/class/critere';
 
 
 @NgModule({
@@ -14,7 +19,10 @@ import { DetailPromotionModule } from './detail-promotion/detail-promotion.modul
     PromotionsRoutingModule,
     SharedModule,
     NavBarModule,
-    DetailPromotionModule
-  ]
+    DetailPromotionModule,
+    FormsModule,
+    ReactiveFormsModule,
+  ],
+  providers:[PromotionsService, EntrepriseService, TypesList, Criteres]
 })
 export class PromotionsModule { }
