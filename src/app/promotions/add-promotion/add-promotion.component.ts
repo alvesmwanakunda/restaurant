@@ -36,6 +36,7 @@ export class AddPromotionComponent implements OnInit {
   isInterval:boolean=false;
   isNombre:boolean=false;
   isValid:boolean=false;
+  isSms:boolean=false;
 
   constructor(
     private _formBuilder:FormBuilder,
@@ -216,4 +217,12 @@ export class AddPromotionComponent implements OnInit {
     this.isValid=true
   }
 
+  selectSms(event){
+    console.log("Event", event);
+    if(event=="Sms"){
+      this.isSms=false
+    }else{
+      this.isSms=true
+    }
+  }
 }

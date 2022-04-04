@@ -16,7 +16,7 @@ import { DeleteUserComponent } from './delete-user/delete-user.component';
 })
 export class ParametresComponent implements OnInit, AfterViewInit {
 
-  displayedColumns: string[] = ['nom','poste','identifiant', 'actions'];
+  displayedColumns: string[] = ['nom','prenom','poste','identifiant', 'actions'];
   dataSource = new MatTableDataSource<IClient>();
   idEntreprise:any;
   entreprises:any=[]
@@ -66,7 +66,7 @@ export class ParametresComponent implements OnInit, AfterViewInit {
 
 
   openDialog(){
-    const dialogRef = this.dialog.open(AddPersonnelComponent,{width:'40%',height:'65%'});
+    const dialogRef = this.dialog.open(AddPersonnelComponent,{width:'40%',height:'67%'});
     dialogRef.afterClosed().subscribe(result => {
       console.log(`Dialog result: ${result}`);
       this.getAllAgent(this.idEntreprise);

@@ -15,7 +15,7 @@
                     <div class="row contentInfo">
 
                         <div class="col-md-4">
-                             <p class="titleFront">Articles cadeau <i class="fas fa-plus-square iconInfo" style="cursor: pointer;" (click)="openDialogAddCadeau()"></i></p>
+                             <p class="titleFront">Articles cadeau <i class="fas fa-plus-square iconInfo" style="cursor: pointer;" (click)="openDialogAddCadeau()" matTooltip="Ajouter un article"></i></p>
 
                              <div class="card" style="background-color: #F6F6FF;border-color: #F6F6FF;margin-bottom: 10px;" *ngFor="let cadeau of listCadeau">
                                <div class="card-body">
@@ -49,7 +49,7 @@
                         </div><!--col-md-4-->
 
                         <div class="col-md-4">
-                              <p class="titleFront">Réduction cadeau <i class="fas fa-plus-square iconInfo" style="cursor: pointer;" (click)="openDialogAddReduction()"></i></p>
+                              <p class="titleFront">Réduction cadeau <i class="fas fa-plus-square iconInfo" style="cursor: pointer;" (click)="openDialogAddReduction()" matTooltip="Ajouter une réduction"></i></p>
 
                               <div class="card" style="background-color: #F6F6FF;border-color: #F6F6FF;margin-bottom: 10px;" *ngFor="let reduction of listReduction">
                                <div class="card-body">
@@ -83,7 +83,7 @@
                         </div><!--col-md-4-->
 
                         <div class="col-md-4">
-                              <p class="titleFront">Livraison gratuite <i class="fas fa-plus-square iconInfo" style="cursor: pointer;" (click)="openDialogAddLivraison()"></i></p>
+                              <p class="titleFront">Livraison gratuite <i class="fas fa-plus-square iconInfo" style="cursor: pointer;" (click)="openDialogAddLivraison()" matTooltip="Ajouter une livraison"></i></p>
                               <div class="card" style="background-color: #F6F6FF;border-color: #F6F6FF;margin-bottom: 10px;" *ngFor="let livraison of listLivraison">
                                <div class="card-body">
 
@@ -118,13 +118,13 @@
                   </mat-tab>
                   <mat-tab>
                     <ng-template mat-tab-label>
-                      Attribution de points <i class="fas fa-database" style="font-size: 20px;margin-left: 8px;"></i>
+                      Attribution de points <i class="fas fa-database" style="font-size: 20px;margin-left: 8px;" ></i>
                     </ng-template>
 
                     <div class="row contentInfo">
                        <div class="col-md-6">
 
-                             <p class="titleFront">Points visite <i class="fas fa-plus-square iconInfo" style="cursor: pointer;" (click)="openDialogAddVisite()" *ngIf="listVisite?.length==0"></i></p>
+                             <p class="titleFront">Points visite <i class="fas fa-plus-square iconInfo" style="cursor: pointer;" (click)="openDialogAddVisite()" *ngIf="listVisite?.length==0" matTooltip="Ajouter un point"></i></p>
 
                              <div class="card" style="background-color: #F6F6FF;border-color: #F6F6FF;margin-bottom: 10px;" *ngFor="let visite of listVisite">
                                <div class="card-body">
@@ -158,7 +158,7 @@
                        </div><!--col-->
                        <div class="col-md-6">
 
-                          <p class="titleFront">Par budget dépensé <i class="fas fa-plus-square iconInfo" style="cursor: pointer;" (click)="openDialogAddBudget()" *ngIf="listBudget?.length==0"></i></p>
+                          <p class="titleFront">Par budget dépensé <i class="fas fa-plus-square iconInfo" style="cursor: pointer;" (click)="openDialogAddBudget()" *ngIf="listBudget?.length==0" matTooltip="Ajouter une dépensé"></i></p>
 
                              <div class="card" style="background-color: #F6F6FF;border-color: #F6F6FF;margin-bottom: 10px;" *ngFor="let budget of listBudget">
                                <div class="card-body">

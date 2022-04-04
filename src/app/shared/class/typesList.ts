@@ -17,11 +17,11 @@ export class TypesList{
                 checked:false,
                 disabled:false
             },
-            {
+            /*{
                 nom: "Email",
                 checked:false,
                 disabled:false
-            }    
+            } */   
         ];
     }
 }

@@ -36,8 +36,10 @@ export class PromotionsComponent implements OnInit,AfterViewInit {
   promotions:any=[];
   filterFormGroup=new FormGroup({
     fromDate: new FormControl(),
+    fromEnd:new FormControl()
   });
   get fromDate() {return this.filterFormGroup.get('fromDate').value;}
+  get fromEnd() {return this.filterFormGroup.get('fromEnd').value;}
   pipe:DatePipe;
   listType=[];
   listCritere=[];
@@ -70,16 +72,7 @@ export class PromotionsComponent implements OnInit,AfterViewInit {
 
   ngOnInit(): void {
 
-    /*this.critereFilter.valueChanges.subscribe((critereFilterValue)=>{
-      console.log("ici", critereFilterValue);
-      this.filteredValues['activation'] = critereFilterValue;
-      console.log("ici 1", this.filteredValues);
-      this.dataSource.filter = JSON.stringify(this.filteredValues);
-      console.log('DataSource', this.dataSource.filter);
-    });*/
-
-    //this.dataSource.filterPredicate = this.filterDateEnvoi();
-    //this.dataSource.filterPredicate = this.filterByType();
+  
   }
 
   openDialog(id){
@@ -160,11 +153,12 @@ export class PromotionsComponent implements OnInit,AfterViewInit {
   applyFilterDate(event:Event){
     console.log("Event", event);
     this.dataSource.filterPredicate = (data, filter):boolean =>{
-      if(this.fromDate){
+      if(this.fromDate && this.fromEnd){
         let fromdate = new Date(this.fromDate.getFullYear()+'-'+('0' + (this.fromDate.getMonth() + 1)).slice(-2)+'-'+this.fromDate.getDate());
+        let fromEnd = new Date(this.fromEnd.getFullYear()+'-'+('0' + (this.fromEnd.getMonth() + 1)).slice(-2)+'-'+this.fromEnd.getDate());
         let dateenvoi = new Date(data.dateEnvoie);
         console.log("Suis ici", dateenvoi);
-        return dateenvoi >= fromdate;
+        return dateenvoi >= fromdate && dateenvoi <= fromEnd;
       }
       return true;
     }
@@ -172,48 +166,6 @@ export class PromotionsComponent implements OnInit,AfterViewInit {
   }
   
 
-  /*applyFilter(filter) {
-      console.log("Date", this.globalFilter);
-      this.globalFilter = filter;
-      //this.dataSource.filter = ''+Math.random();
-      this.dataSource.filter = JSON.stringify(this.filteredValues);
-  }
-
-  filterDateEnvoi(){
-
-   let filterDate=(data, filter):boolean =>{
-
-      this.globalFilter = this.fromDate;
-      
-      if(this.globalFilter){
-        let fromdate = new Date(this.fromDate.getFullYear()+'-'+('0' + (this.fromDate.getMonth() + 1)).slice(-2)+'-'+this.fromDate.getDate());
-        let dateenvoi = new Date(data.dateEnvoie);
-        console.log("Suis ici", dateenvoi);
-        return dateenvoi >= fromdate;
-      }
-      return true;
-   }
-   return filterDate;
-  }*/
-
-  /*filterByType(){
-    let filterType = (data, filter):boolean =>{
-
-      this.dateFilter = this.listFilterType;
-      
-      if(this.listFilterType.length>=1){
-        console.log("Suis ici",  this.listFilterType);
-       this.listFilterType.forEach(element => {
-         console.log("element", data.type);
-         console.log("element 1", [element.nom]);
-        return data.type==[element.nom];  
-        });
-      }
-      return true;
-    }
-
-    return filterType;
-  }*/
 
   master_change(){
     for(let value of Object.values(this.listType)){

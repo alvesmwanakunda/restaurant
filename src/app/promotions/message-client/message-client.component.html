@@ -40,7 +40,7 @@
 
                   <mat-form-field appearance="outline" class="example-full-width">
                       <mat-label class="labelFrom">Type de promo</mat-label>
-                      <mat-select multiple>
+                      <mat-select (selectionChange)="selectSms($event.value)">
                         <mat-option *ngFor="let type of listTypes" [value]="type.nom">{{type.nom}}</mat-option>
                       </mat-select>
                   </mat-form-field>
@@ -56,13 +56,21 @@
 
         <mat-card>
             <mat-card-content>
-              <p class="titreHeader">SMS</p>
 
-              <mat-form-field class="example-full-width" appearance="fill">
-                <textarea matInput></textarea>
-              </mat-form-field>
+              <div *ngIf="!isSms">
 
-              <mat-divider></mat-divider>
+                <p class="titreHeader">SMS</p>
+
+                <mat-form-field class="example-full-width" appearance="fill">
+                  <textarea matInput></textarea>
+                </mat-form-field>
+
+              </div>
+              
+
+             <!--<mat-divider></mat-divider>-->
+
+             <div *ngIf="isSms">
 
               <p class="titreHeader">App</p>
 
@@ -70,7 +78,10 @@
                 <textarea matInput></textarea>
               </mat-form-field>
 
-              <div style="margin: 0 65px 0 69px;">
+             </div>
+
+              
+              <div align="right">
                 <button mat-raised-button class="sizebv">Valider</button>
               </div>
             </mat-card-content>
@@ -107,7 +118,7 @@
 
                    <mat-form-field appearance="outline" class="example-full-width">
                       <mat-label class="labelFrom">Type de promo</mat-label>
-                      <mat-select multiple>
+                      <mat-select (selectionChange)="selectSms1($event.value)">
                         <mat-option *ngFor="let type of listTypes" [value]="type.nom">{{type.nom}}</mat-option>
                       </mat-select>
                    </mat-form-field>
@@ -123,21 +134,33 @@
 
         <mat-card>
             <mat-card-content>
-              <p class="titreHeader">SMS</p>
 
-              <mat-form-field class="example-full-width" appearance="fill">
-                <textarea matInput></textarea>
-              </mat-form-field>
+              <div *ngIf="!isSms1">
 
-              <mat-divider></mat-divider>
+                <p class="titreHeader">SMS</p>
 
-              <p class="titreHeader">App</p>
+                <mat-form-field class="example-full-width" appearance="fill">
+                  <textarea matInput></textarea>
+                </mat-form-field>
 
-              <mat-form-field class="example-full-width" appearance="fill">
-                <textarea matInput></textarea>
-              </mat-form-field>
+              </div>
+              
 
-               <div style="margin: 0 65px 0 69px;">
+              <!--<mat-divider></mat-divider>-->
+
+              <div *ngIf="isSms1">
+
+                <p class="titreHeader">App</p>
+
+                <mat-form-field class="example-full-width" appearance="fill">
+                  <textarea matInput></textarea>
+                </mat-form-field>
+
+              </div>
+
+              
+
+               <div align="right">
                 <button mat-raised-button class="sizebv">Valider</button>
                </div>
             </mat-card-content>
@@ -145,9 +168,9 @@
 
       </div><!--col-->
 
-      <div class="col-md-4">
+      <div class="col-md-4" style="padding-top: 39px;">
 
-         <mat-card>
+         <mat-card style="height: 510px;">
             <mat-card-content>
               <p class="titreHeader" style="font-weight: bold;">Visualiser</p>
               <div class="row">

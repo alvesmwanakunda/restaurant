@@ -40,7 +40,7 @@
     
                         <mat-form-field appearance="legacy" class="example-full-width">
                           <mat-label class="labelFrom">Type de promo</mat-label>
-                          <mat-select formControlName="types" multiple> 
+                          <mat-select formControlName="types" (selectionChange)="selectSms($event.value)"> 
                             <mat-option *ngFor="let type of listType" [value]="type.nom">{{type.nom}}</mat-option>
                           </mat-select>
                        </mat-form-field>
@@ -52,27 +52,34 @@
 
                     <mat-card>
                       <mat-card-content>
-                        <p class="titreHeader">SMS</p>
-          
-                        <mat-form-field class="example-full-width" appearance="fill">
-                          <textarea matInput formControlName="sms"></textarea>
-                        </mat-form-field>
-          
-                        <mat-divider></mat-divider>
-          
-                        <p class="titreHeader">Email & app</p>
-          
-                        <mat-form-field class="example-full-width" appearance="fill">
-                          <textarea matInput formControlName="email"></textarea>
-                        </mat-form-field>
+                       
 
-                        <div>
-                          <input type="file" class="file-input" accept='image/*' (change)="onFileSelected($event)" #fileUpload>
-                          <button (click)="fileUpload.click()" mat-mini-fab color="primary" style="background-color: #10ae58;">
-                              <mat-icon>add_a_photo</mat-icon>
-                          </button> {{fileName}}
+                        <div *ngIf="!isSms">
+                          <p class="titreHeader">SMS</p>
+                          <mat-form-field class="example-full-width" appearance="fill">
+                            <textarea matInput formControlName="sms"></textarea>
+                          </mat-form-field>
                         </div>
           
+                        <!--<mat-divider></mat-divider>-->
+          
+                        <div *ngIf="isSms">
+
+                          <p class="titreHeader">App</p>
+
+                          <mat-form-field class="example-full-width" appearance="fill">
+                            <textarea matInput formControlName="email"></textarea>
+                          </mat-form-field>
+  
+                          <div>
+                            <input type="file" class="file-input" accept='image/*' (change)="onFileSelected($event)" #fileUpload>
+                            <button (click)="fileUpload.click()" mat-mini-fab color="primary" style="background-color: #10ae58;">
+                                <mat-icon>add_a_photo</mat-icon>
+                            </button> {{fileName}}
+                          </div>
+
+                        </div><!---->
+
                       </mat-card-content>
                   </mat-card>
 
@@ -80,8 +87,8 @@
 
                   </div><!--col-md-6-->
               </div><!--row-->
-              <div align="center" style="padding-top: 25px;">
-                <button mat-button mat-raised-button color="primary" matStepperNext style="background-color: #10ae58;">Suivant</button>
+              <div align="right" style="padding-top: 25px;">
+                <button mat-button mat-raised-button color="primary" matStepperNext class="greenbutton">Suivant</button>
               </div>
             </form>
           </mat-step>
@@ -155,9 +162,9 @@
                 </div>
              </div>     
 
-              <div align="center">
-                <button mat-button matStepperPrevious style="color: #04075E;">Précédent</button>
-                <button mat-button  mat-raised-button color="primary" matStepperNext style="background-color: #10ae58;">Suivant</button>
+              <div align="right">
+                <button mat-button matStepperPrevious class="bluebutton">Précédent</button>
+                <button mat-button  mat-raised-button color="primary" matStepperNext class="greenbutton">Suivant</button>
               </div>
             </form>
           </mat-step>
@@ -316,8 +323,8 @@
 
             </form>
 
-            <div align="center">
-              <button mat-button matStepperPrevious style="color: #04075E;">Précédent</button>
+            <div align="right">
+              <button mat-button matStepperPrevious class="bluebutton">Précédent</button>
               <!--<button mat-button  mat-raised-button color="primary" matStepperNext style="background-color: #10ae58;">Suivant</button>-->
             </div>
           </mat-step>
@@ -333,7 +340,7 @@
 
       </div><!--col-md-8-->
 
-      <div class="col-md-4" style="padding-top: 34px;">
+      <div class="col-md-4">
 
         <mat-card style="height: 518px !important;">
           <mat-card-content>
@@ -391,7 +398,7 @@
     </div><!--row-->
   </div><!--container-->
 
-  <div style="position: absolute;bottom: 0;right:0;">
+  <div style="position: absolute;bottom: 0;right:40px;">
     <div style="margin-bottom: 10px;">
        <button mat-mini-fab class="sizebf" matTooltip="Envoyer" [disabled]="!isValid" (click)="addProduit('envoyée')"><i class="fas fa-check-circle" style="font-size: 20px;"></i></button>
     </div>

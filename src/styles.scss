@@ -211,7 +211,7 @@
 }
 
 body,html{
-  background-image:url('assets/images/body.png')  !important;
+  background-image:url('assets/images/body1.jpeg')  !important;
   background-size: cover;
   height: 100%;
 }
@@ -223,12 +223,16 @@ body,html{
 .mat-step-header .mat-step-icon {
   background-color: #10ae58 !important;
   color: #fff !important;
+  width: 40px !important;
+  height: 40px !important;
 }
 
 .mat-step-header .mat-step-icon-selected, .mat-step-header .mat-step-icon-state-done, 
 .mat-step-header .mat-step-icon-state-edit {
   background-color: #0c2461 !important;
   color: #fff !important;
+  width: 40px !important;
+  height: 40px !important;
 }
 
 

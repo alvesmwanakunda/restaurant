@@ -8,7 +8,7 @@
 
           <mat-card>
             <mat-card-content style="text-align: center;">
-               <span class="dot"><i class="fas fa-bullhorn" style="font-size:19px;color:#10ae58;"></i></span>
+               <span class="dot"><i class="fas fa-envelope" style="font-size:19px;color:#10ae58;"></i></span>
                <br/>
                <span style="color: #000;font-size: 13px;">Nombre total de campagne</span>
                <br/>
@@ -23,7 +23,7 @@
          <mat-card>
             <mat-card-content style="text-align: center;">
 
-              <span class="dot"><i class="fas fa-comment-dollar" style="font-size:22px;color:#10ae58;"></i></span>
+              <span class="dot"><i class="fas fa-percentage" style="font-size:22px;color:#10ae58;"></i></span>
                <br/>
                <span style="color: #000;font-size: 13px;">Taux d'ouverture</span>
                <br/>
@@ -39,7 +39,7 @@
          <mat-card>
             <mat-card-content style="text-align: center;">
 
-               <span class="dot"><i class="fas fa-bullhorn" style="font-size:19px;color:#FF9100;"></i></span>
+               <span class="dot"><i class="fas fa-envelope-open" style="font-size:19px;color:#FF9100;"></i></span>
                <br/>
                <span style="color: #000;font-size: 13px;">Nombre de message envoyé</span>
                <br/>
@@ -55,7 +55,7 @@
          <mat-card>
             <mat-card-content style="text-align: center;">
 
-               <span class="dot"><i class="fas fa-bullhorn" style="font-size:19px;color:#0B0B59;"></i></span>
+               <span class="dot"><i class="fas fa-percent" style="font-size:19px;color:#0B0B59;"></i></span>
                <br/>
                <span style="color: #000;font-size: 13px;">Taux de réception</span>
                <br/>
@@ -70,14 +70,21 @@
     </div><!--row-->
 
     <div class="row">
-      <div class="col-md-6" style="font-size: 13px;">
+      <div class="col-md-8" style="font-size: 13px;">
          <form [formGroup]="filterFormGroup">
 
-          <mat-form-field appearance="outline" class="example-full-width" style="margin-right: 14px;">
-            <mat-label>Rechercher</mat-label>
+          <mat-form-field appearance="outline" class="example-full-widthp" style="margin-right: 14px;">
+            <mat-label>Du</mat-label>
             <input matInput [matDatepicker]="fromDate" formControlName="fromDate">
             <mat-datepicker-toggle matSuffix [for]="fromDate"></mat-datepicker-toggle>
             <mat-datepicker #fromDate></mat-datepicker>
+          </mat-form-field>
+
+          <mat-form-field appearance="outline" class="example-full-widthp" style="margin-right: 14px;">
+            <mat-label>Au</mat-label>
+            <input matInput [matDatepicker]="fromEnd" formControlName="fromEnd">
+            <mat-datepicker-toggle matSuffix [for]="fromEnd"></mat-datepicker-toggle>
+            <mat-datepicker #fromEnd></mat-datepicker>
           </mat-form-field>
 
           <button mat-raised-button (click)="applyFilterDate($event)" class="sizeButtons">Appliquer</button>
@@ -85,8 +92,8 @@
          </form>
           
       </div><!--col-->
-      <div class="col-md-6" style="padding-top: 5px;">
-        <div align="end" style="float: right;">
+      <div class="col-md-4" style="padding-top: 5px;">
+        <div align="right">
           <button mat-raised-button class="sizeButv" style="margin-right: 14px;" [routerLink]="['/message/client']">Message client </button>
           <button mat-raised-button class="sizeBut" style="margin-right: 14px;" [routerLink]="['/add/promotion']">Créer une campagne <i class="fas fa-plus"></i></button>
           <!--<button mat-raised-button class="sizeb"><i class="fas fa-file-export" style="font-size: 23px;"></i></button>-->

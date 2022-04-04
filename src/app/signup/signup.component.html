@@ -18,7 +18,7 @@
                 <mat-card-content style="margin: -15px 60px 0 60px;">
   
                 <mat-form-field appearance="legacy" class="example-full-width">
-                  <mat-label style="color: #c9c8c8;font-size: 12px;">Entreprise</mat-label>
+                  <mat-label style="color: #000000;font-size: 14px;">Entreprise</mat-label>
                   <input matInput formControlName="entreprise" required>
                     <mat-icon matTooltip="{{account_validation_messages.entreprise[0].message}}"
                       *ngIf="signupForm.get('entreprise').hasError(account_validation_messages.entreprise[0].type) && (signupForm.get('entreprise').dirty || signupForm.get('entreprise').touched  || (submitted))"
@@ -28,7 +28,7 @@
                 </mat-form-field>
 
                 <mat-form-field appearance="legacy" class="example-full-width">
-                  <mat-label style="color: #c9c8c8;font-size: 12px;">Catégories</mat-label>
+                  <mat-label style="color: #000000;font-size: 14px;">Catégories</mat-label>
                   <mat-select matInput formControlName="categorie" required>
                     <mat-option value="Restaurant">Restaurant</mat-option>
                     <mat-option value="Supermarché">Supermarché</mat-option>
@@ -43,7 +43,7 @@
   
   
                 <mat-form-field appearance="legacy" class="example-full-width">
-                  <mat-label style="color: #c9c8c8;font-size: 12px;">Email</mat-label>
+                  <mat-label style="color: #000000;font-size: 14px;">Email</mat-label>
                   <input matInput formControlName="emailorphone" pattern="^((\+\d{1,3}(-| )?\(?\d\)?(-| )?\d{1,5})|(\(?\d{2,6}\)?))(-| )?(\d{3,4})(-| )?(\d{4})(( x| ext)\d{1,5}){0,1}$|(\w+([\.-]?\w+)*@\w+([\.-]?\w+)*(\.\w{2,6})+)" required>
                    <mat-icon matTooltip="{{ account_validation_messages.emailorphone[0].message }}"
                       *ngIf="signupForm.get('emailorphone').hasError(account_validation_messages.emailorphone[0].type) && ((signupForm.get('emailorphone').dirty || signupForm.get('emailorphone').touched) || (submitted))"
@@ -67,7 +67,7 @@
                 </mat-form-field>-->
   
                 <mat-form-field appearance="legacy" class="example-full-width">
-                  <mat-label style="color: #c9c8c8;font-size: 12px;">Mot de passe</mat-label>
+                  <mat-label style="color: #000000;font-size: 14px;">Mot de passe</mat-label>
                   <input matInput formControlName="password" [type]="hideP ? 'password' : 'text'"  required>
                   <button *ngIf="signupForm.get('password').value && signupForm.get('password').value!=''" mat-icon-button matSuffix (click)="hideP = !hideP" [attr.aria-label]="'Hide password'" [attr.aria-pressed]="hideP">
                     <mat-icon>{{hideP ? 'visibility_off' : 'visibility'}}</mat-icon>
@@ -85,7 +85,7 @@
                 </mat-form-field>
   
                 <mat-form-field appearance="legacy" class="example-full-width">
-                  <mat-label style="color: #c9c8c8;font-size: 12px;">Confirmation mot de passe</mat-label>
+                  <mat-label style="color: #000000;font-size: 14px;">Confirmation mot de passe</mat-label>
                   <input matInput  formControlName="confirmpassword" [type]="hidePassword ? 'password' : 'text'">
                   <button *ngIf="signupForm.get('confirmpassword').value && signupForm.get('confirmpassword').value!=''" mat-icon-button matSuffix (click)="hidePassword = !hidePassword" [attr.aria-label]="'Hide password'" [attr.aria-pressed]="hidePassword">
                     <mat-icon>{{hidePassword ? 'visibility_off' : 'visibility'}}</mat-icon>
@@ -113,7 +113,7 @@
                       <button mat-raised-button [disabled]="onLoadForm" type="submit" (click)="onRegisterUser()" class="sizeButtonSignup" style="color: #fff;">S'INSCRIRE</button>
                     </div>
                     <div class="col-md-12">
-                      <a [routerLink]="'/'" style="text-decoration: none;color: #777;font-size: 15px;"><p>Revenir à la page de connexion</p></a>
+                      <a [routerLink]="'/'" style="text-decoration: none;color: #000000;font-size: 15px;"><p>Revenir à la page de connexion</p></a>
                     </div>
                 </div><!--row-->
               </mat-card-actions>

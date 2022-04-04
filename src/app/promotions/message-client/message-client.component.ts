@@ -9,6 +9,8 @@ import { Types } from 'src/app/shared/class/types';
 export class MessageClientComponent implements OnInit {
 
   listTypes:any;
+  isSms:boolean=false;
+  isSms1:boolean=false;
 
   constructor(
     public types: Types,
@@ -17,6 +19,24 @@ export class MessageClientComponent implements OnInit {
   ngOnInit(): void {
 
     this.listTypes = this.types.listTypes;
+  }
+
+  selectSms(event){
+    console.log("Event", event);
+    if(event=="Sms"){
+      this.isSms=false
+    }else{
+      this.isSms=true
+    }
+  }
+
+  selectSms1(event){
+    console.log("Event", event);
+    if(event=="Sms"){
+      this.isSms1=false
+    }else{
+      this.isSms1=true
+    }
   }
 
 }

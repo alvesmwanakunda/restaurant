@@ -10,7 +10,7 @@
 }
 
 .labelFrom {
-  color: #CECECE;
+  color: #000000;
   font-size: 13px;
 }
 
@@ -21,8 +21,8 @@
   margin-right: 13px;
 }
 
-.example-full-width {
-  width: 40%;
+.example-full-widthp {
+  width: 30%;
 }
 
 ::ng-deep .mat-form-field-appearance-outline .mat-form-field-outline {
@@ -32,8 +32,8 @@
 }
 
 .sizeButtons {
-  width: 121px;
-  background: #04075E !important;
+  //width: 121px;
+  background: linear-gradient(90deg, #0c1733, #3fd27e) !important;
   color: #fff;
   height: 44px;
   position: relative;
@@ -42,7 +42,7 @@
 
 .sizeButtonv {
   width: 121px;
-  background: #04075E !important;
+  background: linear-gradient(90deg, #0c1733, #3fd27e) !important;
   color: #fff;
   height: 44px;
   position: relative;
@@ -57,13 +57,13 @@
 }
 
 .sizeBut {
-  background: #04075E !important;
+  background: linear-gradient(90deg, #0c1733, #3fd27e) !important;
   color: #fff;
   height: 44px;
 }
 
 .sizeButv {
-  background: #10ae58 !important;
+  background: linear-gradient(90deg,#3fd27e, #0c1733) !important;
   color: #fff;
   height: 44px;
 }

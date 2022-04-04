@@ -11,9 +11,9 @@ export class Types{
             {
                 nom: "App"
             },
-            {
+           /* {
                 nom: "Email"
-            }    
+            } */   
         ];
     }
 }

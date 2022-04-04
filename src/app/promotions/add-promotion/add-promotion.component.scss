@@ -5,7 +5,7 @@
 }
 
 .labelFrom {
-  color: #CECECE;
+  color: #000000;
   font-size: 13px;
 }
 
@@ -29,14 +29,14 @@
 
 .sizebf {
   //width: 41px;
-  background: #10ae58 !important;
+  background: linear-gradient(90deg,#3fd27e, #0c1733) !important;
   color: #fff;
   //height: 46px;
 }
 
 .sizebff {
   //width: 41px;
-  background: #0c2461 !important;
+  background: linear-gradient(90deg, #0c1733, #3fd27e) !important;
   color: #fff;
   //height: 46px;
 }
@@ -145,5 +145,15 @@ ngb-carousel {
 }
 .carousel-indicators{
   z-index: 20;
+}
+
+.bluebutton{
+  background: linear-gradient(90deg, #0c1733, #3fd27e) !important;
+  color: #fff;
+}
+
+.greenbutton{
+  background: linear-gradient(90deg,#3fd27e, #0c1733) !important;
+  color: #fff;
 }
 

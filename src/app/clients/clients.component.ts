@@ -100,7 +100,7 @@ export class ClientsComponent implements OnInit, AfterViewInit {
   }
 
   openDialog(){
-    const dialogRef = this.dialog.open(AddClientComponent,{width:'40%',height:'54%'});
+    const dialogRef = this.dialog.open(AddClientComponent,{width:'40%',height:'60%'});
     dialogRef.afterClosed().subscribe(result => {
       console.log('The dialog was closed', result);
       this.getAllClients(this.entreprise._id);
