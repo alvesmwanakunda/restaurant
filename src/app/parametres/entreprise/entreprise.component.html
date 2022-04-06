@@ -1,6 +1,6 @@
  <form novalidate *ngIf="entreprise && isUpdate">
 
-             <p class="titleInfo">Information sur l'entreprise <button mat-mini-fab style="background-color: #10ae58;margin-left: 8px;" type="submit" (click)="updateEntreprise(entreprise)"> <mat-icon>check</mat-icon></button></p>
+             <p class="titleInfo">Information sur l'entreprise <button mat-mini-fab style="background-color: #10ae58;margin-left: 8px;" type="submit" (click)="updateEntreprise(entreprise)" matTooltip="Ajouté"> <mat-icon>check</mat-icon></button></p>
              <div *ngIf="onLoadForm">
                 <mat-progress-bar mode="indeterminate"></mat-progress-bar>
               </div>
@@ -90,7 +90,7 @@
  </form>
 
  <div *ngIf="entreprise && !isUpdate">
-  <p class="titleInfo">Information sur l'entreprise <button mat-mini-fab style="background-color: #0c2461; margin-left: 8px;" (click)="OpenUpdate()"> <mat-icon>edit</mat-icon></button></p>
+  <p class="titleInfo">Information sur l'entreprise <button mat-mini-fab style="background-color: #0c2461; margin-left: 8px;" (click)="OpenUpdate()" matTooltip="Modifié"> <mat-icon>edit</mat-icon></button></p>
   <div class="row">
     <div class="col-md-6" style="padding-top: 20px;">
 

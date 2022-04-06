@@ -40,7 +40,7 @@
                 <div class="row">
                     <div class="col-md-12">
                       <div style="float: right;margin-bottom: 15px;">
-                         <button mat-raised-button class="sizeb" (click)="openDialog()"><i class="fas fa-plus" style="font-size: 23px;"></i></button>
+                         <button mat-raised-button class="sizebp" matTooltip="Ajouter une personne" (click)="openDialog()"><i class="fas fa-plus" style="font-size: 23px;"></i></button>
                       </div>
                     </div>
                 </div><!--row-->
@@ -48,59 +48,62 @@
                 <div class="row">
                    <div class="col-md-12">
 
-                      <div class="mat-elevation-z8">
-                        <table mat-table [dataSource]="dataSource">
+                      <div>
+                        <mat-card>
+                           <mat-card-content>
 
-                                  <!-- Position Column -->
-                                  <ng-container matColumnDef="nom">
-                                    <th mat-header-cell *matHeaderCellDef style="color: #000;"> Nom personnel </th>
-                                    <td mat-cell *matCellDef="let element" style="font-size: 12px;cursor: pointer;"> {{element.nom}} </td>
-                                  </ng-container>
+                            <table mat-table [dataSource]="dataSource">
 
-                                   <!-- Position Column -->
-                                   <ng-container matColumnDef="prenom">
-                                    <th mat-header-cell *matHeaderCellDef style="color: #000;"> Prénom personnel </th>
-                                    <td mat-cell *matCellDef="let element" style="font-size: 12px;cursor: pointer;">{{element.prenom}} </td>
-                                  </ng-container>
+                              <!-- Position Column -->
+                              <ng-container matColumnDef="nom">
+                                <th mat-header-cell *matHeaderCellDef style="color: #000;"> Nom personnel </th>
+                                <td mat-cell *matCellDef="let element" style="font-size: 12px;cursor: pointer;"> {{element.nom}} </td>
+                              </ng-container>
 
-                                   <!-- Position Column -->
-                                   <ng-container matColumnDef="poste">
-                                    <th mat-header-cell *matHeaderCellDef style="color: #000;"> Poste </th>
-                                    <td mat-cell *matCellDef="let element" style="font-size: 12px;cursor: pointer;"> {{element.poste}} </td>
-                                  </ng-container>
+                               <!-- Position Column -->
+                               <ng-container matColumnDef="prenom">
+                                <th mat-header-cell *matHeaderCellDef style="color: #000;"> Prénom personnel </th>
+                                <td mat-cell *matCellDef="let element" style="font-size: 12px;cursor: pointer;">{{element.prenom}} </td>
+                              </ng-container>
 
-                                  <!-- Name Column -->
-                                  <ng-container matColumnDef="identifiant">
-                                    <th mat-header-cell *matHeaderCellDef style="color: #000;"> Identifiant </th>
-                                    <td mat-cell *matCellDef="let element" style="font-size: 12px;cursor: pointer;">
-                                      <span *ngIf="element.phone"> {{element.phone}}</span>
-                                      <span *ngIf="element.email"> {{element.email}}</span> 
-                                    </td>
-                                  </ng-container>
+                               <!-- Position Column -->
+                               <ng-container matColumnDef="poste">
+                                <th mat-header-cell *matHeaderCellDef style="color: #000;"> Poste </th>
+                                <td mat-cell *matCellDef="let element" style="font-size: 12px;cursor: pointer;"> {{element.poste}} </td>
+                              </ng-container>
 
-                                  <!-- Weight Column -->
-                                  <ng-container matColumnDef="actions">
-                                    <th mat-header-cell *matHeaderCellDef style="color: #000;"> <i class="fas fa-ellipsis-v"></i> </th>
-                                    <td mat-cell *matCellDef="let element">  
-                                      <button mat-button (click)="openDialogDelete(element.id)"><i class="fas fa-trash-alt" style="color:#cf0861;"></i></button>
-                                    </td>
-                                  </ng-container>
+                              <!-- Name Column -->
+                              <ng-container matColumnDef="identifiant">
+                                <th mat-header-cell *matHeaderCellDef style="color: #000;"> Identifiant </th>
+                                <td mat-cell *matCellDef="let element" style="font-size: 12px;cursor: pointer;">
+                                  <span *ngIf="element.phone"> {{element.phone}}</span>
+                                  <span *ngIf="element.email"> {{element.email}}</span> 
+                                </td>
+                              </ng-container>
 
-                                 
+                              <!-- Weight Column -->
+                              <ng-container matColumnDef="actions">
+                                <th mat-header-cell *matHeaderCellDef style="color: #000;"> Action </th>
+                                <td mat-cell *matCellDef="let element">  
+                                  <button mat-button (click)="openDialogDelete(element.id)"><i class="fas fa-trash-alt" style="color:#cf0861;"></i></button>
+                                </td>
+                              </ng-container>
 
-                                  <tr mat-header-row *matHeaderRowDef="displayedColumns"></tr>
-                                  <tr mat-row *matRowDef="let row; columns: displayedColumns;"></tr>
+                             
 
-                                   <!-- Row shown when there is no matching data. 
-                                  <tr class="mat-row" *matNoDataRow>
-                                    <td class="mat-cell" colspan="4">Aucune donnée correspondant au filtre "{{input.value}}"</td>
-                                  </tr>-->
-                        </table>
+                              <tr mat-header-row *matHeaderRowDef="displayedColumns"></tr>
+                              <tr mat-row *matRowDef="let row; columns: displayedColumns;"></tr>
 
-                        <mat-paginator [pageSizeOptions]="[10, 20]"
-                                      showFirstLastButtons
-                                      aria-label="Select page of periodic elements">
-                        </mat-paginator>
+                            </table>
+
+                            <mat-paginator [pageSizeOptions]="[10, 20]"
+                                          showFirstLastButtons
+                                          aria-label="Select page of periodic elements">
+                            </mat-paginator>
+
+                           </mat-card-content>
+                        </mat-card><!---->
+                        
                       </div>
 
                    </div><!--col-->

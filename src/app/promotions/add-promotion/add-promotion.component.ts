@@ -37,6 +37,7 @@ export class AddPromotionComponent implements OnInit {
   isNombre:boolean=false;
   isValid:boolean=false;
   isSms:boolean=false;
+  isWefid:boolean=false;
 
   constructor(
     private _formBuilder:FormBuilder,
@@ -224,5 +225,17 @@ export class AddPromotionComponent implements OnInit {
     }else{
       this.isSms=true
     }
+  }
+
+  selectWefid(){
+    if(this.isWefid){
+      this.isWefid = false;
+    }else{
+      this.isWefid = true;
+    }
+  }
+
+  selectClient(){
+    this.isWefid = false;
   }
 }

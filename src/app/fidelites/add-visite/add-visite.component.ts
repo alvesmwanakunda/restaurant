@@ -93,8 +93,9 @@ export class AddVisiteComponent implements OnInit {
   typePointList(idEntreprise){
     this.typePointService.listPointEntreprise(idEntreprise).subscribe((res:any)=>{
       try {
-             console.log("types", res);
-             this.types = res.message;
+             //console.log("types", res);
+             this.types = res.message.filter((item)=> item.nom!="Achats");
+             //console.log("types", this.types);
       } catch (error) {
          console.log("Erreur", error)
       }

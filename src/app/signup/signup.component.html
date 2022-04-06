@@ -82,7 +82,15 @@
                       style="cursor: pointer;" matSuffix>
                       <i class="fas fa-exclamation-circle"></i>
                     </mat-icon>
+                    <!--<mat-icon matTooltip="{{ account_validation_messages.password[2].message }}"
+                      *ngIf="signupForm.get('password').hasError(account_validation_messages.password[2].type) && ((signupForm.get('password').dirty || signupForm.get('password').touched) || (submitted))"
+                      style="cursor: pointer;" matSuffix>
+                      <i class="fas fa-exclamation-circle"></i>
+                    </mat-icon>-->
                 </mat-form-field>
+                <div class="text-danger" style="font-size: 11px;" *ngIf="signupForm.get('password').hasError(account_validation_messages.password[2].type) && ((signupForm.get('password').dirty || signupForm.get('password').touched) || (submitted))">
+                  Le mot de passe doit comporter au moins 8 caracteres,une lettre majuscule, une lettre minuscule et un chiffre.
+                </div>
   
                 <mat-form-field appearance="legacy" class="example-full-width">
                   <mat-label style="color: #000000;font-size: 14px;">Confirmation mot de passe</mat-label>

@@ -76,7 +76,8 @@ export class UpdateVisiteComponent implements OnInit {
     this.typePointService.listPointEntreprise(idEntreprise).subscribe((res:any)=>{
       try {
              console.log("types", res);
-             this.types = res.message;
+             //this.types = res.message;
+             this.types = res.message.filter((item)=> item.nom!="Achats");
       } catch (error) {
          console.log("Erreur", error)
       }

@@ -22,7 +22,7 @@
 }
 
 .example-full-widthp {
-  width: 30%;
+  width: 50%;
 }
 
 ::ng-deep .mat-form-field-appearance-outline .mat-form-field-outline {
@@ -32,12 +32,11 @@
 }
 
 .sizeButtons {
-  //width: 121px;
   background: linear-gradient(90deg, #0c1733, #3fd27e) !important;
   color: #fff;
-  height: 44px;
-  position: relative;
-  bottom: 3px;
+  //height: 44px;
+  //position: relative;
+  //bottom: 3px;
 }
 
 .sizeButtonv {

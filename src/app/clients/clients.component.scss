@@ -1,10 +1,10 @@
 .labelFrom{
-  color: #CECECE;
+  color: #000000;
   font-size: 13px;
 }
 
 .iconFrom{
-  color:#CECECE;
+  color:#000000;
   font-size: 24px;
   font-weight: 700;
   margin-right: 13px;
@@ -24,6 +24,16 @@
   border-radius: 5px;
   //color: #fff;
 }
+
+.striped-row {
+  background-color: #eaf5e6;
+}
+
+.event-row {
+  background-color: #f9f9f9;
+}
+
+
 
 .sizeButtons {
   width: 121px;

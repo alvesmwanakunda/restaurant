@@ -3,7 +3,7 @@
 
    
 
-    <p class="titleInfo">Horaire de l'entreprise <button mat-mini-fab type="submit" (click)="createHoraire(horaire)" style="background-color: #10ae58;margin-left: 8px;"> <mat-icon>check</mat-icon></button></p>
+    <p class="titleInfo">Horaire de l'entreprise <button mat-mini-fab type="submit" (click)="createHoraire(horaire)" style="background-color: #10ae58;margin-left: 8px;" matTooltip="Ajouté"> <mat-icon>check</mat-icon></button></p>
     <div *ngIf="onLoadForm">
       <mat-progress-bar mode="indeterminate"></mat-progress-bar>
     </div>
@@ -217,7 +217,7 @@
  
     
  
-     <p class="titleInfo">Horaire de l'entreprise <button mat-mini-fab type="submit" (click)="createHoraireAdd()" style="background-color: #10ae58;margin-left: 8px;"> <mat-icon>check</mat-icon></button></p>
+     <p class="titleInfo">Horaire de l'entreprise <button mat-mini-fab type="submit" (click)="createHoraireAdd()" style="background-color: #10ae58;margin-left: 8px;" matTooltip="Ajouté"> <mat-icon>check</mat-icon></button></p>
      <div *ngIf="onLoadForm">
        <mat-progress-bar mode="indeterminate"></mat-progress-bar>
      </div>
@@ -430,7 +430,7 @@
 <div  *ngIf="!isUpdateH">
   <div class="row contentInfo">
   
-     <p class="titleInfo">Horaire de l'entreprise <button mat-mini-fab type="submit" (click)="openHoraire()" style="background-color: #0c2461;margin-left: 8px;"> <mat-icon>edit</mat-icon></button></p>
+     <p class="titleInfo">Horaire de l'entreprise <button mat-mini-fab type="submit" (click)="openHoraire()" style="background-color: #0c2461;margin-left: 8px;" matTooltip="Modifié"> <mat-icon>edit</mat-icon></button></p>
      
      <div class="col-md-6">
  

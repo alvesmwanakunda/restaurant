@@ -1,4 +1,4 @@
-import { Component, OnInit, ViewEncapsulation } from '@angular/core';
+import { Component, Input, OnInit, ViewEncapsulation } from '@angular/core';
 
 @Component({
   selector: 'app-nav-bar',
@@ -9,11 +9,19 @@ import { Component, OnInit, ViewEncapsulation } from '@angular/core';
 })
 export class NavBarComponent implements OnInit {
 
-  isMenuSize = false;
+  isMenuSize:any= false;
 
   constructor() { }
 
   ngOnInit(): void {
+  }
+
+  openMenu(){
+    if(this.isMenuSize){
+      this.isMenuSize=false;
+    }else{
+      this.isMenuSize=true;
+    }
   }
 
 }

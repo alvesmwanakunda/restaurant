@@ -106,7 +106,7 @@ export class FidelitesComponent implements OnInit {
 
 
    openDialogAddLivraison(){
-    const dialogRef = this.dialog.open(AddLivraisonComponent,{width:'53%',height:'50%'});
+    const dialogRef = this.dialog.open(AddLivraisonComponent,{width:'50%',height:'40%'});
     dialogRef.afterClosed().subscribe(result => {
       this.getLivraison(this.entreprise._id);
       console.log(`Dialog result: ${result}`);
@@ -114,7 +114,7 @@ export class FidelitesComponent implements OnInit {
   }
 
   openDialogUpdateLivraison(idLivraison){
-    const dialogRef = this.dialog.open(UpdateLivraisonComponent,{width:'53%',height:'50%',data:{id:idLivraison}});
+    const dialogRef = this.dialog.open(UpdateLivraisonComponent,{width:'50%',height:'40%',data:{id:idLivraison}});
     dialogRef.afterClosed().subscribe(result => {
       this.getLivraison(this.entreprise._id);
       console.log(`Dialog result: ${result}`);
@@ -122,7 +122,7 @@ export class FidelitesComponent implements OnInit {
   }
 
   openDialogAddVisite(){
-    const dialogRef = this.dialog.open(AddVisiteComponent,{width:'53%',height:'50%'});
+    const dialogRef = this.dialog.open(AddVisiteComponent,{width:'50%',height:'40%'});
     dialogRef.afterClosed().subscribe(result => {
       this.getVisite(this.entreprise._id);
       console.log(`Dialog result: ${result}`);
@@ -130,7 +130,7 @@ export class FidelitesComponent implements OnInit {
   }
 
   openDialogUpdateVisite(idVisite){
-    const dialogRef = this.dialog.open(UpdateVisiteComponent,{width:'53%',height:'50%',data:{id:idVisite}});
+    const dialogRef = this.dialog.open(UpdateVisiteComponent,{width:'50%',height:'40%',data:{id:idVisite}});
     dialogRef.afterClosed().subscribe(result => {
       this.getVisite(this.entreprise._id);
       console.log(`Dialog result: ${result}`);

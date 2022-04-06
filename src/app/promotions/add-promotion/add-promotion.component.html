@@ -9,7 +9,7 @@
      <div class="row" style="margin-bottom: 15px;">
       <div class="col-md-12">
          <div class="text-end">
-            <button mat-raised-button class="sizeButtonAB" [routerLink]="'/promotions'"><i class="fas fa-bullhorn" style="font-size:18px;"></i></button>
+            <button mat-raised-button class="sizeButtonAB" [routerLink]="'/promotions'"><i class="fas fa-long-arrow-alt-left" style="font-size: 15px;"></i></button>
          </div>
       </div>
     </div>
@@ -145,8 +145,8 @@
                         <mat-form-field appearance="legacy" class="example-full-width">
                              <mat-label class="labelFrom">Définir la ciblé</mat-label>
                              <mat-select formControlName="cible" required>
-                               <mat-option value="Mes clients">Mes clients</mat-option>
-                               <mat-option value="Utilisateur Wefid">Utilisateur Wefid</mat-option>
+                               <mat-option value="Mes clients" (click)="selectClient()">Mes clients</mat-option>
+                               <mat-option value="Utilisateur Wefid" (click)="selectWefid()">Utilisateur Wefid</mat-option>
                              </mat-select>
                              <mat-icon matTooltip="{{account_validation_messages.cible[0].message}}"
                              *ngIf="secondFormGroup.get('cible').hasError(account_validation_messages.cible[0].type) && (secondFormGroup.get('cible').dirty || secondFormGroup.get('cible').touched)"
@@ -163,7 +163,7 @@
              </div>     
 
               <div align="right">
-                <button mat-button matStepperPrevious class="bluebutton">Précédent</button>
+                <button mat-button matStepperPrevious class="bluebutton" style="margin-right: 10px;">Précédent</button>
                 <button mat-button  mat-raised-button color="primary" matStepperNext class="greenbutton">Suivant</button>
               </div>
             </form>
@@ -180,7 +180,7 @@
                   <mat-card style="margin-bottom: 20px;">
                     <mat-card-content>
 
-                      <div class="row">
+                      <div class="row" *ngIf="!isWefid">
 
                         <div class="col-md-5">
                           <p style="color: #04075E;font-weight: bold;font-size: 14px;text-align: center;">Segmentation par point de fidélité</p>
@@ -314,6 +314,80 @@
 
                       </div><!---->
 
+                      <div class="row"  *ngIf="isWefid">
+
+                        <div class="col-md-12">
+
+                          <p style="color: #04075E;font-weight: bold;font-size: 14px;text-align: center;">Segmentation par critère</p>
+
+                            <div class="row" style="font-size: 11px;">
+
+                              <div class="col-md-2"><p style="font-size: 13px;color: #000;">Age:</p></div>
+                              <div class="col-md-4 hposition">
+                                <mat-form-field appearance="legacy" class="example-full-width">
+                                  <mat-label class="labelFrom">Entre</mat-label>
+                                  <input type="number" matInput formControlName="age1">
+                                </mat-form-field>
+                              </div>
+                              <div class="col-md-2">et</div>
+                              <div class="col-md-4 hposition">
+                                <mat-form-field appearance="legacy" class="example-full-width">
+                                  <mat-label class="labelFrom">Ans</mat-label>
+                                  <input type="number" matInput formControlName="age2">
+                                </mat-form-field>
+                              </div>
+              
+                            </div>
+                            <div class="row" style="font-size: 11px;">
+                              <div class="col-md-2">
+                                <p style="font-size: 13px;color: #000;">Sexe:</p>
+                              </div>
+                              <div class="col-md-10 sposition">
+              
+                                <mat-form-field appearance="outline" class="example-full-width">
+                                    <mat-select formControlName="sexe">
+                                      <mat-option value="Femme">Femme</mat-option>
+                                      <mat-option value="Homme">Homme</mat-option>
+                                    </mat-select>
+                                </mat-form-field>
+              
+                              </div>
+                            </div>
+              
+                            <div class="row" style="font-size: 11px;">
+                              <div class="col-md-2">
+                                <p style="font-size: 13px;color: #000;">Région:</p>
+                              </div>
+                              <div class="col-md-10 sposition">
+              
+                                <mat-form-field appearance="outline" class="example-full-width">
+                                    <mat-select formControlName="region" multiple> 
+                                      <mat-option *ngFor="let region of listRegion" [value]="region.nom">{{region.nom}}</mat-option>
+                                    </mat-select>
+                                </mat-form-field>
+              
+                              </div>
+                            </div>
+              
+                            <div class="row" style="font-size: 11px;">
+                              <div class="col-md-2">
+                                <p style="font-size: 13px;color: #000;">Zone:</p>
+                              </div>
+                              <div class="col-md-10 sposition">
+              
+                                <mat-form-field appearance="outline" class="example-full-width">
+                                    <mat-select formControlName="zone" multiple> 
+                                      <mat-option *ngFor="let zone of listZone" [value]="zone.nom">{{zone.nom}}</mat-option>
+                                    </mat-select>
+                                </mat-form-field>
+              
+                              </div>
+                            </div>
+
+                        </div><!--col-md-12-->
+
+                      </div><!--row-->
+
                     </mat-card-content>
                   </mat-card>    
 
@@ -400,10 +474,10 @@
 
   <div style="position: absolute;bottom: 0;right:40px;">
     <div style="margin-bottom: 10px;">
-       <button mat-mini-fab class="sizebf" matTooltip="Envoyer" [disabled]="!isValid" (click)="addProduit('envoyée')"><i class="fas fa-check-circle" style="font-size: 20px;"></i></button>
+       <button mat-mini-fab class="sizebf" matTooltip="Envoyer" [disabled]="!isValid && !isWefid" (click)="addProduit('envoyée')"><i class="fas fa-paper-plane" style="font-size: 20px;"></i></button>
     </div>
     <div style="margin-bottom: 10px;">
-       <button mat-mini-fab class="sizebff" matTooltip="Enregistrer" [disabled]="!isValid" (click)="addProduit('enregistrée')"><i class="fas fa-save" style="font-size: 20px;"></i></button>
+       <button mat-mini-fab class="sizebff" matTooltip="Enregistrer" [disabled]="!isValid && !isWefid" (click)="addProduit('enregistrée')"><i class="fas fa-save" style="font-size: 20px;"></i></button>
     </div>
     <!--<div>
        <button mat-raised-button class="sizebr" matTooltip="Supprimer"><i class="fas fa-trash" style="font-size: 20px;"></i></button>

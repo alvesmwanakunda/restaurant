@@ -79,8 +79,8 @@ export class SignupComponent implements OnInit {
       { type: "minlength", message: "Mot de passe incorrect." },
     ],
     password: [
-      { type: "required", message: "Le mot de passe est obligatoire" },
-      { type: "minlength", message: "Mot de passe incorrect. " },
+      { type: "required", message: "Le mot de passe est obligatoire"},
+      { type: "minlength", message: "Mot de passe incorrect."},
       {
         type: "pattern",
         message:
