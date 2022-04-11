@@ -33,22 +33,23 @@
 }
 
 .point{
-  color: #CECECE;
+  color: #04075E;
   font-size: 10px;
   margin-bottom: 30px;
 }
 
 .pointResult{
   color: #04075E;
-  font-size: 15px;
+  font-size: 20px;
   font-weight: 700;
   padding-top: 13px;
 }
 
 .sizeButtons {
   width: 163px;
-  background: linear-gradient(90deg, #0c1733, #3fd27e) !important;
-  color: #fff;
+  background:#53c229; //linear-gradient(90deg, #0c1733, #3fd27e) !important;
+  color: #ffffff;
+  font-weight: normal;
   height: 44px;
   margin-top: 13px;
 }
@@ -64,4 +65,11 @@ table {
 
 ::ng-deep thead{
   background-color: #04075E !important;
+}
+
+.card-infos{
+  background-color: #fafaff !important;
+  border: none !important;
+  height: 42px !important; 
+  margin-bottom: 5px;
 }

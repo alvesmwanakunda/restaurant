@@ -1,4 +1,5 @@
 import { Component, Input, OnInit, ViewEncapsulation } from '@angular/core';
+import { CookieService } from 'ngx-cookie-service';
 
 @Component({
   selector: 'app-nav-bar',
@@ -11,16 +12,20 @@ export class NavBarComponent implements OnInit {
 
   isMenuSize:any= false;
 
-  constructor() { }
+  constructor(private cookieService: CookieService) { }
 
   ngOnInit(): void {
+
+    this.isMenuSize = !!this.cookieService.get('isMenuSize');
   }
 
   openMenu(){
     if(this.isMenuSize){
       this.isMenuSize=false;
+      this.cookieService.delete('isMenuSize');
     }else{
       this.isMenuSize=true;
+      this.cookieService.set('isMenuSize',this.isMenuSize);
     }
   }
 

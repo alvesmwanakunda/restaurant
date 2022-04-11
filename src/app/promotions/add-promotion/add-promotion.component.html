@@ -173,14 +173,14 @@
             <form [formGroup]="threeFormGroup">
               <ng-template matStepLabel>Segmentation</ng-template>
 
-              <div class="row" style="padding-top: 15px;">
+              <div class="row" style="padding-top: 15px;" *ngIf="!isWefid">
 
                 <div class="col-md-12">
 
                   <mat-card style="margin-bottom: 20px;">
                     <mat-card-content>
 
-                      <div class="row" *ngIf="!isWefid">
+                      <div class="row">
 
                         <div class="col-md-5">
                           <p style="color: #04075E;font-weight: bold;font-size: 14px;text-align: center;">Segmentation par point de fidélité</p>
@@ -314,82 +314,88 @@
 
                       </div><!---->
 
-                      <div class="row"  *ngIf="isWefid">
-
-                        <div class="col-md-12">
-
-                          <p style="color: #04075E;font-weight: bold;font-size: 14px;text-align: center;">Segmentation par critère</p>
-
-                            <div class="row" style="font-size: 11px;">
-
-                              <div class="col-md-2"><p style="font-size: 13px;color: #000;">Age:</p></div>
-                              <div class="col-md-4 hposition">
-                                <mat-form-field appearance="legacy" class="example-full-width">
-                                  <mat-label class="labelFrom">Entre</mat-label>
-                                  <input type="number" matInput formControlName="age1">
-                                </mat-form-field>
-                              </div>
-                              <div class="col-md-2">et</div>
-                              <div class="col-md-4 hposition">
-                                <mat-form-field appearance="legacy" class="example-full-width">
-                                  <mat-label class="labelFrom">Ans</mat-label>
-                                  <input type="number" matInput formControlName="age2">
-                                </mat-form-field>
-                              </div>
-              
-                            </div>
-                            <div class="row" style="font-size: 11px;">
-                              <div class="col-md-2">
-                                <p style="font-size: 13px;color: #000;">Sexe:</p>
-                              </div>
-                              <div class="col-md-10 sposition">
-              
-                                <mat-form-field appearance="outline" class="example-full-width">
-                                    <mat-select formControlName="sexe">
-                                      <mat-option value="Femme">Femme</mat-option>
-                                      <mat-option value="Homme">Homme</mat-option>
-                                    </mat-select>
-                                </mat-form-field>
-              
-                              </div>
-                            </div>
-              
-                            <div class="row" style="font-size: 11px;">
-                              <div class="col-md-2">
-                                <p style="font-size: 13px;color: #000;">Région:</p>
-                              </div>
-                              <div class="col-md-10 sposition">
-              
-                                <mat-form-field appearance="outline" class="example-full-width">
-                                    <mat-select formControlName="region" multiple> 
-                                      <mat-option *ngFor="let region of listRegion" [value]="region.nom">{{region.nom}}</mat-option>
-                                    </mat-select>
-                                </mat-form-field>
-              
-                              </div>
-                            </div>
-              
-                            <div class="row" style="font-size: 11px;">
-                              <div class="col-md-2">
-                                <p style="font-size: 13px;color: #000;">Zone:</p>
-                              </div>
-                              <div class="col-md-10 sposition">
-              
-                                <mat-form-field appearance="outline" class="example-full-width">
-                                    <mat-select formControlName="zone" multiple> 
-                                      <mat-option *ngFor="let zone of listZone" [value]="zone.nom">{{zone.nom}}</mat-option>
-                                    </mat-select>
-                                </mat-form-field>
-              
-                              </div>
-                            </div>
-
-                        </div><!--col-md-12-->
-
-                      </div><!--row-->
-
                     </mat-card-content>
                   </mat-card>    
+
+                </div><!--col-md-12-->
+
+              </div><!--row-->
+
+              <div class="row justify-content-md-center"  style="padding-top: 15px;"  *ngIf="isWefid">
+
+                <div class="col-md-6 col-sm-6">
+
+                  <mat-card style="margin-bottom: 20px;">
+                    <mat-card-content>
+
+                      <p style="color: #04075E;font-weight: bold;font-size: 14px;text-align: center;">Segmentation par critère</p>
+
+                      <div class="row" style="font-size: 11px;">
+
+                        <div class="col-md-2"><p style="font-size: 13px;color: #000;">Age:</p></div>
+                        <div class="col-md-4 hposition">
+                          <mat-form-field appearance="legacy" class="example-full-width">
+                            <mat-label class="labelFrom">Entre</mat-label>
+                            <input type="number" matInput formControlName="age1">
+                          </mat-form-field>
+                        </div>
+                        <div class="col-md-2">et</div>
+                        <div class="col-md-4 hposition">
+                          <mat-form-field appearance="legacy" class="example-full-width">
+                            <mat-label class="labelFrom">Ans</mat-label>
+                            <input type="number" matInput formControlName="age2">
+                          </mat-form-field>
+                        </div>
+        
+                      </div>
+                      <div class="row" style="font-size: 11px;">
+                        <div class="col-md-2">
+                          <p style="font-size: 13px;color: #000;">Sexe:</p>
+                        </div>
+                        <div class="col-md-10 sposition">
+        
+                          <mat-form-field appearance="outline" class="example-full-width">
+                              <mat-select formControlName="sexe">
+                                <mat-option value="Femme">Femme</mat-option>
+                                <mat-option value="Homme">Homme</mat-option>
+                              </mat-select>
+                          </mat-form-field>
+        
+                        </div>
+                      </div>
+        
+                      <div class="row" style="font-size: 11px;">
+                        <div class="col-md-2">
+                          <p style="font-size: 13px;color: #000;">Région:</p>
+                        </div>
+                        <div class="col-md-10 sposition">
+        
+                          <mat-form-field appearance="outline" class="example-full-width">
+                              <mat-select formControlName="region" multiple> 
+                                <mat-option *ngFor="let region of listRegion" [value]="region.nom">{{region.nom}}</mat-option>
+                              </mat-select>
+                          </mat-form-field>
+        
+                        </div>
+                      </div>
+        
+                      <div class="row" style="font-size: 11px;">
+                        <div class="col-md-2">
+                          <p style="font-size: 13px;color: #000;">Zone:</p>
+                        </div>
+                        <div class="col-md-10 sposition">
+        
+                          <mat-form-field appearance="outline" class="example-full-width">
+                              <mat-select formControlName="zone" multiple> 
+                                <mat-option *ngFor="let zone of listZone" [value]="zone.nom">{{zone.nom}}</mat-option>
+                              </mat-select>
+                          </mat-form-field>
+        
+                        </div>
+                      </div>
+
+                    </mat-card-content>
+                    </mat-card>
 
                 </div><!--col-md-12-->
 
@@ -472,7 +478,7 @@
     </div><!--row-->
   </div><!--container-->
 
-  <div style="position: absolute;bottom: 0;right:40px;">
+  <div style="position: absolute;bottom: 0;right:10px;">
     <div style="margin-bottom: 10px;">
        <button mat-mini-fab class="sizebf" matTooltip="Envoyer" [disabled]="!isValid && !isWefid" (click)="addProduit('envoyée')"><i class="fas fa-paper-plane" style="font-size: 20px;"></i></button>
     </div>
