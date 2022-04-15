@@ -15,11 +15,11 @@
          <div class="row" style="font-size: 13px;">
             <div class="col-md-12">
 
-              <div class="card card-infos">
+              <!--<div class="card card-infos">
                 <div class="card-body">
                   <p style="margin-bottom: 25px;"><i class="fas fa-envelope iconSize" style="margin-right: 10px;"></i> <span>{{client?.user.email}}</span></p>
                 </div>
-              </div>
+              </div>-->
 
               <div class="card card-infos">
                 <div class="card-body">
@@ -51,16 +51,16 @@
           <div class="row">
              <div class="col-md-4">
                <span class="point">Total de pointes</span>
-               <p class="pointResult">+32,000</p>
+               <p class="pointResult">+{{operation?.point}}</p>
 
              </div><!--col-md-4-->
              <div class="col-md-4">
                 <span class="point">Montant depenses</span>
-                <p class="pointResult">10000</p>
+                <p class="pointResult">{{operation?.depense}}</p>
              </div><!--col-md-4-->
              <div class="col-md-4">
                <span class="point">Total avoir</span>
-               <p class="pointResult">+69,000</p>
+               <p class="pointResult">+{{operation?.avoir}}</p>
 
              </div><!--col-md-4-->
           </div><!--row-->
@@ -72,16 +72,16 @@
           <div class="row">
              <div class="col-md-4">
                <span class="point">Première visite</span>
-               <p class="pointResult">+32,000</p>
+               <p class="pointResult">{{operation?.debut |date: 'dd/MM/YYYY'}}</p>
 
              </div><!--col-md-4-->
              <div class="col-md-4">
                 <span class="point">Dernière visite</span>
-                <p class="pointResult">10000</p>
+                <p class="pointResult">{{operation?.fin |date: 'dd/MM/YYYY'}}</p>
              </div><!--col-md-4-->
              <div class="col-md-4">
                <span class="point">Visites</span>
-               <p class="pointResult">+69,000</p>
+               <p class="pointResult">+{{operation?.visite}}</p>
 
              </div><!--col-md-4-->
           </div><!--row-->

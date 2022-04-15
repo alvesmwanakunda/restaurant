@@ -9,6 +9,7 @@ import {MatPaginator} from '@angular/material/paginator';
 import {MatSort} from '@angular/material/sort';
 import {MatTableDataSource} from '@angular/material/table';
 import { ClientInterface } from '../shared/interfaces/client.interface';
+import { OperationInterface } from '../shared/interfaces/operation.interface';
 import { UploadClientComponent } from './upload-client/upload-client.component';
 import { DeleteClientComponent } from './delete-client/delete-client.component';
 
@@ -22,8 +23,8 @@ import { DeleteClientComponent } from './delete-client/delete-client.component';
 export class ClientsComponent implements OnInit, AfterViewInit {
 
   displayedColumns: string[] = ['id','numero', 'nom', 'genre', 'phone', 'visite','depense','point','avoir'];
-  dataSource = new MatTableDataSource<ClientInterface>();
-  selection = new SelectionModel<ClientInterface>(true, []);
+  dataSource = new MatTableDataSource<OperationInterface>();
+  selection = new SelectionModel<OperationInterface>(true, []);
 
   fileName="";
   onLoadForm: boolean = false;
@@ -33,7 +34,8 @@ export class ClientsComponent implements OnInit, AfterViewInit {
   @ViewChild(MatSort) sort: MatSort;
 
   entreprise:any;
-  clients:any=[]
+  clients:any=[];
+  operations:any=[]
 
   constructor(
     public dialog:MatDialog,
@@ -59,7 +61,8 @@ export class ClientsComponent implements OnInit, AfterViewInit {
       try {
          this.entreprise = res.body;
          if(this.entreprise){
-           this.getAllClients(this.entreprise._id);
+           //this.getAllClients(this.entreprise._id);
+           this.getOperationClients(this.entreprise._id);
          }
       } catch (error) {
         console.log("Erreur ", error);
@@ -67,7 +70,7 @@ export class ClientsComponent implements OnInit, AfterViewInit {
     })
   }
 
-  getAllClients(idEntreprise){
+  /*getAllClients(idEntreprise){
     this.clientService.getClientsByEntreprise(idEntreprise).subscribe((res:any)=>{
       try {
            this.clients = res.message.clients;
@@ -88,6 +91,32 @@ export class ClientsComponent implements OnInit, AfterViewInit {
         console.log("Erreur", error);
       }
     })
+  }*/
+
+  getOperationClients(idEntrepirse){
+    this.clientService.getOperationsByEntreprise(idEntrepirse).subscribe((res:any)=>{
+
+      try {
+        this.operations = res.message.operations;
+        this.dataSource.data = this.operations.map((data)=>({
+           id: data.client._id,
+           operation:data._id,
+           numero: data.client.numeroClient,
+           nom: data.user.nom,
+           prenom: data.user.prenom,
+           phone: data.user.phone,
+           genre: data.client.genre,
+           visite: data.visite,
+           depense:data.depense,
+           point:data.point,
+           avoir:data.avoir,
+        })) as OperationInterface[];
+           console.log("resultat", res);
+      } catch (error) {
+        console.log("Erreur", error);
+      }
+
+    })
   }
 
   applyFilter(event: Event) {
@@ -103,7 +132,7 @@ export class ClientsComponent implements OnInit, AfterViewInit {
     const dialogRef = this.dialog.open(AddClientComponent,{width:'40%',height:'60%'});
     dialogRef.afterClosed().subscribe(result => {
       console.log('The dialog was closed', result);
-      this.getAllClients(this.entreprise._id);
+      this.getOperationClients(this.entreprise._id);
     });
   }
 
@@ -111,7 +140,7 @@ export class ClientsComponent implements OnInit, AfterViewInit {
     const dialogRef = this.dialog.open(UploadClientComponent,{width:'40%',height:'40%'});
     dialogRef.afterClosed().subscribe(result => {
       console.log('The dialog was closed', result);
-      this.getAllClients(this.entreprise._id);
+      this.getOperationClients(this.entreprise._id);
     });
   }
 
@@ -126,7 +155,7 @@ export class ClientsComponent implements OnInit, AfterViewInit {
     const dialogRef = this.dialog.open(DeleteClientComponent,{width:'30%',height:'30%',data:{id:idClient}});
     dialogRef.afterClosed().subscribe(result => {
       console.log(`Dialog result: ${result}`);
-      this.getAllClients(this.entreprise._id);
+      this.getOperationClients(this.entreprise._id);
     })
   }
 
@@ -149,7 +178,7 @@ export class ClientsComponent implements OnInit, AfterViewInit {
   }
 
   /** The label for the checkbox on the passed row */
-  checkboxLabel(row?: ClientInterface): string {
+  checkboxLabel(row?: OperationInterface): string {
     if (!row) {
       return `${this.isAllSelected() ? 'deselect' : 'select'} all`;
     }
@@ -169,7 +198,7 @@ export class ClientsComponent implements OnInit, AfterViewInit {
         try {
              this.clientAdd = res;
              //this.dialogRef.close(this.clientAdd);
-             this.getAllClients(this.entreprise._id);
+             this.getOperationClients(this.entreprise._id);
              this.onLoadForm = false;
         } catch (error) {
            this.onLoadForm = false;

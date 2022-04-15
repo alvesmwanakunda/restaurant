@@ -20,9 +20,10 @@
 
                     <p class="titleInfo" style="padding-top: 22px;">Configuration</p>
 
-                    <section class="example-section">
-                      <p class="labelFrom"><mat-checkbox>Activer enregistrement des avoirs</mat-checkbox></p>
-                      <!--<p class="labelFrom"><mat-checkbox >Activer enregistrement des montants dépensés</mat-checkbox></p>-->
+                    <section class="example-section" *ngIf="avoir">
+                      <form novalidate>
+                        <p class="labelFrom"><mat-checkbox name="avoir"  [(ngModel)]="avoir.avoir" (change)="updateAvoir(avoir)">Activer enregistrement des avoirs</mat-checkbox></p>
+                      </form>
                     </section>
                 </div><!--col--> 
               </div><!--row-->

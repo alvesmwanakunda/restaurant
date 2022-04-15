@@ -32,5 +32,13 @@ export class ClientService {
       return this.http.delete(`${environment.BASE_API_URL}/delete/client/entreprise/${idClient}/${idEntreprise}`)
     }
 
+    getOperationsByEntreprise(idEntrepirse){
+      return this.http.get(`${environment.BASE_API_URL}/operations/${idEntrepirse}`);
+    }
+
+    getOperationById(idClient){
+      return this.http.get(`${environment.BASE_API_URL}/operation/${idClient}`);
+    }
+
 
 }

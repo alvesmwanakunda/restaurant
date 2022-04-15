@@ -7,6 +7,12 @@ import { IClient } from '../shared/interfaces/user.interface';
 import { AuthService } from '../shared/services/auth.service';
 import { EntrepriseService } from '../shared/services/entreprise.service';
 import { DeleteUserComponent } from './delete-user/delete-user.component';
+import { AvoirService } from '../shared/services/avoir.service';
+import { AvoirInterface } from '../shared/interfaces/avoir.interface';
+import { FormControl, Validators, FormGroup } from "@angular/forms";
+import { MatSnackBar } from '@angular/material/snack-bar';
+
+
 
 
 @Component({
@@ -19,11 +25,20 @@ export class ParametresComponent implements OnInit, AfterViewInit {
   displayedColumns: string[] = ['nom','prenom','poste','identifiant', 'actions'];
   dataSource = new MatTableDataSource<IClient>();
   idEntreprise:any;
-  entreprises:any=[]
+  entreprises:any=[];
+  avoir: AvoirInterface;
+  avoirForm: FormGroup;
+  onLoadForm=false;
 
   @ViewChild(MatPaginator) paginator: MatPaginator;
 
-  constructor(public dialog:MatDialog, private authService:AuthService, private entrepriseService:EntrepriseService) { }
+  constructor(
+    public dialog:MatDialog, 
+    private authService:AuthService, 
+    private entrepriseService:EntrepriseService, 
+    private avoirService:AvoirService,
+    private _snackBar: MatSnackBar
+    ) { }
 
   ngOnInit(): void {
 
@@ -35,6 +50,7 @@ export class ParametresComponent implements OnInit, AfterViewInit {
       try {
           this.idEntreprise = res.body._id;
           this.getAllAgent(res.body._id);
+          this.getAvoir(res.body._id);
       } catch (error) {
         console.log("Erreur", error);
       }
@@ -63,7 +79,43 @@ export class ParametresComponent implements OnInit, AfterViewInit {
     })
   }
 
+  getAvoir(idEntreprise){
 
+    this.avoirService.getAvoir(idEntreprise).subscribe((res:any)=>{
+      try {
+          this.avoir = res
+          if(this.avoir){
+
+            this.avoirForm = new FormGroup({
+              avoir: new FormControl(this.avoir.avoir,[
+                Validators.required
+              ]),
+            })
+
+          }
+          
+          console.log("Avoir", res);
+      } catch (error) {
+        console.log("Erreur", error);
+      }
+    })
+  }
+
+  updateAvoir(avoir:AvoirInterface){
+    //console.log("update avoir",avoir);
+    this.onLoadForm = true;
+    this.avoirService.updateAvoir(this.avoir._id,avoir).subscribe((res:any)=>{
+      try {
+            this.avoir = avoir;
+            this.onLoadForm = false;
+            this.openSnackBar();
+            //console.log("reponse", res);
+      } catch (error) {
+        console.log("Error", error);
+        this.onLoadForm = false;
+      }
+    })
+  }
 
   openDialog(){
     const dialogRef = this.dialog.open(AddPersonnelComponent,{width:'40%',height:'67%'});
@@ -81,10 +133,16 @@ export class ParametresComponent implements OnInit, AfterViewInit {
     })
   }
 
-
   ngAfterViewInit() {
     this.dataSource.paginator = this.paginator;
     this.paginator._intl.itemsPerPageLabel = "Agent par page";
+  }
+
+  openSnackBar() {
+    this._snackBar.open('Les avoir modifier avec succès', 'Fermer', {
+      duration: 3000,
+      panelClass: ['blue-snackbar']
+    });
   }
 
 }

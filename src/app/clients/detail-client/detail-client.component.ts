@@ -17,6 +17,7 @@ export class DetailClientComponent implements OnInit, AfterViewInit {
   displayedColumns: string[] = ['position', 'name', 'weight', 'symbol'];
   dataSource = new MatTableDataSource<PeriodicElement>(ELEMENT_DATA);
   client:any;
+  operation:any;
 
   @ViewChild(MatPaginator) paginator: MatPaginator;
   isRecompense:boolean=false;
@@ -27,6 +28,7 @@ export class DetailClientComponent implements OnInit, AfterViewInit {
 
     //console.log("Idclient", this.data);
     this.getClient(this.data.idclient);
+    this.getOperationByClient(this.data.idclient)
   }
 
   ngAfterViewInit() {
@@ -54,6 +56,20 @@ export class DetailClientComponent implements OnInit, AfterViewInit {
       }
     })
 
+  }
+
+  getOperationByClient(idClient){
+
+    this.clientService.getOperationById(idClient).subscribe((res:any)=>{
+      try {
+
+          this.operation = res.message;
+          console.log("Operation", this.operation);
+
+      } catch (error) {
+        console.log("Error", error)
+      }
+    })
   }
 
 }

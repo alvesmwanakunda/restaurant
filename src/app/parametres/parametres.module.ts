@@ -11,6 +11,10 @@ import { HoraireModule } from './horaire/horaire.module';
 import { AuthService } from '../shared/services/auth.service';
 import { EntrepriseService } from '../shared/services/entreprise.service';
 import { DeleteUserModule } from './delete-user/delete-user.module';
+import { AvoirService } from '../shared/services/avoir.service';
+import { FormsModule, ReactiveFormsModule } from '@angular/forms';
+
+
 
 
 @NgModule({
@@ -24,8 +28,10 @@ import { DeleteUserModule } from './delete-user/delete-user.module';
     EntrepriseModule,
     PasswordModule,
     HoraireModule,
-    DeleteUserModule
+    DeleteUserModule,
+    FormsModule,
+    ReactiveFormsModule
   ],
-  providers:[AuthService, EntrepriseService]
+  providers:[AuthService, EntrepriseService, AvoirService]
 })
 export class ParametresModule { }
