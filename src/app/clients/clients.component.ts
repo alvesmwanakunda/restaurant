@@ -99,13 +99,13 @@ export class ClientsComponent implements OnInit, AfterViewInit {
       try {
         this.operations = res.message.operations;
         this.dataSource.data = this.operations.map((data)=>({
-           id: data.client._id,
+           id: data.client?._id,
            operation:data._id,
-           numero: data.client.numeroClient,
-           nom: data.user.nom,
-           prenom: data.user.prenom,
-           phone: data.user.phone,
-           genre: data.client.genre,
+           numero: data.client?.numeroClient,
+           nom: data.user?.nom,
+           prenom: data.user?.prenom,
+           phone: data.user?.phone,
+           genre: data.client?.genre,
            visite: data.visite,
            depense:data.depense,
            point:data.point,
