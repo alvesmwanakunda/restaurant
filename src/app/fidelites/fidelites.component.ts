@@ -97,14 +97,14 @@ export class FidelitesComponent implements OnInit {
   }
 
    openDialogAddReduction(){
-    const dialogRef = this.dialog.open(AddReductionComponent,{width:'55%',height:'50%'});
+    const dialogRef = this.dialog.open(AddReductionComponent,{width:'55%',height:'60%'});
     dialogRef.afterClosed().subscribe(result => {
       this.getReduction(this.entreprise._id);
       console.log(`Dialog result: ${result}`);
     })
   }
   openDialogUpdateReduction(idReduction){
-    const dialogRef = this.dialog.open(UpdateReductionComponent,{width:'55%',height:'50%',data:{id:idReduction}});
+    const dialogRef = this.dialog.open(UpdateReductionComponent,{width:'55%',height:'60%',data:{id:idReduction}});
     dialogRef.afterClosed().subscribe(result => {
       this.getReduction(this.entreprise._id);
       console.log(`Dialog result: ${result}`);
