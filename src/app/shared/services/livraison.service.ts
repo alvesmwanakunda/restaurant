@@ -9,8 +9,8 @@ export class LivraisonService {
 
   constructor(private http:HttpClient) { }
 
-  addLivraison(livraison:Object, idEntreprise){
-    return this.http.post(`${environment.BASE_API_URL}/livraison/${idEntreprise}`, livraison);
+  addLivraison(livraison:Object, idEntreprise,type){
+    return this.http.post(`${environment.BASE_API_URL}/cadeau/${idEntreprise}/${type}`, livraison);
   }
 
   listLivraisonEntreprise(idEntreprise){
@@ -18,15 +18,15 @@ export class LivraisonService {
   }
 
   updateLivraison(livraison,idLivraison){
-    return this.http.put(`${environment.BASE_API_URL}/livraison/${idLivraison}`,livraison)
+    return this.http.put(`${environment.BASE_API_URL}/cadeau/${idLivraison}`,livraison)
   }
 
   removeLivraison(idLivraison){
-    return this.http.delete(`${environment.BASE_API_URL}/livraison/${idLivraison}`)
+    return this.http.delete(`${environment.BASE_API_URL}/cadeau/${idLivraison}`)
   }
 
   getLivraison(idLivraison){
-    return this.http.get(`${environment.BASE_API_URL}/livraison/detail/${idLivraison}`)
+    return this.http.get(`${environment.BASE_API_URL}/cadeau/detail/${idLivraison}`)
   }
 
 

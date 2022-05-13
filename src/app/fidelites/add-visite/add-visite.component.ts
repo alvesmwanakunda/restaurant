@@ -26,6 +26,7 @@ export class AddVisiteComponent implements OnInit {
   visiteFormErrors: any;
   types:any;
   onLoadForm: boolean = false;
+  visites="Visites";
 
   constructor(
     private typePointService:TypePointService,
@@ -95,7 +96,7 @@ export class AddVisiteComponent implements OnInit {
       try {
              //console.log("types", res);
              this.types = res.message.filter((item)=> item.nom!="Achats");
-             //console.log("types", this.types);
+             console.log("types", this.types);
       } catch (error) {
          console.log("Erreur", error)
       }
@@ -106,6 +107,8 @@ export class AddVisiteComponent implements OnInit {
     this.onLoadForm = true;
     this.visite = {};
     if(!this.visiteForm.invalid){
+
+      this.visiteForm.value.typesPoint =  this.types[0]._id;
 
       Object.assign(this.visite, this.visiteForm.value);
       this.visiteService.addVisite(this.visite, this.entreprise._id).subscribe((res:any)=>{

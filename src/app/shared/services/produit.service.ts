@@ -16,4 +16,17 @@ export class ProduitService {
   listProduit(idEntrepirse){
      return this.http.get(`${environment.BASE_API_URL}/produit/${idEntrepirse}`);
   }
+
+  removeProduit(idProduit){
+    return this.http.delete(`${environment.BASE_API_URL}/produit/${idProduit}`);
+  }
+
+  updateProduit(produit:Object,idProduit){
+    return this.http.put(`${environment.BASE_API_URL}/produit/${idProduit}`, produit);
+  }
+
+  getProduit(idProduit){
+    return this.http.get(`${environment.BASE_API_URL}/get/produit/${idProduit}`);
+  }
+
 }

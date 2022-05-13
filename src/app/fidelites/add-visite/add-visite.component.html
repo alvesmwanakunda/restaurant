@@ -24,17 +24,19 @@
     
           </div><!--col-->
           <div class="col-md-6">
-    
+           
             <mat-form-field appearance="outline" class="example-full-width">
               <mat-label class="labelFrom">Points de</mat-label>
-              <mat-select formControlName="typesPoint" required>
+              <input matInput formControlName="typesPoint" [(ngModel)]="visites" readonly>
+
+              <!--<mat-select formControlName="typesPoint" readonly>
                 <mat-option *ngFor="let type of types" value="{{type._id}}">{{type.nom}}</mat-option>
-              </mat-select>
-              <mat-icon matTooltip="{{account_validation_messages.typesPoint[0].message}}"
+              </mat-select>-->
+              <!--<mat-icon matTooltip="{{account_validation_messages.typesPoint[0].message}}"
                 *ngIf="visiteForm.get('typesPoint').hasError(account_validation_messages.typesPoint[0].type) && (visiteForm.get('typesPoint').dirty || visiteForm.get('typesPoint').touched)"
                 style="cursor: pointer;" matSuffix>
                 <i class="fas fa-exclamation-circle"></i>
-              </mat-icon>
+              </mat-icon>-->
             </mat-form-field>
     
           </div><!--col-->

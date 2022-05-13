@@ -138,7 +138,13 @@ export class PasswordComponent implements OnInit {
   }
 
   openUpdate(){
-     this.isUpdatePassword=true;
+  
+     if( this.isUpdatePassword){
+      this.isUpdatePassword=false;
+     }else{
+      this.isUpdatePassword=true;
+     }
+
   }
 
 }

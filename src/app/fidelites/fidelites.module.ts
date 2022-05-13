@@ -22,6 +22,11 @@ import { VisiteService } from '../shared/services/visite.service';
 import { UpdateVisiteModule } from './update-visite/update-visite.module';
 import { UpdateBudgetModule } from './update-budget/update-budget.module';
 import { AddBudgetModule } from './add-budget/add-budget.module';
+import { DeleteCadeauModule } from './delete-cadeau/delete-cadeau.module';
+import { DeletePointModule } from './delete-point/delete-point.module';
+import { ProduitService } from '../shared/services/produit.service';
+import { AddProduitModule } from './add-produit/add-produit.module';
+import { UpdateProduitModule } from './update-produit/update-produit.module';
 
 
 @NgModule({
@@ -43,8 +48,12 @@ import { AddBudgetModule } from './add-budget/add-budget.module';
     AddVisiteModule,
     UpdateVisiteModule,
     UpdateBudgetModule,
-    AddBudgetModule
+    AddBudgetModule,
+    DeleteCadeauModule,
+    DeletePointModule,
+    AddProduitModule,
+    UpdateProduitModule
   ],
-  providers:[CadeauService, EntrepriseService, ReductionService, LivraisonService, VisiteService]
+  providers:[CadeauService, EntrepriseService, ReductionService, LivraisonService, VisiteService, ProduitService]
 })
 export class FidelitesModule { }

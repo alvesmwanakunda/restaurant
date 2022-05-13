@@ -149,7 +149,7 @@ export class AddReductionComponent implements OnInit {
     if(!this.reductionForm.invalid){
 
       Object.assign(this.reduction, this.reductionForm.value);
-      this.reductionService.addReduction(this.reduction, this.entreprise._id).subscribe((res:any)=>{
+      this.reductionService.addReduction(this.reduction, this.entreprise._id,"Reduction").subscribe((res:any)=>{
           try {
             console.log("Response produit", res);
             this.onLoadForm = false;

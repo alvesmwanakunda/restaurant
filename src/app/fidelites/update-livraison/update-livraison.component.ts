@@ -51,7 +51,8 @@ export class UpdateLivraisonComponent implements OnInit {
            if(this.livraison){
              this.livraisonForm = new FormGroup({
                point: new FormControl(this.livraison.point,[Validators.required]),
-               typesPoint:new FormControl(this.livraison.typesPoint,[Validators.required])
+               typesPoint:new FormControl(this.livraison.typesPoint,[Validators.required]),
+               nombreLivraison:new FormControl(this.livraison.nombreLivraison,[Validators.required]),
              })
            }
          

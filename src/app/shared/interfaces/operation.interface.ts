@@ -11,6 +11,7 @@ export interface OperationInterface {
     achat: number;
     point: number;
     avoir: number;
+    nombreVisite: number;
     pointcadeaux: number;
     cadeaux: string;
     creation: Date;

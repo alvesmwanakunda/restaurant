@@ -9,12 +9,12 @@ export class CadeauService {
 
   constructor(private http:HttpClient) { }
 
-  addCadeau(cadeau:Object, idEntreprise){
-    return this.http.post(`${environment.BASE_API_URL}/cadeau/${idEntreprise}`, cadeau);
+  addCadeau(cadeau:Object, idEntreprise, type){
+    return this.http.post(`${environment.BASE_API_URL}/cadeau/${idEntreprise}/${type}`, cadeau);
   }
 
-  listCadeauEntreprise(idEntreprise){
-    return this.http.get(`${environment.BASE_API_URL}/cadeau/${idEntreprise}`)
+  listCadeauEntreprise(idEntreprise,type){
+    return this.http.get(`${environment.BASE_API_URL}/cadeau/${idEntreprise}/${type}`)
   }
 
   updateCadeau(cadeau,idCadeau){

@@ -95,7 +95,7 @@ export class AddCadeauComponent implements OnInit {
      produit:new FormControl("",[Validators.required]),
      typesPoint:new FormControl("",[Validators.required]),
      dateDebut:new FormControl("",null),
-     dateFin:new FormControl("",null)
+     dateFin:new FormControl("",null),
    });
   }
 
@@ -114,10 +114,13 @@ export class AddCadeauComponent implements OnInit {
   addCadeau():void{
     this.onLoadForm = true;
     this.cadeau = {};
+
+    console.log("Cadeau", this.cadeauForm.value);
+
     if(!this.cadeauForm.invalid){
 
       Object.assign(this.cadeau, this.cadeauForm.value);
-      this.cadeauService.addCadeau(this.cadeau, this.entreprise._id).subscribe((res:any)=>{
+      this.cadeauService.addCadeau(this.cadeau, this.entreprise._id, "Cadeau").subscribe((res:any)=>{
           try {
             console.log("Response produit", res);
             this.onLoadForm = false;

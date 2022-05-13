@@ -5,7 +5,6 @@
         <div class="row">
 
             <div class="col-md-12">
-
                 <mat-tab-group>
                   <mat-tab>
                     <ng-template mat-tab-label>
@@ -23,7 +22,8 @@
                                   <div class="row">
                                     <div class="col-md-6">
                                        <div style="cursor: pointer;" (click)="openDialogCadeau()">
-                                         <img src="data:image/png;base64,{{cadeau?.produit.photo}}" width="30px;">
+                                         <img src="data:image/png;base64,{{cadeau?.produit.photo}}" width="30px;" *ngIf="cadeau?.produit.photo">
+                                         <img src="assets/images/not.jpeg" width="30px;" *ngIf="!cadeau?.produit.photo">
                                          <span class="subTitle">{{cadeau?.produit.nom}}</span>
                                         </div>
                                     </div><!--col-->
@@ -65,7 +65,7 @@
                                     <div class="col-md-3">
                                        <div>
                                          <div class="vl"></div>
-                                         <span style="font-size: 11px;margin-left: 4px;">{{reduction?.point}} points</span>
+                                         <span style="font-size: 9px;margin-left: 4px;">{{reduction?.point}} ({{reduction?.typesPoint.nom}})</span>
                                        </div>
                                     </div><!--col-->
                                     <div class="col-md-3">
@@ -193,8 +193,59 @@
                        </div><!--col-->
                     </div><!--row-->
                   </mat-tab>
-               </mat-tab-group>
+                  <mat-tab>
+                     <ng-template mat-tab-label>
+                       Ajouter des articles <i class="fas fa-box-open" style="font-size: 20px;margin-left: 8px;"></i>
+                     </ng-template>
+                     <div class="row justify-content-md-center contentInfo">
 
+                        <div class="col-lg-8 col-md-8 col-md-auto">
+
+                            <div class="row" style="padding-top: 35px;">
+                               <div class="col-md-6">
+                                   <p style="color: #04075E;"><i class="fas fa-sort-amount-up"></i> Produit</p>
+                               </div><!--col-->
+                               <div class="col-md-6">
+                                  <div align="right">
+                                    <p style="font-size: 14px;cursor: pointer;" (click)="openDialogAddProduit()"><i class="fas fa-plus-circle"></i> ajouter un produit</p>
+                                  </div>
+                               </div><!--col-->
+                            </div>
+                            <div><mat-divider></mat-divider></div>
+
+                            <div style="padding-top: 20px;">
+                              <div class="card" *ngFor="let produit of produits" style="margin-bottom: 5px;border: 1px solid rgb(182 181 181 / 13%) !important;">
+                                 <div class="card-body left-border">
+
+                                    <div class="row">
+                                       <div class="col-md-6">
+                                          <img class="rounded" src="data:image/png;base64,{{produit?.photo}}" width="40px" *ngIf="produit?.photo">
+                                          <img class="rounded" src="assets/images/not.jpeg" width="40px;" *ngIf="!produit?.photo">
+                                          <span class="produit">{{produit?.nom}}</span>
+                                       </div><!---->
+                                       <div class="col-md-6">
+                                          <div align="right">
+                                             <button mat-icon-button (click)="openDialogUpdadeProduit(produit?._id)">
+                                                <i class="fas fa-edit" style="font-size: 17px;color: #04075E;"></i>
+                                              </button>
+
+                                              <button mat-icon-button color="warn" (click)="deleteProduit(produit?._id)">
+                                                <mat-icon>cancel</mat-icon>
+                                              </button>
+                                          </div>
+                                       </div><!---->
+                                    </div><!--row-->
+                                  
+                                 </div>
+                               </div>
+                            </div>
+
+
+                        </div>   
+
+                     </div>
+                  </mat-tab>   
+               </mat-tab-group>
             </div>
 
         </div><!--row-->

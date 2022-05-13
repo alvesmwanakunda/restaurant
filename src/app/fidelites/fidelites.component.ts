@@ -20,6 +20,11 @@ import { UpdateVisiteComponent } from './update-visite/update-visite.component';
 import { BudgetService } from '../shared/services/budget.service';
 import { AddBudgetComponent } from './add-budget/add-budget.component';
 import { UpdateBudgetComponent } from './update-budget/update-budget.component';
+import { DeleteCadeauComponent } from './delete-cadeau/delete-cadeau.component';
+import { DeletePointComponent } from './delete-point/delete-point.component';
+import { ProduitService } from '../shared/services/produit.service';
+import { AddProduitComponent } from './add-produit/add-produit.component';
+import { UpdateProduitComponent } from './update-produit/update-produit.component';
 
 
 @Component({
@@ -35,6 +40,7 @@ export class FidelitesComponent implements OnInit {
   listLivraison:any;
   listVisite:any;
   listBudget:any;
+  produits:any;
 
   constructor(
     public dialog:MatDialog, 
@@ -44,7 +50,8 @@ export class FidelitesComponent implements OnInit {
     private reductionService: ReductionService,
     private livraisonService: LivraisonService,
     private visiteService: VisiteService,
-    private budgetService: BudgetService) { }
+    private budgetService: BudgetService,
+    private produitService: ProduitService) { }
 
   ngOnInit(): void {
 
@@ -163,6 +170,7 @@ export class FidelitesComponent implements OnInit {
              this.getLivraison(this.entreprise._id);
              this.getVisite(this.entreprise._id);
              this.getBudget(this.entreprise._id);
+             this.listProduits(this.entreprise._id);
            }
           
       } catch (error) {
@@ -173,7 +181,7 @@ export class FidelitesComponent implements OnInit {
 
   getCadeau(idEntreprise){
 
-    this.cadeauService.listCadeauEntreprise(idEntreprise).subscribe((res:any)=>{
+    this.cadeauService.listCadeauEntreprise(idEntreprise,"Cadeau").subscribe((res:any)=>{
       try {
             //console.log("Cadeau", res);
             this.listCadeau = res.message;
@@ -185,19 +193,27 @@ export class FidelitesComponent implements OnInit {
   }
 
   deleteCadeau(idCadeau){
-    this.cadeauService.removeCadeau(idCadeau).subscribe((res:any)=>{
-      try {
-        this.getCadeau(this.entreprise._id);
-        this.openSnackBarCadeau();
-        //console.log("Delete", res);
-      } catch (error) {
-        console.log("Erreur", error);
+
+    const dialogRef = this.dialog.open(DeleteCadeauComponent);
+    dialogRef.afterClosed().subscribe(result => {
+      if(result==true){
+        this.cadeauService.removeCadeau(idCadeau).subscribe((res:any)=>{
+          try {
+            this.getCadeau(this.entreprise._id);
+            this.openSnackBarCadeau();
+            //console.log("Delete", res);
+          } catch (error) {
+            console.log("Erreur", error);
+          }
+        })
+
       }
+      console.log(`Dialog result: ${result}`);
     })
   }
 
   getReduction(idEntreprise){
-    this.reductionService.listReductionEntreprise(idEntreprise).subscribe((res:any)=>{
+    this.cadeauService.listCadeauEntreprise(idEntreprise,"Reduction").subscribe((res:any)=>{
       try {
          this.listReduction = res.message;
       } catch (error) {
@@ -207,18 +223,26 @@ export class FidelitesComponent implements OnInit {
   }
 
   deleteReduction(idReduction){
-    this.reductionService.removeReduction(idReduction).subscribe((res:any)=>{
-      try {
-        this.getReduction(this.entreprise._id);
-        this.openSnackBarReduction();
-      } catch (error) {
-        console.log("Error", error);
+
+    const dialogRef = this.dialog.open(DeleteCadeauComponent);
+    dialogRef.afterClosed().subscribe(result => {
+      if(result==true){
+        this.reductionService.removeReduction(idReduction).subscribe((res:any)=>{
+          try {
+            this.getReduction(this.entreprise._id);
+            this.openSnackBarReduction();
+          } catch (error) {
+            console.log("Error", error);
+          }
+        })
+
       }
+      console.log(`Dialog result: ${result}`);
     })
   }
 
   getLivraison(idEntreprise){
-    this.livraisonService.listLivraisonEntreprise(idEntreprise).subscribe((res:any)=>{
+    this.cadeauService.listCadeauEntreprise(idEntreprise,"Livraison").subscribe((res:any)=>{
       try {
          this.listLivraison = res.message;
       } catch (error) {
@@ -230,14 +254,21 @@ export class FidelitesComponent implements OnInit {
   deleteLivraison(idLivraison){
 
     console.log("Livraison", idLivraison);
-    this.livraisonService.removeLivraison(idLivraison).subscribe((res:any)=>{
-      try {
-        this.getLivraison(this.entreprise._id);
-        this.openSnackBarLivraison();
-      } catch (error) {
-        console.log("Error", error);
+    const dialogRef = this.dialog.open(DeleteCadeauComponent);
+    dialogRef.afterClosed().subscribe(result => {
+      if(result==true){
+        this.livraisonService.removeLivraison(idLivraison).subscribe((res:any)=>{
+          try {
+            this.getLivraison(this.entreprise._id);
+            this.openSnackBarLivraison();
+          } catch (error) {
+            console.log("Error", error);
+          }
+        })
       }
+      console.log(`Dialog result: ${result}`);
     })
+    
   }
 
   getVisite(idEntreprise){
@@ -255,14 +286,24 @@ export class FidelitesComponent implements OnInit {
   deleteVisite(idVisite){
 
     console.log("Visite", idVisite);
-    this.visiteService.removeVisite(idVisite).subscribe((res:any)=>{
-      try {
-        this.getVisite(this.entreprise._id);
-        this.openSnackBarVisite();
-      } catch (error) {
-        console.log("Error", error);
+
+    const dialogRef = this.dialog.open(DeletePointComponent);
+    dialogRef.afterClosed().subscribe(result => {
+      if(result==true){
+        this.visiteService.removeVisite(idVisite).subscribe((res:any)=>{
+          try {
+            this.getVisite(this.entreprise._id);
+            this.openSnackBarVisite();
+          } catch (error) {
+            console.log("Error", error);
+          }
+        })
       }
+      console.log(`Dialog result: ${result}`);
     })
+
+
+    
   }
 
   getBudget(idEntreprise){
@@ -279,13 +320,20 @@ export class FidelitesComponent implements OnInit {
 
   deleteBudget(idBudget){
 
-    this.budgetService.removeBudget(idBudget).subscribe((res:any)=>{
-      try {
-        this.getBudget(this.entreprise._id);
-        this.openSnackBarBudget();
-      } catch (error) {
-        console.log("Error", error);
+    const dialogRef = this.dialog.open(DeletePointComponent);
+    dialogRef.afterClosed().subscribe(result => {
+      if(result==true){
+        this.budgetService.removeBudget(idBudget).subscribe((res:any)=>{
+          try {
+            this.getBudget(this.entreprise._id);
+            this.openSnackBarBudget();
+          } catch (error) {
+            console.log("Error", error);
+          }
+        })
       }
+      console.log(`Dialog result: ${result}`);
+
     })
   }
 
@@ -323,6 +371,66 @@ export class FidelitesComponent implements OnInit {
       panelClass: ['blue-snackbar']
     });
   }
+
+  openSnackBarProduit() {
+    this._snackBar.open('produit supprimer avec succès', 'Fermer', {
+      duration: 3000,
+      panelClass: ['blue-snackbar']
+    });
+  }
+
+
+  // Produits
+
+  listProduits(idEntrepirse){
+    this.produitService.listProduit(idEntrepirse).subscribe((res:any)=>{
+      try {
+            this.produits = res.message;
+            console.log("Produits", this.produits);
+      } catch (error) {
+        console.log("Erreur", error);
+      }
+    })
+  }
+
+  openDialogAddProduit(){
+    const dialogRef = this.dialog.open(AddProduitComponent,{width:'53%'});
+    dialogRef.afterClosed().subscribe(result => {
+      this.listProduits(this.entreprise._id);
+      console.log(`Dialog result: ${result}`);
+    })
+  }
+
+  deleteProduit(idProduit){
+
+    const dialogRef = this.dialog.open(DeletePointComponent);
+    dialogRef.afterClosed().subscribe(result => {
+      if(result==true){
+        this.produitService.removeProduit(idProduit).subscribe((res:any)=>{
+          try {
+            this.listProduits(this.entreprise._id);
+            this.openSnackBarProduit();
+          } catch (error) {
+            console.log("Error", error);
+          }
+        })
+      }
+      console.log(`Dialog result: ${result}`);
+
+    })
+  }
+
+  openDialogUpdadeProduit(idProduit){
+    const dialogRef = this.dialog.open(UpdateProduitComponent,{width:'53%',data:{id:idProduit}});
+    dialogRef.afterClosed().subscribe(result => {
+      this.listProduits(this.entreprise._id);
+      console.log(`Dialog result: ${result}`);
+    })
+  }
+
+ 
+
+  
 
 
 }

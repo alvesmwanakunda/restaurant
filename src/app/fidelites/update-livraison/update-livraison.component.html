@@ -7,12 +7,11 @@
   
       <form novalidate *ngIf="livraison">
   
-        <div class="row" style="padding-top: 65px;">
+        <div class="row" style="padding-top: 40px;">
   
-          <div class="col-md-6">
-    
+          <div class="col-md-4">
+            <small style="font-size: 10px;">Entrer un nombre de points</small>
             <mat-form-field appearance="outline" class="example-full-width">
-              <mat-label class="labelFrom">Offrir une livraison pour</mat-label>
               <input type="number" matInput name="point" [(ngModel)]="livraison.point" #point="ngModel" required>
             </mat-form-field>
             <div *ngIf="point.errors && (point.dirty || point.touched)">
@@ -22,10 +21,9 @@
             </div>
     
           </div><!--col-->
-          <div class="col-md-6">
-    
+          <div class="col-md-4">
+            <small style="font-size: 10px;">Choisir un type de point</small>
             <mat-form-field appearance="outline" class="example-full-width">
-              <mat-label class="labelFrom">Points de</mat-label>
               <mat-select name="typesPoint" [(ngModel)]="livraison.typesPoint" #typesPoint="ngModel" required>
                 <mat-option *ngFor="let type of types" value="{{type._id}}">{{type.nom}}</mat-option>
               </mat-select>
@@ -35,6 +33,19 @@
                   <p class="text-danger" style="font-size: 13px;">Ce champ est obligatoire!</p>
                 </div>
             </div>
+    
+          </div><!--col-->
+
+          <div class="col-md-4">
+            <small style="font-size: 10px;">Entrer le nombre de livraison offerte</small>
+            <mat-form-field appearance="outline" class="example-full-width">
+              <input type="number" matInput name="nombreLivraison" [(ngModel)]="livraison.nombreLivraison" #nombreLivraison="ngModel" placeholder="Livraison" required>
+            </mat-form-field>
+            <div *ngIf="nombreLivraison.errors && (nombreLivraison.dirty || nombreLivraison.touched)">
+              <div [hidden]="!nombreLivraison.errors.required">
+                <p class="text-danger" style="font-size: 13px;">Ce champ est obligatoire!</p>
+              </div>
+          </div>
     
           </div><!--col-->
         

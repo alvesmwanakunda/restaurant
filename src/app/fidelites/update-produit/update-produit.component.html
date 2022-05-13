@@ -1,0 +1,77 @@
+<mat-dialog-content class="mat-typography">
+    <div class="container-fluid">
+        <div class="text-center">
+            <p class="titleFront">Modifier article produit</p>
+        </div>
+
+        <form *ngIf="produit" enctype='multipart/form-data' novalidate>
+
+            <div>
+           
+               <div class="container" style="font-size: 13px;">
+           
+                 <div class="row">
+                   <div class="col-md-6">
+           
+                     <mat-form-field appearance="outline" class="example-full-width">
+                       <mat-label class="labelFrom">Nom</mat-label>
+                       <input matInput name="nom" [(ngModel)]="produit.nom" #nom="ngModel" required>
+                    </mat-form-field>
+                    <div *ngIf="nom.errors && (nom.dirty || nom.touched)">
+                        <div [hidden]="!nom.errors.required">
+                          <p class="text-danger" style="font-size: 13px;">Ce champ est obligatoire!</p>
+                        </div>
+                    </div>
+           
+                   </div><!--col-md-6-->
+                   <div class="col-md-6">
+           
+                     <mat-form-field appearance="outline" class="example-full-width">
+                       <mat-label class="labelFrom">Quantite</mat-label>
+                        <input type="number" matInput  name="quantite" [(ngModel)]="produit.quantite" #quantite="ngModel" required> 
+                     </mat-form-field>
+                     <div *ngIf="quantite.errors && (quantite.dirty || quantite.touched)">
+                        <div [hidden]="!quantite.errors.required">
+                          <p class="text-danger" style="font-size: 13px;">Ce champ est obligatoire!</p>
+                        </div>
+                    </div>
+           
+                   </div><!--col-md-6-->
+                 </div><!--row-->
+
+                 <div class="row">
+                    <div class="col-md-12">
+                      <mat-form-field appearance="outline" class="example-full-width">
+                            <mat-label class="labelFrom">description</mat-label>
+                            <textarea matInput name="description" [(ngModel)]="produit.description" #description="ngModel"></textarea>
+                      </mat-form-field>
+                    </div>
+                 </div><!--row-->
+           
+               
+                 <div class="row" style="margin-bottom: 10px;">
+                   <div class="col-md-12">
+
+                    <div align="center">
+                        <img class="rounded" src="data:image/png;base64,{{produit?.photo}}" width="50px" *ngIf="produit?.photo"> 
+                        <input type="file" class="file-input" accept='image/*' (change)="onFileSelected($event)" #fileUpload>
+                        <button (click)="fileUpload.click()" mat-mini-fab color="primary" style="background-color: #10ae58;position: relative;left: 20px;">
+                        <mat-icon>add_a_photo</mat-icon>
+                        </button> <span style="padding-left: 26px">{{fileName}}</span> 
+                    </div><!--div-->
+
+                   </div>
+                 </div>
+           
+                
+               </div>
+           
+             </div>
+             <div align="center">
+               <button mat-button type="submit" (click)="addProduit(produit)" cdkFocusInitial style=" background:linear-gradient(90deg, #0c1733, #3fd27e) !important;color:#fff">Modifier produit</button>
+             </div>
+          </form>
+
+
+    </div>
+</mat-dialog-content>

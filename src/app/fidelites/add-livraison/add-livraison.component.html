@@ -10,11 +10,10 @@
 
       <div class="row" style="padding-top: 65px;font-size: 13px;">
 
-        <div class="col-md-6">
-  
+        <div class="col-md-4">
+          <small style="font-size: 10px;">Entrer un nombre de points</small>
           <mat-form-field appearance="outline" class="example-full-width">
-            <mat-label class="labelFrom">Offrir une livraison pour</mat-label>
-            <input type="number" matInput formControlName="point" required>
+            <input type="number" matInput formControlName="point" placeholder="Pour" required>
               <mat-icon matTooltip="{{account_validation_messages.point[0].message}}"
               *ngIf="livraisonForm.get('point').hasError(account_validation_messages.point[0].type) && (livraisonForm.get('point').dirty || livraisonForm.get('point').touched)"
               style="cursor: pointer;" matSuffix>
@@ -23,15 +22,27 @@
           </mat-form-field>
   
         </div><!--col-->
-        <div class="col-md-6">
-  
+        <div class="col-md-4">
+          <small style="font-size: 10px;">Choisir un type de point</small>
           <mat-form-field appearance="outline" class="example-full-width">
-            <mat-label class="labelFrom">Points de</mat-label>
-            <mat-select formControlName="typesPoint" required>
+            <mat-select formControlName="typesPoint" placeholder="Points de" required>
               <mat-option *ngFor="let type of types" value="{{type._id}}">{{type.nom}}</mat-option>
             </mat-select>
             <mat-icon matTooltip="{{account_validation_messages.typesPoint[0].message}}"
               *ngIf="livraisonForm.get('typesPoint').hasError(account_validation_messages.typesPoint[0].type) && (livraisonForm.get('typesPoint').dirty || livraisonForm.get('typesPoint').touched)"
+              style="cursor: pointer;" matSuffix>
+              <i class="fas fa-exclamation-circle"></i>
+            </mat-icon>
+          </mat-form-field>
+  
+        </div><!--col-->
+
+        <div class="col-md-4">
+          <small style="font-size: 10px;">Entrer le nombre de livraison offerte</small>
+          <mat-form-field appearance="outline" class="example-full-width">
+            <input type="number" matInput formControlName="nombreLivraison" placeholder="Livraison" required>
+              <mat-icon matTooltip="{{account_validation_messages.nombreLivraison[0].message}}"
+              *ngIf="livraisonForm.get('nombreLivraison').hasError(account_validation_messages.nombreLivraison[0].type) && (livraisonForm.get('nombreLivraison').dirty || livraisonForm.get('nombreLivraison').touched)"
               style="cursor: pointer;" matSuffix>
               <i class="fas fa-exclamation-circle"></i>
             </mat-icon>

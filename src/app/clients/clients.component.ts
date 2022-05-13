@@ -22,7 +22,7 @@ import { DeleteClientComponent } from './delete-client/delete-client.component';
 })
 export class ClientsComponent implements OnInit, AfterViewInit {
 
-  displayedColumns: string[] = ['id','numero', 'nom', 'genre', 'phone', 'visite','depense','point','avoir'];
+  displayedColumns: string[] = ['id','numero', 'nom', 'genre', 'debut','fin', 'visite','depense','avoir'];
   dataSource = new MatTableDataSource<OperationInterface>();
   selection = new SelectionModel<OperationInterface>(true, []);
 
@@ -104,11 +104,11 @@ export class ClientsComponent implements OnInit, AfterViewInit {
            numero: data.client?.numeroClient,
            nom: data.user?.nom,
            prenom: data.user?.prenom,
-           phone: data.user?.phone,
            genre: data.client?.genre,
-           visite: data.visite,
+           debut: data.debut,
+           fin: data.fin,
+           visite: data.nombreVisite,
            depense:data.depense,
-           point:data.point,
            avoir:data.avoir,
         })) as OperationInterface[];
            console.log("resultat", res);

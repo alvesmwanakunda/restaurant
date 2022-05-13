@@ -53,6 +53,12 @@ export class AddLivraisonComponent implements OnInit {
         message:"Ce champ est requis"
       }
     ],
+    nombreLivraison:[
+      {
+        type:"required",
+        message:"Ce champ est requis"
+      }
+    ]
     
   };
 
@@ -76,6 +82,7 @@ export class AddLivraisonComponent implements OnInit {
     this.livraisonForm = new FormGroup({
       point:new FormControl("",[Validators.required]),
       typesPoint:new FormControl("",[Validators.required]),
+      nombreLivraison:new FormControl("",[Validators.required]),
     });
   }
 
@@ -107,7 +114,7 @@ export class AddLivraisonComponent implements OnInit {
     if(!this.livraisonForm.invalid){
 
       Object.assign(this.livraison, this.livraisonForm.value);
-      this.livraisonService.addLivraison(this.livraison, this.entreprise._id).subscribe((res:any)=>{
+      this.livraisonService.addLivraison(this.livraison, this.entreprise._id,"Livraison").subscribe((res:any)=>{
           try {
             console.log("Response produit", res);
             this.onLoadForm = false;

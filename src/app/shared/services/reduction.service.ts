@@ -13,19 +13,19 @@ export class ReductionService {
     return this.http.get(`${environment.BASE_API_URL}/reduction/${idEntreprise}`)
   }
 
-  addReduction(reduction:Object, idEntreprise){
-    return this.http.post(`${environment.BASE_API_URL}/reduction/${idEntreprise}`, reduction);
+  addReduction(reduction:Object, idEntreprise,type){
+    return this.http.post(`${environment.BASE_API_URL}/cadeau/${idEntreprise}/${type}`, reduction);
   }
 
   updateReduction(reduction,idReduction){
-    return this.http.put(`${environment.BASE_API_URL}/reduction/${idReduction}`,reduction)
+    return this.http.put(`${environment.BASE_API_URL}/cadeau/${idReduction}`,reduction)
   }
 
   removeReduction(idReduction){
-    return this.http.delete(`${environment.BASE_API_URL}/reduction/${idReduction}`)
+    return this.http.delete(`${environment.BASE_API_URL}/cadeau/${idReduction}`)
   }
 
   getReduction(idReduction){
-    return this.http.get(`${environment.BASE_API_URL}/reduction/detail/${idReduction}`)
+    return this.http.get(`${environment.BASE_API_URL}/cadeau/detail/${idReduction}`)
   }
 }
