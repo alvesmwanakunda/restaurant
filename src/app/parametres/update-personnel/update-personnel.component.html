@@ -1,0 +1,59 @@
+<mat-dialog-content class="mat-typography">
+    <div class="container-fluid">
+  
+      <div class="text-center">
+        <p class="titleFront">Modifier agent</p>
+      </div>
+  
+      <form novalidate *ngIf="user">
+  
+        <div class="row" style="padding-top: 65px;">
+  
+          <div class="col-md-6">
+    
+            <mat-form-field appearance="outline" class="example-full-width">
+              <mat-label class="labelFrom">Nom</mat-label>
+              <input  matInput name="nom" [(ngModel)]="user.nom" readonly>
+            </mat-form-field>
+            
+
+          </div><!--col-->
+
+          <div class="col-md-6">
+    
+            <mat-form-field appearance="outline" class="example-full-width">
+              <mat-label class="labelFrom">Prénom</mat-label>
+              <input  matInput name="prenom"  [(ngModel)]="user.prenom" readonly>
+            </mat-form-field>
+        
+          </div><!--col-->
+         
+        </div><!--row-->
+
+        <div class="row">
+            <div class="col-md-6">
+    
+                <mat-form-field appearance="outline" class="example-full-width">
+                  <mat-label class="labelFrom">Poste</mat-label>
+                  <input  matInput name="poste" [(ngModel)]="user.poste" #poste="ngModel" required>
+                </mat-form-field>
+                <div *ngIf="poste.errors && (poste.dirty || poste.touched)">
+                    <div [hidden]="!poste.errors.required">
+                      <p class="text-danger" style="font-size: 13px;">Ce champ est obligatoire!</p>
+                    </div>
+                </div>
+        
+              </div><!--col-->
+        </div>
+     
+        <div class="text-center">
+           <button mat-button mat-dialog-close>Fermer</button>
+           <button mat-button type="submit" (click)="updateAgent(user)" cdkFocusInitial style=" background:linear-gradient(90deg, #0c1733, #3fd27e) !important;color:#fff">Mettre à jour</button>
+        </div>
+  
+      </form><!--Form-->
+      <div *ngIf="onLoadForm" style="padding-top: 20px;">
+        <mat-progress-bar mode="indeterminate"></mat-progress-bar>
+      </div>
+    </div><!--c-->
+</mat-dialog-content>

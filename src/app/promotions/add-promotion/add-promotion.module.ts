@@ -11,6 +11,7 @@ import { Types } from 'src/app/shared/class/types';
 import { Regions } from 'src/app/shared/class/regions';
 import { Zone } from 'src/app/shared/class/zone';
 import { NgbModule } from '@ng-bootstrap/ng-bootstrap';
+import { EditorModule } from '@tinymce/tinymce-angular';
 
 
 @NgModule({
@@ -22,7 +23,8 @@ import { NgbModule } from '@ng-bootstrap/ng-bootstrap';
     SharedModule,
     FormsModule,
     ReactiveFormsModule,
-    NgbModule
+    NgbModule,
+    EditorModule
   ],
   providers:[PromotionsService, EntrepriseService, Types, Regions, Zone]
 })

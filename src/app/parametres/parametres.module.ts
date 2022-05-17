@@ -13,6 +13,7 @@ import { EntrepriseService } from '../shared/services/entreprise.service';
 import { DeleteUserModule } from './delete-user/delete-user.module';
 import { AvoirService } from '../shared/services/avoir.service';
 import { FormsModule, ReactiveFormsModule } from '@angular/forms';
+import { UpdatePersonnelModule } from './update-personnel/update-personnel.module';
 
 
 
@@ -30,7 +31,8 @@ import { FormsModule, ReactiveFormsModule } from '@angular/forms';
     HoraireModule,
     DeleteUserModule,
     FormsModule,
-    ReactiveFormsModule
+    ReactiveFormsModule,
+    UpdatePersonnelModule
   ],
   providers:[AuthService, EntrepriseService, AvoirService]
 })

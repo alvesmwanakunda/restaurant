@@ -11,6 +11,7 @@ import { AvoirService } from '../shared/services/avoir.service';
 import { AvoirInterface } from '../shared/interfaces/avoir.interface';
 import { FormControl, Validators, FormGroup } from "@angular/forms";
 import { MatSnackBar } from '@angular/material/snack-bar';
+import { UpdatePersonnelComponent } from './update-personnel/update-personnel.component';
 
 
 
@@ -127,6 +128,14 @@ export class ParametresComponent implements OnInit, AfterViewInit {
 
   openDialogDelete(idUser){
     const dialogRef = this.dialog.open(DeleteUserComponent,{width:'30%',height:'30%',data:{id:idUser}});
+    dialogRef.afterClosed().subscribe(result => {
+      console.log(`Dialog result: ${result}`);
+      this.getAllAgent(this.idEntreprise);
+    })
+  }
+
+  openDialogUpdate(idUser){
+    const dialogRef = this.dialog.open(UpdatePersonnelComponent,{width:'50%',height:'55%',data:{id:idUser}});
     dialogRef.afterClosed().subscribe(result => {
       console.log(`Dialog result: ${result}`);
       this.getAllAgent(this.idEntreprise);

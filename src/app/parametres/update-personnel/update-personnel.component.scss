@@ -6,6 +6,18 @@
     width: 100%;
   }
   
+  .titleFront {
+    font-size: 14px;
+    color: #04075E;
+    font-weight: bold;
+  }
+  
+  .subTitle {
+    margin-left: 10px;
+    font-size: 11px;
+    color: #6969F7;
+  }
+  
   .contentInfo {
     padding-top: 32px;
     margin-left: 15px;
@@ -25,30 +37,26 @@
     margin-right: 13px;
   }
   
-  .titleInfo{
+  .titleInfo {
     text-align: center;
-    font-weight: normal;
-    font-size: 16px;
+    font-weight: 800;
+    font-size: 15px;
     color: #04075E;
   }
   
-  .iconInfo{
+  .iconInfo {
     position: relative;
     left: 70px;
+    font-size: 18px;
   }
   
   .example-full-width {
     width: 100%;
   }
   
-  .imgSizeEn{
-    width: 250px;
-    height: 120px;
-  }
-
-  .imgSizeLogo{
-    width: 250px;
-    height: 120px;
+  .imgSize {
+    width: 248px;
+    height: 228px;
   }
   
   .sizeb {
@@ -57,40 +65,21 @@
     color: #fff;
     height: 43px;
   }
-  .checkboxTitle1{
-    padding-top: 10px;
-  }
   
   .vl {
     border-left: 1px solid #e2e1e1;
     height: 42px;
     position: absolute;
-    margin-left: 15px;
-    top: 16px;
-  }
-  .tithr{
-    font-size: 12px;
-    color: #939191;
-    padding-top: 10px;
+    margin-left: -3px;
+    top: 9px;
   }
   
-  .example-full-width {
-    width: 100%;
+  .addProduct{
+  font-size: 13px;
+  //font-weight: bold;
+  cursor: pointer;
+  color: #10ae58;
+  position: relative;
+  bottom: 16px;
   }
-  
-  .labelFrom {
-    color: #000000;
-    font-size: 13px;
-  }
-
-  .photoBtn{
-    position: relative;
-    left: 231px;
-    bottom: 34px;
-  }
-
-  .file-input {
-    display: none;
-  }
-  
   

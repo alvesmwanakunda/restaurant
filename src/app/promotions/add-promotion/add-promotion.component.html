@@ -9,7 +9,9 @@
      <div class="row" style="margin-bottom: 15px;">
       <div class="col-md-12">
          <div class="text-end">
-            <button mat-raised-button class="sizeButtonAB" [routerLink]="'/promotions'"><i class="fas fa-long-arrow-alt-left" style="font-size: 15px;"></i></button>
+            <button mat-raised-button class="sizeButtonAB" [routerLink]="'/promotions'" style="margin-right:20px"><i class="fas fa-long-arrow-alt-left" style="font-size: 15px;"></i></button>
+            <button mat-mini-fab class="sizebf" matTooltip="Envoyer" [disabled]="!isValid && !isWefid" (click)="addProduit('envoyée')" style="margin-right:20px"><i class="fas fa-paper-plane" style="font-size: 20px;"></i></button>
+            <button mat-mini-fab class="sizebff" matTooltip="Enregistrer" [disabled]="!isValid && !isWefid" (click)="addProduit('enregistrée')"><i class="fas fa-save" style="font-size: 20px;"></i></button>
          </div>
       </div>
     </div>
@@ -56,9 +58,20 @@
 
                         <div *ngIf="!isSms">
                           <p class="titreHeader">SMS</p>
-                          <mat-form-field class="example-full-width" appearance="fill">
+                          <!--<mat-form-field class="example-full-width" appearance="legacy">
                             <textarea matInput formControlName="sms"></textarea>
-                          </mat-form-field>
+                          </mat-form-field>-->
+                          <editor 
+                            apiKey="yimjymys4ncgnyjba52651rzyas8c049jditk61x087va3yn"
+                            [init]="{
+                              icons: 'material',
+                              skin: 'borderless',
+                              plugins: 'wordcount',
+                              menubar: false,
+                              height: '250',
+                              language: 'fr_FR'
+                            }"
+                            formControlName="sms"></editor>
                         </div>
           
                         <!--<mat-divider></mat-divider>-->
@@ -67,9 +80,21 @@
 
                           <p class="titreHeader">App</p>
 
-                          <mat-form-field class="example-full-width" appearance="fill">
+                          <editor 
+                          apiKey="yimjymys4ncgnyjba52651rzyas8c049jditk61x087va3yn"
+                          [init]="{
+                            icons: 'material',
+                            skin: 'borderless',
+                            plugins: 'wordcount',
+                            menubar: false,
+                            height: '250',
+                            language: 'fr_FR'
+                          }"
+                          formControlName="email"></editor>
+
+                         <!-- <mat-form-field class="example-full-width" appearance="legacy">
                             <textarea matInput formControlName="email"></textarea>
-                          </mat-form-field>
+                          </mat-form-field>-->
   
                           <div>
                             <input type="file" class="file-input" accept='image/*' (change)="onFileSelected($event)" #fileUpload>
@@ -478,17 +503,13 @@
     </div><!--row-->
   </div><!--container-->
 
-  <div style="position: absolute;bottom: 0;right:10px;">
+  <!--<div style="position: absolute;bottom: 0;right:10px;">
     <div style="margin-bottom: 10px;">
        <button mat-mini-fab class="sizebf" matTooltip="Envoyer" [disabled]="!isValid && !isWefid" (click)="addProduit('envoyée')"><i class="fas fa-paper-plane" style="font-size: 20px;"></i></button>
     </div>
     <div style="margin-bottom: 10px;">
        <button mat-mini-fab class="sizebff" matTooltip="Enregistrer" [disabled]="!isValid && !isWefid" (click)="addProduit('enregistrée')"><i class="fas fa-save" style="font-size: 20px;"></i></button>
     </div>
-    <!--<div>
-       <button mat-raised-button class="sizebr" matTooltip="Supprimer"><i class="fas fa-trash" style="font-size: 20px;"></i></button>
-    </div>-->
-
-  </div>
+  </div>-->
 
 </app-nav-bar>
