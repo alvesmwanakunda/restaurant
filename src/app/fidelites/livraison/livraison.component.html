@@ -28,7 +28,7 @@
                 <p class="titleCadeau">
                   Nombre de livraisons
                 </p>
-                <span class="numberTitle">279</span>
+                <span class="numberTitle">{{nombreCadeau}}</span>
               </div>
             </div><!--col-->
             <div class="col-md-4">
@@ -38,7 +38,7 @@
                 <p class="titleCadeau">
                   Total point
                 </p>
-                <span class="numberTitle">6700</span>
+                <span class="numberTitle">{{countCadeau}}</span>
               </div>
 
             </div><!--col-->
@@ -49,7 +49,7 @@
                 <p class="titleCadeau">
                   Nombre de personne
                 </p>
-                <span class="numberTitle">238</span>
+                <span class="numberTitle">{{clients.length}}</span>
               </div>
 
             </div><!--col-->
@@ -82,7 +82,7 @@
                                   <!-- Weight Column -->
                                   <ng-container matColumnDef="date">
                                     <th mat-header-cell *matHeaderCellDef> Date </th>
-                                    <td mat-cell *matCellDef="let element"> {{element.date}} </td>
+                                    <td mat-cell *matCellDef="let element"> {{element.date | date:'dd/MM/YYYY'}} </td>
                                   </ng-container>
 
                                   <!-- Symbol Column -->

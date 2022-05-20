@@ -2,6 +2,7 @@ import { NgModule } from '@angular/core';
 import { CommonModule } from '@angular/common';
 import { SharedModule } from 'src/app/shared/shared.module';
 import { LivraisonComponent } from './livraison.component';
+import { CadeauService } from 'src/app/shared/services/cadeau.service';
 
 
 
@@ -11,6 +12,7 @@ import { LivraisonComponent } from './livraison.component';
     CommonModule,
     SharedModule
   ],
-  exports:[LivraisonComponent]
+  exports:[LivraisonComponent],
+  providers:[CadeauService]
 })
 export class LivraisonModule { }

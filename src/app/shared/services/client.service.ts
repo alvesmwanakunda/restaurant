@@ -40,5 +40,9 @@ export class ClientService {
       return this.http.get(`${environment.BASE_API_URL}/operation/${idClient}`);
     }
 
+    listCadeauByUser(idUser, idEntrepirse){
+      return this.http.get(`${environment.BASE_API_URL}/cadeau/visite/${idUser}/${idEntrepirse}`);
+    }
+
 
 }

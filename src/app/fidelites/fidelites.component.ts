@@ -58,23 +58,23 @@ export class FidelitesComponent implements OnInit {
     this.getEntreprise();
   }
    //width:'30%',height:'30%'
-  openDialogCadeau(){
-    const dialogRef = this.dialog.open(CadeauComponent,{width:'50%',height:'50%'});
+  openDialogCadeau(idCadeau){
+    const dialogRef = this.dialog.open(CadeauComponent,{width:'70%',height:'70%',data:{id:idCadeau}});
     dialogRef.afterClosed().subscribe(result => {
       console.log(`Dialog result: ${result}`);
 
     })
   }
 
-  openDialogReduction(){
-    const dialogRef = this.dialog.open(ReductionComponent,{width:'150%'});
+  openDialogReduction(idCadeau){
+    const dialogRef = this.dialog.open(ReductionComponent,{width:'70%',data:{id:idCadeau}});
     dialogRef.afterClosed().subscribe(result => {
       console.log(`Dialog result: ${result}`);
     })
   }
 
-  openDialogLivraison(){
-    const dialogRef = this.dialog.open(LivraisonComponent,{width:'150%'});
+  openDialogLivraison(idCadeau){
+    const dialogRef = this.dialog.open(LivraisonComponent,{width:'70%',data:{id:idCadeau}});
     dialogRef.afterClosed().subscribe(result => {
       console.log(`Dialog result: ${result}`);
     })

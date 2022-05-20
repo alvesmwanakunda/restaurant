@@ -21,7 +21,7 @@
 
                                   <div class="row">
                                     <div class="col-md-6">
-                                       <div style="cursor: pointer;" (click)="openDialogCadeau()">
+                                       <div style="cursor: pointer;" (click)="openDialogCadeau(cadeau._id)">
                                          <img src="data:image/png;base64,{{cadeau?.produit.photo}}" width="30px;" *ngIf="cadeau?.produit.photo">
                                          <img src="assets/images/not.jpeg" width="30px;" *ngIf="!cadeau?.produit.photo">
                                          <span class="subTitle">{{cadeau?.produit.nom}}</span>
@@ -56,7 +56,7 @@
 
                                   <div class="row">
                                     <div class="col-md-6">
-                                       <div style="cursor: pointer;" (click)="openDialogReduction()">
+                                       <div style="cursor: pointer;" (click)="openDialogReduction(reduction._id)">
                                          <img src="data:image/png;base64,{{reduction?.produit?.photo}}" width="30px;" *ngIf="!reduction?.facture">
                                          <span class="subTitle" *ngIf="reduction?.facture">Facture</span>
                                          <span class="subTitle">{{reduction?.montant}} {{reduction?.devise}}</span>
@@ -89,7 +89,7 @@
 
                                  <div class="row">
                                     <div class="col-md-6">
-                                       <div style="cursor: pointer;" (click)="openDialogLivraison()">
+                                       <div style="cursor: pointer;" (click)="openDialogLivraison(livraison._id)">
                                          <span class="subTitle">{{livraison?.typesPoint.nom}}</span>
                                         </div>
                                     </div><!--col-->
