@@ -1,4 +1,4 @@
-import { NgModule } from '@angular/core';
+import { LOCALE_ID, NgModule } from '@angular/core';
 import { BrowserModule } from '@angular/platform-browser';
 import { HttpClient, HTTP_INTERCEPTORS } from '@angular/common/http';
 import { AppRoutingModule } from './app-routing.module';
@@ -8,6 +8,9 @@ import { BrowserAnimationsModule} from '@angular/platform-browser/animations';
 //import { AuthService } from './shared/services/auth.service';
 import { JwtService } from './shared/interceptors/jwt.service';
 //import { AppInterceptor } from './shared/interceptors/app.interceptor';
+import { registerLocaleData } from '@angular/common';
+import localeFr from '@angular/common/locales/fr';
+registerLocaleData(localeFr, 'fr');
 
 
 @NgModule({
@@ -25,6 +28,9 @@ import { JwtService } from './shared/interceptors/jwt.service';
       provide: HTTP_INTERCEPTORS,
       useClass: JwtService,
       multi: true
+    },
+    {
+      provide: LOCALE_ID, useValue:'fr'
     },
     HttpClient
   ],

@@ -20,4 +20,8 @@ export class EntrepriseService {
   uploadLogo(body, idEntreprise){
     return this.http.put(`${environment.BASE_API_URL}/entreprise/image/${idEntreprise}`, body)
   }
+
+  listRecompense(idEntrepirse){
+    return this.http.get(`${environment.BASE_API_URL}/web/operation/cadeau/client/${idEntrepirse}`)
+  }
 }
