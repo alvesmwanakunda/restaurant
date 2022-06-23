@@ -4,6 +4,7 @@ import { DashboardComponent } from './dashboard.component';
 import { DashboardRoutingModule } from './dashboard-routing.module';
 import { NavBarModule } from '../menus/nav-bar/nav-bar.module';
 import { ClientService } from '../shared/services/client.service';
+import { SharedModule } from '../shared/shared.module';
 
 
 @NgModule({
@@ -11,7 +12,8 @@ import { ClientService } from '../shared/services/client.service';
   imports: [
     CommonModule,
     DashboardRoutingModule,
-    NavBarModule
+    NavBarModule,
+    SharedModule
   ],
   providers:[ClientService]
 })

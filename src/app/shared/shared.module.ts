@@ -21,7 +21,7 @@ import {MatStepperModule} from '@angular/material/stepper';
 import { MatSortModule } from '@angular/material/sort';
 import { MatMenuModule } from '@angular/material/menu';
 import {MatRadioModule} from '@angular/material/radio';
-
+import {MatListModule} from '@angular/material/list'
 
 
 
@@ -49,7 +49,9 @@ import {MatRadioModule} from '@angular/material/radio';
     MatStepperModule,
     MatSortModule,
     MatMenuModule,
-    MatRadioModule
+    MatRadioModule,
+    MatListModule
+    
   ],
   exports:[
     MatCardModule,
@@ -72,7 +74,8 @@ import {MatRadioModule} from '@angular/material/radio';
     MatStepperModule,
     MatSortModule,
     MatMenuModule,
-    MatRadioModule
+    MatRadioModule,
+    MatListModule
   ]
 })
 export class SharedModule { }

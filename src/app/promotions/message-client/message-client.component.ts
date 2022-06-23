@@ -11,6 +11,7 @@ export class MessageClientComponent implements OnInit {
   listTypes:any;
   isSms:boolean=false;
   isSms1:boolean=false;
+  checked: boolean = true;
 
   constructor(
     public types: Types,
