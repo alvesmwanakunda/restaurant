@@ -6,64 +6,65 @@
 
       <div class="col-md-8">
 
-        <mat-stepper labelPosition="bottom" #stepper>
+        <mat-stepper labelPosition="bottom" [selectedIndex]="selectedStepIndex" #stepper>
           <mat-step>
-    
-            <section class="exempla-section">
-              <p class="checkboxTitle"><mat-checkbox [checked]="checked">Envoyer un message au client à chaque visite</mat-checkbox></p>
-
-
+            <ng-template matStepLabel>Envoyer un message au client à chaque visite</ng-template>
+            <div>
               <app-visite-message></app-visite-message>
-
-            </section>
-
+            </div>
           </mat-step>
           <mat-step>
-            <section class="exempla-section">
-              <p class="checkboxTitle"><mat-checkbox [checked]="checked">Envoyer un message à chaque anniversaire</mat-checkbox></p>
-
+            <ng-template matStepLabel>Envoyer un message à chaque anniversaire</ng-template>
+            <div>
               <app-anniversaire-message></app-anniversaire-message>
-            </section>
-            
+            </div>
           </mat-step>
           <mat-step>
-    
-            <section class="exempla-section">
-              <p class="checkboxTitle"><mat-checkbox [checked]="checked">Relancer les clients</mat-checkbox></p>
-
+            <ng-template matStepLabel>Relancer les clients</ng-template>
+            <div>
               <app-relancer-message></app-relancer-message>
-            </section>
-            
+            </div>
           </mat-step>
         </mat-stepper>
 
       </div><!--col-md-8-->
 
       <div class="col-md-4">
-
-        <mat-card style="height: 510px;">
+        <p class="titreHeader" style="font-weight: bold;">Visualiser</p>
+        <mat-card style="height: 562px;">
           <mat-card-content>
-            <p class="titreHeader" style="font-weight: bold;">Visualiser</p>
-
             <div class="row">
-              <div class="col-md-12">
+              <div class="col-md-12"> 
+               
 
-                <img src="assets/images/iphone1.png" alt="Angular Carousel 1" style="width: 224px;height: 350;display:block; margin-left: auto;margin-right: auto;">
+                <img src="assets/images/phone.png" alt="Angular Carousel 1" style="width:80%;display:block; margin-left: auto;margin-right: auto;">
 
-               <!--<ngb-carousel style="bottom: 59px !important;">
-                 <ng-template ngbSlide>
-                   <div class="picsum-img-wrapper">
-                     <img src="assets/images/iphone1.png" alt="Angular Carousel 1" style="width: 224px;height: 350;display:block; margin-left: auto;margin-right: auto;">
-                   </div>
+                 <div *ngIf="message?.typePromotion=='App'" class="app">
+
+                  <div style="margin-bottom:15px;">
+                    <img  src="data:image/png;base64,{{message?.photo}}" style="width:94%;padding-left:49px; padding-right:49px;" *ngIf="message?.photo">
+                    <img  src="assets/images/blank.jpeg" style="width:94%;padding-left:49px; padding-right:49px;"  *ngIf="!message?.photo">
+                  </div>
                   
-                 </ng-template>
-                 <ng-template ngbSlide>
-                   <div class="picsum-img-wrapper">
-                     <img src="assets/images/iphone2.png" alt="Angular Carousel 2" style="width: 224px;height: 350;display:block; margin-left: auto;margin-right: auto;">
-                   </div>
-                   
-                 </ng-template>
-               </ngb-carousel>-->
+                  <p class="title-message">{{message?.nom}}</p>
+                  <p class="message-text">{{message?.message}}</p>
+
+                 </div><!--App-->
+
+                 <div *ngIf="message?.typePromotion=='Sms'" class="sms">
+
+                  <p style="text-align:center;font-size: 12px;color: rgb(102, 102, 102);">{{message.dateCreated | date:'dd/MM/YYYY'}}</p>
+
+                  <mat-card style="background-color:#cce5fe !important;">
+                    <mat-card-content>
+                      <p class="title-sms">{{message?.nom}}</p>
+                      <p class="sms-text">{{message?.message}}</p>
+                    </mat-card-content> 
+                  </mat-card>   
+
+                </div><!--Sms-->
+
+               
               
               </div>
            </div>
@@ -74,172 +75,6 @@
       </div><!--col-md-4-->
 
     </div><!--row-->
-
-    <!--<div class="row" style="margin-bottom: 15px;">
-      <div class="col-md-12">
-         <div class="text-end">
-            <button mat-raised-button class="sizeButtonAA" [routerLink]="'/promotions'"><i class="fas fa-long-arrow-alt-left" style="font-size: 15px;"></i></button>
-         </div>
-      </div>
-    </div>row-->
-
-    <!--<div class="row">
-
-      <div class="col-md-4">
-
-        <section class="exempla-section">
-          <p class="checkboxTitle"><mat-checkbox> Envoyer un message au client à chaque visite</mat-checkbox> </p>
-        </section>
-
-        <mat-card style="margin-bottom: 20px;">
-            <mat-card-content>
-              <p class="titreHeader">Information de base</p>
-              <div class="row">
-                <div class="col-md-12" style="font-size: 13px;">
-
-                  <mat-form-field appearance="outline" class="example-full-width">
-                      <mat-label class="labelFrom">Type de promo</mat-label>
-                      <mat-select (selectionChange)="selectSms($event.value)">
-                        <mat-option *ngFor="let type of listTypes" [value]="type.nom">{{type.nom}}</mat-option>
-                      </mat-select>
-                  </mat-form-field>
-
-                </div>
-              </div>
-
-            </mat-card-content>
-        </mat-card>
-
-        <mat-card>
-            <mat-card-content>
-
-              <div *ngIf="!isSms">
-
-                <p class="titreHeader">SMS</p>
-
-                <mat-form-field class="example-full-width" appearance="fill">
-                  <textarea matInput></textarea>
-                </mat-form-field>
-
-              </div>
-              
-
-            
-
-             <div *ngIf="isSms">
-
-              <p class="titreHeader">App</p>
-
-              <mat-form-field class="example-full-width" appearance="fill">
-                <textarea matInput></textarea>
-              </mat-form-field>
-
-             </div>
-
-              
-              <div align="right">
-                <button mat-raised-button class="sizebv">Valider</button>
-              </div>
-            </mat-card-content>
-        </mat-card>
-
-      </div>
-
-      <div class="col-md-4">
-
-        <section class="exempla-section">
-          <p class="checkboxTitle"><mat-checkbox> Envoyer un message à chaque anniversaire</mat-checkbox> </p>
-        </section>
-
-        <mat-card style="margin-bottom: 20px;">
-            <mat-card-content>
-              <p class="titreHeader">Information de base</p>
-
-              <div class="row">
-                 <div class="col-md-12" style="font-size: 13px;">
-
-                   <mat-form-field appearance="outline" class="example-full-width">
-                      <mat-label class="labelFrom">Type de promo</mat-label>
-                      <mat-select (selectionChange)="selectSms1($event.value)">
-                        <mat-option *ngFor="let type of listTypes" [value]="type.nom">{{type.nom}}</mat-option>
-                      </mat-select>
-                   </mat-form-field>
-
-                 </div>
-                
-              </div>
-
-            </mat-card-content>
-        </mat-card>
-
-        <mat-card>
-            <mat-card-content>
-
-              <div *ngIf="!isSms1">
-
-                <p class="titreHeader">SMS</p>
-
-                <mat-form-field class="example-full-width" appearance="fill">
-                  <textarea matInput></textarea>
-                </mat-form-field>
-
-              </div>
-              
-
-            
-
-              <div *ngIf="isSms1">
-
-                <p class="titreHeader">App</p>
-
-                <mat-form-field class="example-full-width" appearance="fill">
-                  <textarea matInput></textarea>
-                </mat-form-field>
-
-              </div>
-
-              
-
-               <div align="right">
-                <button mat-raised-button class="sizebv">Valider</button>
-               </div>
-            </mat-card-content>
-        </mat-card>
-
-      </div>
-
-      <div class="col-md-4" style="padding-top: 39px;">
-
-         <mat-card style="height: 510px;">
-            <mat-card-content>
-              <p class="titreHeader" style="font-weight: bold;">Visualiser</p>
-
-              <div class="row">
-                <div class="col-md-12">
-                 <ngb-carousel style="bottom: 59px !important;">
-                   <ng-template ngbSlide>
-                     <div class="picsum-img-wrapper">
-                       <img src="assets/images/iphone1.png" alt="Angular Carousel 1" style="width: 224px;height: 350;display:block; margin-left: auto;margin-right: auto;">
-                     </div>
-                    
-                   </ng-template>
-                   <ng-template ngbSlide>
-                     <div class="picsum-img-wrapper">
-                       <img src="assets/images/iphone2.png" alt="Angular Carousel 2" style="width: 224px;height: 350;display:block; margin-left: auto;margin-right: auto;">
-                     </div>
-                     
-                   </ng-template>
-                 </ngb-carousel>
-                
-                </div>
-             </div>
-
-            </mat-card-content>
-        </mat-card>
-
-      </div>
-
-    </div>row-->
 
   </div><!--container-->
 </app-nav-bar>

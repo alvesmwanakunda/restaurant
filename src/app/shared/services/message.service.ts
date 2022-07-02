@@ -17,6 +17,14 @@ export class MessageService {
     return this.http.put(`${environment.BASE_API_URL}/message/client/${id}`, message)
   }
 
+  addMessageVisiteAppTest(message:Object,idEntreprise, idClient){
+    return this.http.post(`${environment.BASE_API_URL}/message/client/${idEntreprise}/${idClient}`, message)
+  }
+
+  testMessage(phone:Object){
+    return this.http.post(`${environment.BASE_API_URL}/message/client/test`, phone)
+  }
+
   deleteMessageVisiteApp(id){
     return this.http.delete(`${environment.BASE_API_URL}/message/client/${id}`)
   }

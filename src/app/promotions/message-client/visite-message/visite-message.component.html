@@ -7,25 +7,85 @@
 
       <div class="row">
   
-          <div class="col-md-6">
+          <div class="col-md-12">
   
               <mat-card style="margin-bottom: 20px;">
                   <mat-card-content>
                     <p class="titreHeader">Information de base</p>
+                    <br/>
                     <div class="row">
                       <div class="col-md-12" style="font-size: 13px;">
+
+                        <p *ngIf="sendMessage"  style="color:#0654e6;font-size: 14px;font-weight: 800;text-align:center;">{{sendMessage}}</p>
+
+                        <div style="margin-bottom: 20px;">
+                          <mat-checkbox formControlName="automatique">Activer l'envoi automatique</mat-checkbox>
+                        </div>
   
-                      <mat-form-field appearance="outline" class="example-full-width">
-                              <mat-label class="labelFrom">Nom</mat-label>
-                              <input matInput formControlName="nom">
-                      </mat-form-field>   
+
+                        <mat-form-field appearance="outline" class="example-full-width">
+                                <mat-label class="labelFrom">Nom</mat-label>
+                                <input matInput formControlName="nom" required> 
+                        </mat-form-field>
+                        <span *ngIf="messageForm.get('nom').hasError('required') && (messageForm.get('nom').dirty || messageForm.get('nom').touched)" style="color:#e6066e;font-size: 12px;">
+                          Champ nom obligatoire
+                        </span>
+                         
       
                         <mat-form-field appearance="outline" class="example-full-width">
                             <mat-label class="labelFrom">Type de promo</mat-label>
-                            <mat-select (selectionChange)="selectSms($event.value)" formControlName="typePromotion">
+                            <mat-select (selectionChange)="selectSms($event.value)" formControlName="typePromotion" required>
                               <mat-option *ngFor="let type of listTypes" [value]="type.nom">{{type.nom}}</mat-option>
                             </mat-select>
                         </mat-form-field>
+                        <span *ngIf="messageForm.get('typePromotion').hasError('required') && (messageForm.get('typePromotion').dirty || messageForm.get('typePromotion').touched)" style="color:#e6066e;font-size: 12px;">
+                          Champ type obligatoire
+                        </span>
+
+                        <div *ngIf="!isSms">
+      
+                          <p class="titreHeader">SMS</p>
+          
+                          <mat-form-field class="example-full-width" appearance="fill">
+                            <textarea matInput formControlName="message" required></textarea>
+                          </mat-form-field>
+                          <span *ngIf="messageForm.get('message').hasError('required') && (messageForm.get('message').dirty || messageForm.get('message').touched)" style="color:#e6066e;font-size: 12px;">
+                            Champ message obligatoire
+                          </span>
+          
+                        </div>
+                        
+                       <div *ngIf="isSms">
+          
+                        <p class="titreHeader">App</p>
+
+                        <div style="padding-top: 45px;">
+                          <input type="file" class="file-input" accept='image/png, image/jpeg' (change)="onFileSelected($event)" #fileUpload>
+                          <div class="photoBtn" align="center">
+                            <button (click)="fileUpload.click()" mat-mini-fab color="primary" style="background-color: #10ae58;">
+                               <mat-icon>add_a_photo</mat-icon>
+                            </button>
+                            <div align="center" *ngIf="fileName">
+                             <p style="color:#000000;font-size:13px;text-align: center;">{{fileName}}</p>
+                            </div>
+                          </div>
+                        </div>
+
+                        <div>
+                          <mat-form-field class="example-full-width" appearance="fill">
+                            <textarea matInput formControlName="message"></textarea>
+                          </mat-form-field>
+                          <span *ngIf="messageForm.get('message').hasError('required') && (messageForm.get('message').dirty || messageForm.get('message').touched)" style="color:#e6066e;font-size: 12px;">
+                            Champ message obligatoire
+                          </span>
+                        </div>
+          
+                       </div>
+
+                       <div align="center">
+                        <button mat-raised-button class="sizebv" type="submit" (click)="AddMessage()" style="margin-right: 15px;"><i class="fas fa-paper-plane"></i> Envoyer le message</button>
+                        <button mat-raised-button color="accent" type="button" (click)="AddMessageTest()"><i class="fas fa-paper-plane"></i> Tester le message</button>
+                      </div>
       
                       </div>
                     </div>
@@ -34,41 +94,8 @@
               </mat-card>
   
   
-          </div><!--col-md-6-->
-          <div class="col-md-6">
-  
-              <mat-card>
-                  <mat-card-content>
-      
-                    <div *ngIf="!isSms">
-      
-                      <p class="titreHeader">SMS</p>
-      
-                      <mat-form-field class="example-full-width" appearance="fill">
-                        <textarea matInput formControlName="message"></textarea>
-                      </mat-form-field>
-      
-                    </div>
-                    
-                   <div *ngIf="isSms">
-      
-                    <p class="titreHeader">App</p>
-      
-                    <mat-form-field class="example-full-width" appearance="fill">
-                      <textarea matInput formControlName="message"></textarea>
-                    </mat-form-field>
-      
-                   </div>
-      
-                    
-                    <div align="right">
-                      <button mat-raised-button class="sizebv" type="submit" (click)="AddMessage()">Valider</button>
-                    </div>
-                  </mat-card-content>
-              </mat-card>
-      
-  
-          </div><!--col-md-6-->
+          </div><!--col-md-12-->
+         
   
       </div><!--row-->
   
@@ -87,8 +114,13 @@
           <mat-card style="margin-bottom: 20px;">
               <mat-card-content>
                 <p class="titreHeader">Information de base</p>
+                <br/>
                 <div class="row">
                   <div class="col-md-12" style="font-size: 13px;">
+
+                  <div style="margin-bottom: 20px;">
+                      <mat-checkbox name="automatique" [(ngModel)]="messageClient.automatique" #automatique="ngModel">Activer l'envoi automatique</mat-checkbox>
+                  </div>   
 
                   <mat-form-field appearance="outline" class="example-full-width">
                           <mat-label class="labelFrom">Nom</mat-label>
@@ -102,6 +134,19 @@
                         </mat-select>
                     </mat-form-field>
 
+                    <div *ngIf="messageClient.typePromotion=='App'">
+                         <input type="file" class="file-input" accept='image/png, image/jpeg' (change)="onFileSelected($event)" #fileUpload>
+                         <img [src]="image" class="imgSizeLogo img-thumbnail" *ngIf="messageClient?.photo">
+                          <div class="photoBtn" align="center">
+                            <button (click)="fileUpload.click()" mat-mini-fab color="primary" style="background-color: #10ae58;">
+                               <mat-icon>add_a_photo</mat-icon>
+                            </button>
+                            <div align="center" *ngIf="fileName">
+                             <p style="color:#000000;font-size:13px;text-align: center;">{{fileName}}</p>
+                            </div>
+                          </div>
+                    </div>
+
                     <div>
     
                       <mat-form-field class="example-full-width" appearance="fill">
@@ -110,8 +155,9 @@
         
                      </div>
         
-                      <div align="left">
-                        <button mat-raised-button class="sizebv" type="submit" (click)="updateMessage(messageClient,messageClient?._id)">Valider</button>
+                      <div align="center">
+                        <button mat-raised-button class="sizebv" type="submit" (click)="updateMessage(messageClient,messageClient?._id)"  style="margin-right: 15px;">Modifier le message</button>
+                        <button mat-raised-button color="accent" type="button" (click)="close()"><i class="fas fa-times"></i> Quitter</button>
                       </div>
   
                   </div>
@@ -134,36 +180,37 @@
   <div class="row" style="padding-top: 45px;">
   
      <div class="col-md-12">
+
+      <table class="table">
+        <thead>
+          <tr>
+            <th style="font-size: 14px;text-align: center;">Nom promotion</th>
+            <th style="font-size: 14px;text-align: center;">Type promotion</th>
+            <th style="font-size: 14px;text-align: center;">Message</th>
+          </tr>
+        </thead>
+        <tbody>
+          <tr>
+            <td style="font-size:11px;">{{messageClient?.nom}}</td>
+            <td style="font-size:11px;">{{messageClient?.typePromotion}}</td>
+            <td style="font-size:11px;">
+              <p [ngClass]="{'limitTextHeight':isReadMore}">
+                {{messageClient?.message}}
+              </p>
+              <button mat-button (click)="showText()" class="btn-more" *ngIf="messageClient?.message">
+                <span style="color: #10ae58;font-size: 12px;font-weight: normal;">{{ isReadMore ? 'Lire plus': 'Lire moins' }} <mat-icon style="position: absolute;top: 8px;" *ngIf="isReadMore">keyboard_arrow_down</mat-icon> <mat-icon style="position: absolute;top: 8px;" *ngIf="!isReadMore">keyboard_arrow_up</mat-icon> </span>
+              </button>
+              
+            </td>
+          </tr>
+        </tbody>
+      </table>
+
+     
  
-          <div class="row">
-
-            <div class="col-md-4">
-
-              <p class="checkboxTitle">Nom promotion :</p>
-              
-              <p class="checkboxTitle">Type promotion : </p>
-              
-              <p class="checkboxTitle">Message promotion :</p>
-
-            </div><!--col-md-4-->
-
-            <div class="col-md-8">
-
-              <p class="checkboxTitleM">{{messageClient?.nom}}</p>
-              
-              <p class="checkboxTitleM">{{messageClient?.typePromotion}}</p>
-              
-              <p class="checkboxTitleM">{{messageClient?.message}}</p>
-
-            </div><!--col-md-8-->
-
-          </div><!--row--> 
-
-          <div align="center">
-            <button mat-mini-fab color="primary" matTooltip="Ajouter ou modifier promotion" (click)="openMessage()">
-              <mat-icon>edit</mat-icon>
-            </button>
-          </div>
+      <div align="center">
+        <button mat-raised-button color="primary" matTooltip="Ajouter ou modifier promotion" (click)="openMessage()"><mat-icon>edit</mat-icon> Ajouter ou modifier le message</button>
+      </div>
      </div>
    </div>
 </div>

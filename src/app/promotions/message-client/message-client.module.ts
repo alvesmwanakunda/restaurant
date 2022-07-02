@@ -9,6 +9,9 @@ import { Types } from 'src/app/shared/class/types';
 import { VisiteMessageModule } from './visite-message/visite-message.module';
 import { AnniversaireMessageModule } from './anniversaire-message/anniversaire-message.module';
 import { RelancerMessageModule } from './relancer-message/relancer-message.module';
+import { MessageService } from 'src/app/shared/services/message.service';
+import { EntrepriseService } from 'src/app/shared/services/entreprise.service';
+import { TestMessageModule } from './test-message/test-message.module';
 
 
 
@@ -23,8 +26,9 @@ import { RelancerMessageModule } from './relancer-message/relancer-message.modul
     NgbModule,
     VisiteMessageModule,
     AnniversaireMessageModule,
-    RelancerMessageModule
+    RelancerMessageModule,
+    TestMessageModule
   ],
-  providers:[Types]
+  providers:[Types,MessageService,EntrepriseService]
 })
 export class MessageClientModule { }

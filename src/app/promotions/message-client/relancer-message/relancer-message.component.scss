@@ -140,6 +140,37 @@
   .carousel-indicators{
     z-index: 20;
   }
+
+  .limitTextHeight {
+    height: 20px;
+    overflow: hidden;
+    text-overflow: ellipsis;
+    white-space: nowrap;
+    width: 200px;
+}
+
+.btn-more{
+    position: relative;
+    bottom: 23px;
+    float: left;
+    right: 15px;
+}
+
+  .file-input {
+    display: none;
+  }
+  
+  .photoBtn{
+    position: relative;
+    //left: 231px;
+    bottom: 34px;
+  }
+  
+  .imgSizeLogo{
+    width: 250px;
+    height: 120px;
+  }
+    
   
   
   

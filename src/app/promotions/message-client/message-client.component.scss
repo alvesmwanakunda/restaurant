@@ -135,4 +135,48 @@ ngb-carousel {
   z-index: 20;
 }
 
+.title-message{
+  font-weight: 800;
+  font-size: 17px;
+  color: #0c2461;
+  margin-left: 53px;
+}
+
+.message-text{
+  font-size: 12px;
+  margin-left: 53px;
+  margin-right: 53px;
+  display: -webkit-box;
+    -webkit-line-clamp: 5;
+    -webkit-box-orient: vertical;
+    overflow: hidden;
+    text-overflow: ellipsis;
+}
+
+.app{
+  position: absolute;
+  bottom: 100px;
+}
+
+.sms{
+  position: absolute;
+  top: 170px;
+  padding-left: 53px;
+  padding-right: 96px;
+}
+
+.title-sms{
+  font-weight: 800;
+  font-size: 15px;
+  color: #0c2461;
+}
+
+.sms-text{
+  font-size: 11px;
+  display: -webkit-box;
+    -webkit-line-clamp: 5;
+    -webkit-box-orient: vertical;
+    overflow: hidden;
+    text-overflow: ellipsis;
+}
 

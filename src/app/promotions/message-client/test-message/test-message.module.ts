@@ -1,22 +1,22 @@
 import { NgModule } from '@angular/core';
 import { CommonModule } from '@angular/common';
-import { VisiteMessageComponent } from './visite-message.component';
 import { SharedModule } from 'src/app/shared/shared.module';
+import { TestMessageComponent } from './test-message.component';
 import { FormsModule, ReactiveFormsModule } from '@angular/forms';
+import { EntrepriseService } from 'src/app/shared/services/entreprise.service';
 import { MessageService } from 'src/app/shared/services/message.service';
-import { EntrepriseModule } from 'src/app/parametres/entreprise/entreprise.module';
-import { Types } from 'src/app/shared/class/types';
+
 
 
 @NgModule({
-  declarations: [VisiteMessageComponent],
+  declarations: [TestMessageComponent],
   imports: [
     CommonModule,
     SharedModule,
     FormsModule,
     ReactiveFormsModule
   ],
-  exports:[VisiteMessageComponent],
-  providers:[MessageService,EntrepriseModule,Types]
+  exports:[TestMessageComponent],
+  providers:[EntrepriseService,MessageService]
 })
-export class VisiteMessageModule { }
+export class TestMessageModule { }

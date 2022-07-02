@@ -1,0 +1,29 @@
+<mat-dialog-content class="mat-typography">
+    <div class="container-fluid">
+
+        <div style="margin-bottom:15px;">
+            <p class="titreHeader">Tester le message</p>
+            <mat-divider></mat-divider>
+        </div>
+
+        <form [formGroup]="userForm" novalidate>
+
+            <p *ngIf="error"  style="color:#e6066e;font-size: 13px;font-weight: 800;">{{error}}</p>
+
+            <mat-form-field appearance="outline" class="example-full-width">
+                <mat-label class="labelFrom">Numéro téléphone</mat-label>
+                <input matInput formControlName="phone" required> 
+            </mat-form-field>
+            <span *ngIf="userForm.get('phone').hasError('required') && (userForm.get('phone').dirty || userForm.get('phone').touched)" style="color:#e6066e;font-size: 12px;">
+              Champ téléphone obligatoire
+            </span>
+
+            <div align="center" style="padding-top:20px;">
+                <button mat-raised-button class="sizebv" type="submit" (click)="AddTestMessage()" style="margin-right: 15px;"><i class="fas fa-paper-plane"></i> Envoyer le message</button>
+                <button mat-raised-button color="accent" type="button" (click)="onNoClick()"><i class="fas fa-times"></i> Fermer</button>
+            </div>
+
+        </form>
+     
+    </div><!--container-->
+</mat-dialog-content>
