@@ -17,7 +17,7 @@
                 <div class="col-md-5">
                     <mat-form-field appearance="outline" class="example-full-width">
                        <mat-label class="labelFrom">Chaque</mat-label>
-                        <input type="number" matInput name="achat" [(ngModel)]="budget.achat" #achat="ngModel" required>
+                        <input type="number" min="0" matInput name="achat" [(ngModel)]="budget.achat" #achat="ngModel" required>
                     </mat-form-field>
                     <div *ngIf="achat.errors && (achat.dirty || achat.touched)">
                         <div [hidden]="!achat.errors.required">
@@ -35,7 +35,7 @@
           <div class="col-md-6">
                     <mat-form-field appearance="outline" class="example-full-width">
                          <mat-label class="labelFrom">Points d'achats</mat-label>
-                        <input type="number" matInput name="point" [(ngModel)]="budget.point" #point="ngModel" required>
+                        <input type="number" min="0" matInput name="point" [(ngModel)]="budget.point" #point="ngModel" required>
                     </mat-form-field>
                     <div *ngIf="point.errors && (point.dirty || point.touched)">
                         <div [hidden]="!point.errors.required">

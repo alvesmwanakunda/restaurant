@@ -12,7 +12,7 @@
           <div class="col-md-4">
             <small style="font-size: 10px;">Entrer un nombre de points</small>
             <mat-form-field appearance="outline" class="example-full-width">
-              <input type="number" matInput name="point" [(ngModel)]="livraison.point" #point="ngModel" required>
+              <input type="number" min="0" matInput name="point" [(ngModel)]="livraison.point" #point="ngModel" required>
             </mat-form-field>
             <div *ngIf="point.errors && (point.dirty || point.touched)">
                 <div [hidden]="!point.errors.required">
@@ -39,7 +39,7 @@
           <div class="col-md-4">
             <small style="font-size: 10px;">Entrer le nombre de livraison offerte</small>
             <mat-form-field appearance="outline" class="example-full-width">
-              <input type="number" matInput name="nombreLivraison" [(ngModel)]="livraison.nombreLivraison" #nombreLivraison="ngModel" placeholder="Livraison" required>
+              <input type="number" min="0" matInput name="nombreLivraison" [(ngModel)]="livraison.nombreLivraison" #nombreLivraison="ngModel" placeholder="Livraison" required>
             </mat-form-field>
             <div *ngIf="nombreLivraison.errors && (nombreLivraison.dirty || nombreLivraison.touched)">
               <div [hidden]="!nombreLivraison.errors.required">

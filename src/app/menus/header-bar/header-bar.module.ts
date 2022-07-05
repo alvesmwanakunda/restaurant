@@ -3,6 +3,7 @@ import { CommonModule } from '@angular/common';
 import { HeaderBarComponent } from './header-bar.component';
 import { AuthService } from 'src/app/shared/services/auth.service';
 import { SharedModule } from 'src/app/shared/shared.module';
+import { DeconnexionModule } from '../deconnexion/deconnexion.module';
 
 
 
@@ -10,7 +11,8 @@ import { SharedModule } from 'src/app/shared/shared.module';
   declarations: [HeaderBarComponent],
   imports: [
     CommonModule,
-    SharedModule
+    SharedModule,
+    DeconnexionModule
   ],
   exports:[
     HeaderBarComponent

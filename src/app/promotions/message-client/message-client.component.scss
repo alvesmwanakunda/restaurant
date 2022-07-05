@@ -139,13 +139,14 @@ ngb-carousel {
   font-weight: 800;
   font-size: 17px;
   color: #0c2461;
-  margin-left: 53px;
+  margin-left: 14%;
+  margin-right: 18%;
 }
 
 .message-text{
   font-size: 12px;
-  margin-left: 53px;
-  margin-right: 53px;
+  margin-left: 14%;
+  margin-right: 18%;
   display: -webkit-box;
     -webkit-line-clamp: 5;
     -webkit-box-orient: vertical;
@@ -155,14 +156,14 @@ ngb-carousel {
 
 .app{
   position: absolute;
-  bottom: 100px;
+  top:105px;
 }
 
 .sms{
   position: absolute;
   top: 170px;
-  padding-left: 53px;
-  padding-right: 96px;
+  padding-left: 17%;
+  padding-right: 23%;
 }
 
 .title-sms{

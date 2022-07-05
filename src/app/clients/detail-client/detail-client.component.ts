@@ -52,7 +52,7 @@ export class DetailClientComponent implements OnInit, AfterViewInit {
           this.client = res.message.client;
           console.log("Client", this.client);
           if(this.client){
-            this.listRecompense(this.client.user?._id, this.data.idEntreprise);
+            this.listRecompense(this.client._id, this.data.idEntreprise);
           }
       } catch (error) {
         console.log("Error", error)
@@ -78,19 +78,19 @@ export class DetailClientComponent implements OnInit, AfterViewInit {
   listRecompense(idClient,idEntrepirse){
      this.clientService.listCadeauByUser(idClient,idEntrepirse).subscribe((res:any)=>{
        try {
-             this.cadeaux = res.cadeau;
+             this.cadeaux = res.message;
              console.log("Les cadeaux", this.cadeaux);
              this.dataSource.data = this.cadeaux.map((data)=>({
-                recompense: data.typeCadeau,
-                date:data.dateCreation,
-                heure:data.dateCreation,
-                type:data.typeCadeau,
-                point:data.point,
-                livraison:data.nombreLivraison,
-                montant:data.montant,
-                devise:data.devise,
-                produit:data.produit?.nom,
-                typepoint:data.typesPoint?.nom
+                recompense: data.cadeau?.typeCadeau,
+                date:data.creation,
+                heure:data.creation,
+                type:data.cadeau?.typeCadeau,
+                point:data.cadeau?.point,
+                livraison:data.cadeau?.nombreLivraison,
+                montant:data.cadeau?.montant,
+                devise:data.cadeau?.devise,
+                produit:data.cadeau.produit?.nom,
+                typepoint:data.cadeau.typesPoint?.nom
              }))as PeriodicElement[];
        } catch (error) {
          console.log("Erreur", error);

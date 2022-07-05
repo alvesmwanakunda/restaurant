@@ -10,23 +10,47 @@
               </ng-template>
             
               <div class="row contentInfo">
-                <div class="col-md-6">
+                <div class="col-md-12">
                   <app-entreprise></app-entreprise>
                 </div><!--col--> 
                 
-                <div class="col-md-6">
-                  
-                   <app-password></app-password>
-
-                    <p class="titleInfo" style="padding-top: 22px;">Configuration</p>
-
-                    <section class="example-section" *ngIf="avoir">
-                      <form novalidate>
-                        <p class="labelFrom" style="font-weight: normal;"><mat-checkbox name="avoir"  [(ngModel)]="avoir.avoir" (change)="updateAvoir(avoir)">Activer enregistrement des avoirs</mat-checkbox></p>
-                      </form>
-                    </section>
-                </div><!--col--> 
               </div><!--row-->
+
+            <mat-divider></mat-divider>   
+
+             <div class="row" style="padding-top: 27px">
+
+               <div class="col-md-6">
+                <app-password></app-password>
+               </div><!--col-->
+
+               <div class="col-md-6">
+
+                <p class="titleInfo">Configuration</p>
+
+                <section class="example-section" *ngIf="avoir">
+                  <form novalidate>
+                    <p class="labelFrom" style="font-weight: normal;"><mat-checkbox name="avoir"  [(ngModel)]="avoir.avoir" (change)="updateAvoir(avoir)">Activer enregistrement des avoirs</mat-checkbox></p>
+                  </form>
+                </section>
+
+                <section class="example-section" *ngIf="avoir">
+                  <form novalidate>
+                    <p class="labelFrom" style="font-weight: normal;"><mat-checkbox name="visite"  [(ngModel)]="avoir.visite" (change)="updateAvoir(avoir)">Activer enregistrement des points visites</mat-checkbox></p>
+                  </form>
+                </section>
+
+                <section class="example-section" *ngIf="avoir">
+                  <form novalidate>
+                    <p class="labelFrom" style="font-weight: normal;"><mat-checkbox name="depense"  [(ngModel)]="avoir.depense" (change)="updateAvoir(avoir)">Activer enregistrement des montants dépensés</mat-checkbox></p>
+                  </form>
+                </section>
+
+               </div><!--col-->
+
+             </div><!--row-->
+
+             <mat-divider></mat-divider> 
               
              <app-horaire></app-horaire>
 

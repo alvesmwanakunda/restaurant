@@ -12,6 +12,7 @@ import { RelancerMessageModule } from './relancer-message/relancer-message.modul
 import { MessageService } from 'src/app/shared/services/message.service';
 import { EntrepriseService } from 'src/app/shared/services/entreprise.service';
 import { TestMessageModule } from './test-message/test-message.module';
+import { DeleteMessageModule } from './delete-message/delete-message.module';
 
 
 
@@ -27,7 +28,8 @@ import { TestMessageModule } from './test-message/test-message.module';
     VisiteMessageModule,
     AnniversaireMessageModule,
     RelancerMessageModule,
-    TestMessageModule
+    TestMessageModule,
+    DeleteMessageModule
   ],
   providers:[Types,MessageService,EntrepriseService]
 })

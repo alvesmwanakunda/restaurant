@@ -1,5 +1,7 @@
 import { Component, OnInit, ViewEncapsulation } from '@angular/core';
 import { AuthService } from 'src/app/shared/services/auth.service';
+import { MatDialog } from '@angular/material/dialog';
+import { DeconnexionComponent } from '../deconnexion/deconnexion.component';
 
 @Component({
   selector: 'app-header-bar',
@@ -12,7 +14,7 @@ export class HeaderBarComponent implements OnInit {
 
   user:any;
 
-  constructor(private authService: AuthService) {
+  constructor(private authService: AuthService,public dialog:MatDialog) {
     this.user = JSON.parse(localStorage.getItem('user'));
     console.log("User", this.user.user);
   }
@@ -22,6 +24,14 @@ export class HeaderBarComponent implements OnInit {
 
   logout():void{
     this.authService.logout()
+  }
+
+  openDialog(){
+    const dialogRef = this.dialog.open(DeconnexionComponent,{width:'20%'});
+    dialogRef.afterClosed().subscribe(result => {
+      console.log(`Dialog result: ${result}`);
+
+    })
   }
 
 }

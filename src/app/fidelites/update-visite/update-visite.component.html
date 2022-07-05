@@ -13,7 +13,7 @@
     
             <mat-form-field appearance="outline" class="example-full-width">
               <mat-label class="labelFrom">Pour chaque passage à la caisse offrir</mat-label>
-              <input type="number" matInput name="point" [(ngModel)]="visite.point" #point="ngModel" required>
+              <input type="number" min="0" matInput name="point" [(ngModel)]="visite.point" #point="ngModel" required>
             </mat-form-field>
             <div *ngIf="point.errors && (point.dirty || point.touched)">
                 <div [hidden]="!point.errors.required">

@@ -13,7 +13,7 @@
     
             <mat-form-field appearance="outline" class="example-full-width">
               <mat-label class="labelFrom">Pour</mat-label>
-              <input type="number" matInput name="point" [(ngModel)]="reduction.point" #point="ngModel" required>
+              <input type="number" min="0" matInput name="point" [(ngModel)]="reduction.point" #point="ngModel" required>
             </mat-form-field>
             <div *ngIf="point.errors && (point.dirty || point.touched)">
                 <div [hidden]="!point.errors.required">
@@ -42,7 +42,7 @@
     
             <mat-form-field appearance="outline" class="example-full-width">
               <mat-label class="labelFrom">Appliquer une réduction de</mat-label>
-              <input type="number" matInput name="montant" [(ngModel)]="reduction.montant" #montant="ngModel" required>
+              <input type="number" min="0" matInput name="montant" [(ngModel)]="reduction.montant" #montant="ngModel" required>
             </mat-form-field>
             <div *ngIf="montant.errors && (montant.dirty || montant.touched)">
                 <div [hidden]="!montant.errors.required">

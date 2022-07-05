@@ -42,13 +42,17 @@
   }
   
   .imgSizeEn{
-    width: 250px;
-    height: 120px;
+    display: block;
+    margin-left: auto;
+    margin-right: auto;
+    width: 70%;
   }
 
   .imgSizeLogo{
-    width: 250px;
-    height: 120px;
+    display: block;
+    margin-left: auto;
+    margin-right: auto;
+    width: 70%;
   }
   
   .sizeb {
@@ -84,9 +88,9 @@
   }
 
   .photoBtn{
-    position: relative;
-    left: 231px;
-    bottom: 34px;
+    //position: relative;
+    //left: 231px;
+    //bottom: 34px;
   }
 
   .file-input {

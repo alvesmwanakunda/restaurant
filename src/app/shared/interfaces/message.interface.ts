@@ -8,5 +8,7 @@ export interface MessageInterface {
     message:string;
     photo:string;
     visite:string;
-    automatique:string
+    automatique:string;
+    isCode:string;
+    code:string
 }

@@ -40,10 +40,14 @@
                           <span *ngIf="messageForm.get('typePromotion').hasError('required') && (messageForm.get('typePromotion').dirty || messageForm.get('typePromotion').touched)" style="color:#e6066e;font-size: 12px;">
                             Champ type obligatoire
                           </span>
+
+                          <div style="margin-bottom: 20px;">
+                            <mat-checkbox formControlName="isCode">Générer un code</mat-checkbox>
+                          </div>
   
                           <div *ngIf="!isSms">
         
-                            <p class="titreHeader">SMS</p>
+                            <!--<p class="titreHeader">SMS</p>-->
             
                             <mat-form-field class="example-full-width" appearance="fill">
                               <textarea matInput formControlName="message" required></textarea>
@@ -56,9 +60,9 @@
                           
                          <div *ngIf="isSms">
             
-                          <p class="titreHeader">App</p>
+                          <!--<p class="titreHeader">App</p>-->
   
-                          <div style="padding-top: 45px;">
+                          <div>
                             <input type="file" class="file-input" accept='image/png, image/jpeg' (change)="onFileSelected($event)" #fileUpload>
                             <div class="photoBtn" align="center">
                               <button (click)="fileUpload.click()" mat-mini-fab color="primary" style="background-color: #10ae58;">
@@ -82,8 +86,8 @@
                          </div>
   
                          <div align="center">
-                          <button mat-raised-button class="sizebv" type="submit" (click)="AddMessage()" style="margin-right: 15px;"><i class="fas fa-paper-plane"></i> Envoyer le message</button>
-                          <button mat-raised-button color="accent" type="button"  (click)="AddMessageTest()"><i class="fas fa-paper-plane"></i> Tester le message</button>
+                          <button mat-raised-button class="sizebv" type="submit" (click)="AddMessage()" style="margin-right: 15px;"><i class="fas fa-paper-plane"></i> Ajouter</button>
+                          <button mat-raised-button color="accent" type="button"  (click)="AddMessageTest()"><i class="fas fa-paper-plane"></i> Tester</button>
                         </div>
         
                         </div>
@@ -132,10 +136,14 @@
                             <mat-option *ngFor="let type of listTypes" [value]="type.nom">{{type.nom}}</mat-option>
                           </mat-select>
                       </mat-form-field>
+
+                      <div style="margin-bottom: 20px;">
+                        <mat-checkbox name="isCode" [(ngModel)]="messageClient.isCode" #isCode="ngModel">Générer un code</mat-checkbox>
+                      </div>
   
                       <div *ngIf="messageClient.typePromotion=='App'">
                            <input type="file" class="file-input" accept='image/png, image/jpeg' (change)="onFileSelected($event)" #fileUpload>
-                           <img [src]="image" class="imgSizeLogo img-thumbnail" *ngIf="messageClient?.photo">
+                          <!-- <img [src]="image" class="imgSizeLogo img-thumbnail" *ngIf="messageClient?.photo">-->
                             <div class="photoBtn" align="center">
                               <button (click)="fileUpload.click()" mat-mini-fab color="primary" style="background-color: #10ae58;">
                                  <mat-icon>add_a_photo</mat-icon>
@@ -155,7 +163,7 @@
                        </div>
           
                         <div align="center">
-                          <button mat-raised-button class="sizebv" type="submit" (click)="updateMessage(messageClient,messageClient?._id)"  style="margin-right: 15px;">Modifier le message</button>
+                          <button mat-raised-button class="sizebv" type="submit" (click)="updateMessage(messageClient,messageClient?._id)"  style="margin-right: 15px;">Modifier</button>
                           <button mat-raised-button color="accent" type="button" (click)="close()"><i class="fas fa-times"></i> Quitter</button>
                         </div>
     
@@ -182,9 +190,9 @@
             <table class="table">
               <thead>
                 <tr>
-                  <th style="font-size: 14px;text-align: center;">Nom promotion</th>
-                  <th style="font-size: 14px;text-align: center;">Type promotion</th>
-                  <th style="font-size: 14px;text-align: center;">Message</th>
+                  <th style="font-size: 12px;">Nom promotion</th>
+                  <th style="font-size: 12px;">Type promotion</th>
+                  <th style="font-size: 12px;">Message</th>
                 </tr>
               </thead>
               <tbody>
@@ -195,9 +203,9 @@
                     <p [ngClass]="{'limitTextHeight':isReadMore}">
                       {{messageClient?.message}}
                     </p>
-                    <button mat-button (click)="showText()" class="btn-more" *ngIf="messageClient?.message">
+                    <!--<button mat-button (click)="showText()" class="btn-more" *ngIf="messageClient?.message">
                       <span style="color: #10ae58;font-size: 12px;font-weight: normal;">{{ isReadMore ? 'Lire plus': 'Lire moins' }} <mat-icon style="position: absolute;top: 8px;" *ngIf="isReadMore">keyboard_arrow_down</mat-icon> <mat-icon style="position: absolute;top: 8px;" *ngIf="!isReadMore">keyboard_arrow_up</mat-icon> </span>
-                    </button>
+                    </button>-->
                     
                   </td>
                 </tr>
@@ -205,7 +213,9 @@
             </table>
 
             <div align="center">
-              <button mat-raised-button color="primary" matTooltip="Ajouter ou modifier promotion" (click)="openMessage()"><mat-icon>edit</mat-icon> Ajouter ou modifier le message</button>
+              <button mat-raised-button color="primary" matTooltip="Ajouter ou modifier promotion" (click)="openMessage()" *ngIf="!messageClient"><mat-icon>add</mat-icon> Ajouter</button>
+              <button mat-raised-button color="primary" matTooltip="Modifier" (click)="openMessage()" *ngIf="messageClient" style="margin-right:15px;"><mat-icon>edit</mat-icon> Modifier</button>
+              <button mat-raised-button color="warn" matTooltip="Modifier" (click)="openDeleteMessage(messageClient._id)" *ngIf="messageClient"><mat-icon>delete</mat-icon> Supprimer</button>
             </div>
          </div>
        </div>

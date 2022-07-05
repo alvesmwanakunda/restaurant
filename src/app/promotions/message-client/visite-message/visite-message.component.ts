@@ -9,6 +9,7 @@ import { DomSanitizer } from '@angular/platform-browser';
 import { MessageClientComponent } from '../message-client.component';
 import {MatDialog, MatDialogRef, MAT_DIALOG_DATA} from '@angular/material/dialog';
 import { TestMessageComponent } from '../test-message/test-message.component';
+import { DeleteMessageComponent } from '../delete-message/delete-message.component';
 
 
 
@@ -63,7 +64,8 @@ export class VisiteMessageComponent implements OnInit {
         message:new FormControl("",[Validators.required]),
         type:new FormControl("Visite",null),
         etat:new FormControl("Envoyer",null),
-        automatique:new FormControl("",null)
+        automatique:new FormControl("",null),
+        isCode:new FormControl('',null)
     })
   }
 
@@ -98,6 +100,7 @@ export class VisiteMessageComponent implements OnInit {
     formData.append("type",this.message.type);
     formData.append("automatique",this.message.automatique);
     formData.append("etat",this.message.etat);
+    formData.append("isCode",this.message.isCode);
 
     if(!this.messageForm.invalid){
 
@@ -130,6 +133,8 @@ export class VisiteMessageComponent implements OnInit {
     formData.append("message",message.message);
     formData.append("type",message.type);
     formData.append("automatique",message.automatique);
+    formData.append("isCode",message.isCode);
+
     
       this.messageService.updateMessageVisiteApp(formData,idMessage).subscribe((res:any)=>{
         try {
@@ -139,7 +144,8 @@ export class VisiteMessageComponent implements OnInit {
               this.emptyMessage = false;
               this.isUpdateM = false;
               this.openSnackBar();
-              console.log("reponse", res);
+              //console.log("reponse", res);
+              this.messageClientComponent.messageType(res.message.type,this.idEntreprise);
         } catch (error) {
           console.log("Error", error);
           this.onLoadForm = false;
@@ -191,6 +197,8 @@ export class VisiteMessageComponent implements OnInit {
     this.getMessage(this.idEntreprise);
   }
 
+  
+
   showText(){
     this.isReadMore = !this.isReadMore
   }
@@ -210,6 +218,7 @@ export class VisiteMessageComponent implements OnInit {
     this.formDataTest.append("type",this.message.type);
     this.formDataTest.append("automatique",this.message.automatique);
     this.formDataTest.append("etat","Brouillon");
+    this.formDataTest.append("isCode",this.message.isCode);
     this.openDialogAddTest();
   }
 
@@ -238,6 +247,22 @@ export class VisiteMessageComponent implements OnInit {
       }
       
     })
+  }
+
+  openDeleteMessage(idMessage){
+
+    const dialogRef = this.dialog.open(DeleteMessageComponent,{width:'30%',data:{id:idMessage,type:"Visite"}});
+    dialogRef.afterClosed().subscribe((result:any) => {
+      if(result){
+        console.log('Dialog result:', result);
+        this.messageClientComponent.messageType("Visite",this.idEntreprise);
+        this.getMessage(this.idEntreprise);
+      }else{
+        console.log('Dialog result');
+      }
+      
+    })
+    
   }
 
 

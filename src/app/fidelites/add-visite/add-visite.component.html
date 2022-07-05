@@ -14,7 +14,7 @@
     
             <mat-form-field appearance="outline" class="example-full-width">
               <mat-label class="labelFrom">Pour chaque passage à la caisse offrir </mat-label>
-              <input type="number" matInput formControlName="point" required>
+              <input type="number" min="0" matInput formControlName="point" required>
                 <mat-icon matTooltip="{{account_validation_messages.point[0].message}}"
                 *ngIf="visiteForm.get('point').hasError(account_validation_messages.point[0].type) && (visiteForm.get('point').dirty || visiteForm.get('point').touched)"
                 style="cursor: pointer;" matSuffix>

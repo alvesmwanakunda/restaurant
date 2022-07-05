@@ -13,7 +13,7 @@
         <div class="col-md-4">
           <small style="font-size: 10px;">Entrer un nombre de points</small>
           <mat-form-field appearance="outline" class="example-full-width">
-            <input type="number" matInput formControlName="point" placeholder="Pour" required>
+            <input type="number" min="0" matInput formControlName="point" placeholder="Pour" required>
               <mat-icon matTooltip="{{account_validation_messages.point[0].message}}"
               *ngIf="livraisonForm.get('point').hasError(account_validation_messages.point[0].type) && (livraisonForm.get('point').dirty || livraisonForm.get('point').touched)"
               style="cursor: pointer;" matSuffix>
@@ -40,7 +40,7 @@
         <div class="col-md-4">
           <small style="font-size: 10px;">Entrer le nombre de livraison offerte</small>
           <mat-form-field appearance="outline" class="example-full-width">
-            <input type="number" matInput formControlName="nombreLivraison" placeholder="Livraison" required>
+            <input type="number" min="0" ngModel="1" matInput formControlName="nombreLivraison" placeholder="Livraison" required>
               <mat-icon matTooltip="{{account_validation_messages.nombreLivraison[0].message}}"
               *ngIf="livraisonForm.get('nombreLivraison').hasError(account_validation_messages.nombreLivraison[0].type) && (livraisonForm.get('nombreLivraison').dirty || livraisonForm.get('nombreLivraison').touched)"
               style="cursor: pointer;" matSuffix>
@@ -56,7 +56,7 @@
   
        <div class="text-center">
         <button mat-button mat-dialog-close>Fermer</button>
-        <button mat-button type="submit" (click)="addLivraison()" cdkFocusInitial style=" background:linear-gradient(90deg, #0c1733, #3fd27e) !important;color:#fff">Mettre à jour</button>
+        <button mat-button type="submit" (click)="addLivraison()" cdkFocusInitial style=" background:linear-gradient(90deg, #0c1733, #3fd27e) !important;color:#fff">Ajouter</button>
       </div>
 
      </form>

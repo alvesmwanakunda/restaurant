@@ -14,7 +14,7 @@
         <div class="col-md-4">
           <small>Entrer un nombre de points</small>
           <mat-form-field appearance="outline" class="example-full-width">
-            <input type="number" matInput formControlName="point" placeholder="Pour" required>
+            <input type="number" min="0" matInput formControlName="point" placeholder="Pour" required>
             <mat-icon matTooltip="{{account_validation_messages.point[0].message}}"
             *ngIf="cadeauForm.get('point').hasError(account_validation_messages.point[0].type) && (cadeauForm.get('point').dirty || cadeauForm.get('point').touched)"
             style="cursor: pointer;" matSuffix>
@@ -79,7 +79,7 @@
   
       <div class="text-center">
          <button mat-button mat-dialog-close>Fermer</button>
-         <button mat-button type="submit" (click)="addCadeau()" cdkFocusInitial style=" background:linear-gradient(90deg, #0c1733, #3fd27e) !important;color:#fff">Mettre à jour</button>
+         <button mat-button type="submit" (click)="addCadeau()" cdkFocusInitial style=" background:linear-gradient(90deg, #0c1733, #3fd27e) !important;color:#fff">Ajouter</button>
       </div>
 
     </form><!--Form-->

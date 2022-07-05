@@ -29,6 +29,8 @@ export class ParametresComponent implements OnInit, AfterViewInit {
   entreprises:any=[];
   avoir: AvoirInterface;
   avoirForm: FormGroup;
+  visiteForm: FormGroup;
+  depenseForm: FormGroup;
   onLoadForm=false;
 
   @ViewChild(MatPaginator) paginator: MatPaginator;
@@ -91,8 +93,17 @@ export class ParametresComponent implements OnInit, AfterViewInit {
               avoir: new FormControl(this.avoir.avoir,[
                 Validators.required
               ]),
+            });
+            this.visiteForm = new FormGroup({
+              visite: new FormControl(this.avoir.visite,[
+                Validators.required
+              ]),
+            });
+            this.depenseForm = new FormGroup({
+              depense: new FormControl(this.avoir.depense,[
+                Validators.required
+              ]),
             })
-
           }
           
           console.log("Avoir", res);
@@ -117,7 +128,6 @@ export class ParametresComponent implements OnInit, AfterViewInit {
       }
     })
   }
-
   openDialog(){
     const dialogRef = this.dialog.open(AddPersonnelComponent,{width:'40%',height:'67%'});
     dialogRef.afterClosed().subscribe(result => {

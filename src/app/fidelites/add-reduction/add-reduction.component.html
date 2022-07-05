@@ -13,7 +13,7 @@
         <div class="col-md-3">
           <small>Entrer un nombre de points</small>
           <mat-form-field appearance="outline" class="example-full-width">
-            <input type="number" matInput formControlName="point" placeholder="Pour" required>
+            <input type="number" min="0" matInput formControlName="point" placeholder="Pour" required>
             <mat-icon matTooltip="{{account_validation_messages.point[0].message}}"
             *ngIf="reductionForm.get('point').hasError(account_validation_messages.point[0].type) && (reductionForm.get('point').dirty || reductionForm.get('point').touched)"
             style="cursor: pointer;" matSuffix>
@@ -42,7 +42,7 @@
           <small>Entrer un nombre pour la réduction</small>
 
           <mat-form-field appearance="outline" class="example-full-width-devise" style="margin-right: 4px;">
-            <input matInput type="number" formControlName="montant" placeholder="Appliquer une réduction de" required>
+            <input matInput type="number" min="0" formControlName="montant" placeholder="Appliquer une réduction de" required>
             <mat-icon matTooltip="{{account_validation_messages.montant[0].message}}"
             *ngIf="reductionForm.get('montant').hasError(account_validation_messages.montant[0].type) && (reductionForm.get('montant').dirty || reductionForm.get('montant').touched)"
             style="cursor: pointer;" matSuffix>
@@ -94,7 +94,7 @@
   
        <div class="text-center">
          <button mat-button mat-dialog-close>Fermer</button>
-         <button mat-button type="submit" (click)="addReduction()" cdkFocusInitial style=" background: linear-gradient(90deg, #0c1733, #3fd27e) !important;color:#fff">Ajouter réduction</button>
+         <button mat-button type="submit" (click)="addReduction()" cdkFocusInitial style=" background: linear-gradient(90deg, #0c1733, #3fd27e) !important;color:#fff">Ajouter</button>
       </div>
 
 

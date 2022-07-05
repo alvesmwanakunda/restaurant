@@ -35,7 +35,7 @@
 
             <mat-form-field appearance="outline" class="example-full-width">
               <mat-label class="labelFrom">Points d'achats</mat-label>
-                <input type="number" matInput formControlName="point" required>
+                <input type="number" min="0" matInput formControlName="point" required>
                 <mat-icon matTooltip="{{account_validation_messages.point[0].message}}"
                 *ngIf="budgetForm.get('point').hasError(account_validation_messages.point[0].type) && (budgetForm.get('point').dirty || budgetForm.get('point').touched)"
                 style="cursor: pointer;" matSuffix>

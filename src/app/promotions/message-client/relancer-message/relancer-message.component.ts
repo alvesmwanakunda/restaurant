@@ -9,6 +9,8 @@ import { DomSanitizer } from '@angular/platform-browser';
 import { MessageClientComponent } from '../message-client.component';
 import {MatDialog, MatDialogRef, MAT_DIALOG_DATA} from '@angular/material/dialog';
 import { TestMessageComponent } from '../test-message/test-message.component';
+import { DeleteMessageComponent } from '../delete-message/delete-message.component';
+
 
 
 
@@ -63,7 +65,8 @@ export class RelancerMessageComponent implements OnInit {
         type:new FormControl("Relancer",null),
         etat:new FormControl("Envoyer",null),
         visite:new FormControl("",[Validators.required]),
-        automatique:new FormControl("",null)
+        automatique:new FormControl("",null),
+        isCode:new FormControl('',null)
     })
   }
 
@@ -101,6 +104,7 @@ export class RelancerMessageComponent implements OnInit {
     formData.append("visite",this.message.visite);
     formData.append("automatique",this.message.automatique);
     formData.append("etat",this.message.etat);
+    formData.append("isCode",this.message.isCode);
 
     if(!this.messageForm.invalid){
     
@@ -135,6 +139,7 @@ export class RelancerMessageComponent implements OnInit {
     formData.append("type",message.type);
     formData.append("visite",message.visite);
     formData.append("automatique",message.automatique);
+    formData.append("isCode",message.isCode);
     
       this.messageService.updateMessageVisiteApp(formData,idMessage).subscribe((res:any)=>{
         try {
@@ -215,6 +220,7 @@ export class RelancerMessageComponent implements OnInit {
     this.formDataTest.append("automatique",this.message.automatique);
     this.formDataTest.append("visite",this.message.visite);
     this.formDataTest.append("etat","Brouillon");
+    this.formDataTest.append("isCode",this.message.isCode);
     this.openDialogAddTest();
   }
 
@@ -243,6 +249,22 @@ export class RelancerMessageComponent implements OnInit {
       }
       
     })
+  }
+
+  openDeleteMessage(idMessage){
+
+    const dialogRef = this.dialog.open(DeleteMessageComponent,{width:'30%',data:{id:idMessage,type:"Anniversaire"}});
+    dialogRef.afterClosed().subscribe((result:any) => {
+      if(result){
+        console.log('Dialog result:', result);
+        this.messageClientComponent.messageType("Anniversaire",this.idEntreprise);
+        this.getMessage(this.idEntreprise);
+      }else{
+        console.log('Dialog result');
+      }
+      
+    })
+    
   }
 
 }

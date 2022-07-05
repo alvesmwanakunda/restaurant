@@ -36,8 +36,8 @@
                                     <div class="col-md-3">
                                        <div class="vl"></div>
                                        <div style="margin-left: 10px;">
-                                          <i  class="fas fa-edit" style="margin-right: 11px;color: #04075E;cursor: pointer;" (click)="openDialogUpdateCadeau(cadeau._id)" matTooltip="Modifié"></i>
-                                          <i class="fas fa-trash" style="color: #04075E;cursor: pointer;" (click)="deleteCadeau(cadeau._id)" matTooltip="Supprimé"></i>
+                                          <i  class="fas fa-edit" style="margin-right: 11px;color: #04075E;cursor: pointer;" (click)="openDialogUpdateCadeau(cadeau._id)" matTooltip="Modifié" *ngIf="cadeau.isCode==false"></i>
+                                          <i class="fas fa-trash" style="color: #04075E;cursor: pointer;" (click)="deleteCadeau(cadeau._id)" *ngIf="cadeau.isCode==false" matTooltip="Supprimé"></i>
                                        </div>
 
                                     </div><!--col-->
@@ -71,8 +71,8 @@
                                     <div class="col-md-3">
                                        <div class="vl"></div>
                                        <div style="margin-left: 10px;">
-                                          <i class="fas fa-edit" style="margin-right: 11px;color: #04075E;cursor: pointer;" (click)="openDialogUpdateReduction(reduction._id)" matTooltip="Modifié"></i>
-                                          <i class="fas fa-trash" style="color: #04075E;cursor: pointer;" (click)="deleteReduction(reduction._id)" matTooltip="Supprimé"></i>
+                                          <i class="fas fa-edit" style="margin-right: 11px;color: #04075E;cursor: pointer;" (click)="openDialogUpdateReduction(reduction._id)" *ngIf="reduction.isCode==false" matTooltip="Modifié"></i>
+                                          <i class="fas fa-trash" style="color: #04075E;cursor: pointer;" (click)="deleteReduction(reduction._id)"  *ngIf="reduction.isCode==false" matTooltip="Supprimé"></i>
                                        </div>
 
                                     </div><!--col-->
@@ -102,8 +102,8 @@
                                     <div class="col-md-3">
                                        <div class="vl"></div>
                                        <div style="margin-left: 10px;">
-                                          <i class="fas fa-edit" style="margin-right: 11px;color: #04075E;cursor: pointer;" (click)="openDialogUpdateLivraison(livraison._id)" matTooltip="Modifié"></i>
-                                          <i class="fas fa-trash" style="color: #04075E;cursor: pointer;" (click)="deleteLivraison(livraison._id)"  matTooltip="Supprimé"></i>
+                                          <i class="fas fa-edit" style="margin-right: 11px;color: #04075E;cursor: pointer;" (click)="openDialogUpdateLivraison(livraison._id)" *ngIf="livraison.isCode==false" matTooltip="Modifié"></i>
+                                          <i class="fas fa-trash" style="color: #04075E;cursor: pointer;" (click)="deleteLivraison(livraison._id)" *ngIf="livraison.isCode==false"  matTooltip="Supprimé"></i>
                                        </div>
 
                                     </div><!--col-->
