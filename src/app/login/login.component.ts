@@ -116,8 +116,14 @@ export class LoginComponent implements OnInit {
         } else {
           console.log("Reponse", response.message);
           //this.authService.registerCurretUser(response.message);
-          this.authService.setUser(response.message);
-          this.handleRedirectOnLogin(response.message);
+          if(response.message.user.role=="admin_agent"){
+
+            this.authService.setUser(response.message);
+            this.handleRedirectOnLogin(response.message);
+
+          }else{
+            this.loginFormErrors["emailorphone"].notfound = true;
+          }
         }
         this.onLoadForm = false;
       })

@@ -93,7 +93,7 @@
   <p class="titleInfo">Information sur l'entreprise <button mat-mini-fab style="background-color: #0c2461; margin-left: 8px;" (click)="OpenUpdate()" matTooltip="Modifié"> <mat-icon>edit</mat-icon></button></p>
 
   <div class="row">
-    <div class="col-md-4" style="padding-top: 20px;">
+    <div class="col-md-3" style="padding-top: 20px;">
 
       <div style="font-size: 11px;">
         <p class="labelFrom">Nom de l'entreprise : <span style="color: #0c2461;font-weight: normal;">{{entreprise?.nom}}</span></p>
@@ -110,22 +110,19 @@
     </div><!--col-->
 
 
-   <div class="col-md-2">
+   <div class="col-md-3">
 
-    <div align="center">
-
+    
       <input type="file" class="file-input" accept='image/png, image/jpeg' (change)="onFileSelected($event)" #fileUpload>
       <img src="assets/images/phh.png" class="imgSizeEn img-thumbnail" *ngIf="!entreprise?.image">
       <img [src]="image" class="imgSizeLogo img-thumbnail" *ngIf="entreprise?.image">
-      <div class="photoBtn">
+      <div align="center">
+        <div class="photoBtn">
           <button (click)="fileUpload.click()" mat-mini-fab color="primary" style="background-color: #10ae58;">
              <mat-icon>add_a_photo</mat-icon>
           </button>
-      </div>
-
-    </div><!--center-->
-
-    
+       </div>
+      </div><!--div-->
    </div><!--col-->
 
     <div class="col-md-6" style="padding-top: 20px;">

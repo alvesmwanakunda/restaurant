@@ -12,6 +12,7 @@ import { ClientInterface } from '../shared/interfaces/client.interface';
 import { OperationInterface } from '../shared/interfaces/operation.interface';
 import { UploadClientComponent } from './upload-client/upload-client.component';
 import { DeleteClientComponent } from './delete-client/delete-client.component';
+import { DeleteManyClientComponent } from './delete-many-client/delete-many-client.component';
 
 
 
@@ -35,7 +36,9 @@ export class ClientsComponent implements OnInit, AfterViewInit {
 
   entreprise:any;
   clients:any=[];
-  operations:any=[]
+  operations:any=[];
+  isAll:boolean = false;
+  allClients:any=[];
 
   constructor(
     public dialog:MatDialog,
@@ -98,6 +101,7 @@ export class ClientsComponent implements OnInit, AfterViewInit {
 
       try {
         this.operations = res.message.operations;
+        console.log("operation", this.operations);
         this.dataSource.data = this.operations.map((data)=>({
            id: data.client?._id,
            operation:data._id,
@@ -110,6 +114,7 @@ export class ClientsComponent implements OnInit, AfterViewInit {
            visite: data.nombreVisite,
            depense:data.depense,
            avoir:data.avoir,
+           entreprise:data.client?.entreprise,
         })) as OperationInterface[];
            console.log("resultat", res);
       } catch (error) {
@@ -152,7 +157,15 @@ export class ClientsComponent implements OnInit, AfterViewInit {
   }
 
   openDialogDelete(idClient){
-    const dialogRef = this.dialog.open(DeleteClientComponent,{width:'30%',height:'30%',data:{id:idClient}});
+    const dialogRef = this.dialog.open(DeleteClientComponent,{width:'30%',data:{id:idClient}});
+    dialogRef.afterClosed().subscribe(result => {
+      console.log(`Dialog result: ${result}`);
+      this.getOperationClients(this.entreprise._id);
+    })
+  }
+
+  openDialogDeleteMany(){
+    const dialogRef = this.dialog.open(DeleteManyClientComponent,{width:'30%',data:{allClients:this.allClients}});
     dialogRef.afterClosed().subscribe(result => {
       console.log(`Dialog result: ${result}`);
       this.getOperationClients(this.entreprise._id);
@@ -167,14 +180,33 @@ export class ClientsComponent implements OnInit, AfterViewInit {
     
   }
 
+  selectionRow(row){
+    if(this.selection.isSelected(row)){
+      this.allClients = this.allClients.filter(item=> item.id!=row.id);
+      //console.log("Bonjour alves", this.allClients);
+    }else{
+      this.allClients.push(row);
+      //console.log("Bonjour eeeeh",this.allClients);
+    }
+    console.log("row", row);
+  }
+
   /** Selects all rows if they are not all selected; otherwise clear selection. */
   masterToggle() {
     if (this.isAllSelected()) {
+      this.allClients=[];
+      //console.log("Suis clear");
+      //console.log("selection clear", this.allClients);
       this.selection.clear();
+      this.isAll = false;
       return;
     }
-
+    this.isAll = true;
+    this.allClients = this.dataSource.data;
+    //console.log("Suis all 2");
+    console.log("selection all", this.allClients);
     this.selection.select(...this.dataSource.data);
+
   }
 
   /** The label for the checkbox on the passed row */
@@ -207,6 +239,7 @@ export class ClientsComponent implements OnInit, AfterViewInit {
       })
     }
   }
+
 
 }
 

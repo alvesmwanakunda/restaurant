@@ -10,6 +10,7 @@ import { ClientService } from '../shared/services/client.service';
 import { EntrepriseService } from '../shared/services/entreprise.service';
 import { UploadClientModule } from './upload-client/upload-client.module';
 import { DeleteClientModule } from './delete-client/delete-client.module';
+import { DeleteManyClientModule } from './delete-many-client/delete-many-client.module';
 
 
 @NgModule({
@@ -22,7 +23,8 @@ import { DeleteClientModule } from './delete-client/delete-client.module';
     AddClientModule,
     DetailClientModule,
     UploadClientModule,
-    DeleteClientModule
+    DeleteClientModule,
+    DeleteManyClientModule
   ],
   providers:[ClientService, EntrepriseService]
 })

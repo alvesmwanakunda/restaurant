@@ -1,0 +1,9 @@
+<mat-dialog-content class="mat-typography">
+    <div class="text-center" style="padding-top: 30px;">
+     <p>Êtes-vous sûr de vouloir supprimer les clients</p>
+    </div>
+ </mat-dialog-content>
+ <mat-dialog-actions align="center">
+     <button mat-button mat-dialog-close>Fermer</button>
+     <button mat-button (click)="deleteManyClient()" cdkFocusInitial style=" background: #c71e56 !important;color:#fff">Supprimer tout</button>
+ </mat-dialog-actions>

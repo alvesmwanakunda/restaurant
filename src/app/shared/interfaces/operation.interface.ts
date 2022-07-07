@@ -17,6 +17,7 @@ export interface OperationInterface {
     creation: Date;
     debut:Date;
     fin:Date;
+    entreprise:string
 
   }
   

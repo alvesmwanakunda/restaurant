@@ -44,5 +44,9 @@ export class ClientService {
       return this.http.get(`${environment.BASE_API_URL}/cadeau/visite/${idUser}/${idEntrepirse}`);
     }
 
+    deleteManyClient(client,idEntrepirse){
+      return this.http.post(`${environment.BASE_API_URL}/delete/client/${idEntrepirse}`, client);
+    }
+
 
 }
