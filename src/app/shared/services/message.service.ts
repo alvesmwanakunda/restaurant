@@ -29,6 +29,10 @@ export class MessageService {
     return this.http.delete(`${environment.BASE_API_URL}/message/client/${id}`)
   }
 
+  deleteMessagePhoto(id){
+    return this.http.get(`${environment.BASE_API_URL}/message/client/photo/${id}`)
+  }
+
   getMessageVisiteApp(id){
     return this.http.get(`${environment.BASE_API_URL}/message/client/${id}`)
   }

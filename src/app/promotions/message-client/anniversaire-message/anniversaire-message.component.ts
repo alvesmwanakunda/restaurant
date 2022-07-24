@@ -147,6 +147,7 @@ export class AnniversaireMessageComponent implements OnInit {
               this.emptyMessage = false;
               this.isUpdateM = false;
               this.openSnackBar();
+              this.messageClientComponent.messageType(res.message.type,this.idEntreprise);
               console.log("reponse", res);
         } catch (error) {
           console.log("Error", error);
@@ -154,6 +155,17 @@ export class AnniversaireMessageComponent implements OnInit {
         }
       })
     
+  }
+
+  deletePhoto(idMessage){
+    this.messageService.deleteMessagePhoto(idMessage).subscribe((res:any)=>{
+      try {
+          this.messageClient = res.message; 
+          this.messageClientComponent.messageType(res.message.type,this.idEntreprise);
+      } catch (error) {
+        console.log("Erreur", error);
+      }
+    })
   }
 
   selectSms(event){
@@ -184,6 +196,7 @@ export class AnniversaireMessageComponent implements OnInit {
            console.log("Message", this.messageClient);
            if(res.message){
                this.chargeMessage=true;
+               this.image = this.sanitizer.bypassSecurityTrustResourceUrl(`data:image/png;base64, ${res.message.photo}`);
            }else{
               this.emptyMessage=true; 
            }

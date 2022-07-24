@@ -154,6 +154,17 @@ export class VisiteMessageComponent implements OnInit {
     
   }
 
+  deletePhoto(idMessage){
+    this.messageService.deleteMessagePhoto(idMessage).subscribe((res:any)=>{
+      try {
+          this.messageClient = res.message; 
+          this.messageClientComponent.messageType(res.message.type,this.idEntreprise);
+      } catch (error) {
+        console.log("Erreur", error);
+      }
+    })
+  }
+
   selectSms(event){
     console.log("Event", event);
     if(event=="Sms"){

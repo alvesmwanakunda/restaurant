@@ -28,19 +28,19 @@
 
                 <p class="titleInfo">Configuration</p>
 
-                <section class="example-section" *ngIf="avoir">
+                <section  *ngIf="avoir">
                   <form novalidate>
                     <p class="labelFrom" style="font-weight: normal;"><mat-checkbox name="avoir"  [(ngModel)]="avoir.avoir" (change)="updateAvoir(avoir)">Activer enregistrement des avoirs</mat-checkbox></p>
                   </form>
                 </section>
 
-                <section class="example-section" *ngIf="avoir">
+                <section  *ngIf="avoir">
                   <form novalidate>
                     <p class="labelFrom" style="font-weight: normal;"><mat-checkbox name="visite"  [(ngModel)]="avoir.visite" (change)="updateAvoir(avoir)">Activer enregistrement des points visites</mat-checkbox></p>
                   </form>
                 </section>
 
-                <section class="example-section" *ngIf="avoir">
+                <section  *ngIf="avoir">
                   <form novalidate>
                     <p class="labelFrom" style="font-weight: normal;"><mat-checkbox name="depense"  [(ngModel)]="avoir.depense" (change)="updateAvoir(avoir)">Activer enregistrement des montants dépensés</mat-checkbox></p>
                   </form>

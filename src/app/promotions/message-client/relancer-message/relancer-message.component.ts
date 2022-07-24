@@ -158,6 +158,17 @@ export class RelancerMessageComponent implements OnInit {
     
   }
 
+  deletePhoto(idMessage){
+    this.messageService.deleteMessagePhoto(idMessage).subscribe((res:any)=>{
+      try {
+          this.messageClient = res.message; 
+          this.messageClientComponent.messageType(res.message.type,this.idEntreprise);
+      } catch (error) {
+        console.log("Erreur", error);
+      }
+    })
+  }
+
   selectSms(event){
     console.log("Event", event);
     if(event=="Sms"){
@@ -186,6 +197,7 @@ export class RelancerMessageComponent implements OnInit {
            console.log("Message", this.messageClient);
            if(res.message){
                this.chargeMessage=true;
+               this.image = this.sanitizer.bypassSecurityTrustResourceUrl(`data:image/png;base64, ${res.message.photo}`);
            }else{
               this.emptyMessage=true; 
            }
