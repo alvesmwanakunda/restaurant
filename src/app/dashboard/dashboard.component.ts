@@ -8,7 +8,7 @@ import { ClientService } from '../shared/services/client.service';
 })
 export class DashboardComponent implements OnInit {
 
-  displayedColumns: string[] = ['name', 'date', 'prix', 'cible'];
+  displayedColumns: string[] = ['date','name'];
   dataSource = ELEMENT_DATA;
 
   constructor(private clientService:ClientService) { }
@@ -23,14 +23,11 @@ export class DashboardComponent implements OnInit {
 export interface PeriodicElement {
   name: string;
   date: string;
-  prix: number;
-  cible: number;
 }
 
 const ELEMENT_DATA: PeriodicElement[] = [
-  {date: '07 Avril 2021', name: 'Promotion Air max', prix: 1.0079, cible: 56000},
-  {date: '07 Avril 2021', name: 'Promotion Air max', prix: 1.0079, cible: 56000},
-  {date: '07 Avril 2021', name: 'Promotion Air max', prix: 1.0079, cible: 56000},
-  {date: '07 Avril 2021', name: 'Promotion Air max', prix: 1.0079, cible: 56000},
-  {date: '07 Avril 2021', name: 'Promotion Air max', prix: 1.0079, cible: 56000},
+  {date: 'Nombre de campagne lancée', name: '4238'},
+  {date: 'Nombre de message envoyé', name: '1005'},
+  {date: 'Nombre de message reçu', name: '914'},
+  {date: 'Nombre de message ouvert', name: '201'},
 ];

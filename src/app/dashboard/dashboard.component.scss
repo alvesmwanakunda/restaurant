@@ -11,10 +11,11 @@
 
 .title{
     font-size: 15px;
-    color: #ffffff;
+    color: #49C120;
     font-weight: normal;
-    position: relative;
-    top: 35px;
+    text-align: center;
+    //position: relative;
+    //top: 35px;
 }
 
 .title1{
@@ -28,24 +29,30 @@
     color: #ffffff;
     font-weight: bold;
     text-align: center;
-    position: relative;
-    top: 26px;
+    //position: relative;
+    //top: 26px;
+}
+
+.titleStat{
+    font-size: 15px;
+    color: #243665;
+    font-weight: 700;
 }
 
 .cardTitle{
     font-size: 11px;
     color: #fff;
-    position: relative;
-    left: 6px;
+    //position: relative;
+    //left: 6px;
 }
 
 .cardT{
-    text-align: right;
-    color: #fff;
+    text-align: center;
+    color: #49C120;
     font-weight: bold;
     font-size: 20px;
-    position: relative;
-    top: 6px;
+    //position: relative;
+    //top: 6px;
 }
 
 .cardTt{
@@ -89,11 +96,13 @@
 }
 
 .totalCadeau{
-    font-size: 9px;
-    color: #0c2461;
-    float: right;
-    position: relative;
-    top: 12px;
+    font-size: 13px;
+    color: #9FA2B4;
+    text-align: center;
+    padding: 4px;
+    //float: right;
+    //position: relative;
+    //top: 12px;
 }
 
 .nameClient{
@@ -159,7 +168,7 @@
 }
 
 .icon2{
-    color: #69f3a3;
+    color: #49C120;
     font-size: 48px;
 }
 
@@ -171,5 +180,25 @@
 
 table {
     width: 100%;
-  }
+}
+
+.line1{
+    border-left: 1px solid #DFE0EB;
+    height: 100%;
+    position: absolute;
+    //left: 50%;
+    margin-left: -3px;
+    top: 0;
+}
+
+.divider1{
+    position: absolute;
+    right: 0;
+    width: 32.5%;
+    display: block;
+    margin: 0;
+    border-top-width: 1px;
+    border-top-style: solid;
+    border-top-color: #DFE0EB;
+}
 
