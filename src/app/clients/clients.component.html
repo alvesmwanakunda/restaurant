@@ -8,7 +8,7 @@
 
     <div class="row">
 
-      <div class="col-md-5" style="font-size: 13px;">
+      <div class="col-md-4" style="font-size: 13px;">
 
         <div>
           <mat-form-field appearance="outline" class="example-full-width" style="margin-right: 14px;">
@@ -20,9 +20,9 @@
 
       </div><!--col-->
 
-      <div class="col-md-3">
+      <div class="col-md-4">
         <div style="position: relative;top: 5px;">
-          <div class="card" style="height:45px;width: 76%;background: #0c2461;">
+          <div class="card" style="height:45px;width: 80%;background: #0c2461;">
             <div class="card-body" style="font-size: 11px;color: #fff;">
               <div class="row">
                 <div class="col-md-10">
@@ -42,6 +42,7 @@
   
       <div class="col-md-4" style="position: relative;top: 4px;">
         <div style="float: right;">
+            <button mat-raised-button class="sizeb" style="margin-right: 13px;" [cdkCopyToClipboard]="url" matTooltip="Copie le lien"><i class="fas fa-link" style="font-size: 23px;"></i></button>
             <button mat-raised-button class="sizeb" style="margin-right: 13px;" (click)="openDialog()" matTooltip="Ajouter un client"><i class="fas fa-user-plus" style="font-size: 23px;"></i></button>
             <button mat-raised-button class="sizeb" (click)="fileUpload.click()"><i class="fas fa-file-import" matTooltip="Importer des clients" style="font-size: 23px;"></i></button>
             <input type="file" class="file-input" accept='application/vnd.openxmlformats-officedocument.spreadsheetml.sheet, application/vnd.ms-excel' (change)="onFileSelected($event)" #fileUpload>
@@ -54,13 +55,25 @@
 
     <div class="row" style="margin-bottom: 10px;">
       <div class="col-md-8">
-        <p class="labelClient">Veuillez télécharger le model du fichier excel client <a href="https://weefid.alwaysdata.net/Customers.xlsx" style="text-decoration: none;color: #0c1733;font-weight: bold;">cliquez ici!</a></p>
+        <p class="labelClient">Veuillez télécharger le modèle du fichier excel client <a href="https://weefid.alwaysdata.net/Customers.xlsx" style="text-decoration: none;color: #0c1733;font-weight: bold;">cliquez ici!</a></p>
      </div><!--col-md-8-->
      <div class="col-md-4">
       <div align="right" *ngIf="isAll">
         <button mat-button (click)="openDialogDeleteMany()" style=" background: #c71e56 !important;color:#fff"><i class="fas fa-trash" style="font-size: 20px;"></i> Supprimer tout</button>
       </div>
      </div><!--col-->
+    </div>
+
+    <div class="row justify-content-md-center" style="margin-bottom: 10px;" *ngIf="message">
+        <div class="col-lg-6 col-md-6 col-md-auto">
+
+          <mat-card class="left2">
+            <mat-card-content>
+               <p style="font-size:14px;font-weight:600;">{{message}}</p>
+            </mat-card-content>
+          </mat-card>
+
+        </div><!--col-->
     </div>
     
  

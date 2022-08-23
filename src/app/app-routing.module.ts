@@ -72,6 +72,10 @@ const routes: Routes = [
   {
     path:"validation/compte",
     loadChildren:()=>import('./signup/confirme-email/confirme-email.module').then(m=>m.ConfirmeEmailModule),
+  },
+  {
+    path:"shared/client/:idEntreprise",
+    loadChildren:()=>import('./link-entreprise/link-entreprise.module').then(m=>m.LinkEntrepriseModule)
   }
 ];
 

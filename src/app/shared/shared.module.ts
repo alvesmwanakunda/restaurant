@@ -21,7 +21,10 @@ import {MatStepperModule} from '@angular/material/stepper';
 import { MatSortModule } from '@angular/material/sort';
 import { MatMenuModule } from '@angular/material/menu';
 import {MatRadioModule} from '@angular/material/radio';
-import {MatListModule} from '@angular/material/list'
+import {MatListModule} from '@angular/material/list';
+import {ClipboardModule} from '@angular/cdk/clipboard';
+
+
 
 
 
@@ -50,7 +53,8 @@ import {MatListModule} from '@angular/material/list'
     MatSortModule,
     MatMenuModule,
     MatRadioModule,
-    MatListModule
+    MatListModule,
+    ClipboardModule
     
   ],
   exports:[
@@ -75,7 +79,8 @@ import {MatListModule} from '@angular/material/list'
     MatSortModule,
     MatMenuModule,
     MatRadioModule,
-    MatListModule
+    MatListModule,
+    ClipboardModule
   ]
 })
 export class SharedModule { }

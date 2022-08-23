@@ -13,6 +13,7 @@ import { OperationInterface } from '../shared/interfaces/operation.interface';
 import { UploadClientComponent } from './upload-client/upload-client.component';
 import { DeleteClientComponent } from './delete-client/delete-client.component';
 import { DeleteManyClientComponent } from './delete-many-client/delete-many-client.component';
+import { environment } from 'src/environments/environment';
 
 
 
@@ -39,6 +40,8 @@ export class ClientsComponent implements OnInit, AfterViewInit {
   operations:any=[];
   isAll:boolean = false;
   allClients:any=[];
+  message:any;
+  url:any;
 
   constructor(
     public dialog:MatDialog,
@@ -65,6 +68,8 @@ export class ClientsComponent implements OnInit, AfterViewInit {
          this.entreprise = res.body;
          if(this.entreprise){
            //this.getAllClients(this.entreprise._id);
+           this.url = `${environment.BASE_URL}/shared/client/${this.entreprise._id}`;
+           //console.log("Url", this.url);
            this.getOperationClients(this.entreprise._id);
          }
       } catch (error) {
@@ -232,6 +237,7 @@ export class ClientsComponent implements OnInit, AfterViewInit {
              //this.dialogRef.close(this.clientAdd);
              this.getOperationClients(this.entreprise._id);
              this.onLoadForm = false;
+             this.message = "Operation effectuée avec succès";
         } catch (error) {
            this.onLoadForm = false;
            console.log("Erreur", error);

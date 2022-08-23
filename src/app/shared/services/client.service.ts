@@ -48,5 +48,9 @@ export class ClientService {
       return this.http.post(`${environment.BASE_API_URL}/delete/client/${idEntrepirse}`, client);
     }
 
+    sharedEntreprise(client:Object, idEntreprise){
+      return this.http.post(`${environment.BASE_API_URL}/shared/client/${idEntreprise}`, client);
+    }
+
 
 }

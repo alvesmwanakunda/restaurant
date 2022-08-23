@@ -1,0 +1,115 @@
+<div class="shared-body">
+
+
+  <div class="container">
+
+    <div style="padding-top:8%;">
+
+      <div class="row justify-content-md-center">
+        <div class="col-lg-7 col-md-7 col-md-auto">
+  
+          <mat-card class="shared1" *ngIf="!isSucces">
+            <mat-card-content>
+
+              <div class="text-center">
+                <img src="../../assets/images/logo1.png" width="150px">
+              </div><!--text-center-->
+
+              <div class="text-center" style="margin-bottom: 10%;">
+                <p style="color:#231D4F;font-size: 22px;font-weight: 400;">Rejoignez notre programme de fidélité</p>
+              </div>
+
+              <div class="text-center">
+
+                <form [formGroup]="clientForm" novalidate>
+
+                  <div>
+                    <mat-form-field appearance="outline" class="example-full-width">
+                      <mat-label class="labelFrom">Nom</mat-label>
+                      <input matInput formControlName="nom" required>
+                      <mat-icon matPrefix style="color:#ABB3BB;">person</mat-icon>
+                           <mat-icon matTooltip="{{account_validation_messages.nom[0].message}}"
+                                *ngIf="clientForm.get('nom').hasError(account_validation_messages.nom[0].type) && (clientForm.get('nom').dirty || clientForm.get('nom').touched  || (submitted))"
+                                style="cursor: pointer;" matSuffix>
+                                <i class="fas fa-exclamation-circle"></i>
+                              </mat-icon>
+                      </mat-form-field>
+                  </div>
+
+                  <div>
+                    <mat-form-field appearance="outline" class="example-full-width">
+                      <mat-label class="labelFrom">Prénom</mat-label>
+                      <input matInput formControlName="prenom" required>
+                      <mat-icon matPrefix style="color:#ABB3BB;">person</mat-icon>
+                        <mat-icon matTooltip="{{account_validation_messages.prenom[0].message}}"
+                                *ngIf="clientForm.get('prenom').hasError(account_validation_messages.prenom[0].type) && (clientForm.get('prenom').dirty || clientForm.get('prenom').touched  || (submitted))"
+                                style="cursor: pointer;" matSuffix>
+                                <i class="fas fa-exclamation-circle"></i>
+                        </mat-icon>
+                    </mat-form-field>
+                  </div>
+
+                  <div>
+                    <mat-form-field appearance="outline" class="example-full-width">
+                      <mat-label class="labelFrom">Numéro de téléphone</mat-label>
+                      <input matInput formControlName="emailorphone" pattern="^((\+\d{1,3}(-| )?\(?\d\)?(-| )?\d{1,5})|(\(?\d{2,6}\)?))(-| )?(\d{3,4})(-| )?(\d{4})(( x| ext)\d{1,5}){0,1}$|(\w+([\.-]?\w+)*@\w+([\.-]?\w+)*(\.\w{2,6})+)" required>
+                      <mat-icon matPrefix style="color:#ABB3BB;">phone_iphone</mat-icon>
+                      <mat-icon matTooltip="{{ account_validation_messages.emailorphone[0].message }}"
+                          *ngIf="clientForm.get('emailorphone').hasError(account_validation_messages.emailorphone[0].type) && ((clientForm.get('emailorphone').dirty || clientForm.get('emailorphone').touched) || (submitted))"
+                          matSuffix>
+                          <i class="fas fa-exclamation-circle"></i>
+                        </mat-icon>
+                    </mat-form-field>
+                    <div *ngIf="clientFormErrors.emailorphone.found" class="text-danger" style="position: relative;bottom: 19px">
+                        Ce compte existe déjà
+                    </div>
+                  </div>
+
+                  <div class="text-center">
+                    <button mat-button [disabled]="onLoadForm" type="submit" (click)="addClient()" cdkFocusInitial style=" background:linear-gradient(90deg, #0c1733, #236CBD) !important;color:#fff;width: 272px;">Valider</button>
+                  </div>
+
+                </form>   
+
+              </div><!--text-center-->
+
+             
+            </mat-card-content>
+          </mat-card><!--isSucces-->
+
+          <mat-card class="shared1" *ngIf="isSucces">
+            <mat-card-content>
+
+              <div class="text-center" style="margin-bottom: 15%;">
+                <img src="../../assets/images/logo1.png" width="150px">
+              </div><!--text-center-->
+
+
+              <div class="text-center" style="margin-bottom: 7%;">
+   
+                <i class="fas fa-check-circle" style="font-size: 45px;color: #10ae58;"></i>
+              
+              </div><!--text-center-->
+
+              <div class="text-center" style="margin-bottom: 10%;">
+                <p style="color:#231D4F;font-size: 22px;font-weight: 400;">Merci pour votre fidélité</p>
+              </div>
+
+              <div class="text-center">
+                <i class="fab fa-instagram" style="margin-right:10px;font-size: 20px;"></i>
+                <i class="fab fa-linkedin"  style="margin-right:10px;font-size: 20px;"></i>
+                <i class="fab fa-facebook" style="font-size: 20px;"></i>
+              </div>
+
+            </mat-card-content>
+          </mat-card><!--isSucces-->
+  
+        </div>
+      </div> 
+
+    </div><!--div-->
+
+  </div><!--container-->
+
+
+</div>

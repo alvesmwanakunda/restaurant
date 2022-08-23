@@ -18,9 +18,8 @@
         </li>
         <li class="nav-item">
           <a class="nav-link linkMenu">
-            <p style="color: #2A2A29;font-weight: bold;" *ngIf="user?.user.nom">{{user?.user.nom}} {{user?.user.prenom}}</p>
-            <p style="color: #2A2A29;font-weight: bold;" *ngIf="!user?.user.nom">{{user?.user.email}}</p>
-            <p style="color: #2A2A29;font-weight: bold;" *ngIf="!user?.user.nom && !user?.user.email">{{user?.user.phone}}</p>
+            <p style="color: #2A2A29;font-weight: bold;" *ngIf="entreprise?.nom">{{entreprise?.nom}}</p>
+            <p style="color: #2A2A29;font-weight: bold;" *ngIf="!entreprise?.nom">{{user?.user.email}}</p>
           </a>
         </li>
       </ul>

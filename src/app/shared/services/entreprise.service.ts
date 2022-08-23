@@ -24,4 +24,8 @@ export class EntrepriseService {
   listRecompense(idEntrepirse){
     return this.http.get(`${environment.BASE_API_URL}/web/operation/cadeau/client/${idEntrepirse}`)
   }
+
+  sharedEntreprise(idEntrepirse){
+    return this.http.get(`${environment.BASE_API_URL}/shared/entreprise/${idEntrepirse}`);
+  }
 }

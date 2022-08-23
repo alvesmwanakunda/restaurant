@@ -1,6 +1,8 @@
-import { Component, OnInit, ViewEncapsulation, Inject } from '@angular/core';
-import { EntrepriseService } from '../../shared/services/entreprise.service';
-import { ClientService } from 'src/app/shared/services/client.service';
+import { Component, OnInit } from '@angular/core';
+import { ActivatedRoute } from '@angular/router';
+import { EntrepriseService } from '../shared/services/entreprise.service';
+import { ClientService } from '../shared/services/client.service';
+import { DomSanitizer } from '@angular/platform-browser';
 import {
   FormBuilder,
   FormControl,
@@ -8,41 +10,41 @@ import {
   Validators
  } from '@angular/forms';
  import { CustomValidators } from "ng2-validation";
- import {MatDialog, MatDialogRef, MAT_DIALOG_DATA} from '@angular/material/dialog';
- import { ClientsComponent } from '../clients.component';
-
-
 
 
 @Component({
-  selector: 'app-add-client',
-  templateUrl: './add-client.component.html',
-  styleUrls: ['./add-client.component.scss'],
-  encapsulation: ViewEncapsulation.None,
-  host:{class:'app-add-client'}
+  selector: 'app-link-entreprise',
+  templateUrl: './link-entreprise.component.html',
+  styleUrls: ['./link-entreprise.component.scss']
 })
-export class AddClientComponent implements OnInit {
+export class LinkEntrepriseComponent implements OnInit {
 
+  idEntreprise:any;
   entreprise:any;
+  image:any;
   onLoadForm: boolean = false;
   clientForm: FormGroup;
   clientFormErrors: any;
   submitted: boolean = false;
   client:any;
   clientAdd:any;
+  isSucces:boolean = false;
 
   emailorphone = new FormControl("", [
     Validators.required,
   ]);
 
   constructor(
-       private entrepriseService: EntrepriseService,
-       private clientService: ClientService,
-       private formBuilder: FormBuilder,
-       public dialogRef: MatDialogRef<ClientsComponent>,
-       //@Inject(MAT_DIALOG_DATA) public data: DialogData
-  ) {
-    this.clientFormErrors = {
+    private routes: ActivatedRoute,
+    private entrepriseService: EntrepriseService,
+    private clientService: ClientService,
+    private sanitizer: DomSanitizer
+  ) { 
+     this.routes.params.subscribe((data:any)=>{
+      this.idEntreprise = data.idEntreprise;
+      //console.log("Data", this.idEntreprise);
+     });
+     this.clientFormErrors = {
       emailorphone: {},
       nom:{},
       prenom:{}
@@ -53,7 +55,7 @@ export class AddClientComponent implements OnInit {
     emailorphone:[
       {
         type: "required",
-        message: "Numéro téléphone obligatoire",
+        message: "Adresse email ou téléphone obligatoire",
       },{
         type:"pattern",
         message: "Identifiant incorrect. Veuillez reessayer.",
@@ -89,8 +91,8 @@ export class AddClientComponent implements OnInit {
   }
 
   ngOnInit(): void {
-    this.getEntreprise();
 
+    this.getEntreprise();
 
     this.clientForm = new FormGroup({
       emailorphone: new FormControl("",[
@@ -105,17 +107,18 @@ export class AddClientComponent implements OnInit {
       adresse:new FormControl("",null)
 
     });
-
   }
 
   getEntreprise(){
-    this.entrepriseService.getEntrepriseByUser().subscribe((res:any)=>{
-      try {
-         //console.log("Response", res);
-         this.entreprise = res.body;
-      } catch (error) {
-        console.log("Erreur ", error);
-      }
+    this.entrepriseService.sharedEntreprise(this.idEntreprise).subscribe((res:any)=>{
+
+       try {
+             //console.log("Entreprise", res);
+             this.entreprise = res.message;
+             this.image = this.sanitizer.bypassSecurityTrustResourceUrl(`data:image/png;base64, ${res.message.image}`);
+       } catch (error) {
+          console.log("Erreur", error);
+       }
     })
   }
 
@@ -127,7 +130,7 @@ export class AddClientComponent implements OnInit {
     if(!this.clientForm.invalid){
 
       Object.assign(this.client, this.clientForm.value);
-      this.clientService.addClient(this.client, this.entreprise._id).subscribe((res:any)=>{
+      this.clientService.sharedEntreprise(this.client, this.entreprise._id).subscribe((res:any)=>{
         if(!res.success){
              this.clientFormErrors["emailorphone"].found = true;
              this.onLoadForm = false;
@@ -135,9 +138,8 @@ export class AddClientComponent implements OnInit {
         else{
 
           try {
-              //console.log("Response", res);
               this.clientAdd = res;
-              this.dialogRef.close(this.clientAdd);
+              this.isSucces = true;
           } catch (error) {
             console.log("Erreur ", error);
           }

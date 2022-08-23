@@ -1,24 +1,26 @@
  <app-header-bar></app-header-bar>
- <div [ngClass]="[!isMenuSize ? 'ko-page-content-dashboard with-sidebar' : 'ko-page-content-dashboard with-fullsidebar']">
+ <div [ngClass]="[!isMenuSize ? 'ko-page-content-dashboard with-fullsidebar' : 'ko-page-content-dashboard with-sidebar']">
   <div class="container-fluid">
     <div class="row">
-      <aside class="ko-sidebar" [ngStyle]="{ width: !isMenuSize ? '75px' : '180px' }" style="box-shadow: 1px 1px 5px #565656;">
+      <aside class="ko-sidebar" [ngStyle]="{ width: !isMenuSize ? '180px' : '75px' }" style="box-shadow: 1px 1px 5px #565656;">
         <div class="sidebar-content">
           <div class="side-menu" style="display: inline-block; list-style-type: none">
 
             <div class="vertical-menu">
-              <a [routerLink]="['/dashboard']" *ngIf="!isMenuSize"><img src="assets/images/icone.png" style="width:66px;position:fixed;left: 3px;top:0;"></a>
-              <a [routerLink]="['/dashboard']" *ngIf="isMenuSize"><img src="assets/images/logo.png" style="width: 150px;position:fixed;left: 10px;top: 25px;"></a>
+              <a [routerLink]="['/dashboard']" *ngIf="!isMenuSize"><img src="assets/images/logo.png" style="width: 150px;position:fixed;left: 10px;top: 25px;"></a>
+              <a [routerLink]="['/dashboard']" *ngIf="isMenuSize"><img src="assets/images/icone.png" style="width:66px;position:fixed;left: 3px;top:0;"></a>
               <div style="padding-top: 50px;">
-                <a  routerLinkActive="active" [routerLinkActiveOptions]="{ exact: true }" [routerLink]="['/dashboard']" matTooltip="Dashboard"><i class="fas fa-th-large" style="font-size: 15px;"></i><span class="title-menu" *ngIf="isMenuSize">Tableau de bord</span></a>
-                <a  matTooltip="Clients" [routerLink]="['/clients']" [routerLinkActive]="['active']"><i class="fas fa-user" style="font-size: 15px;"></i> <span class="title-menu1" *ngIf="isMenuSize">Clients</span></a>
-                <a  matTooltip="Historiques" [routerLink]="['/historiques']" [routerLinkActive]="['active']"><i class="fas fa-clock" style="font-size: 15px;"></i> <span class="title-menu2" *ngIf="isMenuSize">Historique</span></a>
-                <a  matTooltip="Promotions" [routerLink]="['/promotions']" [routerLinkActive]="['active']"><i class="fas fa-bullhorn" style="font-size: 15px;"></i> <span class="title-menu3" *ngIf="isMenuSize">Promotion</span></a>
-                <a  matTooltip="Fidelites" [routerLink]="['/fidelites']" [routerLinkActive]="['active']"><i class="fas fa-file-invoice-dollar" style="font-size: 15px;"></i> <span class="title-menu4" *ngIf="isMenuSize">Fidélité</span></a>
+                <a  routerLinkActive="active" [routerLinkActiveOptions]="{ exact: true }" [routerLink]="['/dashboard']" matTooltip="Dashboard"><i class="fas fa-th-large" style="font-size: 15px;"></i><span class="title-menu" *ngIf="!isMenuSize">Tableau de bord</span></a>
+                <a  matTooltip="Clients" [routerLink]="['/clients']" [routerLinkActive]="['active']"><i class="fas fa-users" style="font-size: 15px;"></i> <span class="title-menu1" *ngIf="!isMenuSize">Clients</span></a>
+                <a  matTooltip="Fidelites" [routerLink]="['/fidelites']" [routerLinkActive]="['active']"><i class="fas fa-file-invoice-dollar" style="font-size: 15px;"></i> <span class="title-menu4" *ngIf="!isMenuSize">Fidélité</span></a>
+                <a  matTooltip="Promotions" [routerLink]="['/promotions']" [routerLinkActive]="['active']"><i class="fas fa-bullhorn" style="font-size: 15px;"></i> <span class="title-menu3" *ngIf="!isMenuSize">Promotion</span></a>
+                <a  matTooltip="Historiques" [routerLink]="['/historiques']" [routerLinkActive]="['active']"><i class="fas fa-clock" style="font-size: 15px;"></i> <span class="title-menu2" *ngIf="!isMenuSize">Historique</span></a>
+                <a  matTooltip="Mon compte"  [routerLink]="['/parametres']" [routerLinkActive]="['active']"><i class="fas fa-user" style="font-size: 15px;"></i><span class="title-menu3" *ngIf="!isMenuSize">Mon compte</span></a>
+
               </div> 
-              <div [ngStyle]="{ width: !isMenuSize ?'75px' : '179px'}" style="position: fixed;bottom: 0;left: 0px;">
+              <!--<div [ngStyle]="{ width: !isMenuSize ?'75px' : '179px'}" style="position: fixed;bottom: 0;left: 0px;">
                 <a  matTooltip="Parametres"  [routerLink]="['/parametres']" [routerLinkActive]="['active']"><i class="fas fa-cog" style="font-size: 40px;"></i><span class="title-menu5" *ngIf="isMenuSize">Paramètres</span></a>
-              </div>
+              </div>-->
               
 
             </div>
@@ -37,13 +39,13 @@
   </div><!--wrapper-->
   
 
-  <div style="position: fixed;bottom: 145px;left: 150px;"  *ngIf="isMenuSize">
+  <div style="position: fixed;bottom: 145px;left: 150px;"  *ngIf="!isMenuSize">
     <button mat-mini-fab style="background-color: #fff;" (click)="openMenu()">
       <i class="fas fa-caret-left" style="font-size: 35px;color: #3fd27e;position: absolute;left: 10px;top: 4px;"></i>
     </button>
   </div>
 
-  <div  style="position: fixed;bottom: 145px;left: 55px;" *ngIf="!isMenuSize">
+  <div  style="position: fixed;bottom: 145px;left: 55px;" *ngIf="isMenuSize">
     <button mat-mini-fab style="background-color: #fff;"  (click)="openMenu()">
       <i class="fas fa-caret-right" style="font-size: 35px;color: #3fd27e;position: absolute;left: 16px;top: 4px;"></i>
     </button>

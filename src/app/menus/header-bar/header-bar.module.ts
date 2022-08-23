@@ -4,6 +4,7 @@ import { HeaderBarComponent } from './header-bar.component';
 import { AuthService } from 'src/app/shared/services/auth.service';
 import { SharedModule } from 'src/app/shared/shared.module';
 import { DeconnexionModule } from '../deconnexion/deconnexion.module';
+import { EntrepriseService } from 'src/app/shared/services/entreprise.service';
 
 
 
@@ -17,6 +18,6 @@ import { DeconnexionModule } from '../deconnexion/deconnexion.module';
   exports:[
     HeaderBarComponent
   ],
-  providers:[AuthService]
+  providers:[AuthService,EntrepriseService]
 })
 export class HeaderBarModule { }

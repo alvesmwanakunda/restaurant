@@ -10,7 +10,7 @@ import { CookieService } from 'ngx-cookie-service';
 })
 export class NavBarComponent implements OnInit {
 
-  isMenuSize:any= false;
+  isMenuSize:any;
 
   constructor(private cookieService: CookieService) { }
 

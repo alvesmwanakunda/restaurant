@@ -1,0 +1,36 @@
+.vl {
+    border-left: 1px solid #e2e1e1;
+    height: 42px;
+    position: absolute;
+    //margin-left: -3px;
+    top: 9px;
+  }
+
+  .shared-body{
+    background-image: url(/assets/images/shared.png);
+    background-size: cover;
+    background-repeat: no-repeat;
+    background-position: center;
+    height: 100%;
+  }
+
+  .shared1{
+    background-image: url(/assets/images/shared1.png);
+    background-size: cover;
+    background-repeat: no-repeat;
+    background-position: center;
+  }
+
+  .example-full-width {
+    width: 45%;
+  }
+
+  .labelFrom {
+    color: #ABB3BB;
+    font-size: 13px;
+  }
+  
+  ::ng-deep .mat-form-field-appearance-outline .mat-form-field-outline {
+    background-color: white;
+    border-radius: 5px;
+  }

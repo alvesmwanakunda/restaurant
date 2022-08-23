@@ -2,6 +2,7 @@ import { Component, OnInit, ViewEncapsulation } from '@angular/core';
 import { AuthService } from 'src/app/shared/services/auth.service';
 import { MatDialog } from '@angular/material/dialog';
 import { DeconnexionComponent } from '../deconnexion/deconnexion.component';
+import { EntrepriseService } from 'src/app/shared/services/entreprise.service';
 
 @Component({
   selector: 'app-header-bar',
@@ -13,17 +14,30 @@ import { DeconnexionComponent } from '../deconnexion/deconnexion.component';
 export class HeaderBarComponent implements OnInit {
 
   user:any;
+  entreprise:any;
 
-  constructor(private authService: AuthService,public dialog:MatDialog) {
+  constructor(private authService: AuthService,public dialog:MatDialog,private entrepriseService:EntrepriseService) {
     this.user = JSON.parse(localStorage.getItem('user'));
-    console.log("User", this.user.user);
+    console.log("User", this.user);
   }
 
   ngOnInit(): void {
+    this.getEntreprise();
   }
 
   logout():void{
     this.authService.logout()
+  }
+
+  getEntreprise(){
+    this.entrepriseService.getEntrepriseByUser().subscribe((res:any)=>{
+      try {
+          this.entreprise = res.body;
+          console.log("Entreprise", this.entreprise);
+      } catch (error) {
+        console.log("Erreur", error);
+      }
+    })
   }
 
   openDialog(){
