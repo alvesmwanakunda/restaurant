@@ -6,116 +6,60 @@
 
             <div class="col-md-12">
                 <mat-tab-group>
+                  
                   <mat-tab>
-                    <ng-template mat-tab-label>
-                      Cadeaux <i class="fas fa-gifts" style="font-size: 20px;margin-left: 8px;"></i>
-                    </ng-template>
+                     <ng-template mat-tab-label>
+                       Ajouter des articles <i class="fas fa-box-open" style="font-size: 20px;margin-left: 8px;"></i>
+                     </ng-template>
+                     <div class="row justify-content-md-center contentInfo">
 
-                    <div class="row contentInfo">
+                        <div class="col-lg-8 col-md-8 col-md-auto">
 
-                        <div class="col-md-4">
-                             <p class="titleFront">Articles cadeau <i class="fas fa-plus-square iconInfo" style="cursor: pointer;" (click)="openDialogAddCadeau()" matTooltip="Ajouter un article"></i></p>
-
-                             <div class="card" style="background-color: #F6F6FF;border-color: #F6F6FF;margin-bottom: 10px;" *ngFor="let cadeau of listCadeau">
-                               <div class="card-body">
-
-                                  <div class="row">
-                                    <div class="col-md-6">
-                                       <div style="cursor: pointer;" (click)="openDialogCadeau(cadeau._id)">
-                                         <img src="data:image/png;base64,{{cadeau?.produit.photo}}" width="30px;" *ngIf="cadeau?.produit.photo">
-                                         <img src="assets/images/not.jpeg" width="30px;" *ngIf="!cadeau?.produit.photo">
-                                         <span class="subTitle">{{cadeau?.produit.nom}}</span>
-                                        </div>
-                                    </div><!--col-->
-                                    <div class="col-md-3">
-                                       <div>
-                                         <div class="vl"></div>
-                                         <span style="font-size: 9px;margin-left: 4px;">{{cadeau.point}} ({{cadeau?.typesPoint.nom}})</span>
-                                       </div>
-                                    </div><!--col-->
-                                    <div class="col-md-3">
-                                       <div class="vl"></div>
-                                       <div style="margin-left: 10px;">
-                                          <i  class="fas fa-edit" style="margin-right: 11px;color: #04075E;cursor: pointer;" (click)="openDialogUpdateCadeau(cadeau._id)" matTooltip="Modifié" *ngIf="cadeau.isCode==false"></i>
-                                          <i class="fas fa-trash" style="color: #04075E;cursor: pointer;" (click)="deleteCadeau(cadeau._id)" *ngIf="cadeau.isCode==false" matTooltip="Supprimé"></i>
-                                       </div>
-
-                                    </div><!--col-->
+                            <div class="row" style="padding-top: 35px;">
+                               <div class="col-md-6">
+                                   <p style="color: #04075E;"><i class="fas fa-sort-amount-up"></i> Produit</p>
+                               </div><!--col-->
+                               <div class="col-md-6">
+                                  <div align="right">
+                                    <p style="font-size: 14px;cursor: pointer;" (click)="openDialogAddProduit()"><i class="fas fa-plus-circle"></i> ajouter un produit</p>
                                   </div>
+                               </div><!--col-->
+                            </div>
+                            <div><mat-divider></mat-divider></div>
+
+                            <div style="padding-top: 20px;">
+                              <div class="card" *ngFor="let produit of produits" style="margin-bottom: 5px;border: 1px solid rgb(182 181 181 / 13%) !important;">
+                                 <div class="card-body left-border">
+
+                                    <div class="row">
+                                       <div class="col-md-6">
+                                          <img class="rounded" src="data:image/png;base64,{{produit?.photo}}" width="40px" *ngIf="produit?.photo">
+                                          <img class="rounded" src="assets/images/not.jpeg" width="40px;" *ngIf="!produit?.photo">
+                                          <span class="produit">{{produit?.nom}}</span>
+                                       </div><!---->
+                                       <div class="col-md-6">
+                                          <div align="right">
+                                             <button mat-icon-button (click)="openDialogUpdadeProduit(produit?._id)">
+                                                <i class="fas fa-edit" style="font-size: 17px;color: #04075E;"></i>
+                                              </button>
+
+                                              <button mat-icon-button color="warn" (click)="deleteProduit(produit?._id)">
+                                                <mat-icon>cancel</mat-icon>
+                                              </button>
+                                          </div>
+                                       </div><!---->
+                                    </div><!--row-->
+                                  
+                                 </div>
+                               </div>
+                            </div>
 
 
-                               </div><!--card-body-->
-                             </div>
-                        </div><!--col-md-4-->
+                        </div>   
 
-                        <div class="col-md-4">
-                              <p class="titleFront">Réduction cadeau <i class="fas fa-plus-square iconInfo" style="cursor: pointer;" (click)="openDialogAddReduction()" matTooltip="Ajouter une réduction"></i></p>
+                     </div>
+                  </mat-tab> 
 
-                              <div class="card" style="background-color: #F6F6FF;border-color: #F6F6FF;margin-bottom: 10px;" *ngFor="let reduction of listReduction">
-                               <div class="card-body">
-
-                                  <div class="row">
-                                    <div class="col-md-6">
-                                       <div style="cursor: pointer;" (click)="openDialogReduction(reduction._id)">
-                                         <img src="data:image/png;base64,{{reduction?.produit?.photo}}" width="30px;" *ngIf="!reduction?.facture">
-                                         <span class="subTitle" *ngIf="reduction?.facture">Facture</span>
-                                         <span class="subTitle">{{reduction?.montant}} {{reduction?.devise}}</span>
-                                        </div>
-                                    </div><!--col-->
-                                    <div class="col-md-3">
-                                       <div>
-                                         <div class="vl"></div>
-                                         <span style="font-size: 9px;margin-left: 4px;">{{reduction?.point}} ({{reduction?.typesPoint.nom}})</span>
-                                       </div>
-                                    </div><!--col-->
-                                    <div class="col-md-3">
-                                       <div class="vl"></div>
-                                       <div style="margin-left: 10px;">
-                                          <i class="fas fa-edit" style="margin-right: 11px;color: #04075E;cursor: pointer;" (click)="openDialogUpdateReduction(reduction._id)" *ngIf="reduction.isCode==false" matTooltip="Modifié"></i>
-                                          <i class="fas fa-trash" style="color: #04075E;cursor: pointer;" (click)="deleteReduction(reduction._id)"  *ngIf="reduction.isCode==false" matTooltip="Supprimé"></i>
-                                       </div>
-
-                                    </div><!--col-->
-                                  </div>
-
-                               </div><!--card-body-->
-                             </div>
-                        </div><!--col-md-4-->
-
-                        <div class="col-md-4">
-                              <p class="titleFront">Livraison gratuite <i class="fas fa-plus-square iconInfo" style="cursor: pointer;" (click)="openDialogAddLivraison()" matTooltip="Ajouter une livraison"></i></p>
-                              <div class="card" style="background-color: #F6F6FF;border-color: #F6F6FF;margin-bottom: 10px;" *ngFor="let livraison of listLivraison">
-                               <div class="card-body">
-
-                                 <div class="row">
-                                    <div class="col-md-6">
-                                       <div style="cursor: pointer;" (click)="openDialogLivraison(livraison._id)">
-                                         <span class="subTitle">{{livraison?.typesPoint.nom}}</span>
-                                        </div>
-                                    </div><!--col-->
-                                    <div class="col-md-3">
-                                       <div>
-                                         <div class="vl"></div>
-                                         <span style="font-size: 9px;margin-left: 4px;">{{livraison?.point}} ({{livraison?.typesPoint.nom}})</span>
-                                       </div>
-                                    </div><!--col-->
-                                    <div class="col-md-3">
-                                       <div class="vl"></div>
-                                       <div style="margin-left: 10px;">
-                                          <i class="fas fa-edit" style="margin-right: 11px;color: #04075E;cursor: pointer;" (click)="openDialogUpdateLivraison(livraison._id)" *ngIf="livraison.isCode==false" matTooltip="Modifié"></i>
-                                          <i class="fas fa-trash" style="color: #04075E;cursor: pointer;" (click)="deleteLivraison(livraison._id)" *ngIf="livraison.isCode==false"  matTooltip="Supprimé"></i>
-                                       </div>
-
-                                    </div><!--col-->
-                                  </div>
-
-                               </div><!--card-body-->
-                             </div>
-                        </div><!--col-md-4-->
-
-                    </div><!--row-->
-
-                  </mat-tab>
                   <mat-tab>
                     <ng-template mat-tab-label>
                       Attribution de points <i class="fas fa-database" style="font-size: 20px;margin-left: 8px;" ></i>
@@ -193,58 +137,118 @@
                        </div><!--col-->
                     </div><!--row-->
                   </mat-tab>
+
                   <mat-tab>
                      <ng-template mat-tab-label>
-                       Ajouter des articles <i class="fas fa-box-open" style="font-size: 20px;margin-left: 8px;"></i>
+                       Cadeaux <i class="fas fa-gifts" style="font-size: 20px;margin-left: 8px;"></i>
                      </ng-template>
-                     <div class="row justify-content-md-center contentInfo">
-
-                        <div class="col-lg-8 col-md-8 col-md-auto">
-
-                            <div class="row" style="padding-top: 35px;">
-                               <div class="col-md-6">
-                                   <p style="color: #04075E;"><i class="fas fa-sort-amount-up"></i> Produit</p>
-                               </div><!--col-->
-                               <div class="col-md-6">
-                                  <div align="right">
-                                    <p style="font-size: 14px;cursor: pointer;" (click)="openDialogAddProduit()"><i class="fas fa-plus-circle"></i> ajouter un produit</p>
-                                  </div>
-                               </div><!--col-->
-                            </div>
-                            <div><mat-divider></mat-divider></div>
-
-                            <div style="padding-top: 20px;">
-                              <div class="card" *ngFor="let produit of produits" style="margin-bottom: 5px;border: 1px solid rgb(182 181 181 / 13%) !important;">
-                                 <div class="card-body left-border">
-
-                                    <div class="row">
-                                       <div class="col-md-6">
-                                          <img class="rounded" src="data:image/png;base64,{{produit?.photo}}" width="40px" *ngIf="produit?.photo">
-                                          <img class="rounded" src="assets/images/not.jpeg" width="40px;" *ngIf="!produit?.photo">
-                                          <span class="produit">{{produit?.nom}}</span>
-                                       </div><!---->
-                                       <div class="col-md-6">
-                                          <div align="right">
-                                             <button mat-icon-button (click)="openDialogUpdadeProduit(produit?._id)">
-                                                <i class="fas fa-edit" style="font-size: 17px;color: #04075E;"></i>
-                                              </button>
-
-                                              <button mat-icon-button color="warn" (click)="deleteProduit(produit?._id)">
-                                                <mat-icon>cancel</mat-icon>
-                                              </button>
-                                          </div>
-                                       </div><!---->
-                                    </div><!--row-->
-                                  
-                                 </div>
-                               </div>
-                            </div>
-
-
-                        </div>   
-
-                     </div>
-                  </mat-tab>   
+ 
+                     <div class="row contentInfo">
+ 
+                         <div class="col-md-4">
+                              <p class="titleFront">Articles cadeau <i class="fas fa-plus-square iconInfo" style="cursor: pointer;" (click)="openDialogAddCadeau()" matTooltip="Ajouter un article"></i></p>
+ 
+                              <div class="card" style="background-color: #F6F6FF;border-color: #F6F6FF;margin-bottom: 10px;" *ngFor="let cadeau of listCadeau">
+                                <div class="card-body">
+ 
+                                   <div class="row">
+                                     <div class="col-md-6">
+                                        <div style="cursor: pointer;" (click)="openDialogCadeau(cadeau._id)">
+                                          <img src="data:image/png;base64,{{cadeau?.produit.photo}}" width="30px;" *ngIf="cadeau?.produit.photo">
+                                          <img src="assets/images/not.jpeg" width="30px;" *ngIf="!cadeau?.produit.photo">
+                                          <span class="subTitle">{{cadeau?.produit.nom}}</span>
+                                         </div>
+                                     </div><!--col-->
+                                     <div class="col-md-3">
+                                        <div>
+                                          <div class="vl"></div>
+                                          <span style="font-size: 9px;margin-left: 4px;">{{cadeau.point}} ({{cadeau?.typesPoint.nom}})</span>
+                                        </div>
+                                     </div><!--col-->
+                                     <div class="col-md-3">
+                                        <div class="vl"></div>
+                                        <div style="margin-left: 10px;">
+                                           <i  class="fas fa-edit" style="margin-right: 11px;color: #04075E;cursor: pointer;" (click)="openDialogUpdateCadeau(cadeau._id)" matTooltip="Modifié" *ngIf="cadeau.isCode==false"></i>
+                                           <i class="fas fa-trash" style="color: #04075E;cursor: pointer;" (click)="deleteCadeau(cadeau._id)" *ngIf="cadeau.isCode==false" matTooltip="Supprimé"></i>
+                                        </div>
+ 
+                                     </div><!--col-->
+                                   </div>
+ 
+ 
+                                </div><!--card-body-->
+                              </div>
+                         </div><!--col-md-4-->
+ 
+                         <div class="col-md-4">
+                               <p class="titleFront">Réduction cadeau <i class="fas fa-plus-square iconInfo" style="cursor: pointer;" (click)="openDialogAddReduction()" matTooltip="Ajouter une réduction"></i></p>
+ 
+                               <div class="card" style="background-color: #F6F6FF;border-color: #F6F6FF;margin-bottom: 10px;" *ngFor="let reduction of listReduction">
+                                <div class="card-body">
+ 
+                                   <div class="row">
+                                     <div class="col-md-6">
+                                        <div style="cursor: pointer;" (click)="openDialogReduction(reduction._id)">
+                                          <img src="data:image/png;base64,{{reduction?.produit?.photo}}" width="30px;" *ngIf="!reduction?.facture">
+                                          <span class="subTitle" *ngIf="reduction?.facture">Facture</span>
+                                          <span class="subTitle">{{reduction?.montant}} {{reduction?.devise}}</span>
+                                         </div>
+                                     </div><!--col-->
+                                     <div class="col-md-3">
+                                        <div>
+                                          <div class="vl"></div>
+                                          <span style="font-size: 9px;margin-left: 4px;">{{reduction?.point}} ({{reduction?.typesPoint.nom}})</span>
+                                        </div>
+                                     </div><!--col-->
+                                     <div class="col-md-3">
+                                        <div class="vl"></div>
+                                        <div style="margin-left: 10px;">
+                                           <i class="fas fa-edit" style="margin-right: 11px;color: #04075E;cursor: pointer;" (click)="openDialogUpdateReduction(reduction._id)" *ngIf="reduction.isCode==false" matTooltip="Modifié"></i>
+                                           <i class="fas fa-trash" style="color: #04075E;cursor: pointer;" (click)="deleteReduction(reduction._id)"  *ngIf="reduction.isCode==false" matTooltip="Supprimé"></i>
+                                        </div>
+ 
+                                     </div><!--col-->
+                                   </div>
+ 
+                                </div><!--card-body-->
+                              </div>
+                         </div><!--col-md-4-->
+ 
+                         <div class="col-md-4">
+                               <p class="titleFront">Livraison gratuite <i class="fas fa-plus-square iconInfo" style="cursor: pointer;" (click)="openDialogAddLivraison()" matTooltip="Ajouter une livraison"></i></p>
+                               <div class="card" style="background-color: #F6F6FF;border-color: #F6F6FF;margin-bottom: 10px;" *ngFor="let livraison of listLivraison">
+                                <div class="card-body">
+ 
+                                  <div class="row">
+                                     <div class="col-md-6">
+                                        <div style="cursor: pointer;" (click)="openDialogLivraison(livraison._id)">
+                                          <span class="subTitle">{{livraison?.typesPoint.nom}}</span>
+                                         </div>
+                                     </div><!--col-->
+                                     <div class="col-md-3">
+                                        <div>
+                                          <div class="vl"></div>
+                                          <span style="font-size: 9px;margin-left: 4px;">{{livraison?.point}} ({{livraison?.typesPoint.nom}})</span>
+                                        </div>
+                                     </div><!--col-->
+                                     <div class="col-md-3">
+                                        <div class="vl"></div>
+                                        <div style="margin-left: 10px;">
+                                           <i class="fas fa-edit" style="margin-right: 11px;color: #04075E;cursor: pointer;" (click)="openDialogUpdateLivraison(livraison._id)" *ngIf="livraison.isCode==false" matTooltip="Modifié"></i>
+                                           <i class="fas fa-trash" style="color: #04075E;cursor: pointer;" (click)="deleteLivraison(livraison._id)" *ngIf="livraison.isCode==false"  matTooltip="Supprimé"></i>
+                                        </div>
+ 
+                                     </div><!--col-->
+                                   </div>
+ 
+                                </div><!--card-body-->
+                              </div>
+                         </div><!--col-md-4-->
+ 
+                     </div><!--row-->
+ 
+                   </mat-tab>
+                    
                </mat-tab-group>
             </div>
 
