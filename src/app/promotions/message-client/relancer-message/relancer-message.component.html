@@ -159,6 +159,12 @@
                             <input type="number" matInput name="visite" [(ngModel)]="messageClient.visite" #visite="ngModel">
                         </mat-form-field>
                         
+                        <p *ngIf="fileName" style="color:#000000;font-size:13px;text-align: center;">{{fileName}}</p>
+
+                        <div *ngIf="messageClient?.photo"  style="margin-bottom: 15px;">
+                          <img [src]="image" class="imgSizeLogo img-thumbnail">
+                        </div>
+
                         <div *ngIf="messageClient.typePromotion=='App'">
                           <input type="file" class="file-input" accept='image/png, image/jpeg' (change)="onFileSelected($event)" #fileUpload>
                           <!--<img [src]="image" class="imgSizeLogo img-thumbnail" *ngIf="messageClient?.photo">-->
@@ -169,15 +175,10 @@
                              <button (click)="deletePhoto(messageClient._id)" mat-mini-fab color="primary" style="background-color: #ba0846;" matTooltip="Supprimer photo">
                               <mat-icon>delete</mat-icon>
                            </button>
-                             <div align="center" *ngIf="fileName">
-                              <p style="color:#000000;font-size:13px;text-align: center;">{{fileName}}</p>
-                             </div>
+                            
                            </div>
                         </div>
 
-                        <div *ngIf="messageClient?.photo"  style="margin-bottom: 15px;">
-                          <img [src]="image" class="imgSizeLogo img-thumbnail">
-                        </div>
     
                         <div>
         

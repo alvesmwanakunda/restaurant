@@ -98,11 +98,16 @@
                   <mat-checkbox (click)="$event.stopPropagation();selectionRow(row)"
                                 (change)="$event ? selection.toggle(row) : null"
                                 [checked]="selection.isSelected(row)"
+                                [aria-label]="checkboxLabel(row)">
+                  </mat-checkbox>
+                  <!--<mat-checkbox (click)="$event.stopPropagation();selectionRow(row)"
+                                (change)="$event ? selection.toggle(row) : null"
+                                [checked]="selection.isSelected(row)"
                                 [aria-label]="checkboxLabel(row)" *ngIf="isAll">
                   </mat-checkbox>
                   <mat-checkbox (click)="openDialogDelete(row.id)"
                                 [aria-label]="checkboxLabel(row)" *ngIf="!isAll">
-                </mat-checkbox>
+                </mat-checkbox>-->
                 </td>
               </ng-container>
     
@@ -150,6 +155,11 @@
               <ng-container matColumnDef="avoir">
                 <th mat-header-cell *matHeaderCellDef mat-sort-header class="titleTable"> Montant avoir </th>
                 <td mat-cell *matCellDef="let row" class="titleContent" (click)="openDialogDetail(row.id)"> {{row.avoir}} </td>
+              </ng-container>
+
+              <ng-container matColumnDef="action">
+                <th mat-header-cell *matHeaderCellDef mat-sort-header class="titleTable"> Supprimer </th>
+                <td mat-cell *matCellDef="let row" class="titleContent">  <button mat-button (click)="openDialogDelete(row.id)"><i class="fas fa-trash" style="font-size: 17px;color: #c71e56;"></i></button> </td>
               </ng-container>
     
               <tr mat-header-row *matHeaderRowDef="displayedColumns"></tr>

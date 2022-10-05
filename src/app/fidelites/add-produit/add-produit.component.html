@@ -42,10 +42,13 @@
                
                  <div class="row" style="margin-bottom: 10px;">
                    <div class="col-md-12">
-                    <input type="file" class="file-input" accept='image/*' (change)="onFileSelected($event)" #fileUpload>
-                    <button (click)="fileUpload.click()" mat-mini-fab color="primary" style="background-color: #10ae58;">
-                      <mat-icon>add_a_photo</mat-icon>
-                   </button> {{fileName}}
+                    <div align="center"> 
+                      <input type="file" class="file-input" accept='image/*' (change)="onFileSelected($event)" #fileUpload>
+                      <button (click)="fileUpload.click()" mat-mini-fab color="primary" style="background-color: #10ae58;">
+                        <mat-icon>add_a_photo</mat-icon>
+                     </button> 
+                     <p *ngIf="fileName" [ngClass]="isMax == true ? 'my-error' : 'my-success'" style="text-align:center;">{{message}}</p>
+                    </div>
                    </div>
                  </div>
            
@@ -57,7 +60,7 @@
            
              </div>
              <div align="center">
-               <button mat-button type="submit" (click)="addProduit()" cdkFocusInitial style=" background:linear-gradient(90deg, #0c1733, #3fd27e) !important;color:#fff">Ajouter produit</button>
+               <button mat-button type="submit" (click)="addProduit()" [disabled]="isMax" cdkFocusInitial style=" background:linear-gradient(90deg, #0c1733, #3fd27e) !important;color:#fff">Ajouter produit</button>
              </div>
           </form>
 

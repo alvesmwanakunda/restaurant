@@ -7,9 +7,11 @@
     </div>
 
      <div class="row" style="margin-bottom: 15px;">
-      <div class="col-md-12">
-         <div class="text-end">
-            <button mat-raised-button class="sizeButtonAB" [routerLink]="'/promotions'" style="margin-right:20px"><i class="fas fa-long-arrow-alt-left" style="font-size: 15px;"></i></button>
+      <div class="col-md-6">
+        <button mat-raised-button class="sizeButtonAB" [routerLink]="'/promotions'"><i class="fas fa-long-arrow-alt-left" style="font-size: 15px;"></i></button>
+      </div><!--col-md-6-->
+      <div class="col-md-6">
+         <div align="right">
             <button mat-mini-fab class="sizebf" matTooltip="Envoyer" [disabled]="!isValid && !isWefid" (click)="addProduit('envoyée')" style="margin-right:20px"><i class="fas fa-paper-plane" style="font-size: 20px;"></i></button>
             <button mat-mini-fab class="sizebff" matTooltip="Enregistrer" [disabled]="!isValid && !isWefid" (click)="addProduit('enregistrée')"><i class="fas fa-save" style="font-size: 20px;"></i></button>
          </div>

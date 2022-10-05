@@ -24,7 +24,7 @@ import { environment } from 'src/environments/environment';
 })
 export class ClientsComponent implements OnInit, AfterViewInit {
 
-  displayedColumns: string[] = ['id','numero', 'nom', 'genre', 'debut','fin', 'visite','depense','avoir'];
+  displayedColumns: string[] = ['id','numero', 'nom', 'genre', 'debut','fin', 'visite','depense','avoir','action'];
   dataSource = new MatTableDataSource<OperationInterface>();
   selection = new SelectionModel<OperationInterface>(true, []);
 
@@ -174,6 +174,7 @@ export class ClientsComponent implements OnInit, AfterViewInit {
     dialogRef.afterClosed().subscribe(result => {
       console.log(`Dialog result: ${result}`);
       this.getOperationClients(this.entreprise._id);
+      this.isAll = false;
     })
   }
 
@@ -189,8 +190,13 @@ export class ClientsComponent implements OnInit, AfterViewInit {
     if(this.selection.isSelected(row)){
       this.allClients = this.allClients.filter(item=> item.id!=row.id);
       //console.log("Bonjour alves", this.allClients);
+      if(!this.allClients.length){
+        this.isAll=false;
+      }
+      
     }else{
       this.allClients.push(row);
+      this.isAll = true;
       //console.log("Bonjour eeeeh",this.allClients);
     }
     console.log("row", row);

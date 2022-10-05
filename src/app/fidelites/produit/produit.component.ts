@@ -26,6 +26,8 @@ export class ProduitComponent implements OnInit {
   produit:any;
   fileName:any;
   file:File;
+  isMax:boolean = false;
+  message:any;
   
   constructor(
     private produitService:ProduitService,
@@ -95,6 +97,16 @@ export class ProduitComponent implements OnInit {
     
     this.file = event.target.files[0];
     this.fileName = this.file.name;
+
+    var maxSize = 50000;
+
+    if(this.file.size > maxSize){
+      //console.log("Erreur taille");
+      this.isMax = true;
+      this.message = `${this.fileName}: Taille de fichier non valide, la taille maximale de téléchargement est de 50 kb.`;
+    }else{
+      this.message = `Nouvelle image: ${this.fileName}`;
+    }
     
   }
 

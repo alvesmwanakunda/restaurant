@@ -41,12 +41,17 @@
            </div><!--row-->
      
          
-           <div class="row" style="margin-bottom: 10px;">
+           <div class="row">
              <div class="col-md-12">
-              <input type="file" class="file-input" accept='image/*' (change)="onFileSelected($event)" #fileUpload>
-              <button (click)="fileUpload.click()" mat-mini-fab color="primary" style="background-color: #10ae58;">
-                <mat-icon>add_a_photo</mat-icon>
-             </button> {{fileName}}
+              
+              <div align="center"> 
+                <input type="file" class="file-input" accept='image/*' (change)="onFileSelected($event)" #fileUpload>
+                <button (click)="fileUpload.click()" mat-mini-fab color="primary" style="background-color: #10ae58;">
+                  <mat-icon>add_a_photo</mat-icon>
+               </button> 
+               <p *ngIf="fileName" [ngClass]="isMax == true ? 'my-error' : 'my-success'" style="text-align:center;">{{message}}</p>
+              </div>
+
              </div>
            </div>
      

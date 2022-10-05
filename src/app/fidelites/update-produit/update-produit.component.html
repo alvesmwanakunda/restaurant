@@ -49,16 +49,21 @@
                  </div><!--row-->
            
                
-                 <div class="row" style="margin-bottom: 10px;">
+                 <div class="row">
                    <div class="col-md-12">
+                    
+                    <div align="center">
+                        <img class="rounded center-image" src="data:image/png;base64,{{produit?.photo}}" *ngIf="produit?.photo"> 
+                    </div><!--div-->
 
                     <div align="center">
-                        <img class="rounded" src="data:image/png;base64,{{produit?.photo}}" width="50px" *ngIf="produit?.photo"> 
-                        <input type="file" class="file-input" accept='image/*' (change)="onFileSelected($event)" #fileUpload>
-                        <button (click)="fileUpload.click()" mat-mini-fab color="primary" style="background-color: #10ae58;position: relative;left: 20px;">
-                        <mat-icon>add_a_photo</mat-icon>
-                        </button> <span style="padding-left: 26px">{{fileName}}</span> 
-                    </div><!--div-->
+                      <input type="file" class="file-input" accept='image/*' (change)="onFileSelected($event)" #fileUpload>
+                        <button (click)="fileUpload.click()" mat-mini-fab color="primary" style="background-color: #10ae58;position:relative;left:0px;bottom: 67px;">
+                          <mat-icon>add_a_photo</mat-icon>
+                        </button> 
+                        <p *ngIf="fileName" [ngClass]="isMax == true ? 'my-error' : 'my-success'" style="text-align:center;">{{message}}</p>
+
+                    </div>
 
                    </div>
                  </div>
@@ -68,7 +73,7 @@
            
              </div>
              <div align="center">
-               <button mat-button type="submit" (click)="addProduit(produit)" cdkFocusInitial style=" background:linear-gradient(90deg, #0c1733, #3fd27e) !important;color:#fff">Modifier produit</button>
+               <button mat-button type="submit" (click)="addProduit(produit)" [disabled]="isMax" cdkFocusInitial style=" background:linear-gradient(90deg, #0c1733, #3fd27e) !important;color:#fff">Modifier produit</button>
              </div>
           </form>
 

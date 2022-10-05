@@ -36,6 +36,22 @@
   .file-input {
     display: none;
   }
+
+  .center-image {
+    display: block;
+    margin-left: auto;
+    margin-right: auto;
+    width: 25%;
+  }
+
+  .my-error{
+    color: #e30959;
+    font-weight: bold;
+  }
+
+  .my-success{
+    color: #04075E;
+  }
   
   
   

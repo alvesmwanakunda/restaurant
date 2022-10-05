@@ -142,26 +142,24 @@
                       <mat-checkbox name="isCode" [(ngModel)]="messageClient.isCode" #isCode="ngModel">Générer un code</mat-checkbox>
                     </div>
 
-                    <div *ngIf="messageClient.typePromotion=='App'">
-                         <input type="file" class="file-input" accept='image/png, image/jpeg' (change)="onFileSelected($event)" #fileUpload>
-                         <!--<img [src]="image" class="imgSizeLogo img-thumbnail" *ngIf="messageClient?.photo">-->
-                          <div class="photoBtn" align="center">
-                            <button (click)="fileUpload.click()" mat-mini-fab color="primary" style="background-color: #10ae58;margin-right: 15px;" matTooltip="Modifier photo">
-                               <mat-icon>add_a_photo</mat-icon>
-                            </button>
-                            <button (click)="deletePhoto(messageClient._id)" mat-mini-fab color="primary" style="background-color: #ba0846;" matTooltip="Supprimer photo">
-                              <mat-icon>delete</mat-icon>
-                           </button>
-                            <div align="center" *ngIf="fileName">
-                             <p style="color:#000000;font-size:13px;text-align: center;">{{fileName}}</p>
-                            </div>
-                          </div>
-                    </div>
+                    <p *ngIf="fileName" style="color:#000000;font-size:13px;text-align: center;">{{fileName}}</p>
 
                     <div>
 
                       <div *ngIf="messageClient?.photo"  style="margin-bottom: 15px;">
                         <img [src]="image" class="imgSizeLogo img-thumbnail">
+                      </div>
+
+                      <div *ngIf="messageClient.typePromotion=='App'">
+                        <input type="file" class="file-input" accept='image/png, image/jpeg' (change)="onFileSelected($event)" #fileUpload>
+                         <div class="photoBtn" align="center">
+                           <button (click)="fileUpload.click()" mat-mini-fab color="primary" style="background-color: #10ae58;margin-right: 15px;" matTooltip="Modifier photo">
+                              <mat-icon>add_a_photo</mat-icon>
+                           </button>
+                           <button (click)="deletePhoto(messageClient._id)" mat-mini-fab color="primary" style="background-color: #ba0846;" matTooltip="Supprimer photo">
+                             <mat-icon>delete</mat-icon>
+                          </button>
+                         </div>
                       </div>
     
                       <mat-form-field class="example-full-width" appearance="fill">
