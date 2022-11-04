@@ -1,0 +1,213 @@
+.titreHeader {
+  font-size: 14px;
+  color: #0c2461;
+  text-align: center;
+  font-weight: bold;
+}
+
+.labelFrom {
+  color: #000000;
+  font-size: 13px;
+}
+
+.iconFrom {
+  color: #CECECE;
+  font-size: 24px;
+  font-weight: 700;
+  margin-right: 13px;
+}
+
+.example-full-width {
+  width: 100%;
+}
+
+.sizeb {
+  width: 51px;
+  background: #04075E !important;
+  color: #fff;
+  height: 46px;
+}
+
+.sizebf {
+  background: linear-gradient(90deg,#3fd27e, #0c1733) !important;
+  color: #fff;
+}
+
+.sizebff{
+  background: linear-gradient(90deg, #0c1733, #3fd27e) !important;
+  color: #fff;
+}
+
+.sizebr {
+  width: 41px;
+  background: #D70000 !important;
+  color: #fff;
+  height: 46px;
+}
+
+.sizebv {
+  background: linear-gradient(90deg, #0c1733, #3fd27e) !important;
+  color: #fff;
+}
+
+.hposition {
+  position: relative;
+  bottom: 16px;
+}
+
+.sposition {
+  position: relative;
+  bottom: 13px;
+}
+
+.iconV {
+  color: #0909B2;
+  font-size: 30px;
+}
+
+.iconV1 {
+  color: #4CBA23;
+  font-size: 30px;
+}
+
+.vi1 {
+  position: relative;
+  left: 49px;
+  bottom: 36px;
+}
+
+.vi2 {
+  position: relative;
+  left: 50px;
+  bottom: 36px;
+}
+
+.example-section{
+  margin: 12px 0;
+}
+
+.checkboxTitle{
+  font-size: 15px;
+  color: #0c2461;
+  font-weight: normal;
+}
+
+.sizeButtonAA {
+  //width: 120px;
+  background: #D70000 !important;
+  color: #fff;
+  //margin-bottom: 20px;
+}
+
+
+ngb-carousel {
+  max-width: 700px;
+  margin: 50px auto;
+}
+ngb-carousel img {
+  width: 100%;
+  outline: none;
+}
+ngb-carousel {
+  width: inherit;
+  height: inherit;
+}
+.carousel-inner {
+  overflow: visible;
+}
+.carousel-item {
+  display: flex !important;
+  opacity: 0;
+  visibility: hidden;
+  transition: opacity 1.2s ease-in-out, visibility 1.2s;
+  z-index: -1;
+}
+.carousel-item.active{
+  opacity: 1;
+  visibility: visible;
+  z-index: 10;
+}
+.carousel-control-prev {
+   z-index: 20;
+}
+
+.carousel-control-next {
+   z-index: 20;
+}
+.carousel-indicators{
+  z-index: 20;
+}
+
+.title-message{
+  font-weight: 800;
+  font-size: 17px;
+  color: #0c2461;
+  margin-left: 14%;
+  margin-right: 18%;
+}
+
+.message-text{
+  font-size: 12px;
+  margin-left: 14%;
+  margin-right: 18%;
+  display: -webkit-box;
+    -webkit-line-clamp: 5;
+    -webkit-box-orient: vertical;
+    overflow: hidden;
+    text-overflow: ellipsis;
+}
+
+.app{
+  position: absolute;
+  top:325px;
+}
+
+.sms{
+    position: absolute;
+    top: 350px;
+    padding-left: 4%;
+    padding-right: 25%;
+    width: 47%;
+}
+
+.title-sms{
+  font-weight: 800;
+  font-size: 15px;
+  color: #0c2461;
+}
+
+.sms-text{
+  font-size: 11px;
+  display: -webkit-box;
+    -webkit-line-clamp: 5;
+    -webkit-box-orient: vertical;
+    overflow: hidden;
+    text-overflow: ellipsis;
+}
+
+.sizeButtonAB {
+  width: 57px;
+  background: #D70000 !important;
+  color: #fff;
+  //margin-bottom: 20px;
+}
+
+
+.file-input {
+  display: none;
+}
+
+.bluebutton{
+  background: linear-gradient(90deg, #0c1733, #3fd27e) !important;
+  color: #fff;
+}
+
+.greenbutton{
+  background: linear-gradient(90deg,#3fd27e, #0c1733) !important;
+  color: #fff;
+}
+
+.tox-tinymce{
+  height: 250px !important;
+}
+

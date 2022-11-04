@@ -10,7 +10,7 @@ import { EntrepriseService } from '../shared/services/entreprise.service';
 import { FormsModule, ReactiveFormsModule } from '@angular/forms';
 import { TypesList } from '../shared/class/typesList';
 import { Criteres } from '../shared/class/critere';
-
+import { DeletePromotionModule } from './delete-promotion/delete-promotion.module';
 
 @NgModule({
   declarations: [PromotionsComponent],
@@ -22,6 +22,7 @@ import { Criteres } from '../shared/class/critere';
     DetailPromotionModule,
     FormsModule,
     ReactiveFormsModule,
+    DeletePromotionModule
   ],
   providers:[PromotionsService, EntrepriseService, TypesList, Criteres]
 })

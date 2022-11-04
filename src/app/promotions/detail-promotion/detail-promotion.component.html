@@ -9,7 +9,7 @@
           <div class="text-center">
              <p class="titleFront"><i class="fas fa-bullhorn" style="font-size:35px"></i> {{promotion?.nom}} </p>
              <p style="font-size: 12px;color: #a3a0a0;" *ngIf="promotion?.heure"><span>Date: {{promotion?.jours | date : 'dd/MM/YYYY'}}</span> <span class="vl"></span> <span style="margin-left: 10px;">Heure: {{promotion?.heure}}</span> <span class="vl"></span> <span style="margin-left: 10px;">Type: {{promotion?.types}}</span></p>
-             <p style="font-size: 12px;color: #a3a0a0;" *ngIf="!promotion?.heure"><span>Date:  {{promotion?.dateEnvoie | date : 'dd/MM/YYYY'}} </span> <span class="vl"></span> <span style="margin-left: 10px;">Heure: {{promotion?.dateEnvoie | date : 'HH:mm:ss.sss'}}</span> <span class="vl"></span> <span style="margin-left: 10px;">Type: {{promotion?.types}}</span></p>
+             <p style="font-size: 12px;color: #a3a0a0;" *ngIf="!promotion?.heure"><span>Date:  {{promotion?.dateEnvoie | date : 'dd/MM/YYYY'}} </span> <span class="vl"></span> <span style="margin-left: 10px;">Heure: {{promotion?.dateEnvoie | date : 'HH:mm:ss'}}</span> <span class="vl"></span> <span style="margin-left: 10px;">Type: {{promotion?.types}}</span></p>
           </div>
         </div><!--card-body-->
        </div><!--card-->

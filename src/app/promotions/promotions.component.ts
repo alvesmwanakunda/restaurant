@@ -14,7 +14,8 @@ import { MatSelect } from '@angular/material/select';
 import { MatOption } from '@angular/material/core';
 import { Criteres } from '../shared/class/critere';
 import { MatRadioChange } from '@angular/material/radio'; 
-
+import { Router } from '@angular/router';
+import { DeletePromotionComponent } from './delete-promotion/delete-promotion.component';
 
 
 
@@ -25,7 +26,7 @@ import { MatRadioChange } from '@angular/material/radio';
 })
 export class PromotionsComponent implements OnInit,AfterViewInit {
 
-  displayedColumns: string[] = ['nom', 'programation', 'envoi', 'cible', 'type','montant', 'activation','payement','statut'];
+  displayedColumns: string[] = ['nom', 'programation', 'envoi', 'cible', 'type','montant', 'activation','payement','statut','action'];
   dataSource = new MatTableDataSource<PromotionInterface>();
 
   @ViewChild(MatPaginator) paginator: MatPaginator;
@@ -62,7 +63,8 @@ export class PromotionsComponent implements OnInit,AfterViewInit {
     private promotionService: PromotionsService,
     private entrepriseService: EntrepriseService,
     public types: TypesList,
-    public criteres: Criteres
+    public criteres: Criteres,
+    public router: Router,
     ) {
       this.pipe = new DatePipe('fr');
       this.listType = this.types.listTypes;
@@ -117,6 +119,7 @@ export class PromotionsComponent implements OnInit,AfterViewInit {
               type:data.types,
               critere:data.critere,
               dateEnvoie:data.dateEnvoie,
+              etat: data.etat
             })) as PromotionInterface[]
       } catch (error) {
         console.log("Erreur", error);
@@ -215,6 +218,18 @@ export class PromotionsComponent implements OnInit,AfterViewInit {
       this.listFilterType = this.listFilterType.filter((item)=> item.checked!=false);      
       //console.log("ICI 3", this.listFilterType);
     }
+  }
+
+  editPromotion(id){
+    this.router.navigate(['editer/promotion', id]);
+  }
+
+  openDialogDelete(idPromotion){
+    const dialogRef = this.dialog.open(DeletePromotionComponent,{width:'30%',data:{id:idPromotion}});
+    dialogRef.afterClosed().subscribe(result => {
+      console.log(`Dialog result: ${result}`);
+      this.getAllPromotion(this.entreprise._id);
+    })
   }
 
 

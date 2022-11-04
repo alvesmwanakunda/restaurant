@@ -76,6 +76,10 @@ const routes: Routes = [
   {
     path:"shared/client/:idEntreprise",
     loadChildren:()=>import('./link-entreprise/link-entreprise.module').then(m=>m.LinkEntrepriseModule)
+  },
+  {
+    path:"editer/promotion/:id",
+    loadChildren:()=>import('./promotions/edit-promotion/edit-promotion.module').then(m=>m.EditPromotionModule)
   }
 ];
 

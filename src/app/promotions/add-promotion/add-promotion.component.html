@@ -12,8 +12,9 @@
       </div><!--col-md-6-->
       <div class="col-md-6">
          <div align="right">
-            <button mat-mini-fab class="sizebf" matTooltip="Envoyer" [disabled]="!isValid && !isWefid" (click)="addProduit('envoyée')" style="margin-right:20px"><i class="fas fa-paper-plane" style="font-size: 20px;"></i></button>
-            <button mat-mini-fab class="sizebff" matTooltip="Enregistrer" [disabled]="!isValid && !isWefid" (click)="addProduit('enregistrée')"><i class="fas fa-save" style="font-size: 20px;"></i></button>
+            <!--[disabled]="!isValid && !isWefid"-->
+            <button mat-mini-fab class="sizebf" matTooltip="Envoyer" (click)="addProduit('envoyée')" style="margin-right:20px"><i class="fas fa-paper-plane" style="font-size: 20px;"></i></button>
+            <button mat-mini-fab class="sizebff" matTooltip="Enregistrer" (click)="addProduit('enregistrée')"><i class="fas fa-save" style="font-size: 20px;"></i></button>
          </div>
       </div>
     </div>
@@ -90,11 +91,21 @@
                             <textarea matInput formControlName="email"></textarea>
                           </mat-form-field>-->
 
-                          <div>
-                            <input type="file" class="file-input" accept='image/*' (change)="onFileSelected($event)" #fileUpload>
-                            <button (click)="fileUpload.click()" mat-mini-fab color="primary" style="background-color: #10ae58;">
-                                <mat-icon>add_a_photo</mat-icon>
-                            </button> {{fileName}}
+                          <div style="padding-top: 15px;">
+
+                            <mat-divider></mat-divider>
+
+                            <p class="titreHeader" style="padding-top: 15px;">Images</p>
+
+                            <div align="center">
+
+                              <input type="file" class="file-input" accept='image/*' (change)="onFileSelected($event)" #fileUpload>
+                              <button (click)="fileUpload.click()" mat-mini-fab color="primary" style="background-color: #10ae58;">
+                                  <mat-icon>add_a_photo</mat-icon>
+                              </button> {{fileName}}
+
+                            </div><!--image-->
+                            
                           </div>
 
                         </div><!---->
@@ -189,156 +200,7 @@
             <form [formGroup]="threeFormGroup">
               <ng-template matStepLabel>Segmentation</ng-template>
 
-              <!--<div class="row" style="padding-top: 15px;" *ngIf="!isWefid">
-
-                <div class="col-md-12">
-
-                  <mat-card style="margin-bottom: 20px;">
-                    <mat-card-content>
-
-                      <div class="row">
-
-                        <div class="col-md-5">
-                          <p style="color: #04075E;font-weight: bold;font-size: 14px;text-align: center;">Segmentation par point de fidélité</p>
-
-                          <p class="titreHeader">Condition d'activation</p>
-                          <p style="font-size: 12px;color: #000;text-align: center;">Activer cette promotion si et seulement si</p>
-                          <div>
-
-                            <mat-form-field appearance="outline" class="example-full-width">
-                              <mat-label class="labelFrom">Point de fidélité (intervalle)</mat-label>
-                              <mat-select formControlName="condition" required>
-                                <mat-option value="Point de fidélité (intervalle)" (click)="interval()">Point de fidélité (intervalle)</mat-option>
-                                <mat-option value="Point de fidélité" (click)="atteintNombre()">Point de fidélité</mat-option>
-                                <mat-option value="Montant dépensé" (click)="atteintNombre()">Montant dépensé</mat-option>
-                                <mat-option value="Montant dépensé (intervalle)" (click)="interval()">Montant dépensé (intervalle)</mat-option>
-                              </mat-select>
-                              <mat-icon matTooltip="{{account_validation_messages.condition[0].message}}"
-                               *ngIf="threeFormGroup.get('condition').hasError(account_validation_messages.condition[0].type) && (threeFormGroup.get('condition').dirty || threeFormGroup.get('condition').touched)"
-                               style="cursor: pointer;" matSuffix>
-                               <i class="fas fa-exclamation-circle"></i>
-                              </mat-icon>
-                           </mat-form-field>
-
-                          </div>
-
-                          <div class="row" style="font-size: 12px;" *ngIf="isInterval">
-                            <p style="font-size: 12px;color: #000;text-align: center;">atteint un nombre de point entre</p>
-
-                            <div class="col-md-6">
-                              <mat-form-field appearance="outline" class="example-full-width">
-                                <input type="number" matInput formControlName="interval1">
-                              </mat-form-field>
-                            </div>
-
-                            <div class="col-md-6">
-                              <mat-form-field appearance="outline" class="example-full-width">
-                                <input type="number" matInput formControlName="interval2">
-                              </mat-form-field>
-                            </div>
-
-                          </div>
-
-                          <div class="row" style="font-size: 12px;" *ngIf="isNombre">
-                            <div class="col-md-6">
-                              <p style="font-size: 12px;color: #000;text-align: center;">atteint un nombre de</p>
-                            </div>
-
-                            <div class="col-md-6">
-                              <mat-form-field appearance="outline" class="example-full-width">
-                                <input type="number" matInput formControlName="nombre">
-                              </mat-form-field>
-                            </div>
-
-                          </div>
-
-                        </div>
-
-                        <div class="col-md-2">
-                         <div class="vlseparater"></div>
-                        </div>
-
-                        <div class="col-md-5">
-                          <p style="color: #04075E;font-weight: bold;font-size: 14px;text-align: center;">Segmentation par critère</p>
-
-                            <div class="row" style="font-size: 11px;">
-
-                              <div class="col-md-2"><p style="font-size: 13px;color: #000;">Age:</p></div>
-                              <div class="col-md-4 hposition">
-                                <mat-form-field appearance="legacy" class="example-full-width">
-                                  <mat-label class="labelFrom">Entre</mat-label>
-                                  <input type="number" matInput formControlName="age1">
-                                </mat-form-field>
-                              </div>
-                              <div class="col-md-2">et</div>
-                              <div class="col-md-4 hposition">
-                                <mat-form-field appearance="legacy" class="example-full-width">
-                                  <mat-label class="labelFrom">Ans</mat-label>
-                                  <input type="number" matInput formControlName="age2">
-                                </mat-form-field>
-                              </div>
-              
-                            </div>
-                            <div class="row" style="font-size: 11px;">
-                              <div class="col-md-4">
-                                <p style="font-size: 13px;color: #000;">Sexe:</p>
-                              </div>
-                              <div class="col-md-8 sposition">
-              
-                                <mat-form-field appearance="outline" class="example-full-width">
-                                    <mat-select formControlName="sexe">
-                                      <mat-option value="Femme">Femme</mat-option>
-                                      <mat-option value="Homme">Homme</mat-option>
-                                    </mat-select>
-                                </mat-form-field>
-              
-                              </div>
-                            </div>
-              
-                            <div class="row" style="font-size: 11px;">
-                              <div class="col-md-4">
-                                <p style="font-size: 13px;color: #000;">Région:</p>
-                              </div>
-                              <div class="col-md-8 sposition">
-              
-                                <mat-form-field appearance="outline" class="example-full-width">
-                                    <mat-select formControlName="region" multiple> 
-                                      <mat-option *ngFor="let region of listRegion" [value]="region.nom">{{region.nom}}</mat-option>
-                                    </mat-select>
-                                </mat-form-field>
-              
-                              </div>
-                            </div>
-              
-                            <div class="row" style="font-size: 11px;">
-                              <div class="col-md-4">
-                                <p style="font-size: 13px;color: #000;">Zone:</p>
-                              </div>
-                              <div class="col-md-8 sposition">
-              
-                                <mat-form-field appearance="outline" class="example-full-width">
-                                    <mat-select formControlName="zone" multiple> 
-                                      <mat-option *ngFor="let zone of listZone" [value]="zone.nom">{{zone.nom}}</mat-option>
-                                    </mat-select>
-                                </mat-form-field>
-              
-                              </div>
-                            </div>
-            
-
-                        </div>
-
-                      </div>
-
-                    </mat-card-content>
-                  </mat-card>    
-
-                </div>
-
-              </div>
-            -->
-
-              <div class="row"  style="padding-top: 15px;"><!-- *ngIf="isWefid"-->
+              <div class="row"  style="padding-top: 15px;">
 
                 <div class="col-md-12 col-sm-12">
 
@@ -367,12 +229,13 @@
                       </div>
                       <div class="row" style="font-size: 11px;">
                         <div class="col-md-2">
-                          <p style="font-size: 13px;color: #000;">Sexe:</p>
+                          <p style="font-size: 13px;color: #000;">Genre:</p>
                         </div>
                         <div class="col-md-10 sposition">
         
                           <mat-form-field appearance="outline" class="example-full-width">
                               <mat-select formControlName="sexe">
+                                <mat-option value="Touts">Touts</mat-option>
                                 <mat-option value="Femme">Femme</mat-option>
                                 <mat-option value="Homme">Homme</mat-option>
                               </mat-select>
@@ -381,7 +244,7 @@
                         </div>
                       </div>
         
-                      <div class="row" style="font-size: 11px;">
+                      <!--<div class="row" style="font-size: 11px;">
                         <div class="col-md-2">
                           <p style="font-size: 13px;color: #000;">Région:</p>
                         </div>
@@ -409,7 +272,7 @@
                           </mat-form-field>
         
                         </div>
-                      </div>
+                      </div>-->
 
                     </mat-card-content>
                     </mat-card>
@@ -467,21 +330,6 @@
                <div class="col-md-12">
 
                 <img src="assets/images/phone.png" alt="Angular Carousel 1" style="width:80%;display:block; margin-left: auto;margin-right: auto;">
-
-                <!--<ngb-carousel style="bottom: 59px !important;">
-                  <ng-template ngbSlide>
-                    <div class="picsum-img-wrapper">
-                      <img src="assets/images/iphone1.png" alt="Angular Carousel 1" style="width: 200px;height: 350;display:block; margin-left: auto;margin-right: auto;">
-                    </div>
-                    
-                  </ng-template>
-                  <ng-template ngbSlide>
-                    <div class="picsum-img-wrapper">
-                      <img src="assets/images/iphone2.png" alt="Angular Carousel 2" style="width: 200px;height: 350;display:block; margin-left: auto;margin-right: auto;">
-                    </div>
-                   
-                  </ng-template>
-                </ngb-carousel>-->
                
                </div><!--col-md-12-->
             </div><!--row-->

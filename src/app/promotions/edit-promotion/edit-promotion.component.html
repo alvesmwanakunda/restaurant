@@ -1,0 +1,350 @@
+<app-nav-bar>
+
+    <div class="container-fluid" style="margin-bottom: 25px;">
+
+        <div *ngIf="onLoadForm" style="padding-top: 10px;margin-bottom: 5px;">
+            <mat-progress-bar mode="indeterminate"></mat-progress-bar>
+        </div>
+
+        <div class="row" style="margin-bottom: 15px;">
+            <div class="col-md-6">
+              <button mat-raised-button class="sizeButtonAB" [routerLink]="'/promotions'"><i class="fas fa-long-arrow-alt-left" style="font-size: 15px;"></i></button>
+            </div><!--col-md-6-->
+            <div class="col-md-6">
+               <div align="right">
+                  <button mat-mini-fab class="sizebf" matTooltip="Modifier" (click)=" editPromotion(promotion?._id)" style="margin-right:20px"><i class="fas fa-edit" style="font-size: 20px;"></i></button>
+               </div>
+            </div>
+        </div>
+
+
+        <div class="row">
+            <div class="col-md-8">
+
+                <mat-horizontal-stepper labelPosition="bottom" [linear]="isLinear" #stepper *ngIf="promotion">
+
+                    <mat-step [stepControl]="firstFormGroup">
+
+                      <form [formGroup]="firstFormGroup">
+                        <ng-template matStepLabel>Ecrire un message</ng-template>
+                        <div class="row" style="padding-top: 15px;">
+                            <div class="col-md-12">
+                              <mat-card>
+                                <mat-card-content>
+                                  <p class="titreHeader">Information de base</p>
+          
+                                  <mat-form-field appearance="legacy" class="example-full-width">
+                                    <mat-label class="labelFrom">Nom de la promo</mat-label>
+                                    <input matInput formControlName="nom" [(ngModel)]="promotion.nom" required>
+                                    <mat-icon matTooltip="{{account_validation_messages.nom[0].message}}"
+                                         *ngIf="firstFormGroup.get('nom').hasError(account_validation_messages.nom[0].type) && (firstFormGroup.get('nom').dirty || firstFormGroup.get('nom').touched)"
+                                         style="cursor: pointer;" matSuffix>
+                                         <i class="fas fa-exclamation-circle"></i>
+                                    </mat-icon>
+                                  </mat-form-field>
+              
+                                  <mat-form-field appearance="legacy" class="example-full-width">
+                                    <mat-label class="labelFrom">Type de promo</mat-label>
+                                    <mat-select formControlName="types" [(ngModel)]="promotion.types" (selectionChange)="selectSms($event.value)"> 
+                                      <mat-option *ngFor="let type of listType" [value]="type.nom">{{type.nom}}</mat-option>
+                                    </mat-select>
+                                 </mat-form-field>
+          
+          
+                                 <div *ngIf="!isSms">
+                                  <p class="titreHeader">SMS</p>
+                                  <!--<mat-form-field class="example-full-width" appearance="legacy">
+                                    <textarea matInput formControlName="sms"></textarea>
+                                  </mat-form-field>-->
+                                  <editor 
+                                    apiKey="yimjymys4ncgnyjba52651rzyas8c049jditk61x087va3yn"
+                                    [init]="{
+                                      icons: 'material',
+                                      skin: 'borderless',
+                                      plugins: 'wordcount',
+                                      menubar: false,
+                                      height: '250',
+                                      language: 'fr_FR'
+                                    }"
+                                    formControlName="sms" [(ngModel)]="promotion.sms"
+                                    ></editor>
+                                  </div>
+                    
+                                  <!--<mat-divider></mat-divider>-->
+                    
+                                  <div *ngIf="isSms">
+          
+                                    <p class="titreHeader">App</p>
+          
+                                    <editor 
+                                    apiKey="yimjymys4ncgnyjba52651rzyas8c049jditk61x087va3yn"
+                                    [init]="{
+                                      icons: 'material',
+                                      skin: 'borderless',
+                                      plugins: 'wordcount',
+                                      menubar: false,
+                                      height: '250',
+                                      language: 'fr_FR'
+                                    }"
+                                    formControlName="email" [(ngModel)]="promotion.email"></editor>
+          
+                                    <div style="padding-top: 15px;">
+          
+                                      <mat-divider></mat-divider>
+          
+                                      <p class="titreHeader" style="padding-top: 15px;">Images</p>
+          
+                                      <div align="center" style="margin-bottom: 12px;">
+          
+                                        <input type="file" class="file-input" accept='image/*' (change)="onFileSelected($event)" #fileUpload>
+                                        <button (click)="fileUpload.click()" mat-mini-fab color="primary" style="background-color: #10ae58;">
+                                            <mat-icon>add_a_photo</mat-icon>
+                                        </button> {{fileName}}
+          
+                                      </div><!--image-->
+
+                                      <div *ngIf="promotion?.photo"  style="margin-bottom: 15px;">
+                                        <img [src]="image" class="imgSizeLogo img-thumbnail">
+                                      </div>
+                                      
+                                    </div>
+          
+                                  </div><!---->
+          
+                                </mat-card-content>
+                              </mat-card> 
+                            </div><!--col-md-6-->
+                        </div><!--row-->
+                        <div align="right" style="padding-top: 25px;">
+                          <button mat-button mat-raised-button color="primary" matStepperNext class="greenbutton">Suivant</button>
+                        </div>
+                      </form>
+
+                    </mat-step><!--step1-->
+
+                    <mat-step [stepControl]="secondFormGroup">
+
+                        <form [formGroup]="secondFormGroup">
+                          <ng-template matStepLabel>Critère d'activation & cible</ng-template>
+            
+                          <div class="row" style="padding-top: 15px;">
+                            <div class="col-lg-12 col-md-12 col-md-auto">
+            
+                              <mat-card style="margin-bottom: 20px;">
+                                <mat-card-content>
+                                  <p class="titreHeader">Critère d'activation</p>
+                    
+                                  <div>
+                                      <mat-form-field appearance="legacy" class="example-full-width">
+                                         <mat-label class="labelFrom">Critère d'activation</mat-label>
+                                          <mat-select formControlName="critere" [(ngModel)]="promotion.critere" required>
+                                            <mat-option value="Instantanné" (click)="isInstan()">Instantanné</mat-option>
+                                            <mat-option value="Programmer date" (click)="Pprogrammer()">Programmer date</mat-option>
+                                          </mat-select>
+                                          <mat-icon matTooltip="{{account_validation_messages.critere[0].message}}"
+                                           *ngIf="secondFormGroup.get('critere').hasError(account_validation_messages.critere[0].type) && (secondFormGroup.get('critere').dirty || secondFormGroup.get('critere').touched)"
+                                           style="cursor: pointer;" matSuffix>
+                                           <i class="fas fa-exclamation-circle"></i>
+                                          </mat-icon>
+                                       </mat-form-field>
+                                  </div>
+            
+                                  <div class="row" style="font-size: 12px;" *ngIf="isProgrammer">
+            
+                                    <div class="col-md-6">
+            
+                                      <mat-form-field appearance="outline" class="example-full-width">
+                                        <mat-label class="labelFrom">Jours</mat-label>
+                                        <input type="date" matInput formControlName="jours" [(ngModel)]="jours">
+                                      </mat-form-field>
+            
+                                    </div><!--col-md-6-->
+            
+                                    <div class="col-md-6">
+            
+                                      <mat-form-field appearance="outline" class="example-full-width">
+                                        <mat-label class="labelFrom">Heure</mat-label>
+                                        <input type="time" matInput formControlName="heure"  [(ngModel)]="promotion.heure">
+                                      </mat-form-field>
+            
+                                    </div><!--col-md-6-->
+            
+                                  </div>
+            
+                                  <p class="titreHeader">Définir la ciblé</p>
+                                  <div>
+                                    <mat-form-field appearance="legacy" class="example-full-width">
+                                         <mat-label class="labelFrom">Définir la ciblé</mat-label>
+                                         <mat-select formControlName="cible" [(ngModel)]="promotion.cible" required>
+                                           <mat-option value="Mes clients" >Mes clients</mat-option> <!--(click)="selectClient()"-->
+                                           <mat-option value="Utilisateur Wefid">Utilisateur Wefid</mat-option> <!--(click)="selectWefid()"-->
+                                         </mat-select>
+                                         <mat-icon matTooltip="{{account_validation_messages.cible[0].message}}"
+                                         *ngIf="secondFormGroup.get('cible').hasError(account_validation_messages.cible[0].type) && (secondFormGroup.get('cible').dirty || secondFormGroup.get('cible').touched)"
+                                         style="cursor: pointer;" matSuffix>
+                                         <i class="fas fa-exclamation-circle"></i>
+                                        </mat-icon>
+                                      </mat-form-field>
+                                 </div>
+                    
+            
+                              </mat-card-content>
+                              </mat-card>     
+                            </div>
+                         </div>     
+            
+                          <div align="center">
+                            <button mat-raised-button color="accent" matStepperPrevious style="margin-right: 10px;">Précédent</button>
+                            <button mat-button  mat-raised-button color="primary" matStepperNext class="greenbutton">Suivant</button>
+                          </div>
+                        </form>
+
+                    </mat-step><!--step2-->
+
+                    <mat-step [stepControl]="threeFormGroup">
+
+                        <form [formGroup]="threeFormGroup">
+                          <ng-template matStepLabel>Segmentation</ng-template>
+            
+                          <div class="row"  style="padding-top: 15px;">
+            
+                            <div class="col-md-12 col-sm-12">
+            
+                              <mat-card style="margin-bottom: 20px;">
+                                <mat-card-content>
+            
+                                  <p style="color: #04075E;font-weight: bold;font-size: 14px;text-align: center;">Segmentation par critère</p>
+            
+                                  <div class="row" style="font-size: 11px;">
+            
+                                    <div class="col-md-2"><p style="font-size: 13px;color: #000;">Age:</p></div>
+                                    <div class="col-md-4 hposition">
+                                      <mat-form-field appearance="legacy" class="example-full-width">
+                                        <mat-label class="labelFrom">Entre</mat-label>
+                                        <input type="number" matInput formControlName="age1" [(ngModel)]="promotion.age1">
+                                      </mat-form-field>
+                                    </div>
+                                    <div class="col-md-2">et</div>
+                                    <div class="col-md-4 hposition">
+                                      <mat-form-field appearance="legacy" class="example-full-width">
+                                        <mat-label class="labelFrom">Ans</mat-label>
+                                        <input type="number" matInput formControlName="age2" [(ngModel)]="promotion.age2">
+                                      </mat-form-field>
+                                    </div>
+                    
+                                  </div>
+                                  <div class="row" style="font-size: 11px;">
+                                    <div class="col-md-2">
+                                      <p style="font-size: 13px;color: #000;">Genre:</p>
+                                    </div>
+                                    <div class="col-md-10 sposition">
+                    
+                                      <mat-form-field appearance="outline" class="example-full-width">
+                                          <mat-select formControlName="sexe" [(ngModel)]="promotion.sexe">
+                                            <mat-option value="Touts">Touts</mat-option>
+                                            <mat-option value="Femme">Femme</mat-option>
+                                            <mat-option value="Homme">Homme</mat-option>
+                                          </mat-select>
+                                      </mat-form-field>
+                    
+                                    </div>
+                                  </div>
+
+                                  <div class="row" style="font-size: 11px;">
+                                    <div class="col-md-2">
+                                      <p style="font-size: 13px;color: #000;">Etat:</p>
+                                    </div>
+                                    <div class="col-md-10 sposition">
+                    
+                                      <mat-form-field appearance="outline" class="example-full-width">
+                                          <mat-select formControlName="etat" [(ngModel)]="promotion.etat">
+                                            <mat-option value="envoyée">Envoyée</mat-option>
+                                            <mat-option value="enregistrée">Enregistrée</mat-option>
+                                          </mat-select>
+                                      </mat-form-field>
+                    
+                                    </div>
+                                  </div>
+                                
+                                </mat-card-content>
+                                </mat-card>
+            
+                            </div><!--col-md-12-->
+            
+                          </div><!--row-->
+            
+                        </form>
+            
+                        <div align="center">
+                          <button mat-raised-button color="accent" matStepperPrevious>Précédent</button>
+                          <!-- class="bluebutton"-->
+                          <!--<button mat-button  mat-raised-button color="primary" matStepperNext style="background-color: #10ae58;">Suivant</button>-->
+                        </div>
+                    </mat-step><!--step3-->
+
+                </mat-horizontal-stepper>
+
+            </div><!--col-md-8-->
+            <div class="col-md-4">
+
+                <p class="titreHeader" style="font-weight:bold;">Visualiser</p>
+                <div class="row">
+                           <div class="col-md-6">
+                            <i class="fas fa-bullseye iconV" align="center"></i>
+                            <div style="text-align: center;">
+                              <span style="font-size: 11px;color: #000;">Taille de la cible</span>
+                              <br/>
+                              <span style="font-size: 12px;font-weight: 800;">5 0000 000</span>
+                           </div>
+          
+                           </div><!--col-md-6-->
+                           <div class="col-md-6">
+                            <i class="fas fa-funnel-dollar iconV1" align="center"></i>
+                            <div style="text-align: center;">
+                              <span style="font-size: 11px;color: #000;">Montant à payer</span>
+                              <br/>
+                              <span style="font-size: 12px;font-weight: 800;">5 0000 000</span>
+                           </div>
+                          </div><!--col-md-6-->
+                </div><!--row-->
+          
+                <div class="row">
+                         <div class="col-md-12">
+
+                            <img src="assets/images/phone.png" alt="Angular Carousel 1" style="width:80%;display:block; margin-left: auto;margin-right: auto;">
+
+                            <div *ngIf="promotion?.types=='App'" class="app">
+
+                            <div style="margin-bottom:15px;">
+                                <img  src="data:image/png;base64,{{promotion?.photo}}" style="width:68%;position:relative;left:13%;" *ngIf="promotion?.photo">
+                                <img  src="assets/images/blank.jpeg" style="width:68%;position:relative;left:13%;"  *ngIf="!promotion?.photo">
+                            </div>
+                            
+                            <p class="title-message">{{promotion?.nom}}</p>
+                            <p class="message-text">{{promotion?.email}}</p>
+
+                            </div><!--App-->
+
+                            <div *ngIf="promotion?.types=='Sms'" class="sms">
+
+                                <p style="text-align:center;font-size: 12px;color: rgb(102, 102, 102);">{{promotion?.dateEnvoie | date:'dd/MM/YYYY'}}</p>
+
+                                <mat-card style="background-color:#cce5fe !important;">
+                                    <mat-card-content>
+                                    <p class="title-sms">{{promotion?.nom}}</p>
+                                    <p class="sms-text">{{promotion?.sms}}</p>
+                                    </mat-card-content> 
+                                </mat-card>   
+
+                            </div><!--Sms-->
+          
+                         
+                         </div><!--col-md-12-->
+                </div><!--row-->
+                    
+            </div><!--col-md-4-->
+        </div><!--row-->
+
+    </div><!--container-fluid-->    
+
+</app-nav-bar>

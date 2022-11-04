@@ -204,7 +204,19 @@
 
                   <ng-container matColumnDef="statut">
                     <th mat-header-cell *matHeaderCellDef> Statut <i class="fas fa-caret-down"></i></th>
-                    <td mat-cell *matCellDef="let element" style="font-size: 12px;cursor: pointer;color: #0c2461;" (click)="openDialog(element.id)">  </td>
+                    <td mat-cell *matCellDef="let element" style="font-size: 12px;cursor: pointer;color: #0c2461;" (click)="openDialog(element.id)"> {{element.etat}}  </td>
+                  </ng-container>
+
+                  <ng-container matColumnDef="action">
+                    <th mat-header-cell *matHeaderCellDef mat-sort-header>Actions</th>
+                    <td mat-cell *matCellDef="let element" style="font-size: 12px;cursor: pointer;color: #0c2461;"> 
+                      <button mat-icon-button color="primary" matTooltip="Modifier" *ngIf="element.etat!='envoyée'" (click)="editPromotion(element.id)">
+                        <mat-icon style="font-size: 20px;">edit</mat-icon>
+                      </button>
+                      <button mat-icon-button color="warn" matTooltip="Supprimer" (click)="openDialogDelete(element.id)">
+                        <mat-icon style="font-size: 20px;">delete</mat-icon>
+                      </button>
+                    </td>
                   </ng-container>
 
                   <tr mat-header-row *matHeaderRowDef="displayedColumns"></tr>
