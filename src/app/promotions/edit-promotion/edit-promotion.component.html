@@ -53,10 +53,10 @@
           
                                  <div *ngIf="!isSms">
                                   <p class="titreHeader">SMS</p>
-                                  <!--<mat-form-field class="example-full-width" appearance="legacy">
-                                    <textarea matInput formControlName="sms"></textarea>
-                                  </mat-form-field>-->
-                                  <editor 
+                                    <mat-form-field class="example-full-width" appearance="legacy">
+                                      <textarea matInput formControlName="sms"></textarea>
+                                    </mat-form-field>
+                                  <!--<editor 
                                     apiKey="yimjymys4ncgnyjba52651rzyas8c049jditk61x087va3yn"
                                     [init]="{
                                       icons: 'material',
@@ -67,7 +67,7 @@
                                       language: 'fr_FR'
                                     }"
                                     formControlName="sms" [(ngModel)]="promotion.sms"
-                                    ></editor>
+                                    ></editor>-->
                                   </div>
                     
                                   <!--<mat-divider></mat-divider>-->
@@ -315,13 +315,13 @@
 
                             <div *ngIf="promotion?.types=='App'" class="app">
 
-                            <div style="margin-bottom:15px;">
-                                <img  src="data:image/png;base64,{{promotion?.photo}}" style="width:68%;position:relative;left:13%;" *ngIf="promotion?.photo">
-                                <img  src="assets/images/blank.jpeg" style="width:68%;position:relative;left:13%;"  *ngIf="!promotion?.photo">
-                            </div>
-                            
-                            <p class="title-message">{{promotion?.nom}}</p>
-                            <p class="message-text">{{promotion?.email}}</p>
+                              <div style="margin-bottom:15px;">
+                                  <img  src="data:image/png;base64,{{promotion?.photo}}" style="width:68%;position:relative;left:13%;" *ngIf="promotion?.photo">
+                                  <img  src="assets/images/blank.jpeg" style="width:68%;position:relative;left:13%;"  *ngIf="!promotion?.photo">
+                              </div>
+                              
+                              <p class="title-message">{{promotion?.nom}}</p>
+                              <p class="message-text" [innerHTML]="promotion?.email">{{promotion?.email}}</p>
 
                             </div><!--App-->
 
@@ -332,7 +332,7 @@
                                 <mat-card style="background-color:#cce5fe !important;">
                                     <mat-card-content>
                                     <p class="title-sms">{{promotion?.nom}}</p>
-                                    <p class="sms-text">{{promotion?.sms}}</p>
+                                    <p class="sms-text" [innerHTML]="promotion?.sms">{{promotion?.sms}}</p>
                                     </mat-card-content> 
                                 </mat-card>   
 
