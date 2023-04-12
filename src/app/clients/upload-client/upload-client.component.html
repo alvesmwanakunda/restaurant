@@ -2,23 +2,43 @@
 
     <div class="container" style="font-size: 13px;">
 
-      <div class="text-center" style="padding-top: 89px;">
+      <div style="padding-top:9px;">
 
-        <input type="file" class="file-input" accept='application/vnd.openxmlformats-officedocument.spreadsheetml.sheet, application/vnd.ms-excel' (change)="onFileSelected($event)" #fileUpload>
+        <div style="margin-bottom: 15px;">
 
-        <div class="file-upload">
+          <mat-card style="background-color: #ececec78 !important;">
+            <mat-card-content>
+                <div align="center" style="cursor: pointer;">
 
-          {{fileName || "Aucun fichier téléchargé pour le moment."}}
+                    <img src="assets/images/xls.png" style="margin-bottom: 15px;">
+                    <p><a href="https://weefid.alwaysdata.net/Customers.xlsx" style="text-decoration: none;color: #0c1733">Télécharger le modèle</a></p>
 
-            <button mat-mini-fab color="primary" class="upload-btn"
-              (click)="fileUpload.click()">
-                <mat-icon>attach_file</mat-icon>
-            </button>
+                </div>
+            </mat-card-content>
+          </mat-card>
+
         </div>
 
-      </div><!--center-->
+        <div>
 
+          <mat-card style="background-color: #ececec78 !important;">
+            <mat-card-content>
 
+              <div align="center">
+
+                <input type="file" class="file-input" accept='application/vnd.openxmlformats-officedocument.spreadsheetml.sheet, application/vnd.ms-excel' (change)="onFileSelected($event)" #fileUpload>
+                <div class="file-upload">
+                    <button mat-mini-fab color="primary" class="upload-btn" (click)="fileUpload.click()" style="margin-bottom: 15px;">
+                      <mat-icon>cloud_download</mat-icon>
+                    </button>
+                    <p>{{fileName || "Vous avez la possibilité d'ajouter un fichier Excel"}}</p>
+                </div>
+
+              </div>
+            </mat-card-content>
+          </mat-card>
+        </div><!--center-->
+      </div><!--div-->
     </div>
 
   </mat-dialog-content>

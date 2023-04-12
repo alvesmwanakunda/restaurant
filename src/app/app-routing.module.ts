@@ -18,6 +18,10 @@ const routes: Routes = [
     loadChildren:()=>import('./signup/signup.module').then(m => m.SignupModule),
   },
   {
+    path:"conditions",
+    loadChildren:()=>import('./cu/cu.module').then(m=>m.CuModule),
+  },
+  {
     path:"reset",
     loadChildren:()=>import('./reset-password/reset-password.module').then(m => m.ResetPasswordModule),
   },

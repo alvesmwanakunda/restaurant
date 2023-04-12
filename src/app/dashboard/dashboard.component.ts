@@ -1,5 +1,6 @@
 import { Component, OnInit } from '@angular/core';
 import { ClientService } from '../shared/services/client.service';
+import { EntrepriseService } from '../shared/services/entreprise.service';
 
 @Component({
   selector: 'app-dashboard',
@@ -8,26 +9,59 @@ import { ClientService } from '../shared/services/client.service';
 })
 export class DashboardComponent implements OnInit {
 
-  displayedColumns: string[] = ['date','name'];
-  dataSource = ELEMENT_DATA;
+  dash:any;
+  client:any;
+  promotion:any;
 
-  constructor(private clientService:ClientService) { }
+  constructor(private clientService:ClientService, private entrepriseService:EntrepriseService) { }
 
   ngOnInit(): void {
 
-    //this.clientService.getInfo();
+    this.getEntreprise();
+
+  }
+
+  getEntreprise(){
+    this.entrepriseService.getEntrepriseByUser().subscribe((res:any)=>{
+      try {
+         this.getDashClient(res.body._id);
+         this.getDashNumber(res.body._id);
+         this.getDashPromotion(res.body._id);
+      } catch (error) {
+        console.log("Erreur ", error);
+      }
+    })
+  }
+
+  getDashNumber(idEntrepirse){
+    this.clientService.getClientsDash(idEntrepirse).subscribe((res:any)=>{
+      try {
+            this.dash = res;
+      } catch (error) {
+        console.log("erreur",error)
+      }
+    })
+  }
+
+  getDashClient(idEntrepirse){
+    this.clientService.getClientsNDash(idEntrepirse).subscribe((res:any)=>{
+      try {
+            this.client = res;
+      } catch (error) {
+        console.log("erreur",error)
+      }
+    })
+  }
+
+  getDashPromotion(idEntrepirse){
+    this.clientService.getPromotionDash(idEntrepirse).subscribe((res:any)=>{
+      try {
+            this.promotion = res;
+      } catch (error) {
+        console.log("erreur",error)
+      }
+    })
   }
 
 }
 
-export interface PeriodicElement {
-  name: string;
-  date: string;
-}
-
-const ELEMENT_DATA: PeriodicElement[] = [
-  {date: 'Nombre de campagne lancée', name: '4238'},
-  {date: 'Nombre de message envoyé', name: '1005'},
-  {date: 'Nombre de message reçu', name: '914'},
-  {date: 'Nombre de message ouvert', name: '201'},
-];

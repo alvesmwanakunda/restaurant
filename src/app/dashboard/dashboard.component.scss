@@ -134,21 +134,21 @@
 }
 
 .txt1{
-  font-size: 14px; 
-  color: #0c2461; 
+  font-size: 14px;
+  color: #0c2461;
 }
 
 .txt2{
-    font-size: 12px; 
-    color: #0c2461; 
+    font-size: 12px;
+    color: #0c2461;
     text-align: center;
     position: relative;
     bottom: 7px;
 }
 
 .txt3{
-    font-size: 16px; 
-    color: #0c2461; 
+    font-size: 16px;
+    color: #0c2461;
     text-align: right;
     font-weight: bold;
 }
@@ -211,7 +211,13 @@ table {
 
 .infoStat{
     font-weight: 400;
-    font-size: 12px; 
+    font-size: 12px;
     color: #9FA2B4;
+}
+
+.rowTable{
+    line-height: 55px;
+    min-height: 55px;
+    height: 55px;
 }
 

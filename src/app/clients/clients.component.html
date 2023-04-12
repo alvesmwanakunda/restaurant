@@ -33,19 +33,20 @@
                   {{operations.length}}
                 </div><!--col-md-6-->
               </div>
-            
+
             </div>
           </div>
         </div>
       </div><!--col-md-->
 
-  
+
       <div class="col-md-4" style="position: relative;top: 4px;">
         <div style="float: right;">
             <button mat-raised-button class="sizeb" style="margin-right: 13px;" [cdkCopyToClipboard]="url" matTooltip="Copie le lien"><i class="fas fa-link" style="font-size: 23px;"></i></button>
             <button mat-raised-button class="sizeb" style="margin-right: 13px;" (click)="openDialog()" matTooltip="Ajouter un client"><i class="fas fa-user-plus" style="font-size: 23px;"></i></button>
-            <button mat-raised-button class="sizeb" (click)="fileUpload.click()"><i class="fas fa-file-import" matTooltip="Importer des clients" style="font-size: 23px;"></i></button>
-            <input type="file" class="file-input" accept='application/vnd.openxmlformats-officedocument.spreadsheetml.sheet, application/vnd.ms-excel' (change)="onFileSelected($event)" #fileUpload>
+            <button mat-raised-button class="sizeb" (click)="openDialogUploadClient()"><i class="fas fa-file-upload" matTooltip="Importer des clients" style="font-size: 23px;"></i></button>
+            <!--<button mat-raised-button class="sizeb" (click)="fileUpload.click()"><i class="fas fa-file-upload" matTooltip="Importer des clients" style="font-size: 23px;"></i></button>
+            <input type="file" class="file-input" accept='application/vnd.openxmlformats-officedocument.spreadsheetml.sheet, application/vnd.ms-excel' (change)="onFileSelected($event)" #fileUpload>-->
 
         </div>
 
@@ -55,7 +56,7 @@
 
     <div class="row" style="margin-bottom: 10px;">
       <div class="col-md-8">
-        <p class="labelClient">Veuillez télécharger le modèle du fichier excel client <a href="https://weefid.alwaysdata.net/Customers.xlsx" style="text-decoration: none;color: #0c1733;font-weight: bold;">cliquez ici!</a></p>
+        <!--<p class="labelClient">Veuillez télécharger le modèle du fichier excel client <a href="https://weefid.alwaysdata.net/Customers.xlsx" style="text-decoration: none;color: #0c1733;font-weight: bold;">cliquez ici!</a></p>-->
      </div><!--col-md-8-->
      <div class="col-md-4">
       <div align="right" *ngIf="isAll">
@@ -75,8 +76,8 @@
 
         </div><!--col-->
     </div>
-    
- 
+
+
     <div>
         <mat-card>
 
@@ -86,55 +87,48 @@
 
               <ng-container matColumnDef="id">
                 <th mat-header-cell *matHeaderCellDef class="titleTable">
-                 <mat-checkbox (change)="$event ? masterToggle() : null"
+                 <!--<mat-checkbox (change)="$event ? masterToggle() : null"
                                 [checked]="selection.hasValue() && isAllSelected()"
                                 [indeterminate]="selection.hasValue() && !isAllSelected()"
-                                [aria-label]="checkboxLabel()" 
+                                [aria-label]="checkboxLabel()"
                                 [disabled]="false">
-                  </mat-checkbox>
+                  </mat-checkbox>-->
                    Tout
                 </th>
                 <td mat-cell *matCellDef="let row">
                   <mat-checkbox (click)="$event.stopPropagation();selectionRow(row)"
                                 (change)="$event ? selection.toggle(row) : null"
                                 [checked]="selection.isSelected(row)"
-                                [aria-label]="checkboxLabel(row)">
+                                [aria-label]="checkboxLabel(row)" *ngIf="row.visite==0">
                   </mat-checkbox>
-                  <!--<mat-checkbox (click)="$event.stopPropagation();selectionRow(row)"
-                                (change)="$event ? selection.toggle(row) : null"
-                                [checked]="selection.isSelected(row)"
-                                [aria-label]="checkboxLabel(row)" *ngIf="isAll">
-                  </mat-checkbox>
-                  <mat-checkbox (click)="openDialogDelete(row.id)"
-                                [aria-label]="checkboxLabel(row)" *ngIf="!isAll">
-                </mat-checkbox>-->
+
                 </td>
               </ng-container>
-    
+
               <!-- ID Column -->
               <ng-container matColumnDef="numero">
                 <th mat-header-cell *matHeaderCellDef mat-sort-header class="titleTable"> Numéro Client </th>
                 <td mat-cell *matCellDef="let row" class="titleContent" (click)="openDialogDetail(row.id)"> {{row.numero}} </td>
               </ng-container>
-    
+
               <!-- Progress Column -->
               <ng-container matColumnDef="nom">
                 <th mat-header-cell *matHeaderCellDef mat-sort-header class="titleTable"> Nom & Prénom </th>
                 <td mat-cell *matCellDef="let row" class="titleContent" (click)="openDialogDetail(row.id)"> {{row.nom}} {{row.prenom}} </td>
               </ng-container>
-    
+
               <!-- Name Column -->
               <ng-container matColumnDef="genre">
                 <th mat-header-cell *matHeaderCellDef mat-sort-header class="titleTable">Genre </th>
                 <td mat-cell *matCellDef="let row" class="titleContent" (click)="openDialogDetail(row.id)"> {{row.genre}} </td>
               </ng-container>
-    
+
               <!-- Fruit Column -->
               <ng-container matColumnDef="debut">
                 <th mat-header-cell *matHeaderCellDef mat-sort-header class="titleTable"> Première visite </th>
                 <td mat-cell *matCellDef="let row" class="titleContent" (click)="openDialogDetail(row.id)"> {{row.debut |date: 'dd/MM/YYYY'}} </td>
               </ng-container>
-    
+
               <!-- Fruit Column -->
               <ng-container matColumnDef="fin">
                 <th mat-header-cell *matHeaderCellDef mat-sort-header class="titleTable"> Dernière visite </th>
@@ -145,40 +139,40 @@
                 <th mat-header-cell *matHeaderCellDef mat-sort-header class="titleTable"> Total visite </th>
                 <td mat-cell *matCellDef="let row" class="titleContent" (click)="openDialogDetail(row.id)"> {{row.visite}} </td>
               </ng-container>
-    
+
               <ng-container matColumnDef="depense">
                 <th mat-header-cell *matHeaderCellDef mat-sort-header class="titleTable"> Montant depensé </th>
                 <td mat-cell *matCellDef="let row" class="titleContent" (click)="openDialogDetail(row.id)"> {{row.depense}} </td>
               </ng-container>
-    
+
 
               <ng-container matColumnDef="avoir">
                 <th mat-header-cell *matHeaderCellDef mat-sort-header class="titleTable"> Montant avoir </th>
                 <td mat-cell *matCellDef="let row" class="titleContent" (click)="openDialogDetail(row.id)"> {{row.avoir}} </td>
               </ng-container>
 
-              <ng-container matColumnDef="action">
+              <!--<ng-container matColumnDef="action">
                 <th mat-header-cell *matHeaderCellDef mat-sort-header class="titleTable"> Supprimer </th>
                 <td mat-cell *matCellDef="let row" class="titleContent">  <button mat-button (click)="openDialogDelete(row.id)"><i class="fas fa-trash" style="font-size: 17px;color: #c71e56;"></i></button> </td>
-              </ng-container>
-    
+              </ng-container>-->
+
               <tr mat-header-row *matHeaderRowDef="displayedColumns"></tr>
               <tr mat-row *matRowDef="let row;columns: displayedColumns;"></tr>
-    
+
               <!--"let row; let i = dataIndex; columns: ['expandedDetail']" class="striped-row" [ngClass]="{'alt-row': i % 2}"-->
-    
+
               <!-- Row shown when there is no matching data. -->
               <tr class="mat-row" *matNoDataRow>
                 <td class="mat-cell" colspan="9">Aucune donnée correspondant au filtre "{{input.value}}"</td>
               </tr>
             </table>
-    
+
             <mat-paginator [pageSizeOptions]="[5, 10, 25, 100]" aria-label="Select page of users"></mat-paginator>
 
           </mat-card-content>
 
         </mat-card><!--mat-card-->
-        
+
     </div>
 
   </div><!--container-->

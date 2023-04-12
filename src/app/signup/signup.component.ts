@@ -132,7 +132,7 @@ export class SignupComponent implements OnInit {
           "^((\\+\\d{1,3}(-| )?\\(?\\d\\)?(-| )?\\d{1,5})|(\\(?\\d{2,6}\\)?))(-| )?(\\d{3,4})(-| )?(\\d{4})(( x| ext)\\d{1,5}){0,1}$|(\\w+([\\.-]?\\w+)*@\\w+([\\.-]?\\w+)*(\\.\\w{2,6})+)"
         )
       ]),
-      
+
       categorie:new FormControl("",[Validators.required]),
       entreprise:new FormControl("",[Validators.required]),
       password:password,
@@ -145,6 +145,7 @@ export class SignupComponent implements OnInit {
     this.onLoadForm = true;
     this.submitted = true;
     this.user = {};
+    console.log("Form", this.signupForm);
     if(!this.signupForm.invalid){
       //console.log("User", this.user);
 

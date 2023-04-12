@@ -13,10 +13,10 @@ import { FormControl, FormGroup } from '@angular/forms';
 })
 export class HistoriqueComponent implements OnInit,AfterViewInit {
 
-  displayedColumns: string[] = ['nom', 'date', 'heure', 'dated','heured'];
+  displayedColumns: string[] = ['nom', 'date', 'dated','scanne','recompense'];
   dataSource = new MatTableDataSource<PeriodicElement>();
 
-  displayedColumnsAvoir: string[] = ['date', 'heure', 'motif', 'montant','statut'];
+  displayedColumnsAvoir: string[] = ['date', 'heure', 'motif', 'montant'];
   dataSourceAvoir = new MatTableDataSource<AvoirElement>();
 
   displayedColumnsRecompense: string[] = ['date', 'heure', 'nom', 'type','points'];
@@ -79,7 +79,7 @@ export class HistoriqueComponent implements OnInit,AfterViewInit {
     this.avoirService.listAvoirEntreprise(idEntrepirse).subscribe((res:any)=>{
       try {
            console.log("Avoirs", res);
-           this.avoirs = res.message;
+           this.avoirs = res.message.reverse();
            this.dataSourceAvoir.data = this.avoirs.map((data)=>({
              date: data.creation,
              heure:data.creation,
@@ -97,7 +97,7 @@ export class HistoriqueComponent implements OnInit,AfterViewInit {
     this.entrepriseService.listRecompense(idEntrepirse).subscribe((res:any)=>{
       try {
            console.log("Recompense", res);
-           this.recompenses = res.message;
+           this.recompenses = res.message.reverse();
            this.dataSourceRecompense.data = this.recompenses.map((data)=>({
              date: data.creation,
              heure:data.creation,
@@ -116,13 +116,15 @@ export class HistoriqueComponent implements OnInit,AfterViewInit {
 
       try {
            console.log("Connexion", res);
-           this.users = res.message;
+           this.users = res.message.reverse();
            this.dataSource.data = this.users.map((data)=>({
             nom: data.user?.nom+" "+data.user?.prenom,
             date:data.connexion,
             heure: data.connexion,
             dated:data.deconnexion,
             heured:data.deconnexion,
+            scanne:data.scanne,
+            recompense:data.recompense
           })) as PeriodicElement[];
 
       } catch (error) {
@@ -188,7 +190,7 @@ export class HistoriqueComponent implements OnInit,AfterViewInit {
       }
       return true;
     }
-    this.dataSource.filter = ''+Math.random();*/  
+    this.dataSource.filter = ''+Math.random();*/
   }
 
   IsConnexion(){

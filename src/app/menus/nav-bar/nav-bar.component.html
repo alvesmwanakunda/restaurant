@@ -7,7 +7,7 @@
           <div class="side-menu" style="display: inline-block; list-style-type: none">
 
             <div class="vertical-menu">
-              <a [routerLink]="['/dashboard']" *ngIf="!isMenuSize"><img src="assets/images/logo.png" style="width: 150px;position:fixed;left: 10px;top: 25px;"></a>
+              <a [routerLink]="['/dashboard']" *ngIf="!isMenuSize"><img src="assets/images/favicone.png" style="width: 84px;position:fixed;left: 39px;top: 10px;"></a>
               <a [routerLink]="['/dashboard']" *ngIf="isMenuSize"><img src="assets/images/icone.png" style="width:66px;position:fixed;left: 3px;top:0;"></a>
               <div style="padding-top: 50px;">
                 <a  routerLinkActive="active" [routerLinkActiveOptions]="{ exact: true }" [routerLink]="['/dashboard']" matTooltip="Dashboard"><i class="fas fa-th-large" style="font-size: 15px;"></i><span class="title-menu" *ngIf="!isMenuSize">Tableau de bord</span></a>
@@ -17,11 +17,11 @@
                 <a  matTooltip="Historiques" [routerLink]="['/historiques']" [routerLinkActive]="['active']"><i class="fas fa-clock" style="font-size: 15px;"></i> <span class="title-menu2" *ngIf="!isMenuSize">Historique</span></a>
                 <a  matTooltip="Mon compte"  [routerLink]="['/parametres']" [routerLinkActive]="['active']"><i class="fas fa-user" style="font-size: 15px;"></i><span class="title-menu3" *ngIf="!isMenuSize">Mon compte</span></a>
 
-              </div> 
+              </div>
               <!--<div [ngStyle]="{ width: !isMenuSize ?'75px' : '179px'}" style="position: fixed;bottom: 0;left: 0px;">
                 <a  matTooltip="Parametres"  [routerLink]="['/parametres']" [routerLinkActive]="['active']"><i class="fas fa-cog" style="font-size: 40px;"></i><span class="title-menu5" *ngIf="isMenuSize">Paramètres</span></a>
               </div>-->
-              
+
 
             </div>
 
@@ -37,7 +37,7 @@
       <ng-content></ng-content>
     </div>
   </div><!--wrapper-->
-  
+
 
   <div style="position: fixed;bottom: 145px;left: 150px;"  *ngIf="!isMenuSize">
     <button mat-mini-fab style="background-color: #fff;" (click)="openMenu()">

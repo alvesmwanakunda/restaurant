@@ -16,11 +16,18 @@ export class DetailClientComponent implements OnInit, AfterViewInit {
 
   displayedColumns: string[] = ['recompense', 'detail', 'date', 'heure','point'];
   dataSource = new MatTableDataSource<PeriodicElement>();
+
+  displayedColumnsHistoriques: string[] = ['date', 'heure'];
+  dataSourceHistoriques = new MatTableDataSource<Historique>();
+
   client:any;
   operation:any;
   cadeaux:any=[];
+  historiques:any=[];
 
   @ViewChild(MatPaginator) paginator: MatPaginator;
+  @ViewChild(MatPaginator) paginatorHistorique: MatPaginator;
+
   isRecompense:boolean=false;
 
   constructor(@Inject(MAT_DIALOG_DATA) public data: any, private clientService:ClientService) { }
@@ -36,6 +43,9 @@ export class DetailClientComponent implements OnInit, AfterViewInit {
   ngAfterViewInit() {
     this.dataSource.paginator = this.paginator;
     this.paginator._intl.itemsPerPageLabel = "Recompense par page";
+
+    this.dataSourceHistoriques.paginator = this.paginatorHistorique;
+    this.paginatorHistorique._intl.itemsPerPageLabel = "Historique par page";
   }
 
   isOpenR(){
@@ -53,6 +63,7 @@ export class DetailClientComponent implements OnInit, AfterViewInit {
           console.log("Client", this.client);
           if(this.client){
             this.listRecompense(this.client._id, this.data.idEntreprise);
+            this.listHistorique(this.client._id, this.data.idEntreprise);
           }
       } catch (error) {
         console.log("Error", error)
@@ -98,6 +109,21 @@ export class DetailClientComponent implements OnInit, AfterViewInit {
      })
   }
 
+
+  listHistorique(idClient,idEntrepirse){
+    this.clientService.historiqueByUser(idEntrepirse,idClient).subscribe((res:any)=>{
+      try {
+            this.historiques = res.message;
+            this.dataSourceHistoriques.data = this.historiques.map((data)=>({
+               date:data.creation,
+               heure:data.creation,
+            }))as Historique[];
+      } catch (error) {
+        console.log("Erreur", error);
+      }
+    })
+ }
+
 }
 
 export interface PeriodicElement {
@@ -111,5 +137,9 @@ export interface PeriodicElement {
   devise:string;
   produit:string;
   typepoint:string;
+}
+export interface Historique{
+  date:string;
+  heure:string;
 }
 

@@ -36,9 +36,9 @@ export class ParametresComponent implements OnInit, AfterViewInit {
   @ViewChild(MatPaginator) paginator: MatPaginator;
 
   constructor(
-    public dialog:MatDialog, 
-    private authService:AuthService, 
-    private entrepriseService:EntrepriseService, 
+    public dialog:MatDialog,
+    private authService:AuthService,
+    private entrepriseService:EntrepriseService,
     private avoirService:AvoirService,
     private _snackBar: MatSnackBar
     ) { }
@@ -74,7 +74,7 @@ export class ParametresComponent implements OnInit, AfterViewInit {
           email:data.email,
           poste:data.poste
        })) as IClient[];
-        
+
       } catch (error) {
         console.log("Erreur", error);
       }
@@ -105,7 +105,7 @@ export class ParametresComponent implements OnInit, AfterViewInit {
               ]),
             })
           }
-          
+
           console.log("Avoir", res);
       } catch (error) {
         console.log("Erreur", error);
@@ -158,7 +158,7 @@ export class ParametresComponent implements OnInit, AfterViewInit {
   }
 
   openSnackBar() {
-    this._snackBar.open('Les avoir modifier avec succès', 'Fermer', {
+    this._snackBar.open('Les avoir modifié avec succès', 'Fermer', {
       duration: 3000,
       panelClass: ['blue-snackbar']
     });

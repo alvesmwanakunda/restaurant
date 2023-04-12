@@ -81,81 +81,144 @@
              </div><!--col-md-4-->
              <div class="col-md-4">
                <span class="point">Visites</span>
-               <p class="pointResult">+{{operation?.visite}}</p>
+               <p class="pointResult">+{{operation?.nombreVisite}}</p>
 
              </div><!--col-md-4-->
           </div><!--row-->
         </mat-card-content>
       </mat-card>
 
-      <button mat-raised-button class="sizeButtons" (click)="isOpenR()" style="color: #ffffff;">Voir les recompenses</button>
+      <!--<button mat-raised-button class="sizeButtons" (click)="isOpenR()" style="color: #ffffff;">Voir les recompenses</button>-->
 
      </div><!--col-md-6-->
   </div><!--row-->
 
-  <div [hidden]="!isRecompense" style="position: relative;bottom: 41px;">
-     <mat-card style="background-color: #04075E !important;">
-        <mat-card-content>
+  <div style="position:relative;bottom: 41px;">
 
-          <div>
-            <table mat-table [dataSource]="dataSource" style="position: relative;bottom: 38px;">
+    <mat-tab-group>
+      <mat-tab>
+        <ng-template mat-tab-label>
+          <span>Recompenses</span>
+        </ng-template>
 
-              <!-- Position Column -->
-              <ng-container matColumnDef="recompense">
-                <th mat-header-cell *matHeaderCellDef style="color: #fff;"> Recompense </th>
-                <td mat-cell *matCellDef="let element"> {{element.recompense}} </td>
-              </ng-container>
+        <div style="padding-top: 15px">
 
-              <!-- Name Column -->
-              <ng-container matColumnDef="detail">
-                <th mat-header-cell *matHeaderCellDef style="color: #fff;"> Détails </th>
-                <td mat-cell *matCellDef="let element">  
-                  <span *ngIf="element.recompense=='Livraison'">
-                   Nombre livraison : {{element.livraison}}
-                  </span>
-                  <span *ngIf="element.recompense=='Reduction'">
-                    {{element.produit}} - ({{element.montant}} {{element.devise}})
-                  </span>
-                  <span *ngIf="element.recompense=='Cadeau'">
-                    {{element.produit}}
-                  </span>
-                </td>
-              </ng-container>
+          <mat-card style="background-color: #04075E !important;">
+            <mat-card-content>
 
-              <!-- Weight Column -->
-              <ng-container matColumnDef="date">
-                <th mat-header-cell *matHeaderCellDef style="color: #fff;"> Date </th>
-                <td mat-cell *matCellDef="let element"> 
-                  {{element.date | date:'dd/MM/YYYY'}}
-                </td>
-              </ng-container>
+              <div>
+                <table mat-table [dataSource]="dataSource" style="position: relative;bottom: 38px;">
 
-              <!-- Symbol Column -->
-              <ng-container matColumnDef="heure">
-                <th mat-header-cell *matHeaderCellDef style="color: #fff;"> Heure </th>
-                <td mat-cell *matCellDef="let element">  
-                  {{element.heure | date:'hh:mm:ss'}}
-                </td>
-              </ng-container>
+                  <!-- Position Column -->
+                  <ng-container matColumnDef="recompense">
+                    <th mat-header-cell *matHeaderCellDef style="color: #fff;"> Recompense </th>
+                    <td mat-cell *matCellDef="let element"> {{element.recompense}} </td>
+                  </ng-container>
 
-              <ng-container matColumnDef="point">
-                <th mat-header-cell *matHeaderCellDef style="color: #fff;"> Points </th>
-                <td mat-cell *matCellDef="let element">{{element.point}}</td>
-              </ng-container>
+                  <!-- Name Column -->
+                  <ng-container matColumnDef="detail">
+                    <th mat-header-cell *matHeaderCellDef style="color: #fff;"> Détails </th>
+                    <td mat-cell *matCellDef="let element">
+                      <span *ngIf="element.recompense=='Livraison'">
+                       Nombre livraison : {{element.livraison}}
+                      </span>
+                      <span *ngIf="element.recompense=='Reduction'">
+                        {{element.produit}} - ({{element.montant}} {{element.devise}})
+                      </span>
+                      <span *ngIf="element.recompense=='Cadeau'">
+                        {{element.produit}}
+                      </span>
+                    </td>
+                  </ng-container>
 
-              <tr mat-header-row *matHeaderRowDef="displayedColumns"></tr>
-              <tr mat-row *matRowDef="let row; columns: displayedColumns;"></tr>
-            </table>
+                  <!-- Weight Column -->
+                  <ng-container matColumnDef="date">
+                    <th mat-header-cell *matHeaderCellDef style="color: #fff;"> Date </th>
+                    <td mat-cell *matCellDef="let element">
+                      {{element.date | date:'dd/MM/YYYY'}}
+                    </td>
+                  </ng-container>
 
-            <mat-paginator [pageSizeOptions]="[5, 10, 20]"
-                          showFirstLastButtons
-                          aria-label="Select page of periodic elements">
-            </mat-paginator>
-          </div>
+                  <!-- Symbol Column -->
+                  <ng-container matColumnDef="heure">
+                    <th mat-header-cell *matHeaderCellDef style="color: #fff;"> Heure </th>
+                    <td mat-cell *matCellDef="let element">
+                      {{element.heure | date:'hh:mm:ss'}}
+                    </td>
+                  </ng-container>
 
-        </mat-card-content>
-     </mat-card>
+                  <ng-container matColumnDef="point">
+                    <th mat-header-cell *matHeaderCellDef style="color: #fff;"> Points </th>
+                    <td mat-cell *matCellDef="let element">{{element.point}}</td>
+                  </ng-container>
+
+                  <tr mat-header-row *matHeaderRowDef="displayedColumns"></tr>
+                  <tr mat-row *matRowDef="let row; columns: displayedColumns;"></tr>
+                </table>
+
+                <mat-paginator [pageSizeOptions]="[5, 10, 20]"
+                              showFirstLastButtons
+                              aria-label="Select page of periodic elements">
+                </mat-paginator>
+              </div>
+
+            </mat-card-content>
+          </mat-card>
+
+        </div>
+
+
+
+      </mat-tab>
+      <mat-tab>
+        <ng-template mat-tab-label>
+          <span>Historique des visites</span>
+        </ng-template>
+        <div style="padding-top: 15px">
+
+          <mat-card style="background-color: #04075E !important;">
+            <mat-card-content>
+
+              <div>
+                <table mat-table [dataSource]="dataSourceHistoriques" style="position: relative;bottom: 38px;">
+
+                  <!-- Weight Column -->
+                  <ng-container matColumnDef="date">
+                    <th mat-header-cell *matHeaderCellDef style="color: #fff;"> Date </th>
+                    <td mat-cell *matCellDef="let element">
+                      {{element.date | date:'dd/MM/YYYY'}}
+                    </td>
+                  </ng-container>
+
+                  <!-- Symbol Column -->
+                  <ng-container matColumnDef="heure">
+                    <th mat-header-cell *matHeaderCellDef style="color: #fff;"> Heure </th>
+                    <td mat-cell *matCellDef="let element">
+                      {{element.heure | date:'hh:mm:ss'}}
+                    </td>
+                  </ng-container>
+
+
+                  <tr mat-header-row *matHeaderRowDef="displayedColumnsHistoriques"></tr>
+                  <tr mat-row *matRowDef="let row; columns: displayedColumnsHistoriques;"></tr>
+                </table>
+
+                <mat-paginator [pageSizeOptions]="[5, 10, 20]"
+                              showFirstLastButtons
+                              aria-label="Select page of periodic elements">
+                </mat-paginator>
+              </div>
+
+            </mat-card-content>
+          </mat-card>
+
+
+        </div>
+      </mat-tab>
+    </mat-tab-group>
   </div>
+
+  <!--<div [hidden]="!isRecompense" style="position: relative;bottom: 41px;"></div>-->
 
 
 

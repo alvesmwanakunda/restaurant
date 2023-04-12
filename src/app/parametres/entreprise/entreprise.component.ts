@@ -14,8 +14,8 @@ import { MatSnackBar } from '@angular/material/snack-bar';
 })
 export class EntrepriseComponent implements OnInit {
 
-  constructor(private entrepriseService:EntrepriseService, private sanitizer: DomSanitizer,private _snackBar: MatSnackBar) { 
-    
+  constructor(private entrepriseService:EntrepriseService, private sanitizer: DomSanitizer,private _snackBar: MatSnackBar) {
+
   }
 
   entreprise:EntrepriseInterface;
@@ -30,7 +30,7 @@ export class EntrepriseComponent implements OnInit {
   ngOnInit(): void {
 
     this.getEntreprise();
-    
+
   }
 
   getEntreprise(){
@@ -98,7 +98,7 @@ export class EntrepriseComponent implements OnInit {
   }
 
   openSnackBar() {
-    this._snackBar.open('Information modifier avec succès', 'Fermer', {
+    this._snackBar.open('Information modifiée avec succès', 'Fermer', {
       duration: 3000,
       panelClass: ['blue-snackbar']
     });

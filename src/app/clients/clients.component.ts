@@ -24,7 +24,7 @@ import { environment } from 'src/environments/environment';
 })
 export class ClientsComponent implements OnInit, AfterViewInit {
 
-  displayedColumns: string[] = ['id','numero', 'nom', 'genre', 'debut','fin', 'visite','depense','avoir','action'];
+  displayedColumns: string[] = ['id','numero', 'nom', 'genre', 'debut','fin', 'visite','depense','avoir'];
   dataSource = new MatTableDataSource<OperationInterface>();
   selection = new SelectionModel<OperationInterface>(true, []);
 
@@ -68,7 +68,7 @@ export class ClientsComponent implements OnInit, AfterViewInit {
          this.entreprise = res.body;
          if(this.entreprise){
            //this.getAllClients(this.entreprise._id);
-           this.url = `${environment.BASE_URL}/shared/client/${this.entreprise._id}`;
+           this.url = `${environment.BASE_URL}/#/shared/client/${this.entreprise._id}`;
            //console.log("Url", this.url);
            this.getOperationClients(this.entreprise._id);
          }
@@ -94,7 +94,7 @@ export class ClientsComponent implements OnInit, AfterViewInit {
               point:data.point,
               avoir:data.avoir
            })) as ClientInterface[];
-          
+
       } catch (error) {
         console.log("Erreur", error);
       }
@@ -147,7 +147,7 @@ export class ClientsComponent implements OnInit, AfterViewInit {
   }
 
    openDialogUploadClient(){
-    const dialogRef = this.dialog.open(UploadClientComponent,{width:'40%',height:'40%'});
+    const dialogRef = this.dialog.open(UploadClientComponent,{width:'60%',height:'60%'});
     dialogRef.afterClosed().subscribe(result => {
       console.log('The dialog was closed', result);
       this.getOperationClients(this.entreprise._id);
@@ -155,7 +155,7 @@ export class ClientsComponent implements OnInit, AfterViewInit {
   }
 
   openDialogDetail(idClient){
-    const dialogRef = this.dialog.open(DetailClientComponent,{width:'60%',height:'45%',data:{idclient:idClient,idEntreprise:this.entreprise._id}});
+    const dialogRef = this.dialog.open(DetailClientComponent,{width:'80%',height:'90%',data:{idclient:idClient,idEntreprise:this.entreprise._id}});
     dialogRef.afterClosed().subscribe(result => {
       console.log(`Dialog result: ${result}`);
     })
@@ -183,7 +183,7 @@ export class ClientsComponent implements OnInit, AfterViewInit {
     const numSelected = this.selection.selected.length;
     const numRows = this.dataSource.data.length;
     return numSelected === numRows;
-    
+
   }
 
   selectionRow(row){
@@ -193,7 +193,7 @@ export class ClientsComponent implements OnInit, AfterViewInit {
       if(!this.allClients.length){
         this.isAll=false;
       }
-      
+
     }else{
       this.allClients.push(row);
       this.isAll = true;

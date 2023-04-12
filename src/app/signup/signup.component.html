@@ -1,142 +1,128 @@
 <div class="signup-body">
 
   <div class="container">
-    <div class="contentPage">
-  
-      <div class="row justify-content-md-center">
-        <div class="col-lg-5 col-md-auto">
-          <div class="text-center" style="margin-bottom: 5%;">
-            <!--<p style="color:#04075E;font-size: 19px;">Inscription</p>-->
-            <img src="../../assets/images/logo.png" width="250px">
-         </div>
-         
-          <mat-card style="box-shadow: none !important;opacity: 80%;">
-              <mat-card-title class="titleCard">
-              </mat-card-title>
-              <form [formGroup]="signupForm" novalidate>
-  
-                <mat-card-content style="margin: -15px 60px 0 60px;">
-  
-                <mat-form-field appearance="legacy" class="example-full-width">
-                  <mat-label style="color: #000000;font-size: 14px;">Entreprise</mat-label>
-                  <input matInput formControlName="entreprise" required>
-                    <mat-icon matTooltip="{{account_validation_messages.entreprise[0].message}}"
-                      *ngIf="signupForm.get('entreprise').hasError(account_validation_messages.entreprise[0].type) && (signupForm.get('entreprise').dirty || signupForm.get('entreprise').touched  || (submitted))"
-                      style="cursor: pointer;" matSuffix>
-                      <i class="fas fa-exclamation-circle"></i>
-                    </mat-icon>
-                </mat-form-field>
 
-                <mat-form-field appearance="legacy" class="example-full-width">
-                  <mat-label style="color: #000000;font-size: 14px;">Catégories</mat-label>
-                  <mat-select matInput formControlName="categorie" required>
-                    <mat-option value="Restaurant">Restaurant</mat-option>
-                    <mat-option value="Supermarché">Supermarché</mat-option>
-                    <mat-option value="Sport">Sport</mat-option>
-                  </mat-select>
-                  <mat-icon matTooltip="{{account_validation_messages.categorie[0].message}}"
-                      *ngIf="signupForm.get('categorie').hasError(account_validation_messages.categorie[0].type) && (signupForm.get('categorie').dirty || signupForm.get('categorie').touched  || (submitted))"
-                      style="cursor: pointer;" matSuffix>
-                      <i class="fas fa-exclamation-circle"></i>
-                    </mat-icon>
-                </mat-form-field>
-  
-  
-                <mat-form-field appearance="legacy" class="example-full-width">
-                  <mat-label style="color: #000000;font-size: 14px;">Email</mat-label>
-                  <input matInput formControlName="emailorphone" pattern="^((\+\d{1,3}(-| )?\(?\d\)?(-| )?\d{1,5})|(\(?\d{2,6}\)?))(-| )?(\d{3,4})(-| )?(\d{4})(( x| ext)\d{1,5}){0,1}$|(\w+([\.-]?\w+)*@\w+([\.-]?\w+)*(\.\w{2,6})+)" required>
-                   <mat-icon matTooltip="{{ account_validation_messages.emailorphone[0].message }}"
-                      *ngIf="signupForm.get('emailorphone').hasError(account_validation_messages.emailorphone[0].type) && ((signupForm.get('emailorphone').dirty || signupForm.get('emailorphone').touched) || (submitted))"
-                      matSuffix>
-                      <i class="fas fa-exclamation-circle"></i>
-                    </mat-icon>
-                </mat-form-field>
-                <div *ngIf="signupFormErrors.emailorphone.found" class="text-danger">
-                    Ce compte existe déjà
-                </div>
-  
-                <!--<mat-form-field appearance="legacy" class="example-full-width">
-                  <mat-label style="color: #c9c8c8;font-size: 12px;">Numéro de téléphone</mat-label>
-                   <input matInput formControlName="phone" required>
-                   <mat-icon matTooltip="{{account_validation_messages.phone[0].message}}"
-                      *ngIf="signupForm.get('phone').hasError(account_validation_messages.phone[0].type) && (signupForm.get('phone').dirty || signupForm.get('phone').touched  || (submitted))"
-                      style="cursor: pointer;" matSuffix>
-                      <i class="fas fa-exclamation-circle"></i>
-                    </mat-icon>
-  
-                </mat-form-field>-->
-  
-                <mat-form-field appearance="legacy" class="example-full-width">
-                  <mat-label style="color: #000000;font-size: 14px;">Mot de passe</mat-label>
-                  <input matInput formControlName="password" [type]="hideP ? 'password' : 'text'"  required>
-                  <button *ngIf="signupForm.get('password').value && signupForm.get('password').value!=''" mat-icon-button matSuffix (click)="hideP = !hideP" [attr.aria-label]="'Hide password'" [attr.aria-pressed]="hideP">
-                    <mat-icon>{{hideP ? 'visibility_off' : 'visibility'}}</mat-icon>
-                  </button>
-                    <mat-icon matTooltip="{{ account_validation_messages.password[0].message }}"
-                      *ngIf="signupForm.get('password').hasError(account_validation_messages.password[0].type) && ((signupForm.get('password').dirty || signupForm.get('password').touched) || (submitted))"
-                      style="cursor: pointer;" matSuffix>
-                      <i class="fas fa-exclamation-circle"></i>
-                    </mat-icon>
-                    <mat-icon matTooltip="{{ account_validation_messages.password[1].message }}"
-                      *ngIf="signupForm.get('password').hasError(account_validation_messages.password[1].type) && ((signupForm.get('password').dirty || signupForm.get('password').touched) || (submitted))"
-                      style="cursor: pointer;" matSuffix>
-                      <i class="fas fa-exclamation-circle"></i>
-                    </mat-icon>
-                    <!--<mat-icon matTooltip="{{ account_validation_messages.password[2].message }}"
-                      *ngIf="signupForm.get('password').hasError(account_validation_messages.password[2].type) && ((signupForm.get('password').dirty || signupForm.get('password').touched) || (submitted))"
-                      style="cursor: pointer;" matSuffix>
-                      <i class="fas fa-exclamation-circle"></i>
-                    </mat-icon>-->
-                </mat-form-field>
-                <div class="text-danger" style="font-size: 11px;" *ngIf="signupForm.get('password').hasError(account_validation_messages.password[2].type) && ((signupForm.get('password').dirty || signupForm.get('password').touched) || (submitted))">
-                  Le mot de passe doit comporter au moins 8 caracteres,une lettre majuscule, une lettre minuscule et un chiffre.
-                </div>
-  
-                <mat-form-field appearance="legacy" class="example-full-width">
-                  <mat-label style="color: #000000;font-size: 14px;">Confirmation mot de passe</mat-label>
-                  <input matInput  formControlName="confirmpassword" [type]="hidePassword ? 'password' : 'text'">
-                  <button *ngIf="signupForm.get('confirmpassword').value && signupForm.get('confirmpassword').value!=''" mat-icon-button matSuffix (click)="hidePassword = !hidePassword" [attr.aria-label]="'Hide password'" [attr.aria-pressed]="hidePassword">
-                    <mat-icon>{{hidePassword ? 'visibility_off' : 'visibility'}}</mat-icon>
-                  </button>
-                  <mat-icon matTooltip="Les deux mot de passe ne correspondent pas"
-                      *ngIf="(signupForm.get('confirmpassword').errors?.notEqual || signupForm.get('confirmpassword').value!=signupForm.get('password').value) &&  ((signupForm.get('confirmpassword').dirty || signupForm.get('confirmpassword').touched) || (submitted))"
-                      style="cursor: pointer;" matSuffix>
-                      <i class="fas fa-exclamation-circle"></i>
-                    </mat-icon>
-                </mat-form-field>
-  
-                <section class="example-section" style="margin-bottom: 20px;">
-                  <mat-checkbox value="" [(ngModel)]="cgu" name="cgu" formControlName="cgu" style="color:#04075E;">
-                    J'accepte les conditions générales d'utilisation
-                  </mat-checkbox>
-                  <p style="color: red; font-size: 11px;text-align: center;" *ngIf="signupForm.get('cgu').dirty == false && (submitted)">
-                    Lire et accepter la déclaration de confidentialité.
-                  </p>
-                </section>
-  
-              </mat-card-content>
-              <mat-card-actions>
-                 <div class="text-center">
-                    <div class="col-md-12" style="margin-bottom: 12px;">
-                      <button mat-raised-button [disabled]="onLoadForm" type="submit" (click)="onRegisterUser()" class="sizeButtonSignup" style="color: #fff;">S'INSCRIRE</button>
+        <div class="text-center">
+          <img src="../../assets/images/logo.png" width="250px">
+        </div>
+
+         <div class="row justify-content-md-center">
+
+          <div class="col-lg-6 col-md-auto">
+              <mat-card style="box-shadow: none !important;opacity: 80%;">
+                  <mat-card-title class="titleCard">
+                  </mat-card-title>
+                  <form [formGroup]="signupForm" novalidate>
+
+                    <mat-card-content style="margin: -15px 60px 0 60px;">
+
+                    <mat-form-field appearance="legacy" class="example-full-width">
+                      <mat-label style="color: #000000;font-size: 14px;">Entreprise</mat-label>
+                      <input matInput formControlName="entreprise" required>
+                        <mat-icon matTooltip="{{account_validation_messages.entreprise[0].message}}"
+                          *ngIf="signupForm.get('entreprise').hasError(account_validation_messages.entreprise[0].type) && (signupForm.get('entreprise').dirty || signupForm.get('entreprise').touched  || (submitted))"
+                          style="cursor: pointer;" matSuffix>
+                          <i class="fas fa-exclamation-circle"></i>
+                        </mat-icon>
+                    </mat-form-field>
+
+                    <mat-form-field appearance="legacy" class="example-full-width">
+                      <mat-label style="color: #000000;font-size: 14px;">Catégories</mat-label>
+                      <mat-select matInput formControlName="categorie" required>
+                        <mat-option value="Restaurant">Restaurant</mat-option>
+                        <mat-option value="Supermarché">Supermarché</mat-option>
+                        <mat-option value="Sport">Sport</mat-option>
+                      </mat-select>
+                      <mat-icon matTooltip="{{account_validation_messages.categorie[0].message}}"
+                          *ngIf="signupForm.get('categorie').hasError(account_validation_messages.categorie[0].type) && (signupForm.get('categorie').dirty || signupForm.get('categorie').touched  || (submitted))"
+                          style="cursor: pointer;" matSuffix>
+                          <i class="fas fa-exclamation-circle"></i>
+                        </mat-icon>
+                    </mat-form-field>
+
+
+                    <mat-form-field appearance="legacy" class="example-full-width">
+                      <mat-label style="color: #000000;font-size: 14px;">Email</mat-label>
+                      <input matInput formControlName="emailorphone" pattern="^((\+\d{1,3}(-| )?\(?\d\)?(-| )?\d{1,5})|(\(?\d{2,6}\)?))(-| )?(\d{3,4})(-| )?(\d{4})(( x| ext)\d{1,5}){0,1}$|(\w+([\.-]?\w+)*@\w+([\.-]?\w+)*(\.\w{2,6})+)" required>
+                      <mat-icon matTooltip="{{ account_validation_messages.emailorphone[0].message }}"
+                          *ngIf="signupForm.get('emailorphone').hasError(account_validation_messages.emailorphone[0].type) && ((signupForm.get('emailorphone').dirty || signupForm.get('emailorphone').touched) || (submitted))"
+                          matSuffix>
+                          <i class="fas fa-exclamation-circle"></i>
+                        </mat-icon>
+                    </mat-form-field>
+                    <div *ngIf="signupFormErrors.emailorphone.found" class="text-danger">
+                        Ce compte existe déjà
                     </div>
-                    <div class="col-md-12">
-                      <a [routerLink]="'/'" style="text-decoration: none;color: #000000;font-size: 15px;"><p>Revenir à la page de connexion</p></a>
+
+
+                    <mat-form-field appearance="legacy" class="example-full-width">
+                      <mat-label style="color: #000000;font-size: 14px;">Mot de passe</mat-label>
+                      <input matInput formControlName="password" [type]="hideP ? 'password' : 'text'"  required>
+                      <button *ngIf="signupForm.get('password').value && signupForm.get('password').value!=''" mat-icon-button matSuffix (click)="hideP = !hideP" [attr.aria-label]="'Hide password'" [attr.aria-pressed]="hideP">
+                        <mat-icon>{{hideP ? 'visibility_off' : 'visibility'}}</mat-icon>
+                      </button>
+                        <mat-icon matTooltip="{{ account_validation_messages.password[0].message }}"
+                          *ngIf="signupForm.get('password').hasError(account_validation_messages.password[0].type) && ((signupForm.get('password').dirty || signupForm.get('password').touched) || (submitted))"
+                          style="cursor: pointer;" matSuffix>
+                          <i class="fas fa-exclamation-circle"></i>
+                        </mat-icon>
+                        <mat-icon matTooltip="{{ account_validation_messages.password[1].message }}"
+                          *ngIf="signupForm.get('password').hasError(account_validation_messages.password[1].type) && ((signupForm.get('password').dirty || signupForm.get('password').touched) || (submitted))"
+                          style="cursor: pointer;" matSuffix>
+                          <i class="fas fa-exclamation-circle"></i>
+                        </mat-icon>
+
+                    </mat-form-field>
+                    <div class="text-danger" style="font-size: 11px;" *ngIf="signupForm.get('password').hasError(account_validation_messages.password[2].type) && ((signupForm.get('password').dirty || signupForm.get('password').touched) || (submitted))">
+                      Le mot de passe doit comporter au moins 8 caracteres,une lettre majuscule, une lettre minuscule et un chiffre.
                     </div>
-                </div><!--row-->
-              </mat-card-actions>
-              <mat-card-footer *ngIf="onLoadForm">
-                <mat-progress-bar mode="indeterminate"></mat-progress-bar>
-              </mat-card-footer>
-  
-              </form>
-  
-          </mat-card>
+
+                    <mat-form-field appearance="legacy" class="example-full-width">
+                      <mat-label style="color: #000000;font-size: 14px;">Confirmation mot de passe</mat-label>
+                      <input matInput  formControlName="confirmpassword" [type]="hidePassword ? 'password' : 'text'">
+                      <button *ngIf="signupForm.get('confirmpassword').value && signupForm.get('confirmpassword').value!=''" mat-icon-button matSuffix (click)="hidePassword = !hidePassword" [attr.aria-label]="'Hide password'" [attr.aria-pressed]="hidePassword">
+                        <mat-icon>{{hidePassword ? 'visibility_off' : 'visibility'}}</mat-icon>
+                      </button>
+                      <mat-icon matTooltip="Les deux mot de passe ne correspondent pas"
+                          *ngIf="(signupForm.get('confirmpassword').errors?.notEqual || signupForm.get('confirmpassword').value!=signupForm.get('password').value) &&  ((signupForm.get('confirmpassword').dirty || signupForm.get('confirmpassword').touched) || (submitted))"
+                          style="cursor: pointer;" matSuffix>
+                          <i class="fas fa-exclamation-circle"></i>
+                        </mat-icon>
+                    </mat-form-field>
+
+                    <section class="example-section" style="margin-bottom: 20px;">
+                      <mat-checkbox value="" [(ngModel)]="cgu" name="cgu" formControlName="cgu" style="font-size: 11px;">
+                        En cochant cette case, vous acceptez <a [routerLink]="'/conditions'" target="_blank" style="text-decoration: none;color:#970516;font-weight:700;text-transform:uppercase;">Les conditions générales d'utilisations</a>
+                      </mat-checkbox>
+
+                      <p style="color: red; font-size: 11px;text-align: center;" *ngIf="signupForm.get('cgu').dirty == true && (submitted)">
+                        Lire et accepter la déclaration de confidentialité.
+                      </p>
+                    </section>
+
+                  </mat-card-content>
+                  <mat-card-actions>
+                    <div class="text-center">
+                        <div class="col-md-12" style="margin-bottom: 12px;">
+                          <button mat-raised-button [disabled]="onLoadForm" type="submit" (click)="onRegisterUser()" class="sizeButtonSignup" style="color: #fff;">S'INSCRIRE</button>
+                        </div>
+                        <div class="col-md-12">
+                          <a [routerLink]="'/'" style="text-decoration: none;color: #000000;font-size: 15px;"><p>Revenir à la page de connexion</p></a>
+                        </div>
+                    </div><!--row-->
+                  </mat-card-actions>
+                  <mat-card-footer *ngIf="onLoadForm">
+                    <mat-progress-bar mode="indeterminate"></mat-progress-bar>
+                  </mat-card-footer>
+
+                  </form>
+
+              </mat-card>
+          </div>
+
         </div><!--col-->
-    </div><!--row-->
-  
-    </div>
-  
+
+
   </div><!--container-->
 
 </div><!--content-->

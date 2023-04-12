@@ -6,7 +6,7 @@ import { AppComponent } from './app.component';
 import { SharedModule } from './shared/shared.module';
 import { BrowserAnimationsModule} from '@angular/platform-browser/animations';
 import { JwtService } from './shared/interceptors/jwt.service';
-import { registerLocaleData } from '@angular/common';
+import { registerLocaleData,HashLocationStrategy, LocationStrategy } from '@angular/common';
 import localeFr from '@angular/common/locales/fr';
 registerLocaleData(localeFr, 'fr');
 
@@ -29,6 +29,9 @@ registerLocaleData(localeFr, 'fr');
     },
     {
       provide: LOCALE_ID, useValue:'fr'
+    },
+    {
+      provide:LocationStrategy, useClass:HashLocationStrategy
     },
     HttpClient
   ],

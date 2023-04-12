@@ -6,7 +6,7 @@
       <button mat-raised-button class="sizeButtonAB" [routerLink]="'/promotions'" align="left"><i class="fas fa-long-arrow-alt-left" style="font-size: 15px;"></i></button>
     </div>
 
-    
+
     <div class="row">
 
       <div class="col-md-8">
@@ -41,46 +41,54 @@
           <span style="position: relative;right: 12%;">
             Visualiser
           </span>
-           
+
           </p>
-        <mat-card style="height: 90%;">
-          <mat-card-content>
+
             <div class="row">
-              <div class="col-md-12"> 
-               
+              <div class="col-md-12">
+
                 <img src="assets/images/phone.png" alt="Angular Carousel 1" style="width:80%;display:block; margin-left: auto;margin-right: auto;">
 
                  <div *ngIf="message?.typePromotion=='App'" class="app">
 
-                  <div style="margin-bottom:15px;">
-                    <img  src="data:image/png;base64,{{message?.photo}}" style="width:68%;position:relative;left:13%;" *ngIf="message?.photo">
-                    <img  src="assets/images/blank.jpeg" style="width:68%;position:relative;left:13%;"  *ngIf="!message?.photo">
+                  <div style="padding-top: 85px;">
+
+                    <div style="margin-bottom:15px;">
+                      <img  src="data:image/png;base64,{{message?.photo}}" style="width:68%;position:relative;left:13%;" *ngIf="message?.photo">
+                      <img  src="assets/images/blank.jpeg" style="width:68%;position:relative;left:13%;"  *ngIf="!message?.photo">
+                    </div>
+
+                    <p class="title-message">{{message?.nom}}</p>
+                    <p class="message-text">{{message?.message}}</p>
+
                   </div>
-                  
-                  <p class="title-message">{{message?.nom}}</p>
-                  <p class="message-text">{{message?.message}}</p>
 
                  </div><!--App-->
 
                  <div *ngIf="message?.typePromotion=='Sms'" class="sms">
 
-                  <p style="text-align:center;font-size: 12px;color: rgb(102, 102, 102);">{{message.dateCreated | date:'dd/MM/YYYY'}}</p>
+                  <div style="padding-left: 59px;padding-top: 41px;">
 
-                  <mat-card style="background-color:#cce5fe !important;">
-                    <mat-card-content>
-                      <p class="title-sms">{{message?.nom}}</p>
-                      <p class="sms-text">{{message?.message}}</p>
-                    </mat-card-content> 
-                  </mat-card>   
+                    <p style="text-align:center;font-size: 12px;color: rgb(102, 102, 102);">{{message.dateCreated | date:'dd/MM/YYYY'}}</p>
+
+                    <mat-card style="background-color:#cce5fe !important;width:175% !important;">
+                      <mat-card-content>
+                        <p class="title-sms">{{message?.nom}}</p>
+                        <p class="sms-text">{{message?.message}}</p>
+                      </mat-card-content>
+                    </mat-card>
+
+                  </div>
+
+
 
                 </div><!--Sms-->
 
-               
-              
+
+
               </div>
            </div>
-          </mat-card-content>
-       </mat-card>
+
 
       </div><!--col-md-4-->
 

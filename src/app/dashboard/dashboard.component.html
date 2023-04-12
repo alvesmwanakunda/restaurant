@@ -8,7 +8,7 @@
 
             <mat-card class="card1" style="height: 81%;">
                 <mat-card-content>
-                    <p class="titleNumber">60</p>
+                    <p class="titleNumber">{{dash?.clients}}</p>
                     <div class="row">
                        <div class="col-md-8">
                         <p class="title">Total clients</p>
@@ -18,14 +18,14 @@
                        </div><!--col-md-4-->
                     </div><!--row-->
                 </mat-card-content>
-            </mat-card>        
+            </mat-card>
 
         </div><!--col-md-3-->
         <div class="col-md-3">
 
             <mat-card class="card1" style="height: 81%;">
                 <mat-card-content>
-                    <p class="titleNumber">16</p>
+                    <p class="titleNumber">{{dash?.newclient}}</p>
                     <div class="row">
                         <div class="col-md-8">
                          <p class="title">Nouveau clients</p>
@@ -35,14 +35,14 @@
                         </div><!--col-md-4-->
                      </div><!--row-->
                 </mat-card-content>
-            </mat-card> 
+            </mat-card>
 
         </div><!--col-md-3-->
         <div class="col-md-3">
 
             <mat-card class="card1" style="height: 81%;">
                 <mat-card-content>
-                    <p class="titleNumber">43</p>
+                    <p class="titleNumber">{{dash?.relance}}</p>
                      <div class="row">
                         <div class="col-md-8">
                          <p class="title">Clients qui reviennent</p>
@@ -51,171 +51,97 @@
                             <i class="fas fa-undo-alt icontitle"></i>
                         </div><!--col-md-4-->
                      </div><!--row-->
-                   
+
                 </mat-card-content>
-            </mat-card> 
+            </mat-card>
 
         </div><!--col-md-3-->
         <div class="col-md-3">
 
             <mat-card class="card1" style="height: 81%;">
                 <mat-card-content>
-                    <p class="titleNumber">185</p>
+                    <p class="titleNumber">{{dash?.visite}}</p>
                     <div class="row">
                         <div class="col-md-8">
-                            <p class="title">Chiffre d'affaires</p>
+                            <p class="title">Nombre de visite</p>
                         </div><!--col-md-8-->
                         <div class="col-md-4">
-                            <i class="fas fa-money-check-alt icontitle"></i>
+                            <i class="fas fa-user-check icontitle"></i>
                         </div><!--col-md-4-->
                      </div><!--row-->
-                   
+
                 </mat-card-content>
-            </mat-card> 
+            </mat-card>
 
         </div><!--col-md-3-->
 
     </div><!--row-->
 
-    <div class="row" style="margin-bottom:30px;">
-        <div class="col-md-12">
-            <mat-card>
-                <mat-card-content>
-                    <div class="row">
-                        <div class="col-md-8">
-                            <p class="titleStat">Aujourd'hui</p>
-                            <div class="row">
-
-                                <div class="col-md-4">
-                                   <p class="infoStat">Dimanche 24 juillet 2022</p>
-                                </div><!--col-md-4-->
-
-                                <div class="col-md-8">
-                                    <div align="right" style="position:relative;bottom:5px;">
-                                        <i class="fa-solid fa-house-blank"></i> <button mat-button class="infoStat">Aujourd'hui</button>
-                                        <button mat-button class="infoStat"> Hier</button>
-                                        <button mat-button class="infoStat"> Mois</button>
-                                    </div>
-                                    
-                                </div><!--col-md-8-->
-
-                            </div><!--row-->
-                        </div><!--col-md-8-->
-                        <div class="col-md-4">
-
-                                 <div class="line1">
-
-                                 </div>
-
-                                  <div>
-
-                                    <div  style="margin-bottom: 20px;">
-                                        <p class="totalCadeau"> Nombre de visite</p>
-                                        <p class="cardT">449</p>
-                                       <div class="divider1"></div>
-                                    </div>
-
-                                    <div  style="margin-bottom: 20px;">
-                                        <p class="totalCadeau"> Nombre de cadeau distribué</p>
-                                        <p class="cardT">426</p>
-                                        <div class="divider1"></div>
-                                    </div>
-
-                                    <div  style="margin-bottom: 20px;">
-                                        <p class="totalCadeau"> Montant total des avoirs à remettre</p>
-                                        <p class="cardT">330</p>
-                                        <div class="divider1"></div>
-                                    </div>
-
-                                    <div  style="margin-bottom: 20px;">
-                                        <p class="totalCadeau"> Points visite distribué</p>
-                                        <p class="cardT">33</p>
-                                        <div class="divider1"></div>
-                                    </div>
-
-                                    <div  style="margin-bottom: 20px;">
-                                        <p class="totalCadeau"> Points montant dépensé distribué</p>
-                                        <p class="cardT">94</p>
-                                        
-                                    </div>
-                                  
-                                  </div><!--list-->
-
-                        </div><!--col-md-4-->
-                    </div><!--row-->
-                </mat-card-content>
-            </mat-card>        
-        </div><!--col-md-12-->
-    </div><!--row-->
 
     <div class="row" style="margin-bottom:20px;">
 
         <div class="col-md-6">
-            <mat-card>
+            <mat-card  style="height: 120%;">
                 <mat-card-content>
                     <div class="row">
-                      <div class="col-md-6"><p class="titleStat">Campagne</p></div><!--col-md-6-->
-                      <div class="col-md-6"><p style="color:#49C120;text-align: right;">Voir les détails</p></div><!--col-md-6-->
+                      <div class="col-md-6"><p class="titleStat">Promotion</p></div><!--col-md-6-->
+                      <div class="col-md-6"><p style="color:#3751FF;text-align: right;">Voir les détails</p></div><!--col-md-6-->
                     </div><!--row-->
 
                     <table class="table">
                         <tbody>
-                          <tr>
-                            <td style="font-size: 12px;">Nombre de campagne lancée</td>
-                            <td style="color:#243665;font-size:12;">4238</td>
+                          <tr class="rowTable">
+                            <td style="font-size: 12px;">Nombre de campagne</td>
+                            <td style="color:#9FA2B4;font-size:12;">{{promotion?.promotions}}</td>
                           </tr>
-                          <tr>
-                            <td style="font-size: 12px;">Nombre de message envoyé</td>
-                            <td style="color:#243665;font-size:12;">1005</td>
+                          <tr class="rowTable">
+                            <td style="font-size: 12px;">Nombre de SMS envoyé</td>
+                            <td style="color:#9FA2B4;font-size:12;">{{promotion?.sms}}</td>
                           </tr>
-                          <tr>
-                            <td style="font-size: 12px;">Nombre de message reçu</td>
-                            <td style="color:#243665;font-size:12;">914</td>
-                          </tr>
-                          <tr>
-                            <td style="font-size: 12px;">Nombre de message ouvert</td>
-                            <td style="color:#243665;font-size:12;">201</td>
+                          <tr class="rowTable">
+                            <td style="font-size: 12px;">Nombre de message InApp envoyé</td>
+                            <td style="color:#9FA2B4;font-size:12;">{{promotion?.app}}</td>
                           </tr>
                         </tbody>
                       </table>
                 </mat-card-content>
-            </mat-card>        
+            </mat-card>
         </div><!--col-md-6-->
 
         <div class="col-md-6">
-            <mat-card>
+            <mat-card style="height: 120%;">
                 <mat-card-content>
 
-                    <div><p class="titleStat">Les clients</p></div><!--col-md-6-->
+                    <div class="row">
+                        <div class="col-md-6"><p class="titleStat">Détails clients</p></div><!--col-md-6-->
+                        <div class="col-md-6"><p style="color:#3751FF;text-align: right;">Voir tout</p></div><!--col-md-6-->
+                    </div><!--row-->
 
                     <table class="table">
                         <tbody>
-                          <tr>
-                            <td style="font-size: 12px;">Nombre de femme</td>
-                            <td style="color:#243665;font-size:12;">4238</td>
+                          <tr class="rowTable">
+                            <td style="font-size: 12px;">Nombre de femmes</td>
+                            <td style="color:#fff;font-size:12;"><span class="badge" style="background-color:#FEC400;">{{client?.femme}}</span></td>
                           </tr>
-                          <tr>
-                            <td style="font-size: 12px;">Nombre d’homme</td>
-                            <td style="color:#243665;font-size:12;">1005</td>
+                          <tr class="rowTable">
+                            <td style="font-size: 12px;">Nombre d’hommes</td>
+                            <td style="color:#fff;font-size:12;"><span class="badge" style="background-color:#29CC97;">{{client?.homme}}</span></td>
                           </tr>
-                          <tr>
-                            <td style="font-size: 12px;">Age moyen</td>
-                            <td style="color:#243665;font-size:12;">914</td>
+                          <tr class="rowTable">
+                            <td style="font-size: 12px;">Clients inactifs</td>
+                            <td style="color:#9FA2B4;font-size:12;"><span class="badge" style="background-color: #F0F1F7;color:#9FA2B4">{{client?.inactive}}</span></td>
                           </tr>
-                          <tr>
-                            <td style="font-size: 12px;">Panier moyen</td>
-                            <td style="color:#243665;font-size:12;">201</td>
-                          </tr>
+
                         </tbody>
                       </table>
-                    
-                    
+
+
                 </mat-card-content>
             </mat-card>
         </div><!--col-md-6-->
 
     </div><!--row-->
-   
+
  </div><!--container-->
 
 </app-nav-bar>

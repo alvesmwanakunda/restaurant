@@ -44,12 +44,28 @@ export class ClientService {
       return this.http.get(`${environment.BASE_API_URL}/cadeau/visite/${idUser}/${idEntrepirse}`);
     }
 
+    historiqueByUser(entreprise, client){
+      return this.http.get(`${environment.BASE_API_URL}/historique/client/${entreprise}/${client}`);
+    }
+
     deleteManyClient(client,idEntrepirse){
       return this.http.post(`${environment.BASE_API_URL}/delete/client/${idEntrepirse}`, client);
     }
 
     sharedEntreprise(client:Object, idEntreprise){
       return this.http.post(`${environment.BASE_API_URL}/shared/client/${idEntreprise}`, client);
+    }
+
+    // dashboard
+
+    getClientsDash(idEntrepirse){
+      return this.http.get(`${environment.BASE_API_URL}/client/info/${idEntrepirse}`);
+    }
+    getPromotionDash(idEntrepirse){
+      return this.http.get(`${environment.BASE_API_URL}/client/info/promotion/${idEntrepirse}`);
+    }
+    getClientsNDash(idEntrepirse){
+      return this.http.get(`${environment.BASE_API_URL}/client/info/client/${idEntrepirse}`);
     }
 
 
