@@ -28,7 +28,7 @@
            
                      <mat-form-field appearance="outline" class="example-full-width">
                        <mat-label class="labelFrom">Quantite</mat-label>
-                       <input type="number" min="0" matInput formControlName="quantite" required>
+                       <input type="number" min="1" matInput formControlName="quantite" required>
                          <mat-icon matTooltip="{{account_validation_messages.quantite[0].message}}"
                                  *ngIf="produitForm.get('quantite').hasError(account_validation_messages.quantite[0].type) && (produitForm.get('quantite').dirty || produitForm.get('quantite').touched)"
                                  style="cursor: pointer;" matSuffix>

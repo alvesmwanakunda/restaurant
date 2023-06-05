@@ -60,7 +60,8 @@
 
                     <p class="title-message">{{message?.nom}}</p>
                     <p class="message-text">{{message?.message}}</p>
-
+                    <p class="message-text"  *ngIf="message.isCode" style="text-align: center;">Ce message contient un QR Code de promotion</p>
+                    <img  src="{{qrcode}}" style="position:relative;left:32%;"  *ngIf="message.isCode">
                   </div>
 
                  </div><!--App-->
@@ -75,6 +76,9 @@
                       <mat-card-content>
                         <p class="title-sms">{{message?.nom}}</p>
                         <p class="sms-text">{{message?.message}}</p>
+                        <p class="message-text"  *ngIf="message.isCode" style="text-align: center;">Ce message contient un QR Code de promotion</p>
+                        <img  src="{{qrcode}}" style="position:relative;left:32%;"  *ngIf="message.isCode">
+
                       </mat-card-content>
                     </mat-card>
 

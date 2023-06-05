@@ -28,7 +28,7 @@
            
                      <mat-form-field appearance="outline" class="example-full-width">
                        <mat-label class="labelFrom">Quantite</mat-label>
-                        <input type="number" min="0" matInput  name="quantite" [(ngModel)]="produit.quantite" #quantite="ngModel" required> 
+                        <input type="number" min="1" matInput  name="quantite" [(ngModel)]="produit.quantite" #quantite="ngModel" required> 
                      </mat-form-field>
                      <div *ngIf="quantite.errors && (quantite.dirty || quantite.touched)">
                         <div [hidden]="!quantite.errors.required">

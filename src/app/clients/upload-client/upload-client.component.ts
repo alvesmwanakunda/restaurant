@@ -3,6 +3,8 @@ import { EntrepriseService } from '../../shared/services/entreprise.service';
 import { ClientService } from 'src/app/shared/services/client.service';
 import {MatDialog, MatDialogRef, MAT_DIALOG_DATA} from '@angular/material/dialog';
 import { ClientsComponent } from '../clients.component';
+import { MatSnackBar } from '@angular/material/snack-bar';
+
 
 
 
@@ -24,6 +26,7 @@ export class UploadClientComponent implements OnInit {
     private entrepriseService: EntrepriseService,
     private clientService: ClientService,
     public dialogRef: MatDialogRef<ClientsComponent>,
+    private _snackBar: MatSnackBar
   ) { }
 
   ngOnInit(): void {
@@ -54,13 +57,27 @@ export class UploadClientComponent implements OnInit {
         try {
              this.clientAdd = res;
              this.dialogRef.close(this.clientAdd);
+             this.openSnackBar();
              this.onLoadForm = false;
         } catch (error) {
            this.onLoadForm = false;
+           this.openSnackBarErreur();
            console.log("Erreur", error);
         }
       })
     }
+  }
+
+  openSnackBar() {
+    this._snackBar.open('Le client(s) ajouter avec succès', 'Fermer', {
+      duration: 3000
+    });
+  }
+
+  openSnackBarErreur() {
+    this._snackBar.open('Une erreur s\'est produite lors de \'enregistrement du client.', 'Fermer', {
+      duration: 3000
+    });
   }
 
 }

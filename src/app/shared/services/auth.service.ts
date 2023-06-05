@@ -139,8 +139,16 @@ export class AuthService {
     return this.httpClient.get(`${environment.BASE_API_URL}/agent/${idUser}`)
   }
 
+  getPasswordAgent(idUser){
+    return this.httpClient.get(`${environment.BASE_API_URL}/password/agent/${idUser}`)
+  }
+
   updateAgent(idUser, body){
     return this.httpClient.put(`${environment.BASE_API_URL}/agent/${idUser}`,body)
+  }
+
+  updatePasswordAgent(idUser,body){
+    return this.httpClient.put(`${environment.BASE_API_URL}/agent/update/password/${idUser}`,body)
   }
 
   addAgent(body,idEntreprise){

@@ -2,9 +2,21 @@
 
   <div class="container-fluid">
 
+    <div class="row">
+      <div class="col-6" style="font-size: 13px;">
+        <mat-form-field appearance="outline" class="example-full-width">
+          <mat-label>Filtre promotion </mat-label>
+          <mat-select (selectionChange)="filterPromotion($event.value)">
+            <mat-option value="app">Promotion InApp</mat-option>
+            <mat-option value="sms">Promotion sms</mat-option>
+          </mat-select>
+        </mat-form-field>
+      </div>
+    </div><!--div-->
+
     <div class="row" style="margin-bottom: 25px;">
 
-       <div class="col-md-3">
+       <div class="col-md-4">
 
           <mat-card>
             <mat-card-content style="text-align: center;">
@@ -12,13 +24,13 @@
                <br/>
                <span style="color: #000;font-size: 13px;">Nombre total de campagne</span>
                <br/>
-               <span style="color: #000;font-size: 26px;font-weight: 800;">03</span>
+               <span style="color: #000;font-size: 26px;font-weight: 800;">{{statPromotion?.promotions}}</span>
             </mat-card-content>
           </mat-card>
 
        </div><!--col-md-->
 
-       <div class="col-md-3">
+       <div class="col-md-4">
 
          <mat-card>
             <mat-card-content style="text-align: center;">
@@ -27,14 +39,14 @@
                <br/>
                <span style="color: #000;font-size: 13px;">Taux d'ouverture</span>
                <br/>
-               <span style="color: #000;font-size: 26px;font-weight: 800;">32</span>
+               <span style="color: #000;font-size: 26px;font-weight: 800;">{{statPromotion?.taux}}</span>
 
             </mat-card-content>
           </mat-card>
 
        </div><!--col-md-->
 
-       <div class="col-md-3">
+       <div class="col-md-4">
 
          <mat-card>
             <mat-card-content style="text-align: center;">
@@ -43,14 +55,14 @@
                <br/>
                <span style="color: #000;font-size: 13px;">Nombre de message envoyé</span>
                <br/>
-               <span style="color: #000;font-size: 26px;font-weight: 800;">32</span>
+               <span style="color: #000;font-size: 26px;font-weight: 800;">{{statPromotion?.message}}</span>
 
             </mat-card-content>
           </mat-card>
 
        </div><!--col-md-->
 
-       <div class="col-md-3">
+       <!--<div class="col-md-3">
 
          <mat-card>
             <mat-card-content style="text-align: center;">
@@ -64,7 +76,7 @@
             </mat-card-content>
           </mat-card>
 
-       </div><!--col-md-->
+       </div><col-md-->
 
 
     </div><!--row-->

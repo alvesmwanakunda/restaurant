@@ -13,7 +13,7 @@
         <div class="col-md-4">
           <small style="font-size: 10px;">Entrer un nombre de points</small>
           <mat-form-field appearance="outline" class="example-full-width">
-            <input type="number" min="0" matInput formControlName="point" placeholder="Pour" required>
+            <input type="number" min="1" matInput formControlName="point" placeholder="Pour" required>
               <mat-icon matTooltip="{{account_validation_messages.point[0].message}}"
               *ngIf="livraisonForm.get('point').hasError(account_validation_messages.point[0].type) && (livraisonForm.get('point').dirty || livraisonForm.get('point').touched)"
               style="cursor: pointer;" matSuffix>

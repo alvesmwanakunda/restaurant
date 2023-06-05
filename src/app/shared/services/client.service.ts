@@ -68,5 +68,9 @@ export class ClientService {
       return this.http.get(`${environment.BASE_API_URL}/client/info/client/${idEntrepirse}`);
     }
 
+    getZones(){
+      return this.http.get(`${environment.BASE_API_URL}/zones`);
+    }
+
 
 }

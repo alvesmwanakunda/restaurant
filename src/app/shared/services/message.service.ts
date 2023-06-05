@@ -41,5 +41,9 @@ export class MessageService {
     return this.http.get(`${environment.BASE_API_URL}/message/client/${type}/${idEntrepirse}`)
   }
 
+  getQrcodePromotion(idEntreprise,type){
+    return this.http.get(`${environment.BASE_API_URL}/qrcode/promotion/${idEntreprise}/${type}`)
+  }
+
 
 }

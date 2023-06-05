@@ -80,7 +80,7 @@ export class AddLivraisonComponent implements OnInit {
     this.getEntreprise();
 
     this.livraisonForm = new FormGroup({
-      point:new FormControl("",[Validators.required]),
+      point:new FormControl(1,[Validators.required]),
       typesPoint:new FormControl("",[Validators.required]),
       nombreLivraison:new FormControl("",[Validators.required]),
     });

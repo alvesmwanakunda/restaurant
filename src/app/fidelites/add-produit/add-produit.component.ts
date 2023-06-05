@@ -76,7 +76,7 @@ export class AddProduitComponent implements OnInit {
 
     this.produitForm = new FormGroup({
       nom:new FormControl("",[Validators.required]),
-      quantite:new FormControl("",[Validators.required]),
+      quantite:new FormControl(1,[Validators.required]),
       description:new FormControl("",null),
     });
 
@@ -95,12 +95,12 @@ export class AddProduitComponent implements OnInit {
   onFileSelected(event){
     this.file = event.target.files[0];
     this.fileName = this.file.name; 
-    var maxSize = 50000;
+    var maxSize = 650000;
 
     if(this.file.size > maxSize){
       //console.log("Erreur taille");
       this.isMax = true;
-      this.message = `${this.fileName}: Taille de fichier non valide, la taille maximale de téléchargement est de 50 KB.`;
+      this.message = `${this.fileName}: Taille de fichier non valide, la taille maximale de téléchargement est de 250 KB.`;
     }else{
       this.message = `Nouvelle image: ${this.fileName}`;
     }

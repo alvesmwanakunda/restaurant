@@ -10,6 +10,8 @@ import {
   FormGroup,
   Validators
  } from '@angular/forms';
+ import { CustomValidators } from "ng2-validation";
+
 
 @Component({
   selector: 'app-update-personnel',
@@ -22,18 +24,70 @@ export class UpdatePersonnelComponent implements OnInit {
 
   user:IClient;
   userForm: FormGroup;
+  passwordForm: FormGroup
   onLoadForm:boolean=false;
+  passwordFormErrors: any;
+  hideP = true;
+  hidePassword = true;
+  type:any;
+  submitted = false;
 
   constructor(
     private authService:AuthService,
     private entrepriseService:EntrepriseService,
     @Inject(MAT_DIALOG_DATA) public data: any,
     public dialogRef: MatDialogRef<ParametresComponent>,
-  ) { }
+  ) {
+    this.type = this.data.type;
+    this.passwordFormErrors = {
+      password: {},
+      confirmpassword:{}
+    };
+   }
+
+   account_validation_messages={
+   
+    confirmpassword: [
+      { type: "required", message: "Vous devez confirmer le mot de passe" },
+      { type: "minlength", message: "Mot de passe incorrect." },
+    ],
+    password: [
+      { type: "required", message: "Le mot de passe est obligatoire" },
+      {
+        type: "pattern",
+        message:
+          "Le mot de passe doit comporter au moins 8 caracteres,une lettre majuscule, une lettre minuscule et un chiffre",
+      },
+    ],
+  }; 
 
   ngOnInit(): void {
 
     this.getAgent();
+
+    //update password
+    let password = new FormControl("", [
+      Validators.required,
+      Validators.minLength(8),
+      Validators.pattern(
+        "^(?=.*?[A-Z])(?=.*?[a-z])(?=.*?[0-9])(?![#?!@$%^&*-]).{8,}$"
+      ),
+    ]);
+    let confirmpassword = new FormControl("", [
+      Validators.required,
+      Validators.minLength(8),
+      CustomValidators.equalTo(password),
+    ]);
+
+    this.passwordForm = new FormGroup({
+      password:password,
+      confirmpassword: confirmpassword,
+    });
+
+    this.passwordForm.valueChanges.subscribe(()=>{
+      this.onLoginFormValuesChanged();
+    });
+
   }
 
   getAgent(){
@@ -68,6 +122,45 @@ export class UpdatePersonnelComponent implements OnInit {
         console.log("Error",error);
       }
     })
+  }
+
+  onPasswordUser(user:IClient){
+    this.onLoadForm = true;
+    this.submitted=true;
+    let agent={};
+    if(!this.passwordForm.invalid){
+      Object.assign(agent, this.passwordForm.value);
+      this.authService.updatePasswordAgent(this.data.id,agent).subscribe((res:any)=>{
+       try {
+         this.onLoadForm = false;
+         this.dialogRef.close(res.message);
+       }
+       catch(error){
+         this.onLoadForm=false;
+         console.log("Error", error)
+       }
+      });
+    }else{
+      this.onLoadForm=false;
+    }
+  }
+
+  onLoginFormValuesChanged() {
+    for (const field in this.passwordFormErrors) {
+      if (!this.passwordFormErrors.hasOwnProperty(field)) {
+        continue;
+      }
+
+      // Clear previous errors
+      this.passwordFormErrors[field] = {};
+
+      // Get the contro
+      const control = this.passwordForm.get(field);
+
+      if (control && control.dirty && !control.valid) {
+        this.passwordFormErrors[field] = control.errors;
+      }
+    }
   }
 
 }

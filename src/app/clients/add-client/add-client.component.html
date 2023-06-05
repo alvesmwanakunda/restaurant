@@ -66,11 +66,11 @@
       </div><!--row-->
 
       <mat-form-field appearance="outline" class="example-full-width">
-            <mat-label class="labelFrom">Adresse</mat-label>
-            <input matInput formControlName="adresse">
+        <mat-label class="labelFrom">Adresse</mat-label>
+        <mat-select formControlName="adresse">
+          <mat-option *ngFor="let zone of zones" value="{{zone?.Area}}">{{zone?.Area}}</mat-option>
+        </mat-select>
       </mat-form-field>
-
-
 
     </div>
 

@@ -169,7 +169,7 @@
                                         <div class="vl"></div>
                                         <div style="margin-left: 10px;">
                                            <i  class="fas fa-edit" style="margin-right: 11px;color: #04075E;cursor: pointer;" (click)="openDialogUpdateCadeau(cadeau._id)" matTooltip="Modifié" *ngIf="cadeau.isCode==false"></i>
-                                           <i class="fas fa-trash" style="color: #04075E;cursor: pointer;" (click)="deleteCadeau(cadeau._id)" *ngIf="cadeau.isCode==false" matTooltip="Supprimé"></i>
+                                           <i class="fas fa-trash" style="color: #04075E;cursor: pointer;" (click)="deleteCadeau(cadeau._id)" *ngIf="cadeau.isCode==false" matTooltip="Supprimé" ></i>
                                         </div>
 
                                      </div><!--col-->
@@ -190,6 +190,7 @@
                                      <div class="col-md-6">
                                         <div style="cursor: pointer;" (click)="openDialogReduction(reduction._id)">
                                           <img src="data:image/png;base64,{{reduction?.produit?.photo}}" width="30px;" *ngIf="!reduction?.facture">
+                                          <span class="subTitle">{{reduction?.produit?.nom}}</span>
                                           <span class="subTitle" *ngIf="reduction?.facture">Facture</span>
                                           <span class="subTitle">{{reduction?.montant}} {{reduction?.devise}}</span>
                                          </div>

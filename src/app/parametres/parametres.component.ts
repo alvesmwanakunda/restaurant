@@ -144,9 +144,12 @@ export class ParametresComponent implements OnInit, AfterViewInit {
     })
   }
 
-  openDialogUpdate(idUser){
-    const dialogRef = this.dialog.open(UpdatePersonnelComponent,{width:'50%',height:'55%',data:{id:idUser}});
+  openDialogUpdate(idUser,type){
+    const dialogRef = this.dialog.open(UpdatePersonnelComponent,{width:'50%',height:'55%',data:{id:idUser, type:type}});
     dialogRef.afterClosed().subscribe(result => {
+      if(result){
+        this.openSnackBarAgent()
+      }
       console.log(`Dialog result: ${result}`);
       this.getAllAgent(this.idEntreprise);
     })
@@ -159,6 +162,13 @@ export class ParametresComponent implements OnInit, AfterViewInit {
 
   openSnackBar() {
     this._snackBar.open('Les avoir modifié avec succès', 'Fermer', {
+      duration: 3000,
+      panelClass: ['blue-snackbar']
+    });
+  }
+
+  openSnackBarAgent() {
+    this._snackBar.open('Les informations modifié avec succès', 'Fermer', {
       duration: 3000,
       panelClass: ['blue-snackbar']
     });

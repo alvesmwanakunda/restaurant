@@ -55,6 +55,7 @@ export class PromotionsComponent implements OnInit,AfterViewInit {
     cible: '', type:'',montant:'', activation:'', payement:'',statut:''
   };
   critereFilter = new FormControl();
+  statPromotion:any;
 
 
 
@@ -98,6 +99,7 @@ export class PromotionsComponent implements OnInit,AfterViewInit {
             this.entreprise = res.body;
             if(this.entreprise){
               this.getAllPromotion(this.entreprise._id);
+              this.filetrPromotionApp(this.entreprise._id);
             }
        } catch (error) {
          console.log("Erreur", error);
@@ -232,6 +234,36 @@ export class PromotionsComponent implements OnInit,AfterViewInit {
     })
   }
 
+  filetrPromotionSms(idEntreprise){
+    this.promotionService.filterPromotionSms(idEntreprise).subscribe((res:any)=>{
+      try {
+            //console.log("Sms", res)
+            this.statPromotion=res;
+      } catch (error) {
+        console.log("Erreur", error)
+      }
+    })
+  }
+
+  filetrPromotionApp(idEntreprise){
+    this.promotionService.filterPromotionApp(idEntreprise).subscribe((res:any)=>{
+      try {
+            //console.log("App", res)
+            this.statPromotion=res;
+      } catch (error) {
+        console.log("Erreur", error)
+      }
+    })
+  }
+
+  filterPromotion(event){
+    console.log("Event 1", event);
+    if(event==="sms"){
+       this.filetrPromotionSms(this.entreprise?._id);
+    }else{
+       this.filetrPromotionApp(this.entreprise?._id);
+    }
+  }
 
 
   

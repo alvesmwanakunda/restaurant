@@ -30,6 +30,7 @@ export class AddClientComponent implements OnInit {
   submitted: boolean = false;
   client:any;
   clientAdd:any;
+  zones:any;
 
   emailorphone = new FormControl("", [
     Validators.required,
@@ -90,6 +91,7 @@ export class AddClientComponent implements OnInit {
 
   ngOnInit(): void {
     this.getEntreprise();
+    this.getZones();
 
 
     this.clientForm = new FormGroup({
@@ -113,6 +115,17 @@ export class AddClientComponent implements OnInit {
       try {
          //console.log("Response", res);
          this.entreprise = res.body;
+      } catch (error) {
+        console.log("Erreur ", error);
+      }
+    })
+  }
+
+  getZones(){
+    this.clientService.getZones().subscribe((res:any)=>{
+      try {
+        console.log("Zones", res);
+        this.zones = res.message;
       } catch (error) {
         console.log("Erreur ", error);
       }

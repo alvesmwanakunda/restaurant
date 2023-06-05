@@ -91,7 +91,7 @@ export class AddCadeauComponent implements OnInit {
     this.getEntreprise();
 
     this.cadeauForm = new FormGroup({
-     point:new FormControl("",[Validators.required]),
+     point:new FormControl(1,[Validators.required]),
      produit:new FormControl("",[Validators.required]),
      typesPoint:new FormControl("",[Validators.required]),
      dateDebut:new FormControl("",null),

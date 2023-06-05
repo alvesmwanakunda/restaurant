@@ -100,7 +100,7 @@ export class AddReductionComponent implements OnInit {
     this.getEntreprise();
 
     this.reductionForm = new FormGroup({
-      point:new FormControl("",[Validators.required]),
+      point:new FormControl(1,[Validators.required]),
       produit:new FormControl("",null),
       typesPoint:new FormControl("",[Validators.required]),
       montant:new FormControl("",[Validators.required]),

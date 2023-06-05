@@ -1,57 +1,112 @@
 <mat-dialog-content class="mat-typography">
     <div class="container-fluid">
-  
-      <div class="text-center">
-        <p class="titleFront">Modifier agent</p>
-      </div>
-  
-      <form novalidate *ngIf="user">
-  
-        <div class="row" style="padding-top: 65px;">
-  
-          <div class="col-md-6">
-    
-            <mat-form-field appearance="outline" class="example-full-width">
-              <mat-label class="labelFrom">Nom</mat-label>
-              <input  matInput name="nom" [(ngModel)]="user.nom" readonly>
-            </mat-form-field>
-            
 
-          </div><!--col-->
-
-          <div class="col-md-6">
-    
-            <mat-form-field appearance="outline" class="example-full-width">
-              <mat-label class="labelFrom">Prénom</mat-label>
-              <input  matInput name="prenom"  [(ngModel)]="user.prenom" readonly>
-            </mat-form-field>
-        
-          </div><!--col-->
-         
-        </div><!--row-->
-
-        <div class="row">
-            <div class="col-md-6">
-    
-                <mat-form-field appearance="outline" class="example-full-width">
-                  <mat-label class="labelFrom">Poste</mat-label>
-                  <input  matInput name="poste" [(ngModel)]="user.poste" #poste="ngModel" required>
-                </mat-form-field>
-                <div *ngIf="poste.errors && (poste.dirty || poste.touched)">
-                    <div [hidden]="!poste.errors.required">
-                      <p class="text-danger" style="font-size: 13px;">Ce champ est obligatoire!</p>
-                    </div>
-                </div>
-        
-              </div><!--col-->
-        </div>
-     
+      <div *ngIf="type=='update'">
         <div class="text-center">
-           <button mat-button mat-dialog-close>Fermer</button>
-           <button mat-button type="submit" (click)="updateAgent(user)" cdkFocusInitial style=" background:linear-gradient(90deg, #0c1733, #3fd27e) !important;color:#fff">Mettre à jour</button>
+          <p class="titleFront">Modifier agent</p>
         </div>
+        <form novalidate *ngIf="user">
+    
+          <div class="row" style="padding-top: 65px;">
+    
+            <div class="col-md-6">
+      
+              <mat-form-field appearance="outline" class="example-full-width">
+                <mat-label class="labelFrom">Nom</mat-label>
+                <input  matInput name="nom" [(ngModel)]="user.nom" readonly>
+              </mat-form-field>
+              
   
-      </form><!--Form-->
+            </div><!--col-->
+  
+            <div class="col-md-6">
+      
+              <mat-form-field appearance="outline" class="example-full-width">
+                <mat-label class="labelFrom">Prénom</mat-label>
+                <input  matInput name="prenom"  [(ngModel)]="user.prenom" readonly>
+              </mat-form-field>
+          
+            </div><!--col-->
+           
+          </div><!--row-->
+  
+          <div class="row">
+              <div class="col-md-6">
+      
+                  <mat-form-field appearance="outline" class="example-full-width">
+                    <mat-label class="labelFrom">Poste</mat-label>
+                    <input  matInput name="poste" [(ngModel)]="user.poste" #poste="ngModel" required>
+                  </mat-form-field>
+                  <div *ngIf="poste.errors && (poste.dirty || poste.touched)">
+                      <div [hidden]="!poste.errors.required">
+                        <p class="text-danger" style="font-size: 13px;">Ce champ est obligatoire!</p>
+                      </div>
+                  </div>
+          
+                </div><!--col-->
+          </div>
+       
+          <div class="text-center">
+             <button mat-button mat-dialog-close>Fermer</button>
+             <button mat-button type="submit" (click)="updateAgent(user)" cdkFocusInitial style=" background:linear-gradient(90deg, #0c1733, #3fd27e) !important;color:#fff">Mettre à jour</button>
+          </div>
+    
+        </form><!--Form-->
+      </div><!--div-->
+
+      <div *ngIf="type=='password'">
+        <div class="text-center">
+          <p class="titleFront">Modifier le mot de passe</p>
+          <p style="font-size: 12px;">Agent : {{user?.nom}} {{user?.prenom}}</p>
+        </div>
+        <form [formGroup]="passwordForm" novalidate *ngIf="user">
+    
+          <div  style="padding-top: 65px;">
+    
+            <div style="font-size: 11px;">
+              <mat-form-field appearance="outline" class="example-full-width">
+                <mat-label class="labelFrom">Nouveau mot de passe</mat-label>
+                <input matInput formControlName="password" [type]="hideP ? 'password' : 'text'"  required>
+                  <button class="iconVisible" *ngIf="passwordForm.get('password').value && passwordForm.get('password').value!=''" mat-icon-button matSuffix (click)="hideP = !hideP" [attr.aria-label]="'Hide password'" [attr.aria-pressed]="hideP">
+                   <mat-icon>{{hideP ? 'visibility_off' : 'visibility'}}</mat-icon>
+                  </button>
+                  <mat-icon class="iconError0" matTooltip="{{ account_validation_messages.password[0].message }}"
+                    *ngIf="passwordForm.get('password').hasError(account_validation_messages.password[0].type) && ((passwordForm.get('password').dirty || passwordForm.get('password').touched) || (submitted))"
+                    style="cursor: pointer;" matSuffix>
+                     <i class="fas fa-exclamation-circle" style="color:red"></i>
+                  </mat-icon>
+                  <mat-icon class="iconError" matTooltip="{{ account_validation_messages.password[1].message }}"
+                      *ngIf="passwordForm.get('password').hasError(account_validation_messages.password[1].type) && ((passwordForm.get('password').dirty || passwordForm.get('password').touched) || (submitted))"
+                      style="cursor: pointer;" matSuffix>
+                      <i class="fas fa-exclamation-circle"  style="color:red"></i>
+                  </mat-icon>
+              </mat-form-field>       
+          </div>
+          <div style="font-size: 11px;">
+              <mat-form-field appearance="outline" class="example-full-width">
+              <mat-label class="labelFrom">Confirmer nouveau mot de passe</mat-label>
+              <input matInput  formControlName="confirmpassword" [type]="hidePassword ? 'password' : 'text'">
+                  <button class="iconVisible" *ngIf="passwordForm.get('confirmpassword').value && passwordForm.get('confirmpassword').value!=''" mat-icon-button matSuffix (click)="hidePassword = !hidePassword" [attr.aria-label]="'Hide password'" [attr.aria-pressed]="hidePassword">
+                          <mat-icon>{{hidePassword ? 'visibility_off' : 'visibility'}}</mat-icon>
+                  </button>
+                  <mat-icon class="iconError" matTooltip="Les deux mot de passe ne correspondent pas"
+                            *ngIf="(passwordForm.get('confirmpassword').errors?.notEqual || passwordForm.get('confirmpassword').value!=passwordForm.get('password').value) &&  ((passwordForm.get('confirmpassword').dirty || passwordForm.get('confirmpassword').touched) || (submitted))"
+                            style="cursor: pointer;" matSuffix>
+                            <i class="fas fa-exclamation-circle" style="color:red"></i>
+                  </mat-icon>
+              </mat-form-field>
+          </div>
+           
+          </div><!--row-->
+  
+          <div class="text-center">
+             <button mat-button mat-dialog-close>Fermer</button>
+             <button mat-button type="submit" (click)="onPasswordUser(user)" cdkFocusInitial style=" background:linear-gradient(90deg, #0c1733, #3fd27e) !important;color:#fff">Mettre à jour</button>
+          </div>
+    
+        </form><!--Form-->
+      </div><!--div-->
+
       <div *ngIf="onLoadForm" style="padding-top: 20px;">
         <mat-progress-bar mode="indeterminate"></mat-progress-bar>
       </div>

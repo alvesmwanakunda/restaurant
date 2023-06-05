@@ -15,6 +15,7 @@ export class MessageClientComponent implements OnInit, AfterViewInit {
   selectedStepIndex:any;
   message:any;
   entreprise:any;
+  qrcode:any;
   @ViewChild('stepper', { static: false }) stepper: MatStepper;
 
   constructor(
@@ -39,14 +40,17 @@ export class MessageClientComponent implements OnInit, AfterViewInit {
               this.selectedStepIndex = idx;
               console.log("Index", idx);
               if(!idx || idx==0){
-                 console.log("Bonjour Visite");
+                 //console.log("Bonjour Visite");
                  this.messageType("Visite", this.entreprise?._id);
+                 this.getQrcodePromotion(this.entreprise?._id,"Visite");
               }else if(idx==1){
-                console.log("Bonjour Anniversaire");
+                //console.log("Bonjour Anniversaire");
                 this.messageType("Anniversaire", this.entreprise?._id);
+                this.getQrcodePromotion(this.entreprise?._id,"Anniversaire");
               }else{
-                this.messageType("Relancer", this.entreprise?._id)
-                 console.log("Bonjour Relancer");
+                this.messageType("Relancer", this.entreprise?._id);
+                this.getQrcodePromotion(this.entreprise?._id,"Relancer");
+                 //console.log("Bonjour Relancer");
               }
           };
       });
@@ -59,6 +63,7 @@ export class MessageClientComponent implements OnInit, AfterViewInit {
          this.entreprise = res.body;
          if(this.entreprise){
            this.messageType("Visite", this.entreprise._id);
+           this.getQrcodePromotion(this.entreprise?._id,"Visite");
          }
     } catch (error) {
       console.log("Erreur", error);
@@ -75,6 +80,19 @@ export class MessageClientComponent implements OnInit, AfterViewInit {
        }
 
      })
+ }
+
+ getQrcodePromotion(idEntrepirse,type:String){
+  this.messageService.getQrcodePromotion(idEntrepirse,type).subscribe((res:any)=>{
+    try {
+         console.log("Qrcode Alves", res);
+         if(res.success==true){
+          this.qrcode = res.qrCode;
+         }
+    }catch(error){
+      console.log("Erreur", error);
+    }
+  })
  }
 
   

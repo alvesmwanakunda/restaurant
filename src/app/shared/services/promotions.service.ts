@@ -29,4 +29,12 @@ export class PromotionsService {
     return this.http.post(`${environment.BASE_API_URL}/promotion/${idEntreprise}`, promotion)
   }
 
+  filterPromotionSms(idEntreprise){
+    return this.http.get(`${environment.BASE_API_URL}/stat/promotion/sms/${idEntreprise}`)
+  }
+
+  filterPromotionApp(idEntreprise){
+    return this.http.get(`${environment.BASE_API_URL}/stat/promotion/app/${idEntreprise}`)
+  }
+
 }

@@ -110,8 +110,9 @@
                               <ng-container matColumnDef="actions">
                                 <th mat-header-cell *matHeaderCellDef style="color: #000;"> Action </th>
                                 <td mat-cell *matCellDef="let element"> 
-                                  <button mat-icon-button (click)="openDialogUpdate(element.id)"><i class="fas fa-edit" style="color:#2f0ce2;"></i></button> 
-                                  <button mat-icon-button (click)="openDialogDelete(element.id)"><i class="fas fa-trash-alt" style="color:#cf0861;"></i></button>
+                                  <button mat-icon-button (click)="openDialogUpdate(element.id,'update')" matTooltip="Modifier l'agent"><i class="fas fa-edit" style="color:#2f0ce2;"></i></button>
+                                  <button mat-icon-button (click)="openDialogUpdate(element.id,'password')" matTooltip="Changer le mot de passe"><i class="fas fa-lock"></i></button>  
+                                  <button mat-icon-button (click)="openDialogDelete(element.id)" matTooltip="Supprimer l'agent"><i class="fas fa-trash-alt" style="color:#cf0861;"></i></button>
                                 </td>
                               </ng-container>
 

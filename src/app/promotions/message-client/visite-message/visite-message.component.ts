@@ -190,7 +190,7 @@ export class VisiteMessageComponent implements OnInit {
     this.messageService.getByTypeMessageVisiteApp("Visite",id).subscribe((res:any)=>{
       try {
            this.messageClient = res.message;
-           console.log("Message", this.messageClient);
+           //console.log("Message", this.messageClient);
            if(res.message){
                this.chargeMessage=true;
                this.image = this.sanitizer.bypassSecurityTrustResourceUrl(`data:image/png;base64, ${res.message.photo}`);
