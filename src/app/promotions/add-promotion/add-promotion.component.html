@@ -13,8 +13,8 @@
       <div class="col-md-6">
          <div align="right">
             <!--[disabled]="!isValid && !isWefid"-->
-            <button mat-mini-fab class="sizebf" matTooltip="Envoyer" (click)="addProduit('envoyée')" style="margin-right:20px"><i class="fas fa-paper-plane" style="font-size: 20px;"></i></button>
-            <button mat-mini-fab class="sizebff" matTooltip="Enregistrer" (click)="addProduit('enregistrée')"><i class="fas fa-save" style="font-size: 20px;"></i></button>
+            <button mat-button mat-raised-button  class="greenbutton" matTooltip="Envoyer" (click)="addProduit('envoyée')" style="margin-right:20px"><i class="fas fa-paper-plane" style="font-size: 20px;"></i> Envoyer</button>
+            <button mat-button mat-raised-button  class="greenbutton" matTooltip="Enregistrer" (click)="addProduit('enregistrée')"><i class="fas fa-save" style="font-size: 20px;"></i> Enregistrer</button>
          </div>
       </div>
     </div>
@@ -75,7 +75,7 @@
 
                           <p class="titreHeader">App</p>
 
-                          <editor 
+                          <!--<editor 
                           apiKey="yimjymys4ncgnyjba52651rzyas8c049jditk61x087va3yn"
                           [init]="{
                             icons: 'material',
@@ -85,11 +85,11 @@
                             height: '250',
                             language: 'fr_FR'
                           }"
-                          formControlName="email"></editor>
+                          formControlName="email"></editor>-->
 
-                        <!-- <mat-form-field class="example-full-width" appearance="legacy">
+                        <mat-form-field class="example-full-width" appearance="legacy">
                             <textarea matInput formControlName="email"></textarea>
-                          </mat-form-field>-->
+                          </mat-form-field>
 
                           <div style="padding-top: 15px;">
 
@@ -329,7 +329,7 @@
             <div class="row">
                <div class="col-md-12">
 
-                <img src="assets/images/phone.png" alt="Angular Carousel 1" style="width:80%;display:block; margin-left: auto;margin-right: auto;">
+                <img src="assets/images/phone1.png" alt="Angular Carousel 1" style="width:80%;display:block; margin-left: auto;margin-right: auto;">
                
                </div><!--col-md-12-->
             </div><!--row-->

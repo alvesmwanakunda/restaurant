@@ -12,7 +12,7 @@
             </div><!--col-md-6-->
             <div class="col-md-6">
                <div align="right">
-                  <button mat-mini-fab class="sizebf" matTooltip="Modifier" (click)=" editPromotion(promotion?._id)" style="margin-right:20px"><i class="fas fa-edit" style="font-size: 20px;"></i></button>
+                  <button mat-button mat-raised-button  class="greenbutton" matTooltip="Modifier" (click)=" editPromotion(promotion?._id)" style="margin-right:20px"><i class="fas fa-edit" style="font-size: 20px;"></i> Modifier</button>
                </div>
             </div>
         </div>
@@ -311,13 +311,13 @@
                 <div class="row">
                          <div class="col-md-12">
 
-                            <img src="assets/images/phone.png" alt="Angular Carousel 1" style="width:80%;display:block; margin-left: auto;margin-right: auto;">
+                            <img src="assets/images/phone1.png" alt="Angular Carousel 1" style="width:80%;display:block; margin-left: auto;margin-right: auto;">
 
                             <div *ngIf="promotion?.types=='App'" class="app">
 
                               <div style="margin-bottom:15px;">
                                   <img  src="data:image/png;base64,{{promotion?.photo}}" style="width:68%;position:relative;left:13%;" *ngIf="promotion?.photo">
-                                  <img  src="assets/images/blank.jpeg" style="width:68%;position:relative;left:13%;"  *ngIf="!promotion?.photo">
+                                  <img  src="assets/images/store.jpg" style="width:68%;position:relative;left:13%;"  *ngIf="!promotion?.photo">
                               </div>
                               
                               <p class="title-message">{{promotion?.nom}}</p>
