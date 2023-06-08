@@ -10,6 +10,8 @@ import {
  import { CustomValidators } from "ng2-validation";
  import {MatDialog, MatDialogRef, MAT_DIALOG_DATA} from '@angular/material/dialog';
  import { ClientsComponent } from '../clients.component';
+ import { MatSnackBar } from '@angular/material/snack-bar';
+
 
 
 
@@ -41,6 +43,7 @@ export class AddClientComponent implements OnInit {
        private clientService: ClientService,
        private formBuilder: FormBuilder,
        public dialogRef: MatDialogRef<ClientsComponent>,
+       private _snackBar: MatSnackBar
        //@Inject(MAT_DIALOG_DATA) public data: DialogData
   ) {
     this.clientFormErrors = {
@@ -144,6 +147,7 @@ export class AddClientComponent implements OnInit {
         if(!res.success){
              this.clientFormErrors["emailorphone"].found = true;
              this.onLoadForm = false;
+             this.openSnackBarErreur();
         }
         else{
 
@@ -151,6 +155,7 @@ export class AddClientComponent implements OnInit {
               //console.log("Response", res);
               this.clientAdd = res;
               this.dialogRef.close(this.clientAdd);
+              this.openSnackBar();
           } catch (error) {
             console.log("Erreur ", error);
           }
@@ -164,6 +169,18 @@ export class AddClientComponent implements OnInit {
 
     }
 
+  }
+
+  openSnackBar() {
+    this._snackBar.open('Le client(s) ajouter avec succès', 'Fermer', {
+      duration: 3000
+    });
+  }
+
+  openSnackBarErreur() {
+    this._snackBar.open('Une erreur s\'est produite lors de \'enregistrement du client.', 'Fermer', {
+      duration: 3000
+    });
   }
 
 }

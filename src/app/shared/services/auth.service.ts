@@ -12,6 +12,7 @@ import { JwtHelperService } from '@auth0/angular-jwt';
 export class AuthService {
 
   private jwtHelper = new JwtHelperService();
+  verify:any;
 
   optionRequete = {
     headers: new HttpHeaders({
@@ -141,6 +142,14 @@ export class AuthService {
 
   getPasswordAgent(idUser){
     return this.httpClient.get(`${environment.BASE_API_URL}/password/agent/${idUser}`)
+  }
+
+  getVerifyToken(token){
+    return this.httpClient.get(`${environment.BASE_API_URL}/verifyRememberWeb/${token}`)
+  }
+
+  deleteVerifyToken(){
+    return this.httpClient.get(`${environment.BASE_API_URL}/deleteRememberWeb`)
   }
 
   updateAgent(idUser, body){

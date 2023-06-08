@@ -7,6 +7,7 @@ import {
   FormGroup,
   Validators
  } from '@angular/forms';
+ import { CookieService } from 'ngx-cookie-service';
 
 @Component({
   selector: 'app-login',
@@ -24,7 +25,6 @@ export class LoginComponent implements OnInit {
   user: any;
   private loggedIn: boolean;
   hide = true;
-
   password = new FormControl("", [
     Validators.required,
     Validators.minLength(8),
@@ -33,17 +33,30 @@ export class LoginComponent implements OnInit {
   emailorphone = new FormControl("", [
     Validators.required,
   ]);
+  rememberMe:any;
+  verify:any;
+  messageverify:any;
 
   constructor(
     private formBuilder: FormBuilder,
     private router: Router,
     private authService: AuthService,
-
+    private cookieService: CookieService
   ) {
     this.loginFormErrors = {
       emailorphone: {},
       password: {},
     };
+
+    this.loginForm = this.formBuilder.group({
+      emailorphone: this.emailorphone,
+      password:this.password,
+      rememberMeControl:[false]
+    });
+    this.loginForm.valueChanges.subscribe(()=>{
+      this.onLoginFormValuesChanged();
+    });
+
   }
   account_validation_messages = {
     emailorphone: [
@@ -56,20 +69,27 @@ export class LoginComponent implements OnInit {
   };
 
   ngOnInit(): void {
-    localStorage.clear();
-    this.signOut();
 
-    /*if (this.authService.isConnected()) {
-      this.router.navigate(['dashboard'])
-    }*/
+    //this.cookieService.delete('rememberMe');
+    //this.cookieService.delete('token');
 
-    this.loginForm = this.formBuilder.group({
-      emailorphone: this.emailorphone,
-      password:this.password,
-    });
-    this.loginForm.valueChanges.subscribe(()=>{
-      this.onLoginFormValuesChanged();
-    });
+    this.rememberMe = this.cookieService.get('rememberMe');
+    this.loginForm.get('rememberMeControl').setValue(this.rememberMe);
+    if(this.rememberMe){
+      this.authService.getVerifyToken(this.cookieService.get('token')).subscribe((res:any)=>{
+        console.log("message", res.message);
+        try {
+          if(res.message=="User not found"){
+              this.messageverify="Utilisateur introuvable";
+          }else{
+              this.authService.setUser(res.message);
+              this.handleRedirectOnLogin(res.message);
+          }
+        } catch (error) {
+           console.log("Erreur", error)
+        }
+      })
+    }
 
   }
 
@@ -107,17 +127,18 @@ export class LoginComponent implements OnInit {
     this.testValidation = false;
 
     this.loginFormErrors["emailorphone"].notfound = false;
-    //alert(this.loginForm.value);
     this.onAuthServiceLogin = this.authService
       .signin(this.loginForm.value)
       .then((response) => {
         if (!response.success) {
           this.loginFormErrors["emailorphone"].notfound = true;
         } else {
-          console.log("Reponse", response.message);
-          //this.authService.registerCurretUser(response.message);
           if(response.message.user.role=="admin_agent"){
 
+            if(this.loginForm.get('rememberMeControl').value==true){
+              this.cookieService.set('rememberMe','true');
+              this.cookieService.set('token',response.message.token)
+            }
             this.authService.setUser(response.message);
             this.handleRedirectOnLogin(response.message);
 
@@ -128,13 +149,18 @@ export class LoginComponent implements OnInit {
         this.onLoadForm = false;
       })
       .catch((err) => {
-        //console.log("err", err);
         this.onLoadForm = false;
       });
   }
 
    signOut(): void {
     if (this.loggedIn) this.authService.logout();
+  }
+
+  keyDownFunction(event): void{
+    if(event.keyCode === 13){
+      this.onLogin();
+    }
   }
 
 

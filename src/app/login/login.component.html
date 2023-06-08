@@ -12,12 +12,15 @@
           <mat-card class="exemple-card" style="box-shadow: none !important;opacity: 80%;">
               <mat-card-title class="titleCardLogin">
               </mat-card-title>
-              <form [formGroup]="loginForm" novalidate>
+              <form [formGroup]="loginForm" novalidate (keydown)="keyDownFunction($event)">
 
                 <mat-card-content style="margin: 0 60px 0 60px;">
 
                   <div *ngIf="testValidation" class="text-danger">
                     <p class="text-danger text-center"> Veuillez remplir tous les champs </p>
+                  </div>
+                  <div *ngIf="messageverify" class="text-danger">
+                    <p class="text-danger text-center">{{messageverify}}</p>
                   </div>
 
                 <mat-form-field appearance="legacy" class="example-full-width">
@@ -37,7 +40,7 @@
                   </button>
                 </mat-form-field>
                 <section class="example-section">
-                  <mat-checkbox style="color:#04075E;">Se souvenir de moi</mat-checkbox>
+                  <mat-checkbox style="color:#04075E;" formControlName="rememberMeControl">Se souvenir de moi</mat-checkbox>
                 </section>
 
                 <div class="text-center">
