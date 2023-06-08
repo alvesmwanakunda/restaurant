@@ -4,5 +4,5 @@ export const environment = {
   //BASE_API_URL: "https://guarded-sea-81297.herokuapp.com",
   //BASE_URL: "https://web-restaurant.vercel.app"
   BASE_API_URL: "https://wefid.io/api",
-  BASE_URL: "https://wefid.io"
+  BASE_URL: "https://wefid.io",
 };
