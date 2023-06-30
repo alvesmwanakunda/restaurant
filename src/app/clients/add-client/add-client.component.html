@@ -55,10 +55,15 @@
 
           <mat-form-field appearance="outline" class="example-full-width">
             <mat-label class="labelFrom">Genre</mat-label>
-            <mat-select formControlName="genre">
+            <mat-select formControlName="genre" required>
               <mat-option value="Femme">Femme</mat-option>
               <mat-option value="Homme">Homme</mat-option>
             </mat-select>
+            <mat-icon matTooltip="{{account_validation_messages.genre[0].message}}"
+                      *ngIf="clientForm.get('genre').hasError(account_validation_messages.genre[0].type) && (clientForm.get('genre').dirty || clientForm.get('genre').touched  || (submitted))"
+                      style="cursor: pointer;" matSuffix>
+                      <i class="fas fa-exclamation-circle"></i>
+            </mat-icon>
           </mat-form-field>
 
         </div>

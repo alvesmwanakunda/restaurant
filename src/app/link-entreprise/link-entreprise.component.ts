@@ -39,7 +39,7 @@ export class LinkEntrepriseComponent implements OnInit {
     private entrepriseService: EntrepriseService,
     private clientService: ClientService,
     private sanitizer: DomSanitizer
-  ) { 
+  ) {
      this.routes.params.subscribe((data:any)=>{
       this.idEntreprise = data.idEntreprise;
       //console.log("Data", this.idEntreprise);
@@ -47,7 +47,8 @@ export class LinkEntrepriseComponent implements OnInit {
      this.clientFormErrors = {
       emailorphone: {},
       nom:{},
-      prenom:{}
+      prenom:{},
+      genre:{}
     };
   }
 
@@ -69,6 +70,12 @@ export class LinkEntrepriseComponent implements OnInit {
       }
     ],
     prenom:[
+      {
+        type:"required",
+        message:"Ce champ est requis"
+      }
+    ],
+    genre:[
       {
         type:"required",
         message:"Ce champ est requis"
@@ -103,7 +110,7 @@ export class LinkEntrepriseComponent implements OnInit {
       ]),
       nom:new FormControl("",[Validators.required]),
       prenom:new FormControl("",[Validators.required]),
-      genre:new FormControl("",null),
+      genre:new FormControl("",[Validators.required]),
       adresse:new FormControl("",null)
 
     });

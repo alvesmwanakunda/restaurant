@@ -49,7 +49,8 @@ export class AddClientComponent implements OnInit {
     this.clientFormErrors = {
       emailorphone: {},
       nom:{},
-      prenom:{}
+      prenom:{},
+      genre:{}
     };
   }
 
@@ -71,6 +72,12 @@ export class AddClientComponent implements OnInit {
       }
     ],
     prenom:[
+      {
+        type:"required",
+        message:"Ce champ est requis"
+      }
+    ],
+    genre:[
       {
         type:"required",
         message:"Ce champ est requis"
@@ -106,7 +113,7 @@ export class AddClientComponent implements OnInit {
       ]),
       nom:new FormControl("",[Validators.required]),
       prenom:new FormControl("",[Validators.required]),
-      genre:new FormControl("",null),
+      genre:new FormControl("",[Validators.required]),
       adresse:new FormControl("",null)
 
     });
