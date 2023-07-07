@@ -44,4 +44,8 @@ export class CadeauService {
   getCountPointCadeau(idCadeau){
     return this.http.get(`${environment.BASE_API_URL}/point/detail/cadeau/${idCadeau}`)
   }
+
+  archiveCadeau(idCadeau){
+    return this.http.get(`${environment.BASE_API_URL}/cadeau/archive/${idCadeau}`)
+  }
 }

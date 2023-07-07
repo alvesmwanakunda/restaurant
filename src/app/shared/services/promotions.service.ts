@@ -37,4 +37,8 @@ export class PromotionsService {
     return this.http.get(`${environment.BASE_API_URL}/stat/promotion/app/${idEntreprise}`)
   }
 
+  getQrcodePromotionGlobal(id){
+    return this.http.get(`${environment.BASE_API_URL}/qrcode/promotion/global/${id}`)
+  }
+
 }

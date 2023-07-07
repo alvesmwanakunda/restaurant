@@ -107,6 +107,7 @@ export class AddPromotionComponent implements OnInit {
       types:["",null],
       sms:["",null],
       email:["",null],
+      isCode:["",null],
     });
     this.secondFormGroup = this._formBuilder.group({
       cible:['',Validators.required],
@@ -160,6 +161,7 @@ export class AddPromotionComponent implements OnInit {
     formData.append("types",this.promotion.types);
     formData.append("sms",this.promotion.sms);
     formData.append("email",this.promotion.email);
+    formData.append("isCode",this.promotion.isCode);
     formData.append("cible",this.promotion1.cible);
     formData.append("critere",this.promotion1.critere);
     formData.append("jours",this.promotion1.jours);

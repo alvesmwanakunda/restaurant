@@ -36,6 +36,7 @@ export class EditPromotionComponent implements OnInit {
   jours:any;
   onLoadForm:boolean=false;
   message:any;
+  qrcode:any
 
 
   constructor(
@@ -101,6 +102,7 @@ export class EditPromotionComponent implements OnInit {
 
   ngOnInit(): void {
     this.getPromotion();
+    this.getQrcode(this.idPromotion);
     this.listType = this.types.listTypes;
     this.listRegion = this.regions.listRegions;
     this.listZone = this.zones.listZone;
@@ -110,6 +112,7 @@ export class EditPromotionComponent implements OnInit {
       types:["",null],
       sms:["",null],
       email:["",null],
+      isCode:["",null],
     });
     this.secondFormGroup = this._formBuilder.group({
       cible:['',Validators.required],
@@ -151,6 +154,19 @@ export class EditPromotionComponent implements OnInit {
 
       } catch (error) {
         console.log("error", error);
+      }
+    })
+  }
+
+  getQrcode(idPromotion){
+    this.promotionService.getQrcodePromotionGlobal(idPromotion).subscribe((res:any)=>{
+      try {
+        console.log("Qrcode Alves", res);
+        if(res.success==true){
+         this.qrcode = res.qrCode;
+        }
+      } catch (error) {
+        console.log("Erreur", error);
       }
     })
   }

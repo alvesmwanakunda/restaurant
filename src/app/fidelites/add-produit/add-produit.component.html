@@ -19,7 +19,7 @@
                              <mat-icon matTooltip="{{account_validation_messages.nom[0].message}}"
                                  *ngIf="produitForm.get('nom').hasError(account_validation_messages.nom[0].type) && (produitForm.get('nom').dirty || produitForm.get('nom').touched)"
                                  style="cursor: pointer;" matSuffix>
-                                 <i class="fas fa-exclamation-circle"></i>
+                                 <i class="fas fa-exclamation-circle icon-error"></i>
                                </mat-icon>
                        </mat-form-field>
            
@@ -32,7 +32,7 @@
                          <mat-icon matTooltip="{{account_validation_messages.quantite[0].message}}"
                                  *ngIf="produitForm.get('quantite').hasError(account_validation_messages.quantite[0].type) && (produitForm.get('quantite').dirty || produitForm.get('quantite').touched)"
                                  style="cursor: pointer;" matSuffix>
-                                 <i class="fas fa-exclamation-circle"></i>
+                                 <i class="fas fa-exclamation-circle icon-error"></i>
                          </mat-icon>
                      </mat-form-field>
            

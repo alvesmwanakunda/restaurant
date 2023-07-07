@@ -18,7 +18,7 @@
             <mat-icon matTooltip="{{account_validation_messages.point[0].message}}"
             *ngIf="cadeauForm.get('point').hasError(account_validation_messages.point[0].type) && (cadeauForm.get('point').dirty || cadeauForm.get('point').touched)"
             style="cursor: pointer;" matSuffix>
-            <i class="fas fa-exclamation-circle"></i>
+            <i class="fas fa-exclamation-circle icon-error"></i>
            </mat-icon>
           </mat-form-field>
           <section class="example-section">
@@ -35,7 +35,7 @@
               <mat-icon matTooltip="{{account_validation_messages.typesPoint[0].message}}"
               *ngIf="cadeauForm.get('typesPoint').hasError(account_validation_messages.typesPoint[0].type) && (cadeauForm.get('typesPoint').dirty || cadeauForm.get('typesPoint').touched)"
               style="cursor: pointer;" matSuffix>
-              <i class="fas fa-exclamation-circle"></i>
+              <i class="fas fa-exclamation-circle icon-error"></i>
             </mat-icon>
           </mat-form-field>
   
@@ -49,7 +49,7 @@
               <mat-icon matTooltip="{{account_validation_messages.produit[0].message}}"
               *ngIf="cadeauForm.get('produit').hasError(account_validation_messages.produit[0].type) && (cadeauForm.get('produit').dirty || cadeauForm.get('produit').touched)"
               style="cursor: pointer;" matSuffix>
-              <i class="fas fa-exclamation-circle"></i>
+              <i class="fas fa-exclamation-circle icon-error"></i>
             </mat-icon>
           </mat-form-field>
           <!--<p class="addProduct" (click)="viewProduit()">Ajouter un produit</p>-->

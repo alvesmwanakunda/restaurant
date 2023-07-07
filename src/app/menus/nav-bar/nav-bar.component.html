@@ -13,7 +13,11 @@
                 <a  routerLinkActive="active" [routerLinkActiveOptions]="{ exact: true }" [routerLink]="['/dashboard']" matTooltip="Dashboard"><i class="fas fa-th-large" style="font-size: 15px;"></i><span class="title-menu" *ngIf="!isMenuSize">Tableau de bord</span></a>
                 <a  matTooltip="Clients" [routerLink]="['/clients']" [routerLinkActive]="['active']"><i class="fas fa-users" style="font-size: 15px;"></i> <span class="title-menu1" *ngIf="!isMenuSize">Clients</span></a>
                 <a  matTooltip="Fidelites" [routerLink]="['/fidelites']" [routerLinkActive]="['active']"><i class="fas fa-file-invoice-dollar" style="font-size: 15px;"></i> <span class="title-menu4" *ngIf="!isMenuSize">Fidélité</span></a>
-                <a  matTooltip="Promotions" [routerLink]="['/promotions']" [routerLinkActive]="['active']"><i class="fas fa-bullhorn" style="font-size: 15px;"></i> <span class="title-menu3" *ngIf="!isMenuSize">Promotion</span></a>
+                <a  matTooltip="Promotions" (click)="openPromotion()" style="cursor: pointer;"><i class="fas fa-bullhorn" style="font-size: 15px;"></i> <span class="title-menu3" *ngIf="!isMenuSize">Promotions</span><i [ngClass]="isPromotion == true ? 'fa-solid fa-caret-up' : 'fa-solid fa-caret-down'" style="font-size: 13px;" *ngIf="!isMenuSize"></i></a>
+        
+                <a  matTooltip="Promotion" [routerLink]="['/promotions']" [routerLinkActive]="['active']" *ngIf="isPromotion"><i class="fas fa-bullhorn" style="font-size: 13px;padding-left: 20px;" *ngIf="isMenuSize"></i><span *ngIf="!isMenuSize" class="title-sub-menu">Nos promotions</span></a>
+                <a  matTooltip="Message client" [routerLink]="['/message/client']" [routerLinkActive]="['active']" *ngIf="isPromotion"><i class="fa-solid fa-envelope" style="font-size: 13px;padding-left: 20px;" *ngIf="isMenuSize"></i><span  *ngIf="!isMenuSize" class="title-sub-menu">Nos messages</span></a>
+
                 <a  matTooltip="Historiques" [routerLink]="['/historiques']" [routerLinkActive]="['active']"><i class="fas fa-clock" style="font-size: 15px;"></i> <span class="title-menu2" *ngIf="!isMenuSize">Historique</span></a>
                 <a  matTooltip="Mon compte"  [routerLink]="['/parametres']" [routerLinkActive]="['active']"><i class="fas fa-user" style="font-size: 15px;"></i><span class="title-menu3" *ngIf="!isMenuSize">Mon compte</span></a>
 

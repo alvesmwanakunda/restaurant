@@ -94,8 +94,6 @@ export class AddCadeauComponent implements OnInit {
      point:new FormControl(1,[Validators.required]),
      produit:new FormControl("",[Validators.required]),
      typesPoint:new FormControl("",[Validators.required]),
-     dateDebut:new FormControl("",null),
-     dateFin:new FormControl("",null),
    });
   }
 
@@ -116,6 +114,7 @@ export class AddCadeauComponent implements OnInit {
     this.cadeau = {};
 
     console.log("Cadeau", this.cadeauForm.value);
+
 
     if(!this.cadeauForm.invalid){
 
@@ -169,6 +168,8 @@ export class AddCadeauComponent implements OnInit {
 
     if(booster){
       this.isBooster=true;
+      this.cadeauForm.addControl('dateDebut', new FormControl("", null));
+      this.cadeauForm.addControl('dateFin', new FormControl("", null));
     }else{
       this.isBooster=false;
     }

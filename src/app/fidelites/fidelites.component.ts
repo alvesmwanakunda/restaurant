@@ -379,6 +379,13 @@ export class FidelitesComponent implements OnInit {
     });
   }
 
+  openSnackBarArchive() {
+    this._snackBar.open('archiver avec succès', 'Fermer', {
+      duration: 3000,
+      panelClass: ['blue-snackbar']
+    });
+  }
+
 
   // Produits
 
@@ -403,7 +410,7 @@ export class FidelitesComponent implements OnInit {
 
   deleteProduit(idProduit){
 
-    const dialogRef = this.dialog.open(DeletePointComponent);
+    const dialogRef = this.dialog.open(DeletePointComponent,{data:{id:idProduit}});
     dialogRef.afterClosed().subscribe(result => {
       if(result==true){
         this.produitService.removeProduit(idProduit).subscribe((res:any)=>{
@@ -426,6 +433,20 @@ export class FidelitesComponent implements OnInit {
       this.listProduits(this.entreprise._id);
       console.log(`Dialog result: ${result}`);
     })
+  }
+
+  ArchiveCadeau(idCadeau){
+   this.cadeauService.archiveCadeau(idCadeau).subscribe((res:any)=>{
+    try {
+      this.openSnackBarArchive();
+      this.getCadeau(this.entreprise._id);
+      this.getReduction(this.entreprise._id);
+      this.getLivraison(this.entreprise._id);
+      this.getVisite(this.entreprise._id);
+    } catch (error) {
+      console.log("Erreur", error)
+    }
+   })
   }
 
  

@@ -179,7 +179,7 @@ export class AddClientComponent implements OnInit {
   }
 
   openSnackBar() {
-    this._snackBar.open('Le client(s) ajouter avec succès', 'Fermer', {
+    this._snackBar.open('Le client(s) a été ajouté avec succès', 'Fermer', {
       duration: 3000
     });
   }

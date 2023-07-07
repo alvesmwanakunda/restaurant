@@ -170,6 +170,7 @@
                                         <div style="margin-left: 10px;">
                                            <i  class="fas fa-edit" style="margin-right: 11px;color: #04075E;cursor: pointer;" (click)="openDialogUpdateCadeau(cadeau._id)" matTooltip="Modifié" *ngIf="cadeau.isCode==false"></i>
                                            <i class="fas fa-trash" style="color: #04075E;cursor: pointer;" (click)="deleteCadeau(cadeau._id)" *ngIf="cadeau.isCode==false" matTooltip="Supprimé" ></i>
+                                           <i class="fa-solid fa-box-archive" style="color: #04075E;cursor: pointer;" (click)="ArchiveCadeau(cadeau._id)" *ngIf="cadeau.isCode==true" matTooltip="Archivé" ></i>
                                         </div>
 
                                      </div><!--col-->
@@ -206,6 +207,7 @@
                                         <div style="margin-left: 10px;">
                                            <i class="fas fa-edit" style="margin-right: 11px;color: #04075E;cursor: pointer;" (click)="openDialogUpdateReduction(reduction._id)" *ngIf="reduction.isCode==false" matTooltip="Modifié"></i>
                                            <i class="fas fa-trash" style="color: #04075E;cursor: pointer;" (click)="deleteReduction(reduction._id)"  *ngIf="reduction.isCode==false" matTooltip="Supprimé"></i>
+                                           <i class="fa-solid fa-box-archive" style="color: #04075E;cursor: pointer;" (click)="ArchiveCadeau(reduction._id)" *ngIf="reduction.isCode==true" matTooltip="Archivé" ></i>
                                         </div>
 
                                      </div><!--col-->
@@ -237,6 +239,8 @@
                                         <div style="margin-left: 10px;">
                                            <i class="fas fa-edit" style="margin-right: 11px;color: #04075E;cursor: pointer;" (click)="openDialogUpdateLivraison(livraison._id)" *ngIf="livraison.isCode==false" matTooltip="Modifié"></i>
                                            <i class="fas fa-trash" style="color: #04075E;cursor: pointer;" (click)="deleteLivraison(livraison._id)" *ngIf="livraison.isCode==false"  matTooltip="Supprimé"></i>
+                                           <i class="fa-solid fa-box-archive" style="color: #04075E;cursor: pointer;" (click)="ArchiveCadeau(livraison._id)" *ngIf="livraison.isCode==true" matTooltip="Archivé" ></i>
+
                                         </div>
 
                                      </div><!--col-->

@@ -83,7 +83,7 @@ export class HistoriqueComponent implements OnInit,AfterViewInit {
            this.dataSourceAvoir.data = this.avoirs.map((data)=>({
              date: data.creation,
              heure:data.creation,
-             motif:data.motif,
+             motif:data.type,
              montant:data.montant,
              statut:data.type
            })) as AvoirElement[]
@@ -104,6 +104,7 @@ export class HistoriqueComponent implements OnInit,AfterViewInit {
              nom: data.client?.user.nom+" "+data.client?.user.prenom,
              type:data.cadeau?.typeCadeau,
              points:data.cadeau?.point,
+             typeCadeau:data.cadeau?.typesPoint.nom
            })) as RecompenseElement[];
       } catch (error) {
         console.log("Erreur",error);

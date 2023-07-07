@@ -11,12 +11,14 @@ import { CookieService } from 'ngx-cookie-service';
 export class NavBarComponent implements OnInit {
 
   isMenuSize:any;
+  isPromotion:any;
 
   constructor(private cookieService: CookieService) { }
 
   ngOnInit(): void {
 
     this.isMenuSize = !!this.cookieService.get('isMenuSize');
+    this.isPromotion = !!this.cookieService.get('isPromotion');
   }
 
   openMenu(){
@@ -26,6 +28,16 @@ export class NavBarComponent implements OnInit {
     }else{
       this.isMenuSize=true;
       this.cookieService.set('isMenuSize',this.isMenuSize);
+    }
+  }
+
+  openPromotion(){
+    if(this.isPromotion){
+       this.isPromotion=false;
+       this.cookieService.delete('isPromotion');
+    }else{
+        this.isPromotion=true;
+        this.cookieService.set('isPromotion',this.isPromotion);
     }
   }
 

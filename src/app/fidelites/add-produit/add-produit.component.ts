@@ -95,15 +95,15 @@ export class AddProduitComponent implements OnInit {
   onFileSelected(event){
     this.file = event.target.files[0];
     this.fileName = this.file.name; 
-    var maxSize = 650000;
+    this.message = `Nouvelle image: ${this.fileName}`;
+    /*var maxSize = 650000;
 
     if(this.file.size > maxSize){
-      //console.log("Erreur taille");
       this.isMax = true;
       this.message = `${this.fileName}: Taille de fichier non valide, la taille maximale de téléchargement est de 250 KB.`;
     }else{
       this.message = `Nouvelle image: ${this.fileName}`;
-    }
+    }*/
   }
 
   addProduit():void{

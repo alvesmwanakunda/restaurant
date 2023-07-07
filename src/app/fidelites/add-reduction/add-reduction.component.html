@@ -17,7 +17,7 @@
             <mat-icon matTooltip="{{account_validation_messages.point[0].message}}"
             *ngIf="reductionForm.get('point').hasError(account_validation_messages.point[0].type) && (reductionForm.get('point').dirty || reductionForm.get('point').touched)"
             style="cursor: pointer;" matSuffix>
-            <i class="fas fa-exclamation-circle"></i>
+            <i class="fas fa-exclamation-circle icon-error"></i>
            </mat-icon>
           </mat-form-field>
   
@@ -31,7 +31,7 @@
             <mat-icon matTooltip="{{account_validation_messages.typesPoint[0].message}}"
             *ngIf="reductionForm.get('typesPoint').hasError(account_validation_messages.typesPoint[0].type) && (reductionForm.get('typesPoint').dirty || reductionForm.get('typesPoint').touched)"
             style="cursor: pointer;" matSuffix>
-            <i class="fas fa-exclamation-circle"></i>
+            <i class="fas fa-exclamation-circle icon-error"></i>
            </mat-icon>
           </mat-form-field>
   
@@ -46,7 +46,7 @@
             <mat-icon matTooltip="{{account_validation_messages.montant[0].message}}"
             *ngIf="reductionForm.get('montant').hasError(account_validation_messages.montant[0].type) && (reductionForm.get('montant').dirty || reductionForm.get('montant').touched)"
             style="cursor: pointer;" matSuffix>
-            <i class="fas fa-exclamation-circle"></i>
+            <i class="fas fa-exclamation-circle icon-error"></i>
            </mat-icon>
           </mat-form-field>
 
@@ -58,7 +58,7 @@
             <mat-icon matTooltip="{{account_validation_messages.devise[0].message}}"
             *ngIf="reductionForm.get('devise').hasError(account_validation_messages.devise[0].type) && (reductionForm.get('devise').dirty || reductionForm.get('devise').touched)"
             style="cursor: pointer;" matSuffix>
-            <i class="fas fa-exclamation-circle"></i>
+            <i class="fas fa-exclamation-circle icon-error"></i>
            </mat-icon>
           </mat-form-field>
 

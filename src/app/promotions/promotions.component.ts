@@ -121,7 +121,8 @@ export class PromotionsComponent implements OnInit,AfterViewInit {
               type:data.types,
               critere:data.critere,
               dateEnvoie:data.dateEnvoie,
-              etat: data.etat
+              etat: data.etat,
+              isCode:data?.isCode
             })) as PromotionInterface[]
       } catch (error) {
         console.log("Erreur", error);
@@ -260,8 +261,10 @@ export class PromotionsComponent implements OnInit,AfterViewInit {
     console.log("Event 1", event);
     if(event==="sms"){
        this.filetrPromotionSms(this.entreprise?._id);
+       this.applyFilterCible("Sms");
     }else{
        this.filetrPromotionApp(this.entreprise?._id);
+       this.applyFilterCible("App");
     }
   }
 

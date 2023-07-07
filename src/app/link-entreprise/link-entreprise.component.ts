@@ -56,7 +56,7 @@ export class LinkEntrepriseComponent implements OnInit {
     emailorphone:[
       {
         type: "required",
-        message: "Adresse email ou téléphone obligatoire",
+        message: "Numéro téléphone obligatoire",
       },{
         type:"pattern",
         message: "Identifiant incorrect. Veuillez reessayer.",

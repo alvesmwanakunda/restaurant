@@ -20,13 +20,29 @@
 
              <div class="row contentInfo" style="padding-top: 27px">
 
-               <div class="col-md-6">
+               <div class="col-md-12">
                 <app-password></app-password>
                </div><!--col-->
 
-               <div class="col-md-6">
-
+               <!--<div class="col-md-6">
                 <p class="titleInfo">Configuration</p>
+               </div>col-->
+
+             </div><!--row-->
+
+             <!--<mat-divider></mat-divider> 
+              
+             <app-horaire></app-horaire>-->
+
+            </mat-tab>
+
+            <mat-tab>
+              <ng-template mat-tab-label>
+                Configuration <i class="fa-solid fa-gear" style="font-size: 20px;margin-left: 8px;"></i>
+              </ng-template>
+              <div class="contentInfo">
+
+                <p class="titleInfo">Configuration de votre établissement</p>
 
                 <section  *ngIf="avoir">
                   <form novalidate>
@@ -46,14 +62,7 @@
                   </form>
                 </section>
 
-               </div><!--col-->
-
-             </div><!--row-->
-
-             <mat-divider></mat-divider> 
-              
-             <app-horaire></app-horaire>
-
+              </div>
             </mat-tab>
 
             <mat-tab>

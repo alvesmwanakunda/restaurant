@@ -9,12 +9,12 @@ import { environment } from 'src/environments/environment';
 export class NotificationService {
 
   // Production
-  /*private socket = io(environment.BASE_URL,{
+  private socket = io(environment.BASE_URL,{
     path: '/api/socket.io'
-  });*/
+  });
 
   // Development
-  private socket = io(environment.BASE_API_URL);
+  //private socket = io(environment.BASE_API_URL);
 
   notificationSubject: BehaviorSubject<string> = new BehaviorSubject('');
 

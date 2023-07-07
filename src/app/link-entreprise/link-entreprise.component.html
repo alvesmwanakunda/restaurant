@@ -31,7 +31,7 @@
                            <mat-icon matTooltip="{{account_validation_messages.nom[0].message}}"
                                 *ngIf="clientForm.get('nom').hasError(account_validation_messages.nom[0].type) && (clientForm.get('nom').dirty || clientForm.get('nom').touched  || (submitted))"
                                 style="cursor: pointer;" matSuffix>
-                                <i class="fas fa-exclamation-circle"></i>
+                                <i class="fas fa-exclamation-circle icon-error"></i>
                               </mat-icon>
                       </mat-form-field>
                   </div>
@@ -44,7 +44,7 @@
                         <mat-icon matTooltip="{{account_validation_messages.prenom[0].message}}"
                                 *ngIf="clientForm.get('prenom').hasError(account_validation_messages.prenom[0].type) && (clientForm.get('prenom').dirty || clientForm.get('prenom').touched  || (submitted))"
                                 style="cursor: pointer;" matSuffix>
-                                <i class="fas fa-exclamation-circle"></i>
+                                <i class="fas fa-exclamation-circle icon-error"></i>
                         </mat-icon>
                     </mat-form-field>
                   </div>
@@ -57,7 +57,7 @@
                       <mat-icon matTooltip="{{ account_validation_messages.emailorphone[0].message }}"
                           *ngIf="clientForm.get('emailorphone').hasError(account_validation_messages.emailorphone[0].type) && ((clientForm.get('emailorphone').dirty || clientForm.get('emailorphone').touched) || (submitted))"
                           matSuffix>
-                          <i class="fas fa-exclamation-circle"></i>
+                          <i class="fas fa-exclamation-circle icon-error"></i>
                         </mat-icon>
                     </mat-form-field>
                     <div *ngIf="clientFormErrors.emailorphone.found" class="text-danger" style="position: relative;bottom: 19px">
@@ -76,7 +76,7 @@
                       <mat-icon matTooltip="{{account_validation_messages.genre[0].message}}"
                                 *ngIf="clientForm.get('genre').hasError(account_validation_messages.genre[0].type) && (clientForm.get('genre').dirty || clientForm.get('genre').touched  || (submitted))"
                                 style="cursor: pointer;" matSuffix>
-                                <i class="fas fa-exclamation-circle"></i>
+                                <i class="fas fa-exclamation-circle icon-error"></i>
                       </mat-icon>
                     </mat-form-field>
                   </div>

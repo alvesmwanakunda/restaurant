@@ -29,4 +29,8 @@ export class ProduitService {
     return this.http.get(`${environment.BASE_API_URL}/get/produit/${idProduit}`);
   }
 
+  verifyProduit(idProduit){
+    return this.http.get(`${environment.BASE_API_URL}/verify/cadeau/produit/${idProduit}`);
+ }
+
 }

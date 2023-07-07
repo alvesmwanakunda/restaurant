@@ -42,6 +42,10 @@
                                          <i class="fas fa-exclamation-circle"></i>
                                     </mat-icon>
                                   </mat-form-field>
+
+                                  <div style="margin-bottom: 20px;">
+                                    <mat-checkbox formControlName="isCode" [(ngModel)]="promotion.isCode">Générer un code</mat-checkbox>
+                                  </div>
               
                                   <mat-form-field appearance="legacy" class="example-full-width">
                                     <mat-label class="labelFrom">Type de promo</mat-label>
@@ -322,6 +326,8 @@
                               
                               <p class="title-message">{{promotion?.nom}}</p>
                               <p class="message-text" [innerHTML]="promotion?.email">{{promotion?.email}}</p>
+                              <p class="message-text"  *ngIf="promotion?.isCode" style="text-align: center;">Ce message contient un QR Code de promotion</p>
+                              <img  src="{{qrcode}}" style="position:relative;left:32%;"  *ngIf="promotion?.isCode">
 
                             </div><!--App-->
 
@@ -333,6 +339,8 @@
                                     <mat-card-content>
                                     <p class="title-sms">{{promotion?.nom}}</p>
                                     <p class="sms-text" [innerHTML]="promotion?.sms">{{promotion?.sms}}</p>
+                                    <p class="message-text"  *ngIf="promotion?.isCode" style="text-align: center;">Ce message contient un QR Code de promotion</p>
+                                    <img  src="{{qrcode}}" style="position:relative;left:32%;"  *ngIf="promotion?.isCode">
                                     </mat-card-content> 
                                 </mat-card>   
 

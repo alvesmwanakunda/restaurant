@@ -21,6 +21,7 @@ export class UploadClientComponent implements OnInit {
   entreprise:any;
   onLoadForm: boolean = false;
   clientAdd:any;
+  message:any;
 
   constructor(
     private entrepriseService: EntrepriseService,
@@ -52,16 +53,25 @@ export class UploadClientComponent implements OnInit {
       const formData = new FormData();
       formData.append("uploadfile", file);
 
-      this.clientService.uploadClient(formData,this.entreprise._id).subscribe((res)=>{
+      this.clientService.uploadClient(formData,this.entreprise._id).subscribe((res:any)=>{
         this.onLoadForm = true;
+        console.log(res.results);
         try {
-             this.clientAdd = res;
+             this.clientAdd = res.results;
              this.dialogRef.close(this.clientAdd);
-             this.openSnackBar();
              this.onLoadForm = false;
+             res.results.forEach(element => {
+               if(element.success==false){
+                     this.openSnackBarErreur(element.message);
+               }else{
+                  this.openSnackBar();
+               }
+             });
+             
         } catch (error) {
            this.onLoadForm = false;
-           this.openSnackBarErreur();
+           this.message='Une erreur s\'est produite lors de \'enregistrement du client.'
+           this.openSnackBarErreur(this.message);
            console.log("Erreur", error);
         }
       })
@@ -69,14 +79,14 @@ export class UploadClientComponent implements OnInit {
   }
 
   openSnackBar() {
-    this._snackBar.open('Le client(s) ajouter avec succès', 'Fermer', {
-      duration: 3000
+    this._snackBar.open('Le client(s) a été ajouté avec succès', 'Fermer', {
+      duration: 2000
     });
   }
 
-  openSnackBarErreur() {
-    this._snackBar.open('Une erreur s\'est produite lors de \'enregistrement du client.', 'Fermer', {
-      duration: 3000
+  openSnackBarErreur(message:any) {
+    this._snackBar.open(message, 'Fermer', {
+      duration: 2000
     });
   }
 

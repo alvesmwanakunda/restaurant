@@ -120,7 +120,7 @@
       </div><!--col-->
       <div class="col-md-4" style="padding-top: 5px;">
         <div align="right">
-          <button mat-raised-button class="sizeButv" style="margin-right: 14px;" [routerLink]="['/message/client']">Message client </button>
+          <!--<button mat-raised-button class="sizeButv" style="margin-right: 14px;" [routerLink]="['/message/client']">Message client </button>-->
           <button mat-raised-button class="sizeBut" style="margin-right: 14px;" [routerLink]="['/add/promotion']">Créer une campagne <i class="fas fa-plus"></i></button>
           <!--<button mat-raised-button class="sizeb"><i class="fas fa-file-export" style="font-size: 23px;"></i></button>-->
         </div>
@@ -163,8 +163,8 @@
                   </ng-container>
 
                   <ng-container matColumnDef="type">
-                    <th mat-header-cell *matHeaderCellDef [matMenuTriggerFor]="menu" style="cursor: pointer;"> Type <i class="fas fa-caret-down"></i></th>
-                    <mat-menu #menu="matMenu">
+                    <th mat-header-cell *matHeaderCellDef  style="cursor: pointer;"> Type</th>
+                    <!--[matMenuTriggerFor]="menu" <mat-menu #menu="matMenu">
                       <section class="example-section">
                         <span class="example-list-section">
                           <mat-radio-group class="example-radio-group">
@@ -179,7 +179,7 @@
                           </mat-radio-group>
                         </span>    
                       </section>
-                    </mat-menu>
+                    </mat-menu>-->
                     <td mat-cell *matCellDef="let element" style="font-size: 12px;cursor: pointer;color: #0c2461;" (click)="openDialog(element.id)"> {{element.type}} </td>
                   </ng-container>
 
@@ -210,12 +210,12 @@
                   </ng-container>
 
                   <ng-container matColumnDef="payement">
-                    <th mat-header-cell *matHeaderCellDef> Payement <i class="fas fa-caret-down"></i></th>
+                    <th mat-header-cell *matHeaderCellDef> Payement</th>
                     <td mat-cell *matCellDef="let element" style="font-size: 12px;cursor: pointer;color: #0c2461;" (click)="openDialog(element.id)">  </td>
                   </ng-container>
 
                   <ng-container matColumnDef="statut">
-                    <th mat-header-cell *matHeaderCellDef> Statut <i class="fas fa-caret-down"></i></th>
+                    <th mat-header-cell *matHeaderCellDef> Statut </th>
                     <td mat-cell *matCellDef="let element" style="font-size: 12px;cursor: pointer;color: #0c2461;" (click)="openDialog(element.id)"> {{element.etat}}  </td>
                   </ng-container>
 
@@ -224,6 +224,9 @@
                     <td mat-cell *matCellDef="let element" style="font-size: 12px;cursor: pointer;color: #0c2461;"> 
                       <button mat-icon-button color="primary" matTooltip="Modifier" *ngIf="element.etat!='envoyée'" (click)="editPromotion(element.id)">
                         <mat-icon style="font-size: 20px;">edit</mat-icon>
+                      </button>
+                      <button mat-icon-button color="primary" matTooltip="Rapport" *ngIf="element?.isCode">
+                        <mat-icon style="font-size: 20px;">insert_drive_file</mat-icon>
                       </button>
                       <button mat-icon-button color="warn" matTooltip="Supprimer" (click)="openDialogDelete(element.id)">
                         <mat-icon style="font-size: 20px;">delete</mat-icon>

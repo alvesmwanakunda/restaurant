@@ -39,9 +39,13 @@
                           <mat-icon matTooltip="{{account_validation_messages.nom[0].message}}"
                                *ngIf="firstFormGroup.get('nom').hasError(account_validation_messages.nom[0].type) && (firstFormGroup.get('nom').dirty || firstFormGroup.get('nom').touched)"
                                style="cursor: pointer;" matSuffix>
-                               <i class="fas fa-exclamation-circle"></i>
+                               <i class="fas fa-exclamation-circle icon-error"></i>
                           </mat-icon>
                         </mat-form-field>
+
+                        <div>
+                          <mat-checkbox formControlName="isCode">Générer un code</mat-checkbox>
+                        </div>
     
                         <mat-form-field appearance="legacy" class="example-full-width">
                           <mat-label class="labelFrom">Type de promo</mat-label>
@@ -140,7 +144,7 @@
                               <mat-icon matTooltip="{{account_validation_messages.critere[0].message}}"
                                *ngIf="secondFormGroup.get('critere').hasError(account_validation_messages.critere[0].type) && (secondFormGroup.get('critere').dirty || secondFormGroup.get('critere').touched)"
                                style="cursor: pointer;" matSuffix>
-                               <i class="fas fa-exclamation-circle"></i>
+                               <i class="fas fa-exclamation-circle icon-error"></i>
                               </mat-icon>
                            </mat-form-field>
                       </div>
@@ -178,7 +182,7 @@
                              <mat-icon matTooltip="{{account_validation_messages.cible[0].message}}"
                              *ngIf="secondFormGroup.get('cible').hasError(account_validation_messages.cible[0].type) && (secondFormGroup.get('cible').dirty || secondFormGroup.get('cible').touched)"
                              style="cursor: pointer;" matSuffix>
-                             <i class="fas fa-exclamation-circle"></i>
+                             <i class="fas fa-exclamation-circle icon-error"></i>
                             </mat-icon>
                           </mat-form-field>
                      </div>
