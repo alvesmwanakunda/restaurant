@@ -38,6 +38,7 @@ export class AddPromotionComponent implements OnInit {
   isValid:boolean=false;
   isSms:boolean=false;
   isWefid:boolean=false;
+  selected = 'Touts'
 
   constructor(
     private _formBuilder:FormBuilder,
@@ -104,27 +105,27 @@ export class AddPromotionComponent implements OnInit {
 
     this.firstFormGroup = this._formBuilder.group({
       nom:['', Validators.required],
-      types:["",null],
-      sms:["",null],
-      email:["",null],
-      isCode:["",null],
+      types:[""],
+      sms:[""],
+      email:[""],
+      isCode:[""],
     });
     this.secondFormGroup = this._formBuilder.group({
       cible:['',Validators.required],
       critere:["",Validators.required],
-      jours:["",null],
-      heure:["",null],
+      jours:[""],
+      heure:[""],
     });
     this.threeFormGroup = this._formBuilder.group({
       condition:['',Validators.required],
-      interval1:["",null],
-      interval2:["",null],
-      age1:["",null],
-      age2:["",null],
-      sexe:["",null],
-      region:["",null],
-      zone:["",null],
-      nombre:["",null],
+      interval1:[""],
+      interval2:[""],
+      age1:[""],
+      age2:[""],
+      sexe:[""],
+      region:[""],
+      zone:[""],
+      nombre:[""],
     })
   }
 
